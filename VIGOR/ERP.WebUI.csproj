@@ -1948,6 +1948,7 @@
     <Content Include="Areas\HR\Views\LoanAdvApproval\Index.cshtml" />
     <Content Include="Areas\HR\Views\SalarySheet\Index.cshtml" />
     <Content Include="Areas\HR\Views\web.config" />
+    <Content Include="Areas\Indent\Views\FabricInspection\Edit.cshtml" />
     <None Include="DataSets\CONTROLBALANCE.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
