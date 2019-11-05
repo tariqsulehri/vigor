@@ -1,0 +1,55 @@
+﻿@model ERP.Core.Models.Indenting.QcInspector
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content ">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Manage Communication</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @using (Html.BeginForm("Create", "QcInspectors", FormMethod.Post, new { id="QCForm"}))
+        {
+            <div class="modal-body">
+                <div class="form-group row" id="productform">
+                    <div class="col-lg-6">
+                        <label>Commodity Type:</label>
+                        @Html.DropDownListFor(a => a.CommodityId, new SelectList(new ERP.Infrastructure.Repositories.Indenting.CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "-- Select Commodity --", new { @class = "form-control", @id = "CommodityType", @name = "CommodityType" })
+                        @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Full Name:</label>
+                        @Html.TextBoxFor(a => a.FullName, new { @class = "form-control", @id = "FullName" })
+                        @Html.ValidationMessageFor(a => a.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3" style="padding-top:20px;">
+                        <div class="m-checkbox-list">
+                            <label class="m-checkbox m-checkbox--primary">
+                                @Html.CheckBoxFor(a => a.isActive, new { @class = "form-control", @id = "isactive", @type = "checkbox" })
+                                Is Active
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SubmitQCIForm()">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <span>
+                        <i class="flaticon-cancel"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        }
+    </div>
+</div>

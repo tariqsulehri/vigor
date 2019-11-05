@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A291AD_VigourDevelopmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALLCOAView">
+    <Key>
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_financial_trans">
+    <Key>
+      <PropertyRef Name="VKey" />
+      <PropertyRef Name="VoucherNo" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="DeptId" />
+      <PropertyRef Name="EmpId" />
+      <PropertyRef Name="LocId" />
+      <PropertyRef Name="GlTitle" />
+      <PropertyRef Name="VoucherDate" />
+      <PropertyRef Name="FescalMonth" />
+      <PropertyRef Name="Vtype" />
+      <PropertyRef Name="L5Code" />
+      <PropertyRef Name="L1Code" />
+      <PropertyRef Name="L1Title" />
+      <PropertyRef Name="L2Code" />
+      <PropertyRef Name="L2Title" />
+      <PropertyRef Name="L3Code" />
+      <PropertyRef Name="L3Title" />
+      <PropertyRef Name="L4Code" />
+      <PropertyRef Name="L4Title" />
+    </Key>
+    <Property Name="VKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VoucherNo" Type="Int32" Nullable="false" />
+    <Property Name="Credit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Debit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FinParty_Id" Type="Int32" />
+    <Property Name="DeptId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="Employee" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="LocId" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="City_Id" Type="Int32" />
+    <Property Name="GlTitle" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VoucherDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FescalMonth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Vtype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L5Code" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L1Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L1Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L2Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L2Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L3Code" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L3Title" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L4Code" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L4Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_financial_trial_ledger">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="VKey" />
+      <PropertyRef Name="GlCode" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="Detail" />
+      <PropertyRef Name="ChequeDate" />
+      <PropertyRef Name="ClearingDate" />
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="L1Code" />
+      <PropertyRef Name="l1Title" />
+      <PropertyRef Name="L2Code" />
+      <PropertyRef Name="l2Title" />
+      <PropertyRef Name="L3Code" />
+      <PropertyRef Name="L3Title" />
+      <PropertyRef Name="L4Code" />
+      <PropertyRef Name="l4Title" />
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GlCode" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChequeDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClearingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ChequeNo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Debit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Credit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="L1Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="l1Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L2Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="l2Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L3Code" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L3Title" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L4Code" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="l4Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VIEW_FinLedger">
+    <Key>
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="VKey" />
+      <PropertyRef Name="GlCode" />
+      <PropertyRef Name="Detail" />
+      <PropertyRef Name="ChequeDate" />
+      <PropertyRef Name="ClearingDate" />
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="L1Code" />
+      <PropertyRef Name="l1_Title" />
+      <PropertyRef Name="L2Code" />
+      <PropertyRef Name="l2_Title" />
+      <PropertyRef Name="L3Code" />
+      <PropertyRef Name="l3_Title" />
+      <PropertyRef Name="L4Code" />
+      <PropertyRef Name="L4_Title" />
+      <PropertyRef Name="L5Code" />
+      <PropertyRef Name="L5_Title" />
+    </Key>
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VKey" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GlCode" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChequeDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ClearingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ChequeNo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Debit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Credit" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="L1Code" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="l1_Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L2Code" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="l2_Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L3Code" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="l3_Title" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L4Code" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L4_Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L5Code" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L5_Title" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_COA">
+    <Key>
+      <PropertyRef Name="LevelOfAccount" />
+      <PropertyRef Name="AccountCode" />
+      <PropertyRef Name="AccountTitle" />
+    </Key>
+    <Property Name="LevelOfAccount" Type="Int32" Nullable="false" />
+    <Property Name="ParentAccount" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="AccountCode" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AccountTitle" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALLCOAViews" EntityType="Self.ALLCOAView" />
+    <EntitySet Name="view_financial_trans" EntityType="Self.view_financial_trans" />
+    <EntitySet Name="view_financial_trial_ledger" EntityType="Self.view_financial_trial_ledger" />
+    <EntitySet Name="VIEW_FinLedger" EntityType="Self.VIEW_FinLedger" />
+    <EntitySet Name="VW_COA" EntityType="Self.VW_COA" />
+    <FunctionImport Name="SP_DEBIT_CRIDET" ReturnType="Collection(DB_A291AD_VigourDevelopmentModel.SP_DEBIT_CRIDET_Result)">
+      <Parameter Name="From" Mode="In" Type="DateTime" />
+      <Parameter Name="To" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GETRECORD" ReturnType="Collection(DB_A291AD_VigourDevelopmentModel.SP_GETRECORD_Result)">
+      <Parameter Name="From" Mode="In" Type="DateTime" />
+      <Parameter Name="To" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Year_Accounts_Analysis" ReturnType="Collection(DB_A291AD_VigourDevelopmentModel.SP_Year_Accounts_Analysis_Result)">
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="view_domestic_inquiry" EntityType="DB_A291AD_VigourDevelopmentModel.view_domestic_inquiry" />
+    <EntitySet Name="view_domestic_disp_return_Summary" EntityType="DB_A291AD_VigourDevelopmentModel.view_domestic_disp_return_Summary" />
+    <EntitySet Name="view_IndDomestic_Inquiry_Offers" EntityType="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_Inquiry_Offers" />
+    <EntitySet Name="view_IndDomestic_inquiry_sheet" EntityType="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_inquiry_sheet" />
+    <EntitySet Name="view_sale_register" EntityType="DB_A291AD_VigourDevelopmentModel.view_sale_register" />
+    <EntitySet Name="view_IndDomestic_detail" EntityType="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_detail" />
+  </EntityContainer>
+  <ComplexType Name="SP_DEBIT_CRIDET_Result">
+    <Property Type="String" Name="LevelOfAccount" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ParentAccount" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccountCode" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="AccountTitle" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="OPBAL" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Balancee" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="Level" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GETRECORD_Result">
+    <Property Type="Int32" Name="LevelOfAccount" Nullable="false" />
+    <Property Type="String" Name="ParentAccount" Nullable="true" MaxLength="13" />
+    <Property Type="String" Name="AccountCode" Nullable="false" MaxLength="18" />
+    <Property Type="String" Name="AccountTitle" Nullable="false" MaxLength="90" />
+    <Property Type="Decimal" Name="OPBAL" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_Year_Accounts_Analysis_Result">
+    <Property Type="String" Name="GlCode" Nullable="false" MaxLength="18" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="90" />
+    <Property Type="String" Name="l1Title" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="l2Title" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="L3Title" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="l4Title" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="2" />
+    <Property Type="Decimal" Name="OPBAL" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="JAN" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="FEB" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="MAR" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="APR" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="MAY" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="JUN" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="JUL" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="AUG" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="SEP" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="OCT" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="NOV" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="DEC" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="AYBAL" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="CLBAL" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <EntityType Name="view_domestic_inquiry">
+    <Key>
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commodity" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="PaymentTerms" />
+      <PropertyRef Name="ComodityType" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="SellectId" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="CustomerAsBuyer" />
+    </Key>
+    <Property Name="InquiryId" Type="Int32" Nullable="false" />
+    <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CommodityId" Type="Int32" Nullable="false" />
+    <Property Name="Commodity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="UOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentTerms" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ComodityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Delivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="SellectId" Type="Int32" Nullable="false" />
+    <Property Name="seller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuyerId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAsBuyer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="view_domestic_disp_return_Summary">
+    <Key>
+      <PropertyRef Name="IndentId" />
+      <PropertyRef Name="CommodityId" />
+    </Key>
+    <Property Name="IndentId" Type="Int32" Nullable="false" />
+    <Property Name="CommodityId" Type="Int32" Nullable="false" />
+    <Property Name="DispQuantity" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="ReturnQuantity" Type="Decimal" Precision="38" Scale="2" />
+  </EntityType>
+  <EntityType Name="view_IndDomestic_Inquiry_Offers">
+    <Key>
+      <PropertyRef Name="indentId" />
+      <PropertyRef Name="LocalContractNo" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="InvoiceDueDate" />
+      <PropertyRef Name="Revision" />
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commodity" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="PaymentTerms" />
+      <PropertyRef Name="ComodityType" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="SellectId" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="CustomerAsBuyer" />
+      <PropertyRef Name="IndentStatus" />
+      <PropertyRef Name="indentClosed" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="OfferPaymentTerms" />
+    </Key>
+    <Property Name="indentId" Type="Int32" Nullable="false" />
+    <Property Name="LocalContractNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IndentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InvoiceNo" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceDueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="InquiryId" Type="Int32" Nullable="false" />
+    <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CommodityId" Type="Int32" Nullable="false" />
+    <Property Name="Commodity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="UOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DispQuantity" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="ReturnQuantity" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="BalanceQty" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="PaymentTerms" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ComodityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Delivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="SellectId" Type="Int32" Nullable="false" />
+    <Property Name="seller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuyerId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAsBuyer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IndentStatus" Type="Boolean" Nullable="false" />
+    <Property Name="indentClosed" Type="Boolean" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="ReviewId" Type="Int32" />
+    <Property Name="Rivew" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewStatus" Type="Boolean" />
+    <Property Name="OfferedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OfferedRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OfferMadeOn" Type="DateTime" Precision="3" />
+    <Property Name="OfferRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentTermsId" Type="Int32" />
+    <Property Name="OfferPaymentTerms" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="view_IndDomestic_inquiry_sheet">
+    <Key>
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryID" />
+      <PropertyRef Name="PaymenTermsId" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="InqReviewQuestionId" />
+      <PropertyRef Name="InquiryReviewQuestion" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="IndentKey" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="Rate" />
+      <PropertyRef Name="CustomerIDasBuyer" />
+      <PropertyRef Name="buyer" />
+      <PropertyRef Name="CustomerIDasSeller" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryID" Type="Int32" Nullable="false" />
+    <Property Name="Delivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PaymenTermsId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="InqReviewQuestionId" Type="Int32" Nullable="false" />
+    <Property Name="InquiryReviewQuestion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="IndentKey" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IndentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="CustomerIDasBuyer" Type="Int32" Nullable="false" />
+    <Property Name="buyer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerIDasSeller" Type="Int32" Nullable="false" />
+    <Property Name="seller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" />
+    <Property Name="Product" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="view_sale_register">
+    <Key>
+      <PropertyRef Name="IndentKey" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="CustomerIDasSeller" />
+      <PropertyRef Name="CustomerIDasBuyer" />
+      <PropertyRef Name="CustomerIDasLocalAgent" />
+      <PropertyRef Name="OfferDate" />
+      <PropertyRef Name="confirmDate" />
+      <PropertyRef Name="CommodityTypeId" />
+      <PropertyRef Name="CommodityType" />
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="PaymenTermsId" />
+      <PropertyRef Name="CurrencyId" />
+      <PropertyRef Name="ExchangeRate" />
+      <PropertyRef Name="TotalValue" />
+      <PropertyRef Name="TotalValueOnCommRate" />
+      <PropertyRef Name="closedDate" />
+      <PropertyRef Name="ExecutedTotalValue" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="LastApprovedOn" />
+      <PropertyRef Name="ApprovedBy" />
+      <PropertyRef Name="MarketedBy" />
+      <PropertyRef Name="IsSubmitForApproval" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="IndentStatus" />
+      <PropertyRef Name="isClosed" />
+      <PropertyRef Name="IsUpdated" />
+      <PropertyRef Name="isCancelled" />
+      <PropertyRef Name="isShipments" />
+      <PropertyRef Name="isInvoiced" />
+      <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="InvoiceDueDate" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commidity" />
+      <PropertyRef Name="UosID" />
+      <PropertyRef Name="UOM" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="Factor" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Rate" />
+      <PropertyRef Name="CommRate" />
+      <PropertyRef Name="QuantityReq" />
+      <PropertyRef Name="ProductTotalAmount" />
+      <PropertyRef Name="ProductCommValue" />
+      <PropertyRef Name="ExecutedQuantity" />
+      <PropertyRef Name="ExecutedValue" />
+      <PropertyRef Name="CalculatedCommissionValue" />
+    </Key>
+    <Property Name="IndentKey" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IndentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerIDasSeller" Type="Int32" Nullable="false" />
+    <Property Name="SellerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerIDasBuyer" Type="Int32" Nullable="false" />
+    <Property Name="BuyerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerIDasLocalAgent" Type="Int32" Nullable="false" />
+    <Property Name="OfferDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="confirmDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CommodityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CommodityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryId" Type="Int32" Nullable="false" />
+    <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="PaymenTermsId" Type="Int32" Nullable="false" />
+    <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+    <Property Name="ExchangeRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="QuantityVariance" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TotalValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TotalValueOnCommRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="PackingRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryRemarksBuyer" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralRemarks" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialConditions" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="PriceTerms" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Destination" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ClosingRemaks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="closedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExecutedTotalValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="LastApprovedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ApprovedBy" Type="Int32" Nullable="false" />
+    <Property Name="MarketedBy" Type="Int32" Nullable="false" />
+    <Property Name="IsSubmitForApproval" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IndentStatus" Type="Boolean" Nullable="false" />
+    <Property Name="isClosed" Type="Boolean" Nullable="false" />
+    <Property Name="IsUpdated" Type="Boolean" Nullable="false" />
+    <Property Name="isCancelled" Type="Boolean" Nullable="false" />
+    <Property Name="isShipments" Type="Boolean" Nullable="false" />
+    <Property Name="isInvoiced" Type="Boolean" Nullable="false" />
+    <Property Name="InvoiceNo" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceDueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CommodityId" Type="Int32" Nullable="false" />
+    <Property Name="Commidity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CommoditySpecification" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UosID" Type="Int32" Nullable="false" />
+    <Property Name="UOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Factor" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="CommRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="QuantityReq" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ProductTotalAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ProductCommValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ExecutedQuantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ExecutedValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="CalculatedCommissionValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="view_IndDomestic_detail">
+    <Key>
+      <PropertyRef Name="indentId" />
+      <PropertyRef Name="LocalContractNo" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="InvoiceDueDate" />
+      <PropertyRef Name="Revision" />
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commodity" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="PaymentTerms" />
+      <PropertyRef Name="ComodityType" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="SellectId" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="CustomerAsBuyer" />
+      <PropertyRef Name="IndentStatus" />
+      <PropertyRef Name="indentClosed" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="IsSubmitForApproval" />
+    </Key>
+    <Property Name="indentId" Type="Int32" Nullable="false" />
+    <Property Name="LocalContractNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="IndentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InvoiceNo" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceDueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="InquiryId" Type="Int32" Nullable="false" />
+    <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommodityId" Type="Int32" Nullable="false" />
+    <Property Name="Commodity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="UOS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DispQuantity" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="ReturnQuantity" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="BalanceQty" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="PaymentTerms" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ComodityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Delivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+    <Property Name="SellectId" Type="Int32" Nullable="false" />
+    <Property Name="seller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BuyerId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerAsBuyer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IndentStatus" Type="Boolean" Nullable="false" />
+    <Property Name="indentClosed" Type="Boolean" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsSubmitForApproval" Type="Boolean" Nullable="false" />
+    <Property Name="PackingRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryRemarksBuyer" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralRemarks" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialConditions" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialConditionsBuyer" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialConditionsSeller" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="QualityRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="FinancialRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="Specificatiions" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="PriceTerms" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

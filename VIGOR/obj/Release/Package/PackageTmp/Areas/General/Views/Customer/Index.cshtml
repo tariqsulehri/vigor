@@ -1,0 +1,67 @@
+﻿@using ERP.Common;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Customer
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item hidden" Sec-menuId="@SecurityConstants.CustomersbtnActive_InActive">
+                            <input data-switch="true" type="checkbox" onchange="CustomerChangeSwitch()" id="CustomerSwitch1" checked="checked" data-on-text="Active" data-handle-width="10" data-off-text="InActive" data-on-color="success">
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a onclick="CustomerPrint()" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.CustomersbtnPrint">
+                                <span style=" color:#ffffff">
+                                    <i class="la la-print"></i>
+                                    <span>Print</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="@Url.Action("Create","Customer",new {Area="General" })" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.CustomersbtnAdd">
+                                <span>
+                                    <i class="la la-plus"></i>
+                                    <span>Add</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable CustomerTable" id="">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Customer Name</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            @*<th>Email</th>
+                                <th>Mobile #</th>*@
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="CustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/VigorJs/Customer/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/Customer/Index.js"></script>
+<script src="~/Content/VigorJs/General Grid/GeneralGrid.js"></script>
+

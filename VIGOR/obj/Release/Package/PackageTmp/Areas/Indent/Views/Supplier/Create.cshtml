@@ -1,0 +1,175 @@
+﻿@*@model ERP.Core.Models.Parties.FinParty*@
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-portlet">
+                    @using (Html.BeginForm("Create", "Supplier", FormMethod.Post, new { id = "SupplierForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <h3 class="m-portlet__head-text">
+                                        Supplier Information
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="m-portlet__head-tools">
+                                <ul class="m-portlet__nav">
+                                    <li class="m-portlet__nav-item">
+                                        <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span>
+                                                <i class="fa fa-save"></i>
+                                                <span>Save</span>
+                                            </span>
+                                        </button>
+
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span style=" color:#ffffff">
+                                                <i class="flaticon-cancel"></i>
+                                                <span>Cancel</span>
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span>
+                                                <i class="flaticon-delete"></i>
+                                                <span>Delete</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+                            <div class="m-portlet__body">
+                                <div class="row" style="margin-bottom:0px;">
+                                    <div class="col-lg-12 col-xl-12">
+                                        <div class="form-group m-form__group">
+                                            <div class="row" style="margin-top:15px;">
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Supplier Code:</label>
+                                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Supplier Name:</label>
+                                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Supplier Account</label>
+                                                    <select class="form-control">
+                                                        <option value="volvo">MCB</option>
+                                                        <option value="saab">HBL</option>
+                                                        <option value="opel">MCB</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:15px;">
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Email:</label>
+                                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Phone #:</label>
+                                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Country</label>
+                                                    <select class="form-control">
+                                                        <option value="volvo">Pakistan</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top:15px;">
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">NTN #:</label>
+                                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">STN #:</label>
+                                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">State</label>
+                                                    <select class="form-control">
+                                                        <option value="volvo">Punjab</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top:15px;">
+                                                <label for="exampleInputEmail1">Address</label>
+                                                <textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
+                                            </div>
+                                            <div class="row" style="margin-top:15px;">
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Permanent Term</label>
+                                                    <select class="form-control">
+                                                        <option value="volvo">Payment in Advance</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">Status</label>
+                                                    <select class="form-control">
+                                                        <option value="volvo">Active</option>
+                                                        <option value="volvo">InActive</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label for="exampleInputEmail1">City</label>
+                                                    <select class="form-control">
+                                                        <option value="volvo">Lahore</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="GLCOA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/VigorJs/Supplier/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/Supplier/Index.js"></script>
+<script src="~/Content/VigorJs/Vouchers.js"></script>
+<script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>

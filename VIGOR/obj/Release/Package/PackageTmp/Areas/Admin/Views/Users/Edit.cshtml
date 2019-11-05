@@ -1,0 +1,460 @@
+﻿@model ERP.Core.Models.Admin.User
+@using System.Web.UI.WebControls
+@using CrystalDecisions.ReportAppServer.DataDefModel
+@using VIGOR.Models;
+@using ERP.Core.Models.Admin;
+@using ERP.Core.Enums
+
+@{
+    List<SystemOption> systemOptions = (List<SystemOption>)ViewBag.SystemOptionList;
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        margin: 50px auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+        .avatar-edit input {
+            display: none;
+        }
+
+        .avatar-edit label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all .2s ease-in-out;
+        }
+
+            .avatar-edit label:hover {
+                background: #f1f1f1;
+                border-color: #d6d6d6;
+            }
+
+            .avatar-edit label:after {
+                content: "\f040";
+                font-family: 'FontAwesome';
+                color: #757575;
+                position: absolute;
+                top: 10px;
+                left: 0;
+                right: 0;
+                text-align: center;
+                margin: auto;
+            }
+
+
+    .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+        .avatar-preview div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("Edit", "Users", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-label">
+                        <h3 class="m-portlet__head-title">
+                            User Information
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__body">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#" data-target="#kt_tabs_1_1">Personal Info</a>
+                                </li>
+                                @if (Model.IsAdmin)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#kt_tabs_1_4">New Priviliges</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#kt_tabs_1_2">User Department</a>
+                                    </li>
+                                }
+
+                            </ul>
+                            <button class="btn btn-success" type="submit" onclick="fetchNodeList()">Update</button>
+
+
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="kt_tabs_1_1" role="tabpanel">
+                                    <div class="m-section">
+                                        <div class="m-section__content">
+                                            <div>
+                                                <input type="hidden" name="tableData" id="tableData" value="" />
+                                            </div>
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h4>Login Information</h4>
+                                                    <!--begin::Form-->
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                @Html.LabelFor(model => model.UserName)
+                                                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+                                                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                @Html.LabelFor(model => model.Email)
+                                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "Email", @placeholder = "Email" } })
+                                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                @Html.LabelFor(model => model.Password)
+                                                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Password" } })
+                                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h4>Preferences</h4>
+
+                                                    <div class="col-lg-8">
+                                                        <div class="form-group row">
+
+
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                <div class="m-checkbox-list">
+                                                                    <label class="m-checkbox m-checkbox--brand">
+                                                                        @Html.LabelFor(model => model.ChangePasswordWhenLogon)
+                                                                        @Html.EditorFor(model => model.ChangePasswordWhenLogon, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.ChangePasswordWhenLogon, "", new { @class = "text-danger" })
+                                                                    </label>
+                                                                    <label class="m-checkbox m-checkbox--brand">
+                                                                        @Html.LabelFor(model => model.PasswordNeverExpire)
+                                                                        @Html.EditorFor(model => model.PasswordNeverExpire, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.PasswordNeverExpire, "", new { @class = "text-danger" })
+                                                                    </label>
+                                                                    <label class="m-checkbox m-checkbox--brand">
+                                                                        @Html.LabelFor(model => model.IncludedCEOInEmail)
+                                                                        @Html.EditorFor(model => model.IncludedCEOInEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.IncludedCEOInEmail, "", new { @class = "text-danger" })
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-6">
+                                                                @Html.LabelFor(model => model.Status)
+                                                                @Html.DropDownListFor(model => model.Status, new SelectList(Enumeration.GetAll<UserStatus>(), "Key", "Value", Model.Status), new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @Html.LabelFor(model => model.ExpiresOn)
+                                                                @Html.EditorFor(model => model.ExpiresOn, new { htmlAttributes = new { @class = "form-control", @placeholder = "Select date" } })
+                                                                @Html.ValidationMessageFor(model => model.ExpiresOn, "", new { @class = "text-danger" })
+
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h4>Profile</h4>
+
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+
+                                                                @Html.LabelFor(model => model.FirstName)
+                                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First name" } })
+                                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                @Html.LabelFor(model => model.LastName)
+                                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last name" } })
+                                                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-6">
+                                                                @Html.LabelFor(model => model.DateOfBirth)
+                                                                @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", placeholder = "Select Date" } })
+                                                                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                @Html.LabelFor(model => model.Gender)
+                                                                @Html.DropDownListFor(model => model.Gender, new SelectList(Enumeration.GetAll<Gender>(), "Key", "Value", Model.Gender), new { @class = "form-control", placeholder = "Gender" })
+                                                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                @Html.LabelFor(model => model.ContactNumber)
+                                                                @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Contact Number" } })
+                                                                @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Form-->
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <h4>Preferences</h4>
+                                                    <!--begin::Form-->
+                                                    <div class="col-lg-8">
+
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                <label>Employee Code</label>
+                                                                <select class="browser-default custom-select">
+                                                                    <option selected>Open this select menu</option>
+                                                                    <option value="1">Ali</option>
+                                                                    <option value="2">Jamshad</option>
+                                                                    <option value="3">Noor ud din</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-lg-12">
+                                                                <div class="m-checkbox-list">
+                                                                    <label class="m-checkbox m-checkbox--brand">
+                                                                        @Html.LabelFor(model => model.IsAdmin)
+                                                                        @Html.EditorFor(model => model.IsAdmin, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
+
+                                                                    </label>
+                                                                    <label class="m-checkbox m-checkbox--brand">
+                                                                        @Html.LabelFor(model => model.IsManagmentRepresentative)
+                                                                        @Html.EditorFor(model => model.IsManagmentRepresentative, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @Html.ValidationMessageFor(model => model.IsManagmentRepresentative, "", new { @class = "text-danger" })
+
+                                                                    </label>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!--end::Form-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="kt_tabs_1_4" role="tabpanel">
+                                    <div class="row col-md-12" id="">
+                                        <div class="m-portlet">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <h3 class="m-portlet__head-text">
+                                                            User Permissions
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+
+
+                                                <div id="jstree">
+                                                    @(Html.TreeView(systemOptions)
+                                                                                                          .EmptyContent("root")
+                                                                                                          .Children(m => m.Childs)
+                                                                                                          .HtmlAttributes(new { id = "tree" })
+                                                                                                          .ChildrenHtmlAttributes(new { @class = "subItem" })
+                                                                                                          .ItemText(m => m.OptionDescription)
+                                                                                                          .ItemTemplate(
+                                                                                                            @<text>
+                                                                                                                <a href="@item.OptionDescription" desc="@item.OptionDescription" data-tree="" data-menu="main" data-menu_id="@item.OptionId">@item.OptionDescription</a>
+                                                                                                            </text>)
+                                                    )
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="kt_tabs_1_2" role="tabpanel">
+
+                                    <div class="m-portlet">
+                                        <div class="m-portlet__head">
+                                            <div class="m-portlet__head-caption">
+                                                <div class="m-portlet__head-title">
+                                                    <h3 class="m-portlet__head-text">
+                                                        User Allow Department
+                                                    </h3>
+                                                </div>
+
+                                            </div> <div class="pull-right">
+                                                <br />
+
+                                                <button type="button" id="btnAllowDept" class="btn btn-dark pull-right">
+                                                    <img src="~/assets/vendors/base/images/owl.carousel/ajax-loader.gif" id="img" style="display: none; height: 15px;width: 15px" />
+                                                    Update Department Permission
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="m-portlet__body">
+                                            <table class="table table-striped- table-bordered table-hover table-checkable ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Department</th>
+                                                        <th>Company</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var dept in ViewBag.Department)
+                                                    {
+                                                        <tr>
+                                                            <td>@dept.id</td>
+                                                            <td>@dept.Title</td>
+                                                            <td>001</td>
+
+                                                            <td>
+                                                                @if (dept.IsAllow)
+                                                                {
+                                                                    @Html.CheckBox("isAllow", true, new { id = @dept.id })}
+                                                                else
+                                                                { @Html.CheckBox("isAllow", false, new { id = @dept.id })}
+                                                            </td>
+
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        //var selectedData;
+        $('#jstree').jstree({
+            "core": {
+                "multiple": true,
+                "check_callback": false,
+                'themes': {
+                    "responsive": true,
+                    'variant': 'larg',
+                    'stripes': false,
+                    'dots': false
+                }
+            },
+            "types": {
+                "default": {
+                    "icon": "fa fa-folder icon-state-warning icon-lg"
+                },
+                "file": {
+                    "icon": "fa fa-file icon-state-warning icon-lg"
+                }
+            },
+            "plugins": ["dnd", "state", "types", "sort", "checkbox"]
+        });
+    });
+    function fetchNodeList() {
+        var JsonObject = [];
+        $('.jstree-clicked').each(function () {
+            var jsonData = {};
+            jsonData = $(this).attr("data-menu_id");
+            JsonObject.push(jsonData);
+        });
+        $('#tableData').val(JSON.stringify(JsonObject));
+    }
+    $(document).ready(function () {
+
+       $("#btnAllowDept").click(function () {
+            $('#img').show();
+            var favorite = [];
+            $.each($("input[name='isAllow']:checked"), function () {
+                favorite.push($(this).attr("id"));
+            });
+            if (favorite != null) {
+                var UserId=@Model.Id;
+                $.ajax({
+                    url: "/Users/AllowDepartmentToUser",
+                    type: "POST",
+                    data: {
+                        favorite: favorite,
+                        UserId: UserId
+                    },
+                  success: function (data) {
+                      $('#img').hide();
+                    },
+                  });
+
+            }
+        });
+    });
+</script>

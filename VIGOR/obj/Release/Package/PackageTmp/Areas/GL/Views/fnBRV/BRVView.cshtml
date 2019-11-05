@@ -1,0 +1,387 @@
+﻿@using ERP.Common
+@model ERP.Core.Models.Finance.FinVoucher
+
+@{
+    ViewBag.Title = "BRVView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;
+        height: 200px;*/
+        /*overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="m-portlet">
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(a => a.VKey)
+            @Html.HiddenFor(a => a.CreateDate)
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Bank Receipt Voucher Information
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item">
+                            <a href="javascript:" class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air disabled hidden" Sec-menuId="@SecurityConstants.BRVbtnSave">
+                                <span>
+                                    <i class="fa fa-save"></i>
+                                    <span>Save</span>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="@Url.Action("Create","fnBRV",new {Area="GL" })" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.BRVbtnAdd">
+                                <span style=" color:#ffffff">
+                                    <i class="flaticon-plus"></i>
+                                    <span>New</span>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            @if (Model.IsPosted)
+                            {
+                                <a href="javascript:" class="btn btn-dark m-btn m-btn--custom m-btn--icon m-btn--air disabled hidden" Sec-menuId="@SecurityConstants.BRVbtnEdit">
+                                    <span style="color: #ffffff">
+                                        <i class="flaticon-add"></i>
+                                        <span>Edit</span>
+                                    </span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Edit", "fnBRV", new {vKey = Model.VKey, Area = "GL"})" class="btn btn-dark m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.BRVbtnEdit">
+                                    <span style="color: #ffffff">
+                                        <i class="flaticon-add"></i>
+                                        <span>Edit</span>
+                                    </span>
+                                </a>
+                            }
+                        </li>
+
+                        <li class="m-portlet__nav-item">
+                            <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.BRVbtnPrint" onclick="OpenReport('@Model.VKey')">
+                                <span>
+                                    <i class="la la-print"></i>
+                                    <span>Print</span>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            @if (Model.IsPosted)
+                            {
+                                <a href="#" class="btn m-btn m-btn--gradient-from-focus  m-btn--gradient-to-danger hidden" Sec-menuId="@SecurityConstants.BRVbtnUnpost" onclick="UnPostVoucher('/GL/fnBRV/UnPostVoucher',vKey = '@Model.VKey')">
+                                    <span>
+                                        <i class="fa fa-lock"></i>
+                                        <span>Un-Post</span>
+                                    </span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn m-btn m-btn--gradient-from-focus  m-btn--gradient-to-danger hidden" Sec-menuId="@SecurityConstants.BRVbtnPost" onclick="PostVoucher('/GL/fnBRV/PostVoucher',vKey = '@Model.VKey')">
+                                    <span>
+                                        <i class="fa fa-lock"></i>
+                                        <span>Post</span>
+                                    </span>
+                                </a>
+                            }
+
+
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="@Url.Action("Delete", "fnVoucherList", new {vKey = Model.VKey,Url="/GL/fnCPV/Create", Area = "GL"})" class=" btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air hidden disabled" Sec-menuId="@SecurityConstants.BRVbtnDelete">
+                                <span>
+                                    <i class="flaticon-delete"></i>
+                                    <span>Delete</span>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="@Url.Action("Index","fnBRV",new {Area="GL" })" class="btn btn-outline-dark m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.BRVbtnExit">
+                                <span>
+                                    <i class="flaticon-reply"></i>
+                                    <span>Exit</span>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="form-group m-form__group row">
+                <div class="col-lg-3">
+                    <label class="control-label">Fiscal Month:</label>
+
+                    @Html.DropDownListFor(a => a.FescalMonth, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.FinFescalYearDetailRepository().GetAllFescalYearDetails(), "Id", "Title"), new { @class = "form-control ", @disabled = "disabled" })
+                    @Html.HiddenFor(a => a.FescalMonth)
+                    @Html.ValidationMessageFor(model => model.FescalMonth, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-2">
+                    <label>Voucher Date:</label>
+                    @Html.TextBoxFor(a => a.VoucherDate, new { @class = "form-control ", type = "date", @Value = Model.VoucherDate.ToString("yyyy-MM-dd"), @disabled = "disabled" })   @*VoucherDate Model Feild Is Missing*@
+                    @Html.HiddenFor(a => a.VoucherDate)
+                    @Html.ValidationMessageFor(model => model.VoucherDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-2">
+
+                    @Html.LabelFor(model => model.VoucherNo, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(a => a.VoucherNo, new { @class = "form-control ", @disabled = "disabled" })
+                    @Html.HiddenFor(a => a.VoucherNo)
+                    @Html.ValidationMessageFor(model => model.FescalMonth, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-lg-2">
+                    <label class="">Voucher Status:</label>
+                    @if (Model.IsPosted)
+                    {
+                        <label class=" form-control" disabled="disabled">Posted</label>
+
+                    }
+                    else
+                    {
+                        <label class=" form-control" disabled="disabled">Un-Posted</label>
+
+                    }
+                </div>
+                <div class="col-lg-1">
+                    <label class=""> Type:</label>
+                    @Html.TextBoxFor(a => a.Vtype, new { @class = "form-control ", @Value = "BRV", @disabled = "disabled" })
+                    @Html.HiddenFor(a => a.Vtype)
+                    @Html.ValidationMessageFor(model => model.Vtype, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-lg-2">
+                    <label class="">Created on:</label>
+                    @Html.TextBoxFor(a => a.CreateDate, new { @class = "form-control ", @Value = @System.DateTime.Now.ToString("dd/MM/yyyy"), @disabled = "disabled" })
+                    @Html.HiddenFor(a => a.CreateDate)
+                    @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="col-lg-8">
+                    <label class="">Remarks:</label>
+                    @Html.TextAreaFor(a => a.Detail, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+
+                </div>
+                @*<div class="col-lg-4">
+                        <label class="">Attach:</label>
+                        <input type="file" class="form-control" />
+
+
+                    </div>*@
+
+                <div class="col-lg-3">
+                    <label>Bank/ Ac:</label>
+                    @Html.DropDownListFor(a => a.AccountCode, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.CoaL5Repository().GetL5Accounts().Where(a => a.BookType == "B"), "L5Code", "Title"), "-- Select Account --", new { @class = "form-control" })
+
+
+
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="">Chq No.:</label>
+                    @Html.TextBoxFor(a => a.CheqNo, new { @class = "form-control", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.CheqNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-5">
+                    <label class="">Narration:</label>
+                    @Html.TextBoxFor(a => a.dtDetail, new { @class = "form-control", autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.dtDetail, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-1">
+                    <label class="decimal">Debit:</label>
+                    @Html.TextBoxFor(a => a.TotalDebit, new { @class = "form-control", autocomplete = "off" })
+                </div>
+                <div class="col-lg-1">
+                    <label class="decimal">Credit:</label>
+                    @Html.TextBoxFor(a => a.TotalCredit, new { @class = "form-control", autocomplete = "off" })
+                </div>
+            </div>
+
+
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table id="detailGrid" class="table">
+                    <thead style="background-color:#28469c; color:#ffffff">
+                        <tr>
+                            <th width="300px">Description</th>
+                            <th width="300px">Account Description</th>
+                            <th width="100px">Account Code</th>
+                            @*<th width="100px" col="debit">Debit</th>*@
+                            <th width="100px" col="credit">Credit</th>
+                            <th>Department</th>
+                            <th>Location</th>
+                            <th>Employee</th>
+                            <th>Customer</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    @if (Model.FinVoucherDetail.Count > 0)
+                    {
+                        Int32 j = 0;
+                        foreach (var item in Model.FinVoucherDetail.Where(a => a.Credit > 0))
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.TextBox("det[" + j + "][Detail]", null, new { @class = "form-control", autocomplete = "off", @Value = item.Detail, required = "required" })
+                                </td>
+                                <td>
+                                    <div class="input-group ">
+                                        @Html.TextBox("det[" + j + "][Account]", null, new { @class = "form-control", Onkeydown = "CheckingButtonClick(event,this.name,'G');", @readonly = "readonly", @Value = item.CoaL5.Title })
+                                        <div class="input-group-append">
+                                            <input type="button" name="det[@j][Accbtn]" class="btn btn-info fa fa-plus " onclick="OpenTrCOAModal(this.name,'G')" style="padding:2px;width:20px" value="+" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    @Html.TextBox("det[" + j + "][GlCode]", null, new { @class = "form-control ", @readonly = "readonly", @Value = item.GlCode })
+                                </td>
+                                @*<td>
+                                        @Html.TextBox("det[" + j + "][Debit]", null, new { @class = "form-control", autocomplete = "off", @Value = item.Debit, type = "number", min = "0" })
+                                    </td>*@
+                                <td>
+                                    @Html.TextBox("det[" + j + "][Credit]", null, new { @class = "form-control decimal allow_decimal", autocomplete = "off", @Value = item.Credit })
+                                </td>
+                                <td>
+                                    @Html.DropDownList("det[" + j + "][DeptId]", new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "Id", "Title", item.DeptId), "-- Select  --", item.DeptId > 0 ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
+                                </td>
+                                <td>
+                                    @Html.DropDownList("det[" + j + "][LocId]", new SelectList(new ERP.Infrastructure.Repositories.Common.CityRepository().GetAllCities(), "Id", "Name", item.LocId), "-- Select  --", item.LocId > 0 ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
+                                </td>
+                                <td>
+                                    @Html.DropDownList("det[" + j + "][EmpId]", new SelectList(new ERP.Infrastructure.Repositories.HR.HrEmployeeRepository().GetAllEmployees(), "Id", "Title", item.EmpId), "-- Select  --", item.EmpId > 0 ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
+                                </td>
+                                <td>
+                                    @Html.DropDownList("det[" + j + "][CustomerId]", new SelectList(new ERP.Infrastructure.Repositories.Parties.FinPartyRepository().GetAllParties(), "Id", "Title", item.CustomerId), "-- Select  --", item.CustomerId > 0 ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
+                                </td>
+                            </tr>
+                            j++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td>
+
+                                @Html.TextBox("det[0][Detail]", null, new { @class = "form-control", required = "required", autocomplete = "off" })
+
+                            </td>
+                            <td>
+                                <div class="input-group ">
+                                    @Html.TextBox("det[0][Account]", null, new { @class = "form-control", Onkeydown = "CheckingButtonClick(event,this.name,'G');", @readonly = "readonly" })
+                                    <div class="input-group-append">
+
+                                        <input type="button" name="det[0][Accbtn]" class="btn btn-info fa fa-plus " onclick="OpenTrCOAModal(this.name,'G')" style="padding:2px;width:20px" value="+" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                @Html.TextBox("det[0][GlCode]", null, new { @class = "form-control ", @readonly = "readonly" })
+                            </td>
+                            @*<td>
+                                    @Html.TextBox("det[0][Debit]", null, new { @class = "form-control allow_decimal" })
+                                </td>*@
+                            <td>
+                                @Html.TextBox("det[0][Credit]", null, new { @class = "form-control decimal allow_decimal", autocomplete = "off" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("det[0][DeptId]", new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "Id", "Title"), "-- Select  --", new { @class = "form-control ", required = "required" }) @* m-select2   id = "m_select2_4"*@
+
+                            </td>
+                            <td>
+                                @Html.DropDownList("det[0][LocId]", new SelectList(new ERP.Infrastructure.Repositories.Common.CityRepository().GetAllCities(), "Id", "Name"), "-- Select  --", new { @class = "form-control ", required = "required" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("det[0][EmpId]", new SelectList(new ERP.Infrastructure.Repositories.HR.HrEmployeeRepository().GetAllEmployees(), "Id", "Title"), "-- Select  --", new { @class = "form-control", required = "required" })
+                            </td>
+                            <td>
+                                @Html.DropDownList("det[0][CustomerId]", new SelectList(new ERP.Infrastructure.Repositories.Parties.FinPartyRepository().GetAllParties(), "Id", "Title"), "-- Select  --", new { @class = "form-control", required = "required" })
+                            </td>
+                        </tr>}
+                </table>
+            </div>
+            
+        </div>
+    </div><div class="modal fade" id="GLCOA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/VigorJs/Vouchers.js"></script>
+
+    <script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>
+    <script src="~/Content/VigorJs/GL/VouchersOperation.js"></script>
+
+    <script>
+        var S_KEY = 83;
+        var R_KEY = 82;
+        var C_KEY = 67;
+        $(document).keydown(function (e) {
+            if (e.shiftKey && e.which == S_KEY) {
+                $(document.activeElement).closest("form").submit();
+            }
+            if (e.shiftKey && e.which == C_KEY) {
+                location.href = "/GL/fnBRV/Index";
+            }
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $(".allow_decimal").on("input", function (evt) {
+                var self = $(this);
+                self.val(self.val().replace(/[^0-9\.]/g, ''));
+                if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+                    evt.preventDefault();
+                }
+            });
+
+        });
+
+    </script>
+</div>
+
+
+@if (TempData["clientMessage"] != null)
+{
+    <script>
+    $(function () {
+        CustomeMessage('error','@TempData["clientMessage"].ToString()');
+    });
+    </script>
+}
+

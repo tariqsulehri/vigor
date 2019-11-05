@@ -1,0 +1,182 @@
+﻿@model IEnumerable<ERP.Core.Models.Finance.CoaL1>
+@{
+    ViewBag.Title = "Print";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = (ERP.Core.Models.Admin.User)Session["UserModel"];
+    var Company = (ERP.Core.Models.Common.Company)Session["CompanyModel"];
+
+}
+<style>
+    table, tr, td, th {
+        border: solid 1px;
+        padding: 10px;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .center {
+        text-align: center
+    }
+
+    thead, th {
+        padding: 10px;
+    }
+
+    .summary {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .customP {
+        font-family: Verdana;
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+
+    #td, #tr, #table {
+        border: solid 0px;
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+<br />
+<div class="col-sm-12 m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air invoice-print">
+                        <span>
+                            <i class="la la-print"></i>
+                            <span>Print</span>
+                        </span>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="invoice-page">
+        <br />
+        <br />
+        <br />
+        <table width="100%" id="table">
+            <tbody>
+                <tr id="tr">
+                    <td id="tr" style="text-align: left">@Company.Name</td>
+                    <td id="tr" style="text-align: right">Print Date: @DateTime.Now.ToString("dd/MM/yyyy") </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="customP" style="text-align: center">
+            <b>CHART OF ACCOUNTS</b>
+        </p>
+        <br />
+        <table width="100%">
+            <thead style="background-color:#a2a5a5">
+                <tr>
+                    <th width="15%">Account Code</th>
+                    <th>Account title</th>
+                    <th width="7%" class="center">Status</th>
+                    <th width="7%" class="center">Deparment</th>
+                    <th width="7%" class="center">Location</th>
+                    <th width="7%" class="center">Employee</th>
+                    <th width="7%" class="center">Customer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.L1Code</td>
+                            <td>@item.Title</td>
+                            <td class="center">@Html.DisplayFor(a => item.Active)</td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        foreach (var coa2 in item.CoaL2.Where(a => a.L1Code == item.L1Code))
+                        {
+                            <tr>
+                                <td> @coa2.L2Code</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@coa2.Title</td>
+                                <td class="center">@Html.DisplayFor(a => coa2.Active)</td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+                            </tr>
+                            foreach (var coa3 in coa2.CoaL3.Where(a => a.L2Code == coa2.L2Code))
+                            {
+                                <tr>
+                                    <td>@coa3.L3Code</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@coa3.Title</td>
+                                    <td class="center">@Html.DisplayFor(a => coa3.Active)</td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
+                                </tr>
+                                foreach (var coa4 in coa3.CoaL4.Where(a => a.L3Code == coa3.L3Code))
+                                {
+                                    <tr>
+                                        <td>@coa4.L4Code</td>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@coa4.Title</td>
+                                        <td class="center">@Html.DisplayFor(a => coa4.Active)</td>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    foreach (var coa5 in coa4.CoaL5.Where(a => a.L4Code == coa4.L4Code))
+                                    {
+                                        <tr>
+                                            <td>@coa5.L5Code</td>
+                                            <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@coa5.Title</td>
+                                            <td class="center">@Html.DisplayFor(a => coa5.Active)</td>
+
+                                            <td class="center">@Html.DisplayFor(a => coa5.IsDept)</td>
+                                            <td class="center">@Html.DisplayFor(a => coa5.IsLoc)</td>
+                                            <td class="center">@Html.DisplayFor(a => coa5.IsEmp)</td>
+                                            <td class="center">@Html.DisplayFor(a => coa5.IsCust)</td>
+
+
+                                        </tr>
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            </tbody>
+
+
+        </table>
+        <br />
+        <br />
+        <br />
+        <p>Printed by: @User.UserName</p>
+    </div>
+</div>
+<script src="~/Scripts/jQuery.print.js"></script>
+<script src="~/Scripts/invoice.js"></script>

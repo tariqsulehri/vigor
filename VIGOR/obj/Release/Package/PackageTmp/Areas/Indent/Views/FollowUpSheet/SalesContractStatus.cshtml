@@ -1,0 +1,484 @@
+﻿@model ERP.Core.Models.Indenting.IndentDomestic.IndDomestic
+@using System.Activities.Expressions
+@using ERP.Common
+@using ERP.Infrastructure.Repositories.HR
+@using ERP.Infrastructure.Repositories.Indenting
+@using ERP.Infrastructure.Repositories.Parties
+@using ERP.Core.Enums
+@{
+                /**/
+
+                Layout = null;
+}
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;s
+        height: 200px;
+        overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="modal-dialog modal-dialog-centered " style="width:95% !important;max-width: 10000px !important;">
+    <div class="modal-content ">
+
+        <div class="m-portlet">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Sale Contract Status
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+
+                        <li class="m-portlet__nav-item">
+                            <a href="#" class="btn m-btn m-btn--gradient-from-warning m-btn--gradient-to-danger" title="Dispatch" onclick="InspectionView('@Url.Action("IndDispatches","FollowUpSheet",new {IndentID=Model.Id, Area="Indent"})')">
+                                <span style="color: #ffffff">
+                                    <i class="flaticon-truck"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="#" class="btn m-btn m-btn--gradient-from-success m-btn--gradient-to-accent" title="Efile" onclick="InspectionView('@Url.Action("Efile","FollowUpSheet",new {IndentID=Model.Id, Area="Indent"})')">
+                                <span style="color: #ffffff">
+                                    <i class="flaticon-interface-3"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="#" class="btn m-btn m-btn--gradient-from-info m-btn--gradient-to-primary" title="Inspections" onclick="InspectionView('@Url.Action("Inspection","FollowUpSheet",new {IndentID=Model.Id,ComodityType=2, Area="Indent"})')">
+                                <span style="color: #ffffff">
+                                    <i class="flaticon-layer"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <a href="#" class="btn m-btn m-btn--gradient-from-focus m-btn--gradient-to-danger" title="Complaints" onclick="InspectionView('@Url.Action("Complaints","FollowUpSheet",new {IndentID=Model.Id, Area="Indent"})')">
+                                <span style="color: #ffffff">
+                                    <i class="flaticon-exclamation-1"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                <span>
+                                    <i class="flaticon-cancel"></i>
+                                    <span>Cancel</span>
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-9">
+                        @Html.HiddenFor(a => a.InquiryKey)
+                        <label>@Model.InquiryKey</label>
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Contract No:</label>
+                                @Html.TextBoxFor(a => a.IndentKey, new { @class = "form-control", disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.IndentKey, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Contract Date:</label>
+                                @Html.TextBoxFor(a => a.IndentDate, new { @class = "form-control", type = "date", Value = Model.IndentDate.ToString("yyyy-MM-dd") })
+                                @Html.ValidationMessageFor(model => model.IndentDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Local Agent:</label>
+                                @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search" , @disabled = "disabled"})
+                                @Html.ValidationMessageFor(model => model.CustomerIDasLocalAgent, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Department:</label>
+                                @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control m-input m-select2 search", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Commodity Type:</label>
+                                @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control m-select2 search", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.CommodityTypeId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Seller:</label>
+                                @Html.DropDownListFor(a => a.CustomerIDasSeller, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsSeller == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search", id = "seller", @disabled = "disabled", @onchange = "BindCommetionAgent();Valid()" })
+                                @Html.ValidationMessageFor(model => model.CustomerIDasSeller, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Buyer:</label>
+                                @Html.DropDownListFor(a => a.CustomerIDasBuyer, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search", id = "Buyer", @onchange = "BindCommetionAgent()", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.CustomerIDasBuyer, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Payment Terms:</label>
+                                @Html.DropDownListFor(a => a.PaymenTermsId, new SelectList(new IndPaymentTermsRepository().GetAllIndPaymentTerms(), "Id", "Description"), "", new { @class = "form-control m-select2 search", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.PaymenTermsId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Price Terms:</label>
+                                @Html.TextAreaFor(a => a.PriceTerms, new { @class = "form-control m-input" })
+                                @Html.ValidationMessageFor(model => model.PriceTerms, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Quantity variance:</label>
+                                @Html.TextBoxFor(a => a.QuantityVariance, new { @class = "form-control m-input" })
+                                @Html.ValidationMessageFor(model => model.QuantityVariance, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Destination:</label>
+                                @Html.TextBoxFor(a => a.Destination, new { @class = "form-control m-input" })
+                                @Html.ValidationMessageFor(model => model.Destination, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Supp. Contract:</label>
+                                @Html.TextBoxFor(a => a.SuppContract, new { @class = "form-control m-input" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>P.O No:</label>
+                                @Html.TextBoxFor(a => a.PONumber, new { @class = "form-control m-input" })
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline " id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                        <thead style="background-color:#28469c; color:#ffffff">
+
+                                            <tr>
+
+                                                <th width="">Agent</th>
+                                                <th width="20"></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @if (Model.CommInvoiceAgentComm.Count > 0)
+                                            {
+                                                Int32 j = 0;
+                                                foreach (var item in Model.CommInvoiceAgentComm)
+                                                {
+                                                    <tr role="row">
+                                                        <td>
+                                                            @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", @item.CompanyId), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
+                                                        </td>
+                                                    </tr>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <tr role="row" class="odd">
+                                                    <td>
+                                                        @Html.DropDownList("det[0][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-toggle="tab" href="#" data-target="#m_tabs_1_1">Contract Details</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " data-toggle="tab" href="#m_tabs_1_2">Comission</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="m_tabs_1_1" role="tabpanel">
+                            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <thead style="background-color: #28469c; color: #ffffff">
+                                                <tr>
+
+                                                    <th width="100">Commodity</th>
+                                                    <th width="15">Quantity</th>
+                                                    <th width="80">UoS</th>
+                                                    <th width="80">Rate</th>
+                                                    <th>Specification</th>
+                                                    <th>Selvage Weave</th>
+                                                    <th width="60" col="TotalValue" summary="sum">Total</th>
+                                                    <th width="20"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (Model.IndDomesticDetails.Count > 0)
+                                                {
+                                                    Int32 j = 0;
+                                                    foreach (var item in Model.IndDomesticDetails)
+                                                    {
+                                                        <tr role="row" class="odd">
+
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][CommodityId]", new SelectList(new ProductRepository().GetAllProduct().Where(a => a.Id > 1), "Id", "Description", item.CommodityId), "", new { @class = "form-control " })
+
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Quantity]", null, new { @class = "form-control", type = "number", @Value = item.Quantity, onchange = "calculateComission(this.name)" })
+
+
+                                                            </td>
+
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][UosID]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description", item.UosID), "Select", new { @class = "form-control " })
+
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Rate]", null, new { @class = "form-control", type = "number", @Value = item.Rate, onchange = "calculateComission(this.name)" })
+
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][CommoditySpecification]", null, new { @class = "form-control", @Value = item.CommoditySpecification })
+                                                            </td>
+                                                            <td>   @Html.TextBox("det[" + j + "][SizeSpecifications]", null, new { @class = "form-control", @Value = item.SizeSpecifications })</td>
+                                                            <td>   @Html.TextBox("det[" + j + "][TotalValue]", null, new { @class = "form-control", @Value = item.TotalValue })</td>
+
+                                                        </tr>
+                                                        j++;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr role="row" class="odd">
+
+                                                        <td>
+                                                            @Html.DropDownList("det[0][CommodityId]", new SelectList(new ProductRepository().GetAllProduct().Where(a => a.Id > 1), "Id", "Description"), "", new { @class = "form-control " })
+
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[0][Quantity]", null, new { @class = "form-control", type = "number", onchange = "calculateComission(this.name)" })
+
+
+                                                        </td>
+
+                                                        <td>
+                                                            @Html.DropDownList("det[0][UosID]", new SelectList(new UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description"), "", new { @class = "form-control " })
+
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[0][Rate]", null, new { @class = "form-control", type = "number", onchange = "calculateComission(this.name)" })
+
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[0][CommoditySpecification]", null, new { @class = "form-control" })
+                                                        </td>
+                                                        <td>   @Html.TextBox("det[0][SizeSpecifications]", null, new { @class = "form-control" })</td>
+                                                        <td>   @Html.TextBox("det[0][TotalValue]", null, new { @class = "form-control" })</td>
+
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+                            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <thead style="background-color: #28469c; color: #ffffff">
+
+                                                <tr>
+
+                                                    <th width="">Comission Paid To</th>
+                                                    <th width="">Comission Paid From</th>
+                                                    <th width="80">Rate</th>
+                                                    <th width="60">%/QTY</th>
+                                                    <th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @if (Model.IndCommission.Count > 0)
+                                                {
+                                                    Int32 j = 0;
+                                                    foreach (var item in Model.IndCommission)
+                                                    {
+                                                        <tr role="row" class="odd">
+
+
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidFrom), "", new { @class = "form-control CommPaidAgent" })
+
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidTo), "", new { @class = "form-control CommPaidAgent", })
+
+                                                            </td>
+
+                                                            <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control", @Value = item.CommissionRate })</td>
+
+                                                            <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                            <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control", @Value = item.CalculatedCommissionValue })</td>
+
+                                                        </tr>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr role="row" class="odd">
+
+
+                                                        <td>
+                                                            @Html.DropDownList("det[0][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent" })
+
+                                                        </td>
+                                                        <td>
+                                                            @Html.DropDownList("det[0][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent" })
+
+                                                        </td>
+
+                                                        <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate" })</td>
+
+                                                        <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+
+
+                                                        <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control" })</td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr><td colspan="4" style=" text-align: right">Total &nbsp;&nbsp;</td><td>@Html.TextBoxFor(a => a.TotalValueOnCommRate, new { type = "number", id = "CommBalance", @readonly = "readonly" })</td></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="padding-top: 15px;">
+                    <!--begin::Portlet-->
+                    <div class="">
+                        <div class="">
+                            <ul class="nav nav-tabs" role="tablist">
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#m_tabs_3_2">Packing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_3">Special Conditions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_9">Condition for Seller</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_1">Condition for Buyer</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_4">Quality</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_5">General</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_6">Financial</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_7">Piece Length</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_8">Delivery</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="m_tabs_3_2" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.PackingRemarks, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('PackingRemarks')" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_3" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.SpecialConditions, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('SpecialConditions')" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_9" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.SpecialConditionsSeller, new { @class = "form-control" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_1" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.SpecialConditionsBuyer, new { @class = "form-control" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_4" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.QualityRemarks, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('QualityRemarks')" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_5" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.GeneralRemarks, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('GeneralRemarks')" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_6" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.FinancialRemarks, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('FinancialRemarks')" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_7" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.PicesLength, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('PicesLength')" })
+
+                                </div>
+                                <div class="tab-pane" id="m_tabs_3_8" role="tabpanel">
+                                    @Html.TextAreaFor(a => a.DeliveryRemarks, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList('DeliveryRemarks')" })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Portlet-->
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+

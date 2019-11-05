@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ERP.Core.Models.Common.Party.Machine>
+
+@{
+    ViewBag.Title = "PrintMachinery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var User = (ERP.Core.Models.Admin.User)Session["UserModel"];
+    var Company = (ERP.Core.Models.Common.Company)Session["CompanyModel"];
+}
+
+<style>
+    table, tr, td, th {
+        border: solid 1px;
+        padding: 10px;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    thead, th {
+        padding: 10px;
+    }
+
+    .summary {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .customP {
+        font-family: Verdana;
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+
+    #td, #tr, #table {
+        border: solid 0px;
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+<br />
+<div class="col-sm-12 m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air invoice-print">
+                        <span>
+                            <i class="la la-print"></i>
+                            <span>Print</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="invoice-page">
+        <p class="decimal "> Print Date: @DateTime.Now.ToString("dd/MM/yyyy") </p>
+        <p class="customP" style="text-align: center">
+            <b>@Company.Name</b>
+        </p>
+        <b>
+            <p class="customP" style="text-align: center">Machines</p>
+        </b>
+
+        <table width="100%">
+            <tr>
+                <th width="15%">ID</th>
+                <th>Machine Name</th>
+                <th>Status</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    @if (item.IsActive)
+                    {
+                        <td>Active</td>
+                    }
+                    else if (!item.IsActive)
+                    {
+                        <td>InActive</td>
+                    }
+                </tr>
+            }
+        </table>
+        <br />
+        <p>Printed by: @User.UserName</p>
+    </div>
+</div>
+<script src="~/Scripts/jQuery.print.js"></script>
+<script src="~/Scripts/invoice.js"></script>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a35c4150952142a1a0faa5609959df09" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.ALLCOAView" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_financial_trans" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_financial_trial_ledger" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.VIEW_FinLedger" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.VW_COA" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_domestic_inquiry" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_domestic_disp_return_Summary" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_Inquiry_Offers" Width="1.5" PointX="5.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_inquiry_sheet" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_sale_register" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_detail" Width="5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

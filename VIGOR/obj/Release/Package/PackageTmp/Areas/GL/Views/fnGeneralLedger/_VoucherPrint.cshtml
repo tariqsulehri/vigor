@@ -1,0 +1,169 @@
+﻿@model ERP.Core.Models.Finance.FinVoucher
+@{
+    ViewBag.Title = "VoucherPrint";
+    Layout = null;
+    var User = (ERP.Core.Models.Admin.User)Session["UserModel"];
+    var Company = (ERP.Core.Models.Common.Company)Session["CompanyModel"];
+    var voucherType = (ERP.Core.Models.Finance.FinVType)ViewBag.FinVoucher;
+
+
+}
+
+<style>
+    table, tr, td, th {
+        border: solid 1px;
+        padding: 10px;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    thead, th {
+        padding: 10px;
+    }
+
+    .summary {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .customP {
+        font-family: Verdana;
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+
+    #td, #tr, #table {
+        border: solid 0px;
+        padding: 5px;
+        text-align: center;
+    }
+</style>
+<br />
+
+            
+
+
+
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                            
+                            <div id="invoice-page">
+                                <p class="decimal "> Print Date: @DateTime.Now.ToString("dd/MM/yyyy") </p>
+                                <p class="customP" style="text-align: center">
+                                    <b>@Company.Name</b>
+                                </p>
+                                <b>
+                                    <p class="customP" style="text-align: center">@voucherType.Description</p>
+                                </b>
+                                <table width="100%" id="table">
+                                    <tbody>
+                                        <tr id="tr">
+                                            <td id="tr" style="text-align: left">
+                                                Voucher No.:
+                                                @Model.VoucherNo<br />
+                                                Voucher Date:
+                                                @Model.VoucherDate.ToString("dd/MM/yyyy")
+                                            </td> @if (Model.IsPosted)
+                                            {
+                                                <td id="tr"><img src="~/File/Images/PostedVoucher.png" /><br />@Model.PostedDate.ToString("dd/MM/yyyy")</td>}
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <table width="100%">
+                                    <tr>
+                                        <th width="15%">Account Code</th>
+                                        <th>Account title/Narration</th>
+                                        <th width="10%" col="Debit" summary="sum" class="decimal">Debit</th>
+                                        <th width="10%" col="Credit" summary="sum" class="decimal">Credit</th>
+                                    </tr>
+                                    @if (Model.FinVoucherDetail.Count > 0)
+                                    {
+
+                                        foreach (var item in Model.FinVoucherDetail)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.GlCode
+                                                </td>
+                                                <td>
+                                                    @item.CoaL5.Title<br />
+                                                    @item.Detail @item.ChequeNo
+
+                                                </td>
+
+                                                <td class="decimal">@item.Debit</td>
+                                                <td class="decimal">@item.Credit</td>
+
+                                            </tr>
+
+                                        }
+                                    }
+                                    <tr>
+                                        <th colspan="2" class="decimal"> <b>Total:</b></th>
+                                        <th class="decimal"> @Model.TotalDebit</th>
+                                        <th class="decimal"> @Model.TotalCredit</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="4">
+                                            <b>PKR: @ERP.Common.CommonFunction.NumberToWords((int)Model.TotalDebit) Only</b>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <br /><br />
+                                <table width="100%" id="table">
+                                    <tbody>
+                                        <tr id="tr">
+                                            <td id="td">________________________</td>
+                                            <td id="td">________________________</td>
+                                            <td id="td">________________________</td>
+
+                                        </tr>
+                                        <tr id="tr">
+                                            <td id="td"><b>Prepared By</b></td>
+                                            <td id="td"><b>Checked By</b></td>
+
+                                            <td id="td"><b> G.M Finance </b></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <br />
+                                <p>Printed by: @User.UserName</p>
+                            </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air invoice-print">
+                            <span>
+                                <i class="la la-print"></i>
+                                <span>Print</span>
+                            </span>
+                        </a>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                            <span>
+                                <i class="flaticon-cancel"></i>
+                                <span>Cancel</span>
+                            </span>
+                        </button>
+                    </div>
+
+
+                    
+                </div>
+            </div>
+
+<script src="~/Scripts/jQuery.print.js"></script>
+    <script src="~/Scripts/invoice.js"></script>

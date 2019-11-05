@@ -1,0 +1,40 @@
+E:\VigourImpex 29\VigourImpex\ERP.Common\bin\Release\ERP.Common.dll.config
+E:\VigourImpex 29\VigourImpex\ERP.Common\bin\Release\ERP.Common.dll
+E:\VigourImpex 29\VigourImpex\ERP.Common\bin\Release\ERP.Common.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Common\obj\Release\ERP.Common.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\VigourImpex\ERP.Common\obj\Release\ERP.Common.dll
+E:\VigourImpex 29\VigourImpex\ERP.Common\obj\Release\ERP.Common.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Common\obj\Release\ERP.Common.csprojAssemblyReference.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\bin\Release\ERP.Common.dll.config
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\bin\Release\ERP.Common.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\bin\Release\ERP.Common.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\obj\Release\ERP.Common.csprojAssemblyReference.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\obj\Release\ERP.Common.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\obj\Release\ERP.Common.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\obj\Release\ERP.Common.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\bin\Release\ERP.Core.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\bin\Release\ERP.Core.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\bin\Release\ERP.Core.dll.config
+E:\VigourImpex 29\Vigour-Impex\ERP.Common\obj\Release\ERP.Common.csproj.CopyComplete
+E:\vigour\Vigour30A\ERP.Common\bin\Release\ERP.Common.dll.config
+E:\vigour\Vigour30A\ERP.Common\bin\Release\ERP.Common.dll
+E:\vigour\Vigour30A\ERP.Common\bin\Release\ERP.Common.pdb
+E:\vigour\Vigour30A\ERP.Common\bin\Release\ERP.Core.dll
+E:\vigour\Vigour30A\ERP.Common\bin\Release\ERP.Core.pdb
+E:\vigour\Vigour30A\ERP.Common\bin\Release\ERP.Core.dll.config
+E:\vigour\Vigour30A\ERP.Common\obj\Release\ERP.Common.csprojAssemblyReference.cache
+E:\vigour\Vigour30A\ERP.Common\obj\Release\ERP.Common.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour30A\ERP.Common\obj\Release\ERP.Common.csproj.CopyComplete
+E:\vigour\Vigour30A\ERP.Common\obj\Release\ERP.Common.dll
+E:\vigour\Vigour30A\ERP.Common\obj\Release\ERP.Common.pdb
+E:\vigour\Vigour\ERP.Common\bin\Release\ERP.Common.dll.config
+E:\vigour\Vigour\ERP.Common\bin\Release\ERP.Common.dll
+E:\vigour\Vigour\ERP.Common\bin\Release\ERP.Common.pdb
+E:\vigour\Vigour\ERP.Common\bin\Release\ERP.Core.dll
+E:\vigour\Vigour\ERP.Common\bin\Release\ERP.Core.pdb
+E:\vigour\Vigour\ERP.Common\bin\Release\ERP.Core.dll.config
+E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.csprojAssemblyReference.cache
+E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.csproj.CopyComplete
+E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.dll
+E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.pdb

@@ -1,0 +1,228 @@
+﻿@model ERP.Core.Models.Parties.FinParty
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="m-portlet">
+            @using (Html.BeginForm("Edit", "BankAccount", FormMethod.Post, new { id = "BankAccountForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                BankAccount Information
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item">
+                                <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span>
+                                        <i class="fa fa-save"></i>
+                                        <span>Save</span>
+                                    </span>
+                                </button>
+
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span style=" color:#ffffff">
+                                        <i class="flaticon-cancel"></i>
+                                        <span>Cancel</span>
+                                    </span>
+                                </a>
+
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span>
+                                        <i class="flaticon-delete"></i>
+                                        <span>Delete</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+                    <div class="m-portlet__body">
+                        <div class="row" style="margin-bottom:0px;">
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="form-group m-form__group">
+                                    <strong>
+                                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                                    </strong>
+                                    @Html.TextBoxFor(a => a.Title, new { @class = "form-control m-input", @placeholder = "" })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+                                    @*<label for="exampleInputEmail1"><b>Full Name:</b></label>
+                                        <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">*@
+                                    <label for="exampleInputEmail1"><b>Company Name:</b></label>
+                                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                </div>
+                                <div class="form-group m-form__group row">
+                                    <button type="button" onclick="OpenTrCOAModal(this.name)" style="height:25px;padding:0px;margin-left:15px;margin-right:3px;" class="col-2 btn btn-success">Group</button>
+                                    @Html.TextBoxFor(a => a.GlCode, new { @class = "col-2 form-control m-input", @placeholder = "", @Value = "10-01-001-001-0001", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.GlCode, "", new { @class = "text-danger" })
+                                    <label class="col-3" style="margin:0px;">Department</label>
+                                    <div class="col-4 form-group m-form__group">
+                                        <select class="form-control">
+                                            <option value="volvo">IT</option>
+                                            <option value="saab">Marketing</option>
+                                            <option value="opel">HR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="form-group m-form__group">
+                                    <div class="m-form__group form-group">
+                                        <label for=""><b>BankAccount Role</b></label>
+                                        <div class="m-checkbox-inline">
+
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsAgent)
+                                                @Html.LabelFor(model => model.IsAgent)
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsSeller)
+                                                @Html.LabelFor(model => model.IsSeller)
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsBuyer)
+                                                @Html.LabelFor(model => model.IsBuyer)
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            @*<label class="m-checkbox">
+                                                    @Html.CheckBoxFor(a => a.IsCust)
+                                                    @Html.LabelFor(model => model.IsCust)
+                                                    <span style="height: 14px; width: 14px;"></span>
+                                                </label>
+                                                <label class="m-checkbox">
+                                                    @Html.CheckBoxFor(a => a.Active)
+                                                    @Html.LabelFor(model => model.Active)
+                                                    <span style="height: 14px; width: 14px;"></span>
+                                                </label>*@
+                                        </div>
+                                    </div>
+                                    <div class="m-form__group form-group">
+                                        <label for=""><b>BankAccount Type</b></label>
+                                        <div class="m-checkbox-inline">
+                                            <label class="m-checkbox">
+                                                <input type="checkbox"> International
+                                                <span style="height: 14px; width: 14px;">
+                                                </span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                <input type="checkbox"> Domestic
+                                                <span style="height: 14px; width: 14px;">
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <!--begin::Portlet-->
+                                <div class="m-portlet">
+                                    <div class="m-portlet__body">
+                                        <ul class="nav nav-pills" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#m_tabs_3_1" onclick="GeneralInfo()">General Info</a>
+                                            </li>
+                                            @*<li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_2">Brands</a>
+                                                </li>*@
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_3">Contact Persons</a>
+                                            </li>
+                                            @*<li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_4">Machinery Details</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#m_tabs_3_5">Certifications</a>
+                                                </li>*@
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_6">Social Compliance</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_7">Special Instructions</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="m_tabs_3_1" role="tabpanel">
+                                                <div id="GeneralInfo">
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_2" role="tabpanel">
+                                                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+                                                recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_3" role="tabpanel">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_4" role="tabpanel">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_5" role="tabpanel">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_6" role="tabpanel">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_7" role="tabpanel">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                                                specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Portlet-->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="GLCOA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/VigorJs/BankAccount/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/BankAccount/Index.js"></script>
+<script src="~/Content/VigorJs/Vouchers.js"></script>
+<script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>

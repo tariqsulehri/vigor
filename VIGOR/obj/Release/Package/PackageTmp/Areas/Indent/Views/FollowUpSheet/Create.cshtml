@@ -1,0 +1,208 @@
+﻿
+@{
+    ViewBag.Title = "FollowupSheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+        google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+        active: function () {
+            sessionStorage.fonts = true;
+        }
+    });
+</script>
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="m-portlet">
+
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Schedule Criteria
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item">
+                                    <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <span>
+                                            <i class="fa fa-save"></i>
+                                            <span>Save</span>
+                                        </span>
+                                    </button>
+
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <span style=" color:#ffffff">
+                                            <i class="flaticon-cancel"></i>
+                                            <span>Cancel</span>
+                                        </span>
+                                    </a>
+
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air" onclick="testmessage()">
+                                        <span>
+                                            <i class="la la-plus"></i>
+                                            <span>Add</span>
+                                        </span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="m-portlet__body">
+                        <div class="row">
+                            <div class="col-md-10"></div>
+                            <div class="col-md-2">
+                                <div class="form-group m-form__group">
+                                    <div class="m-input-icon m-input-icon--right">
+                                        <input type="text" class="form-control m-input" placeholder="Search">
+                                        <span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="la la-search"></i></span></span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-md-5">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label>From:</label>
+                                        <input type="text" class="form-control" id="m_daterangepicker_1" readonly="" placeholder="Select time">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Commodity:</label>
+                                        <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                            <option value="1"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Department:</label>
+                                        <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                            <option value="1"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Status:</label>
+                                        <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                            <option value="1"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Contract No:</label>
+                                        <input class="form-control m-input" placeholder="" type="text" value="">
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label>Seller:</label>
+                                        <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                            <option value="1"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Buyer:</label>
+                                        <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                            <option value="1"></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Seller Contract:</label>
+                                        <input class="form-control m-input" placeholder="" type="text" value="">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>P.O No:</label>
+                                        <input class="form-control m-input" placeholder="" type="text" value="">
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-2" style="padding-top: 15px;">
+                                <div class="m-form__group form-group">
+                                    <div class="m-radio-list">
+                                        <label class="m-radio m-radio--success">
+                                            <input type="radio" name="example_2" value="1"> Full Detail
+                                            <span></span>
+                                        </label>
+                                        <label class="m-radio m-radio--brand">
+                                            <input type="radio" name="example_2" value="2"> Brief
+                                            <span></span>
+                                        </label>
+                                        <label class="m-radio m-radio--primary">
+                                            <input type="radio" name="example_2" value="3"> For Buyer
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text">
+                            <h6>Register</h6>
+                        </div>
+                        <div class=" m-demo__preview--btn">
+                            <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only">
+                                <i class="flaticon-plus"></i>
+                            </a>
+                            <a href="#" class="btn btn-success m-btn m-btn--icon m-btn--icon-only">
+                                <i class="flaticon-edit"></i>
+                            </a>
+                            <a href="#" class="btn btn-brand m-btn m-btn--icon m-btn--icon-only">
+                                <i class="flaticon-search-1"></i>
+                            </a>
+                            <a href="#" class="btn btn-metal m-btn m-btn--icon m-btn--icon-only">
+                                <i class="flaticon-tool-1"></i>
+                            </a>
+                        </div>
+
+                        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                        <thead style="background-color:#28469c; color:#ffffff">
+                                            <tr role="row">
+                                                <th class="sorting" tabindex="0" aria-controls="m_table_1" rowspan="1" colspan="1" style="width: 53.25px;" aria-label="Country: activate to sort column ascending">P.O No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="m_table_1" rowspan="1" colspan="1" style="width: 58.25px;" aria-label="Ship City: activate to sort column ascending">Sales Contract</th>
+                                                <th class="sorting" tabindex="0" aria-controls="m_table_1" rowspan="1" colspan="1" style="width: 66.25px;" aria-label="Ship Address: activate to sort column ascending">Date</th>
+                                                <th class="sorting" tabindex="0" aria-controls="m_table_1" rowspan="1" colspan="1" style="width: 68.25px;" aria-label="Company Agent: activate to sort column ascending">Revisions</th>
+                                                <th class="sorting" tabindex="0" aria-controls="m_table_1" rowspan="1" colspan="1" style="width: 82.25px;" aria-label="Company Name: activate to sort column ascending">Inquiry No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="m_table_1" rowspan="1" colspan="1" style="width: 53.25px;" aria-label="Country: activate to sort column ascending">Seller</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody></tbody>
+
+                                    </table>
+                                </div>
+                            </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 50 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="kt_table_1_length"><label>Display <select name="kt_table_1_length" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="kt_table_1_previous"><a href="#" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item next" id="kt_table_1_next"><a href="#" aria-controls="kt_table_1" data-dt-idx="6" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/assets/demo/default/custom/crud/forms/widgets/bootstrap-daterangepicker.js"></script>

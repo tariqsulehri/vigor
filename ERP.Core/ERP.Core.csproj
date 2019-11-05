@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DBF622A8-799B-45AD-A5DF-8088D39DC616}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Core</RootNamespace>
+    <AssemblyName>ERP.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\Enumeration.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\UserStatus.cs" />
+    <Compile Include="IRepositories\Admin\IAdminModuleDetailsRepository.cs" />
+    <Compile Include="IRepositories\Admin\IAdminModulesRepository.cs" />
+    <Compile Include="IRepositories\Admin\IAdminUserDealsInDepartmentRepository.cs" />
+    <Compile Include="IRepositories\Admin\ISystemOptionRepository.cs" />
+    <Compile Include="IRepositories\Admin\IUserModulesRepository.cs" />
+    <Compile Include="IRepositories\Admin\IUserModuleDetailsRepository.cs" />
+    <Compile Include="IRepositories\Admin\IUserPrevilageRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonParty\IContactTypesRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonIIdent\IBusinessTypesRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonParty\ICertificationsRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonParty\ISocialRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonParty\ISpecialInstructionRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\ICityRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonIStardard\ICompanyRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\ICountryRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\CommonParty\IMachineRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\ILocationsRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\IRegionRepository.cs" />
+    <Compile Include="IRepositories\CommonIRepositories\IStateRepository.cs" />
+    <Compile Include="IRepositories\Admin\IUserRepository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\IFinBookTypeRepositry.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\IFinFescalYearDetailRepository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\IFinFescalYearRepository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\IFinVTypeRepository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\IFinVoucherRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHrDepartmentIRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHrEmployeeIRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_AllowanceModeRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_AllowancesRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_AttendanceTimingsRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_CINCRRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_DayStatusRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_DegreeRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_DesignationRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_EmployeeAllowancesRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_EmployeeExperienceRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_EmployeeLeaveBalanceRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_EmployeeLoanAdvanceBalanceRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_EmployeeQualificationRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_EmployeeTypeRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_GazzettedDaysRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_HistoryDetailsRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_HistoryRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_LeaveRequestRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_LoanAdvanceApplicationRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_LoanAdvanceRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_MonthlyAttendanceRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_SalaryDetailRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_SalaryMasterRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\IHR_ShortLeavesRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\TaskRepository\IHrTaskProgressRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\TaskRepository\IHrTaskRegisterRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICPAAttachments_2BDeletedRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICpaFclRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICPAFindingNatureRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICPAFindingNCTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICPAFindingNCTypeSubRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICPAFindingTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICPALogSheetRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICpaNcTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICpaRepository.cs" />
+    <Compile Include="IRepositories\Indenting\cpa\ICpaTypesRepository.cs" />
+    <Compile Include="IRepositories\Indenting\ICommodityTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\ICurrencyRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IDeptDealsInCommodityTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IDeptDealsInMarkeetRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IExchangeRatesRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IGoodsForwarderRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndColourRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndDelayShipmentReasonRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndDesignRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndLeadTimeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndPaymentTermsRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndSizeGroupRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndSizeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndUnitOfMeasureRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndDelayShipmentCategoryRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IMarkeetDealsInRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\ICommInvoiceAgentCommRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IDocumentEFilingTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IEFilingSystemRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IEmailContractApprovalRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IFabricSampleRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndCommissionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndCommissionInvoiceRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticDispatchScheduleRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticEFilingRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticInquiryRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticInquiryOfferRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticInquiryReviewRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticPaymentAddOnRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndentRevisionLogRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentDomestic\IIndInquiryReviewQuestionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryOfferRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryReviewQuestionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryReviewRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabInspReportLocalSum.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabInspReportLocalSumRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabInspTypePerformedRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabricInspLoomTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabricInspReportLocalRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabricInspStandardRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabricInspTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabricInspStatusRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IFabricTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IIndentInspectionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IKnittedFabricInspBleachedRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IKnittedFabricInspDyedRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IKnittedFabricInspectionAttachmentRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IKnittedFabricInspectionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IKnittedFabricInspGreyRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IQcInspectorRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IYarnInspectionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IYarnInspectionAttachmentsRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IYarnInspectionGradeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IYarnInspectionReportTypeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IYarnInspectionUsterSettingRepository.cs" />
+    <Compile Include="IRepositories\Indenting\Inspection\IYarnInspUstersRepository.cs" />
+    <Compile Include="IRepositories\Indenting\InspExport\IFabricInspReportExport4PointDetailsRepository.cs" />
+    <Compile Include="IRepositories\Indenting\InspExport\IFabricInspReportExport4PointResultsRepository.cs" />
+    <Compile Include="IRepositories\Indenting\InspExport\IFabricInspReportExportRepository.cs" />
+    <Compile Include="IRepositories\Indenting\InspExport\IFabricInspRptExp4PFormat2Repository.cs" />
+    <Compile Include="IRepositories\Indenting\IProductRepository.cs" />
+    <Compile Include="IRepositories\Indenting\ISalesTaxOfficeRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IShipingLineRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IUnitOfRateRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IUnitOfSaleRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerBrandRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerCertificationRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerContactPersonRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerContactRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerInstructionRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerSocialRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\IFinPartyRepository.cs" />
+    <Compile Include="IRepositories\PartyIRepository\ICustomerMachineRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\HrEmployeeIRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\HrDepartmentIRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndGeneralDescriptionsRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IIndPriceTermsRepository.cs" />
+    <Compile Include="IRepositories\InventoryIRepository\BrandIRepository.cs" />
+    <Compile Include="Models\Admin\AdminModuleDetails.cs" />
+    <Compile Include="Models\Admin\AdminModules.cs" />
+    <Compile Include="Models\Admin\AdminUserDealsInDepartment.cs" />
+    <Compile Include="Models\Admin\LoggedInUser.cs" />
+    <Compile Include="Models\Admin\SystemOption.cs" />
+    <Compile Include="Models\Admin\User.cs" />
+    <Compile Include="Models\Admin\UserModuleDetails.cs" />
+    <Compile Include="Models\Admin\UserModules.cs" />
+    <Compile Include="Models\Admin\UserPrevilages.cs" />
+    <Compile Include="Models\Common\Area.cs" />
+    <Compile Include="Models\Common\BusinessTypes.cs" />
+    <Compile Include="Models\Common\Locations.cs" />
+    <Compile Include="Models\Common\MarkeetDealsIn.cs" />
+    <Compile Include="Models\Common\Party\ContactType.cs" />
+    <Compile Include="Models\Common\Party\Machine.cs" />
+    <Compile Include="Models\Common\City.cs" />
+    <Compile Include="Models\Common\Company.cs" />
+    <Compile Include="Models\Common\Country.cs" />
+    <Compile Include="Models\Common\Party\Certifications.cs" />
+    <Compile Include="Models\Common\Party\Social.cs" />
+    <Compile Include="Models\Common\Party\SpecialInstruction.cs" />
+    <Compile Include="Models\Finance\FinBookType.cs" />
+    <Compile Include="Models\Finance\FinBudget.cs" />
+    <Compile Include="Models\Finance\FinFescalYearDetail.cs" />
+    <Compile Include="Models\Finance\FinFescalYear.cs" />
+    <Compile Include="Models\Common\Region.cs" />
+    <Compile Include="Models\Common\State.cs" />
+    <Compile Include="Models\Finance\CoaL1.cs" />
+    <Compile Include="Models\Finance\CoaL2.cs" />
+    <Compile Include="Models\Finance\CoaL3.cs" />
+    <Compile Include="Models\Finance\CoaL4.cs" />
+    <Compile Include="Models\Finance\CoaL5.cs" />
+    <Compile Include="Models\Finance\FinLedger.cs" />
+    <Compile Include="Models\Finance\FinVoucherDetail.cs" />
+    <Compile Include="Models\Finance\FinVoucher.cs" />
+    <Compile Include="Models\Finance\FinVType.cs" />
+    <Compile Include="Models\Finance\GeneralVM\VM_FinLedger.cs" />
+    <Compile Include="Models\Finance\GeneralVM\VM_Vouchers.cs" />
+    <Compile Include="Models\HR\HrDepartment.cs" />
+    <Compile Include="Models\HR\HrEmployee.cs" />
+    <Compile Include="Models\HR\HR_AllowanceMode.cs" />
+    <Compile Include="Models\HR\HR_Allowances.cs" />
+    <Compile Include="Models\HR\HR_AttendanceTimings.cs" />
+    <Compile Include="Models\HR\HR_CINCR.cs" />
+    <Compile Include="Models\HR\HR_DayStatus.cs" />
+    <Compile Include="Models\HR\HR_Degree.cs" />
+    <Compile Include="Models\HR\HR_Designation.cs" />
+    <Compile Include="Models\HR\HR_EmployeeAllowances.cs" />
+    <Compile Include="Models\HR\HR_EmployeeExperience.cs" />
+    <Compile Include="Models\HR\HR_EmployeeLeaveBalance.cs" />
+    <Compile Include="Models\HR\HR_EmployeeLoanAdvanceBalance.cs" />
+    <Compile Include="Models\HR\HR_EmployeeQualification.cs" />
+    <Compile Include="Models\HR\HR_EmployeeType.cs" />
+    <Compile Include="Models\HR\HR_GazzettedDays.cs" />
+    <Compile Include="Models\HR\HR_History.cs" />
+    <Compile Include="Models\HR\HR_HistoryDetails.cs" />
+    <Compile Include="Models\HR\HR_LeaveRequest.cs" />
+    <Compile Include="Models\HR\HR_LoanAdvance.cs" />
+    <Compile Include="Models\HR\HR_LoanAdvanceApplication.cs" />
+    <Compile Include="Models\HR\HR_MonthlyAttendance.cs" />
+    <Compile Include="Models\HR\HR_Photo.cs" />
+    <Compile Include="Models\HR\HR_SalaryDetail.cs" />
+    <Compile Include="Models\HR\HR_SalaryMaster.cs" />
+    <Compile Include="Models\HR\HR_ShortLeaves.cs" />
+    <Compile Include="Models\HR\Task\HrTaskProgress.cs" />
+    <Compile Include="Models\HR\Task\HrTaskRegister.cs" />
+    <Compile Include="Models\HR\ViewModels\HR_EmployeeViewModel.cs" />
+    <Compile Include="Models\Indenting\CommodityType.cs" />
+    <Compile Include="Models\Indenting\cpa\Cpa.cs" />
+    <Compile Include="Models\Indenting\cpa\CPAAttachments_2BDeleted.cs" />
+    <Compile Include="Models\Indenting\cpa\CpaFcl.cs" />
+    <Compile Include="Models\Indenting\cpa\CPAFindingNature.cs" />
+    <Compile Include="Models\Indenting\cpa\CPAFindingNCType.cs" />
+    <Compile Include="Models\Indenting\cpa\CPAFindingNCTypeSub.cs" />
+    <Compile Include="Models\Indenting\cpa\CPAFindingType.cs" />
+    <Compile Include="Models\Indenting\cpa\CPALogSheet.cs" />
+    <Compile Include="Models\Indenting\cpa\CpaNcType.cs" />
+    <Compile Include="Models\Indenting\cpa\CpaTypes.cs" />
+    <Compile Include="Models\Indenting\Currency.cs" />
+    <Compile Include="Models\Indenting\DeptDealsInCommodityType.cs" />
+    <Compile Include="Models\Indenting\DeptDealsInMarkeet.cs" />
+    <Compile Include="Models\Indenting\ExchangeRates.cs" />
+    <Compile Include="Models\Indenting\IndDelayShipmentCategory.cs" />
+    <Compile Include="Models\Indenting\IndDelayShipmentReason.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\CommInvoiceAgentComm.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\DocumentEFilingType.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\EFilingSystem.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\EmailContractApproval.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\FabricSample.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\FNLCommissionBill.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\FNL_CommissionPaymentDetail.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndCommissionInvoiceDetail.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndCommissionInvoice.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticAddOnTemplate.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticEFiling.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticPaymentAddOn.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticPaymentsAddOnList.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndentRevisionLog.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndInquiryReviewQuestion.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportInquiry.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportInquiryDetail.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportInquiryOffer.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportInquiryReview.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabInspReportLocalSum.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabInspTypePerformed.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricInspReportLocalDetail.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricInspStatus.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricInspLoomType.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricInspStandard.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricInspType.cs" />
+    <Compile Include="Models\Indenting\IndColour.cs" />
+    <Compile Include="Models\Indenting\IndDesign.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndCommission.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticDispatchSchedule.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticInquiry.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticInquiryDetail.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticInquiryOffer.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticInquiryReview.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomestic.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndDomesticDetail.cs" />
+    <Compile Include="Models\Indenting\IndGeneralDescriptions.cs" />
+    <Compile Include="Models\Indenting\IndLeadTime.cs" />
+    <Compile Include="Models\Indenting\IndPriceTerms.cs" />
+    <Compile Include="Models\Indenting\IndPaymentTerms.cs" />
+    <Compile Include="Models\Indenting\IndSize.cs" />
+    <Compile Include="Models\Indenting\IndSizeGroup.cs" />
+    <Compile Include="Models\Indenting\IndUnitOfMeasure.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricInspReportLocal.cs" />
+    <Compile Include="Models\Indenting\Inspection\FabricType.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportInquiryReviewQuestion.cs" />
+    <Compile Include="Models\Indenting\Inspection\IndentInspection.cs" />
+    <Compile Include="Models\Indenting\Inspection\KnittedFabricInspBleached.cs" />
+    <Compile Include="Models\Indenting\Inspection\KnittedFabricInspDyed.cs" />
+    <Compile Include="Models\Indenting\Inspection\KnittedFabricInspection.cs" />
+    <Compile Include="Models\Indenting\Inspection\KnittedFabricInspectionAttachment.cs" />
+    <Compile Include="Models\Indenting\Inspection\KnittedFabricInspGrey.cs" />
+    <Compile Include="Models\Indenting\Inspection\KnittedFabricInspGreyRepository.cs" />
+    <Compile Include="Models\Indenting\Inspection\YarnInspection.cs" />
+    <Compile Include="Models\Indenting\Inspection\YarnInspectionAttachments.cs" />
+    <Compile Include="Models\Indenting\Inspection\YarnInspectionGrade.cs" />
+    <Compile Include="Models\Indenting\Inspection\YarnInspectionReportType.cs" />
+    <Compile Include="Models\Indenting\Inspection\YarnInspectionsUsterSetting.cs" />
+    <Compile Include="Models\Indenting\Inspection\YarnInspUsters.cs" />
+    <Compile Include="Models\Indenting\InspExport\FabricInspReportExport.cs" />
+    <Compile Include="Models\Indenting\InspExport\FabricInspReportExport4PointDetails.cs" />
+    <Compile Include="Models\Indenting\InspExport\FabricInspReportExport4PointResults.cs" />
+    <Compile Include="Models\Indenting\InspExport\FabricInspRptExp4PFormat2.cs" />
+    <Compile Include="Models\Indenting\Product.cs" />
+    <Compile Include="Models\Indenting\Inspection\QcInspector.cs" />
+    <Compile Include="Models\Indenting\SalesTaxOffice.cs" />
+    <Compile Include="Models\Indenting\UnitOfRate.cs" />
+    <Compile Include="Models\Indenting\UnitOfSale.cs" />
+    <Compile Include="Models\Indenting\viewModels\CommInvoice_VM.cs" />
+    <Compile Include="Models\Indenting\viewModels\CommodityBaseDepartments_VM.cs" />
+    <Compile Include="Models\Inventory\Brand.cs" />
+    <Compile Include="Models\Party\CustomerBrand.cs" />
+    <Compile Include="Models\Party\CustomerCertification.cs" />
+    <Compile Include="Models\Party\CustomerContactPerson.cs" />
+    <Compile Include="Models\Party\CustomerContact.cs" />
+    <Compile Include="Models\Party\CustomerInstruction.cs" />
+    <Compile Include="Models\Party\CustomerMachine.cs" />
+    <Compile Include="Models\Party\CustomerSocial.cs" />
+    <Compile Include="Models\Party\CustomerUnit.cs" />
+    <Compile Include="Models\Party\FinParty.cs" />
+    <Compile Include="Models\Indenting\GoodsForwarder.cs" />
+    <Compile Include="Models\Indenting\ShipingLine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\ICoaL1Repository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\ICoal2Repository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\ICoaL3Repository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\ICoaL4Repository.cs" />
+    <Compile Include="IRepositories\FinanceIRepositories\ICoaL5Repository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IRepositories\CommonIRepositories\Admin\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

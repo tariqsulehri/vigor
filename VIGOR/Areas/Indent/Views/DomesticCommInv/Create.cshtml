@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="m-portlet">
+            @using (Html.BeginForm("Create", "DomesticCommInv", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Invoice Local
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item">
+                                <a href="javascript:" class="btn btn-dark m-btn m-btn--custom m-btn--icon m-btn--air" onclick="OpenLookUpModal('@Url.Action("LookUpContracts", "DomesticCommInv", new {Area = "Indent"})')">
+                                    <span style="color: #ffffff">
+                                        <i class="flaticon-search-1"></i>
+                                        <span>Load Contract</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span>
+                                        <i class="fa fa-save"></i>
+                                        <span>Save</span>
+                                    </span>
+                                </button>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span style="color: #ffffff">
+                                        <i class="flaticon-cancel"></i>
+                                        <span>Cancel</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span>
+                                        <i class="la la-print"></i>
+                                        <span>Print</span>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn m-btn m-btn--gradient-from-brand m-btn--gradient-to-info disabled">
+                                    <span>
+                                        <i class="fa fa-shipping-fast"></i>
+                                        <span>Shipment</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn m-btn m-btn--gradient-from-metal m-btn--gradient-to-accent disabled">
+                                    <span>
+                                        <i class="fa fa-stamp"></i>
+                                        <span>Approved</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn m-btn m-btn--gradient-from-accent m-btn--gradient-to-success disabled">
+                                    <span>
+                                        <i class="fa fa-flag"></i>
+                                        <span>For Approval</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="@Url.Action("Index","DomesticCommInv",new {Area="Indent"})" class="btn btn-outline-dark m-btn m-btn--custom m-btn--icon m-btn--air hidden">
+                                    <span>
+                                        <i class="flaticon-reply"></i>
+                                        <span>Exit</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div id="commissionInv">
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="IndentLookUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Content/VigorJs/DomesticCommInv/_CreateOrUpdate.js"></script>

@@ -1,0 +1,234 @@
+﻿@using ERP.Core.Enums
+@model ERP.Core.Models.Indenting.IndentDomestic.IndDomesticDispatchSchedule
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;
+        height: 200px;*/
+        /*overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "IndDomesticDispatchScheduleForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.HiddenFor(a => a.Id)
+                @Html.HiddenFor(a => a.TypeOfTransaction)
+                @Html.Hidden("CommodityType")
+
+
+                <div class="m-portlet__body">
+
+                    <div class="m-portlet__body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-lg-3">
+                                        <label>Dated:</label>
+                                        @Html.TextBoxFor(a => a.TransDate, new { @class = "form-control", type = "Date", Value = Model.TransDate.ToString("yyyy-MM-dd") })
+                                        @Html.ValidationMessageFor(model => model.TransDate, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Contract No:</label>
+                                        <input name="IndentKey" type="text" readonly="readonly" class="form-control" value="@ViewBag.IndentKey" />
+                                        @Html.HiddenFor(a => a.IndentId)
+
+                                        @* @Html.TextBoxFor(a => a.IndentDomestic.IndentKey, new { @class = "form-control", disabled = "disabled" })*@
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Tran No:</label>
+                                        @Html.TextBoxFor(a => a.Id, new { @class = "form-control", disabled = "disabled" })
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Commodity:</label>
+                                        @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId, "", new { @class = "form-control ", @id = "CommDrop", onchange = "QuantityChanged()" })
+                                        @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Quantity:</label>
+                                        @Html.TextBoxFor(a => a.Quantity, new { @class = "form-control", @type = "number", min = "0", @id = "Quantity", onchange = "QuantityChanged()" })
+                                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Amount:</label>
+                                        @Html.TextBoxFor(a => a.GrossAmount, new { @class = "form-control", disabled = "disabled", @id = "Amount", @type = "text", onchange = "AmountChanged()" })
+                                        @Html.ValidationMessageFor(model => model.GrossAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Payment Details:</label>
+                                        @Html.TextAreaFor(a => a.Remarks, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="yarnTable" class="table yarnTable">
+                                        <thead style="background-color: #28469c; color: #ffffff">
+                                            <tr role="row">
+                                                <th>Add on</th>
+                                                <th>Amount</th>
+                                                <th>Percent/Fixed</th>
+                                                <th>Effect +/-</th>
+                                                <th>ApplyOn</th>
+                                                <th>Total Value</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @if (ViewBag.IndDomesticPaymentsAddOnLists != null)
+                                            {
+                                                Int32 j = 0;
+                                                foreach (var addon in ViewBag.IndDomesticPaymentsAddOnLists)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DropDownList("det[" + j + "][AddOnId]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticPaymentsAddOnLists(), "id", "AddOnDescription", addon.AddOnId), "Select", new { @class = "form-control AddOnId" })
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[" + j + "][AddOnAmmount]", null, new { @class = "form-control AddOnAmmount", @type = "number", min = "0", Value = addon.Amount })
+                                                        </td>
+                                                        <td>
+                                                            @Html.DropDownList("det[" + j + "][AddOnType]", new SelectList(Enumeration.GetAll<ERP.Common.PaymentType>(), "Key", "Value", addon.AddOnType == "P" ? 1 : 2), new { @class = "form-control AddOnType" })
+                                                        </td>
+                                                        <td>
+                                                            @Html.DropDownList("det[" + j + "][AddOnEffect]", new SelectList(Enumeration.GetAll<ERP.Common.PaymentEffect>(), "Key", "Value", addon.AddOnEffect == "+" ? 1 : 0), new { @class = "form-control AddOnEffect" })
+                                                        </td>
+                                                        <td>
+                                                            @Html.DropDownList("det[" + j + "][ApplyonTemplate]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticPaymentsAddOnLists(), "AddOnId", "AddOnDescription"), "Select", new { @class = "form-control ApplyonTemplate" })
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[" + j + "][TotaValue]", null, new { @class = "form-control TotaValue", @type = "number", min = "0", @readonly = "readonly", Value = addon.TotalValue })
+                                                        </td>
+                                                    </tr>
+                                                    j++;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DropDownList("det[0][AddOnId]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticPaymentsAddOnLists(), "AddOnId", "AddOnDescription"), "Select", new { @class = "form-control " })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBox("det[0][AddOnAmmount]", null, new { @class = "form-control", @type = "number", min = "0" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("det[0][AddOnType]", new SelectList(Enumeration.GetAll<ERP.Common.PaymentType>(), "Key", "Value"), new { @class = "form-control " })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("det[0][AddOnEffect]", new SelectList(Enumeration.GetAll<ERP.Common.PaymentEffect>(), "Key", "Value"), new { @class = "form-control " })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("det[0][ApplyonTemplate]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticPaymentsAddOnLists(), "AddOnId", "AddOnDescription"), "Select", new { @class = "form-control " })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBox("det[0][TotaValue]", null, new { @class = "form-control", @type = "number", min = "0", @readonly = "readonly" })
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-lg-8"></div>
+
+                                <div class="col-lg-4">
+                                    <div class="col-lg-12">
+                                        <label>Net Receivable:</label>
+                                        @Html.TextBoxFor(a => a.NetReceviable, new { @class = "form-control", @id = "netAmount", @type = "number", min = "0" })
+                                        @Html.ValidationMessageFor(model => model.NetReceviable, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <label>Income Tax %:</label>
+                                                @Html.TextBoxFor(a => a.IncomeTaxPercent, new { @class = "form-control", @id = "tax", @type = "number", min = "0" })
+                                                @Html.ValidationMessageFor(model => model.IncomeTaxPercent, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Tax Amount:</label>
+                                                <input class="form-control m-input" disabled="disabled" type="text" value="0" id="taxAmount">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <button type="button" style="margin: 5px" class="btn btn-sm" onclick="CalculateYarnPayment()">
+                                                    Calculate Payment
+                                                </button>
+                                            </div>
+                                            <div class="col-lg-6">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <label>Calculate Payment:</label>
+                                        @Html.TextBoxFor(a => a.ReceivableAfterTaxes, new { @class = "form-control", @id = "totalAmount", @type = "number", min = "0" })
+                                        @Html.ValidationMessageFor(model => model.ReceivableAfterTaxes, "", new { @class = "text-danger" })
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="SubmitIndDomesticDispatchScheduleForm()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>
+<script src="~/Content/VigorJs/Vouchers.js"></script>
+<script src="~/Content/VigorJs/Dispatch/_CreateOrUpdate.js"></script>
+
+
+<script src="~/Scripts/grid.js"></script>
+<script src="~/Scripts/GL/VoucherDetails.js"></script>

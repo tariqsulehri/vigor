@@ -1,0 +1,96 @@
+﻿@using ERP.Common;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class=" col-sm-12 row">
+
+
+            <div class="col-sm-6">
+                <div class="m-portlet m-portlet--mobile">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Fiscal Year Details
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item">
+                                    <button class="btn btn-primary m--align-right hidden" Sec-menuId="@SecurityConstants.FYearbtnAdd" onclick="OpenYearModal('@Url.Action("Create","fnYear",new {Area="GL" })')">
+                                        <span>
+                                            <i class="la la-plus"></i>
+                                            <span>Add</span>
+                                        </span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <table class="table table-striped- table-bordered table-hover table-checkable" id="YearTable">
+                        <thead>
+                            <tr>
+                                <th>Year Code</th>
+                                <th>Description</th>
+                                <th>Strat Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+
+
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+
+                <div class="m-portlet m-portlet--mobile" id="monthList">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Fiscal Month Details
+                                </h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <table class="table table-striped- table-bordered table-hover table-checkable" id="MonthTable">
+                        <thead>
+                            <tr>
+                                <th>Month Code</th>
+                                <th>Description</th>
+                                <th>Strat Date</th>
+                                <th>End Date</th>
+                                <th>Status</th>
+                                 
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Year" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script src="~/Content/VigorJs/General Grid/GeneralGrid.js"></script>
+<script src="~/Content/VigorJs/FNYear/FiscalYear.js"></script>

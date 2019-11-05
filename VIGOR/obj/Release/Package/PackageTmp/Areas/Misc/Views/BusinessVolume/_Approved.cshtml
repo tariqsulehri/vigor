@@ -1,0 +1,106 @@
+﻿@model ERP.Core.Models.Indenting.IndentDomestic.EmailContractApproval
+@using ERP.Infrastructure.Repositories.HR
+
+@{
+    ViewBag.Title = "IsApproved";
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header" style="padding: 15px 25px !important;">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="padding: 10px 10px !important;">
+
+            <div class="form-group">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "ContractApproved" }))
+                {
+                   
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Contract No:</label>
+                                @Html.HiddenFor(a => a.IndentId)
+                                @Html.TextBoxFor(a => a.IndentKey, new { @class = "form-control", @disabled = "disabled" })
+                                @Html.HiddenFor(a => a.IndentKey)
+                                @Html.ValidationMessageFor(model => model.IndentKey, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Approved On:</label>
+                                @Html.TextBoxFor(a => a.ApprovedOn, new { @class = "form-control", type = "date", Value = Model.ApprovedOn.ToString("yyyy-MM-dd") })
+                                @Html.ValidationMessageFor(model => model.ApprovedOn, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Approved By:</label>
+                                @Html.TextBoxFor(a => a.ApprovedBy, new { @class = "form-control", Value = ViewBag.ApprovedBy, @disabled = "disabled" })
+                                @Html.HiddenFor(a => a.ApprovedBy)
+
+                                @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Departmen:</label>
+                                @Html.DropDownListFor(a => a.DepartmentId, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control m-input", @disabled = "disabled" })
+                                @Html.HiddenFor(a => a.DepartmentId)
+                                @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <label>From Email:</label>
+                                @Html.TextBoxFor(a => a.FromEmail, new { @class = "form-control", @disabled = "disabled" })
+                                @Html.HiddenFor(a => a.FromEmail)
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label>To Email:</label>
+                                @Html.TextBoxFor(a => a.ToEmail, new { @class = "form-control", @disabled = "disabled" })
+                                @Html.HiddenFor(a => a.ToEmail)
+
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Comments:</label>
+                                @Html.TextAreaFor(a => a.comments, new { @class = "form-control" })
+
+
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="m-checkbox-inline" style="padding-top: 10px !important;">
+                                    <label class="m-checkbox m-checkbox--state-primary">
+                                        @Html.CheckBoxFor(a => a.approved) Approve
+                                        <span></span>
+                                    </label>
+                                    <label class="m-checkbox m-checkbox--state-primary">
+                                        @Html.CheckBoxFor(a => a.emailComments)Email Comments
+                                        <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                </div>
+        </div>
+        <div class="modal-footer" style="padding: 10px 10px !important;">
+            <button type="button" class="btn btn-success" onclick="SubmitContractApprovedForm()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+

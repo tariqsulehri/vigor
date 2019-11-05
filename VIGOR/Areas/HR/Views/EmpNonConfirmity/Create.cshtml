@@ -1,0 +1,81 @@
+﻿@model ERP.Core.Models.HR.HR_CINCR
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content ">
+        @using (Html.BeginForm("Create", "EmpNonConfirmity", FormMethod.Post, new { id = "CIform" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Non Confirmity</h5>
+                <button type="button" class="close" id="btnClose" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-lg-3">
+                        <label>Date From:</label>
+                        @Html.TextBoxFor(a => a.ReportedDate, new { @type = "date", @class = "form-control", @id = "ReportedDate", @name = "ReportedDate" })
+                        @Html.ValidationMessageFor(a => a.ReportedDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label>ID:</label>
+                        @Html.TextBoxFor(a => a.id, new { @type = "number", @class = "form-control", @id = "CriticalIncidentID", @name = "CriticalIncidentID" })
+                        @Html.ValidationMessageFor(a => a.id, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label>Reported By:</label>
+                        @Html.DropDownListFor(a => a.ReportedBy, new SelectList(new ERP.Infrastructure.Repositories.HR.HrEmployeeRepository().GetAllEmployees(), "Id", "Title"), "-- Select Department --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller" })
+                        @Html.ValidationMessageFor(model => model.ReportedBy, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">In Favor Of:</label>
+                        @Html.TextBoxFor(a => a.EmployeeNo, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @value = " ViewBag.EmpTitle", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Department:</label>
+                        @Html.TextBoxFor(a => a.EmpDept, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @value = " ViewBag.EmpTitle", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
+                    </div>
+                    @*<div class="col-lg-3">
+                        <label class="">Department:</label>
+                        @Html.DropDownListFor(a => a.EmpDept, new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "Id", "Title"), "-- Select dept --", new { @class = "form-control", @id = "DepartmentName", @name = "DepartmentName", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
+                    </div>*@
+                    <div class="col-lg-6">
+                        <label class="">Description:</label>
+                        @Html.TextAreaFor(a => a.Incident, new { @type = "text", @class = "form-control", @cols = "20", @rows = "2" })
+                        @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SubmitNCForm()">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" id="btnCancel">
+                    <span>
+                        <i class="flaticon-cancel"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $("#btnClose").click(function () {
+        $('#NonConfirmityCreateModal').modal('hide');
+    });
+    $("#btnCancel").click(function () {
+        $('#NonConfirmityCreateModal').modal('hide');
+    });
+</script>

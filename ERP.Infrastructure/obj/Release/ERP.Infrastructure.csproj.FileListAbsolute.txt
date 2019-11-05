@@ -1,0 +1,204 @@
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\Migrations\VMFinLedger.sql
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll.config
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Infrastructure.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\AutoMapper.dll
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Common.dll
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Core.dll
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Common.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Common.dll.config
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Core.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\ERP.Core.dll.config
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\EntityFramework.xml
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\EntityFramework.SqlServer.xml
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csprojAssemblyReference.cache
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.inititalmigrationagain.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CharacterToBoolIndAndInsp.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updatereationpartyindDomDetail.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryRelationUpdate.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate1.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addExportInqTablesDomInqRel.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ExportInquiryOffersReviewQuestion.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.GenerateResource.cache
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CopyComplete
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.dll
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\AutoMapper.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\bin\Release\AutoMapper.xml
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CommInvoiceAnd.resources
+E:\VigourImpex 29\VigourImpex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.IndentDomesticPaymentAddOn.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\Migrations\VMFinLedger.sql
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll.config
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Infrastructure.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\AutoMapper.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Common.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Core.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Common.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Common.dll.config
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Core.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\ERP.Core.dll.config
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\EntityFramework.xml
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\bin\Release\EntityFramework.SqlServer.xml
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csprojAssemblyReference.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.inititalmigrationagain.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CharacterToBoolIndAndInsp.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updatereationpartyindDomDetail.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryRelationUpdate.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate1.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addExportInqTablesDomInqRel.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ExportInquiryOffersReviewQuestion.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CommInvoiceAnd.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.IndentDomesticPaymentAddOn.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.taskRegisterAndProgress.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addandRemoveFields.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddOnTemplate.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.RevenueAuthority.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UserPrivAndSystemOptions.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryViewUpdate.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.GenerateResource.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CopyComplete
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.MarkeetRepository.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.userPrevUpdate.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.domesticPaymentAddOnsAddittion.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.domesticPaymentAddOnsAddittionStringLength.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UserDealsInDepartment.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateStoredProceduresAndMarkeetRepository.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateFiledOnly.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ReviewQuestionAndOtherChanges.resources
+E:\VigourImpex 29\Vigour-Impex\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.PaymentAddOnRelation.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\Migrations\VMFinLedger.sql
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll.config
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\ERP.Infrastructure.pdb
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\ERP.Core.dll
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\ERP.Core.pdb
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\ERP.Core.dll.config
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\EntityFramework.xml
+E:\vigour\Vigour30A\ERP.Infrastructure\bin\Release\EntityFramework.SqlServer.xml
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csprojAssemblyReference.cache
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.inititalmigrationagain.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CharacterToBoolIndAndInsp.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updatereationpartyindDomDetail.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryRelationUpdate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate1.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addExportInqTablesDomInqRel.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ExportInquiryOffersReviewQuestion.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CommInvoiceAnd.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.IndentDomesticPaymentAddOn.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.taskRegisterAndProgress.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addandRemoveFields.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddOnTemplate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.RevenueAuthority.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UserPrivAndSystemOptions.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryViewUpdate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.MarkeetRepository.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.userPrevUpdate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.domesticPaymentAddOnsAddittion.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.domesticPaymentAddOnsAddittionStringLength.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UserDealsInDepartment.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateStoredProceduresAndMarkeetRepository.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateFiledOnly.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ReviewQuestionAndOtherChanges.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.PaymentAddOnRelation.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CustomerUnitsAndRelations.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddPostFlag.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.YarnInspectionUsterTable.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.YarnInspectionUsterTableUpdate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.LocationTableAdd.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.LocationTableAdd1.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HR_Tables.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.walkingCustomer.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddPoNumberandSuppContract.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HRTableUpdate.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HRUpdatesFromSirNusrat.resources
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.GenerateResource.cache
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CopyComplete
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.dll
+E:\vigour\Vigour30A\ERP.Infrastructure\obj\Release\ERP.Infrastructure.pdb
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\Migrations\VMFinLedger.sql
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll.config
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\ERP.Infrastructure.dll
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\ERP.Infrastructure.pdb
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\ERP.Core.dll
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\ERP.Core.pdb
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\ERP.Core.dll.config
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\EntityFramework.xml
+E:\vigour\Vigour\ERP.Infrastructure\bin\Release\EntityFramework.SqlServer.xml
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csprojAssemblyReference.cache
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.inititalmigrationagain.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CharacterToBoolIndAndInsp.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updatereationpartyindDomDetail.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryRelationUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InqPaymentTermsRelationUpdate1.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addExportInqTablesDomInqRel.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ExportInquiryOffersReviewQuestion.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CommInvoiceAnd.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.IndentDomesticPaymentAddOn.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.taskRegisterAndProgress.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addandRemoveFields.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddOnTemplate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.RevenueAuthority.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UserPrivAndSystemOptions.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InquiryViewUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.MarkeetRepository.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.userPrevUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.domesticPaymentAddOnsAddittion.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.domesticPaymentAddOnsAddittionStringLength.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UserDealsInDepartment.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateStoredProceduresAndMarkeetRepository.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateFiledOnly.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ReviewQuestionAndOtherChanges.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.PaymentAddOnRelation.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CustomerUnitsAndRelations.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddPostFlag.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.YarnInspectionUsterTable.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.YarnInspectionUsterTableUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.LocationTableAdd.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.LocationTableAdd1.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HR_Tables.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.walkingCustomer.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddPoNumberandSuppContract.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HRTableUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HRUpdatesFromSirNusrat.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.efilingRepositories.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.201910021322550_testfromShamraiz.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CommInvoiceCommAgentRelation.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddDepartmentFields.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CommTablesUpdation.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.addCompanyIDinAgentComm.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.DifferentUpdates.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.FurtherChangesComm.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.fieldsRevised.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.RevisedCommCodeToId.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.GenerateResource.cache
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.csproj.CopyComplete
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.dll
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.pdb
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.UnitOfSaleUpdattion.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.EfilingFNLCommAndOtherReationUpdate.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.inddomesticViewChanged.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.emailAndEfilingEfilingDovTypeEtc.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.yarnHRApprovalupdates.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HRupdates.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HR_ReationsAndOtherUpdates.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.ReationsUpdates.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AddedReferenceKeys.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.CPA_Tables.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.DeptDescriptRequiredRemoved.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.InspectionLocalExportTables.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.updateFieldsExport.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.IndDomesticEfilinghrEmp.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.RefIdInConfigModels.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.HR_CNIC_Repo.resources
+E:\vigour\Vigour\ERP.Infrastructure\obj\Release\ERP.Infrastructure.Migrations.AdminUserDealsInDeptRepo.resources

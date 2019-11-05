@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<ERP.Core.Models.Finance.FinLedger>
+<table width="100%" id="table">
+    <tbody>
+
+        <tr id="tr">
+            <td id="tr" style="text-align: left">@Html.Raw(ViewBag.Criteria)</td>
+        </tr>
+    </tbody>
+</table>
+<table width="100%">
+    @{
+        decimal balance = 0;
+
+    }
+    <thead>
+        <tr>
+            <th width="20%">Account Code</th>
+            <th>Account Title</th>
+            <th width="20%" class="center">Amount</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td colspan="3"><b>Revenue</b> </td>
+        </tr>
+        <tr>
+            <td>0601</td>
+            <td>COMMISSIONS</td>
+            <td class="decimal">20000.00</td>
+        </tr>
+        <tr>
+            <td>0602</td>
+            <td>OTHER INCOME</td>
+            <td class="decimal">20000.00</td>
+        </tr>
+    <tr>
+        <th colspan="2" class="decimal"><b>TOTAL : </b> </th>
+        <th class="decimal"><b>40000.00 </b> </th>
+    </tr>
+
+
+        <tr>
+            <td colspan="3"><b>EXPENSE 0801</b> </td>
+        </tr>
+        <tr>
+            <td>0801001</td>
+            <td>SALARY & WAGES EXPENSE</td>
+            <td class="decimal">27932254.00</td>
+        </tr>
+
+    <tr>
+        <td>0801002</td>
+        <td>STAFF INCENTIVES</td>
+        <td class="decimal">8534831.00</td>
+    </tr>
+        <tr>
+            <th colspan="2" class="decimal"><b>TOTAL : </b> </th>
+            <th class="decimal"><b>36467085.00 </b> </th>
+        </tr>
+    </tbody>
+
+</table>

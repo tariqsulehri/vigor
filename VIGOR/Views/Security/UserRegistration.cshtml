@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-label">
+            <h3 class="m-portlet__head-title">
+
+                User Information
+
+            </h3>
+        </div>
+    </div>
+
+    <div class="m-portlet__body">
+        <div class="m-section">
+            <div class="m-section__content">
+                <div>
+                    <button class="btn btn-primary">Assign Company</button>
+                    <button class="btn btn-primary">Assign Department</button>
+                    <button class="btn btn-primary">Privileges</button>
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h4>Login Information</h4>
+                        <!--begin::Form-->
+                        <div class="col-lg-12">
+                            <form class="m-form m-form--label-right">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label>Login:</label>
+                                        <input type="email" class="form-control" placeholder="User name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label class="">Password:</label>
+                                        <input type="email" class="form-control" placeholder="Password">
+                                    </div>
+                                </div>
+                                @*<div class="pull-right">
+                                        <button class="btn btn-primary">Check Availability</button>
+                                    </div>*@
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Preferences</h4>
+                        <!--begin::Form-->
+                        <div class="col-lg-8">
+                            <form class="m-form m-form--label-right">
+                                <div class="form-group row">
+
+                                    <div class="col-lg-12">
+                                        <label>User Role</label>
+                                        <select class="browser-default custom-select">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <div class="m-checkbox-list">
+                                            <label class="m-checkbox m-checkbox--brand">
+                                                <input type="checkbox" />Change Password When Logon
+                                                <span></span>
+                                            </label>
+                                            <label class="m-checkbox m-checkbox--brand">
+                                                <input type="checkbox" />Password Never Expires
+                                                <span></span>
+                                            </label>
+                                            <label class="m-checkbox m-checkbox--brand">
+                                                <input type="checkbox" />Include CEO in Emails
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label class="">Status:</label>
+                                        <input type="email" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Expires on</label>
+                                        <input type="text" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
+
+                                    </div>
+                                </div>
+
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <h4>Profile</h4>
+                        <!--begin::Form-->
+                        <div class="col-lg-12">
+                            <form class="m-form m-form--label-right">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label>First Name:</label>
+                                        <input type="email" class="form-control" placeholder="First name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label class="">Last Name:</label>
+                                        <input type="email" class="form-control" placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <label class="">Date of Birth:</label>
+                                        <input type="text" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="">Gender:</label>
+                                        <select class="browser-default custom-select">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label class="">Email:</label>
+                                        <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label class="">Contact Number:</label>
+                                        <input type="email" class="form-control" placeholder="Contact number">
+                                    </div>
+                                </div>
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h4>Preferences</h4>
+                        <!--begin::Form-->
+                        <div class="col-lg-8">
+                            <form class="m-form m-form--label-right">
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label class="">User ID:</label>
+                                        <input type="email" class="form-control" placeholder="User id">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label class="">Creation Date:</label>
+                                        <input type="text" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <label>Employee Code</label>
+                                        <select class="browser-default custom-select">
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12">
+                                        <div class="m-checkbox-list">
+                                            <label class="m-checkbox m-checkbox--brand">
+                                                <input type="checkbox" />Is Admin
+                                                <span></span>
+                                            </label>
+                                            <label class="m-checkbox m-checkbox--brand">
+                                                <input type="checkbox" />Is Management Representative
+                                                <span></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+              
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,70 @@
+﻿<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Area</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "AreaForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.Hidden("Id")
+
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Area Name:</label>
+                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Select Region:</label>
+                    <select class="form-control">
+                        <option value="volvo">Asia</option>
+                        <option value="saab">Africa</option>
+                        <option value="opel">Europe</option>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Select Country:</label>
+                    <select class="form-control">
+                        <option value="volvo">Pakistan</option>
+                        <option value="saab">Morocco</option>
+                        <option value="opel">Spain</option>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Select State:</label>
+                    <select class="form-control">
+                        <option value="volvo">Balochistan</option>
+                        <option value="saab">KPK</option>
+                        <option value="opel">Punjab</option>
+                        <option value="opel">Sindh</option>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Select City:</label>
+                    <select class="form-control">
+                        <option value="volvo">Lahore</option>
+                        <option value="saab">Multan</option>
+                        <option value="opel">Sialkot</option>
+                    </select>
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

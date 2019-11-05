@@ -1,0 +1,130 @@
+﻿@model VIGOR.Models.RegisterViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+<div class="divider25"></div>
+<div class="row">
+    <div class="col-xl-12  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="content chart-real">
+            <h4><i class="fa fa-user-plus" aria-hidden="true"></i> Add New Employee</h4>
+            <a type="button" class="btn btn-sm pull-right btn-info" href="@Url.Action("Index", "Home")">Back To Home</a>
+            <div class="dashboard-box">
+                <div class="contain-inner real-esate-dashboard">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @Class = "form_container" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Email)
+                                    <br />
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger limiter" })
+                                </div>
+
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.EMP_ID)
+                                    <br />
+                                    @Html.DropDownListFor(model => model.EMP_ID, null, "Select NIC No", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.EMP_ID, "", new { @class = "text-danger limiter" })
+
+                                </div>
+
+
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.Password)
+                                    <br />
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger limiter" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.ConfirmPassword)
+                                    <br />
+                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger limiter" })
+                                </div>
+
+                            </div>
+                            <br />
+
+                            @*<button type="button" id="BtnAddRow" class="btn btn-success ">Add</button>*@
+                            <button type="submit" class="btn btn-primary float-lg-right">Save</button>
+                            @*<input type="submit" value="Submit" class="btn btn-primary btn-sm" tabindex="2" />*@
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*<div class="row col-md-12"><br /></div>
+<div class="col-md-12 form_title" style="background: #efefef;">
+    <ul style="list-style-type: none;">
+        <li class="form-header"><h4><i class="fa fa-map-o" aria-hidden="true"></i> Add New User</h4></li>
+        <li>&nbsp;</li>
+        <li>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @Class = "form_container" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-12">
+                    <div class="col-md-12 top-padding">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.Email)
+                            <br />
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger limiter" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EMP_ID)
+                            <br />
+                            @Html.DropDownListFor(model => model.EMP_ID, null, "Select NIC No", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EMP_ID, "", new { @class = "text-danger limiter" })
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-12 top-padding">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.Password)
+                            <br />
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger limiter" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ConfirmPassword)
+                            <br />
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger limiter" })
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3 col-md-offset-9">
+                            <label></label>
+                            <br />
+                            <input type="submit" value="Submit" class="btn btn-primary btn-sm" tabindex="2" />
+                            <button type="button" onclick="location.href='@Url.Action("Register","Account")'" class="btn btn-danger btn-sm" tabindex="3"><span>Reset</span></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </li>
+        <li>&nbsp;</li>
+    </ul>
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

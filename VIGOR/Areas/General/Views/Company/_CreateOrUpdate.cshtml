@@ -1,0 +1,74 @@
+﻿<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Company</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "CompanyForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.Hidden("Id")
+                <div class="row">
+                    <div class="col-md-3 col-xs-11 form-group m-form__group">
+                        <label for="exampleInputEmail1">Company Code:</label>
+                        <input type="text" class="form-control m-input" id="exampleInputEmail1" value="12" aria-describedby="emailHelp" placeholder="">
+                    </div>
+                    <div class="col-md-9 col-xs-1"></div>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Company Name:</label>
+                    <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6">
+                        <div class="form-group m-form__group">
+                            <label for="exampleInputEmail1">Address:</label>
+                            <textarea class="form-control m-input" id="exampleTextarea" rows="5"></textarea>
+                            <label for="exampleInputEmail1">City:</label>
+                            <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            <label for="exampleInputEmail1">Country:</label>
+                            <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-6">
+                        <div class="form-group m-form__group">
+                            <label for="exampleInputEmail1">Fax:</label>
+                            <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            <label for="exampleInputEmail1">Email:</label>
+                            <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            <label for="exampleInputEmail1">Website:</label>
+                            <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            <label for="exampleInputEmail1">Telephone:</label>
+                            <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group m-form__group">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">[A4 Letter Head]</label>
+                    <textarea class="form-control m-input" id="exampleTextarea" rows="5"></textarea>
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

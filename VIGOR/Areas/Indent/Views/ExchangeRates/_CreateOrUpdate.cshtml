@@ -1,0 +1,87 @@
+﻿@model ERP.Core.Models.Indenting.ExchangeRates
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "ExchangeRatesForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                if (ViewBag.Title != "Create")
+                {
+                    @Html.HiddenFor(a => a.Id);
+                    @Html.HiddenFor(a => a.CreatedOn);
+                }
+                
+                
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">Currency</label>
+                        @Html.DropDownListFor(a => a.CurrencyId, new SelectList(new ERP.Infrastructure.Repositories.Indenting.CurrencyRepository().GetAllCurrencys(), "Id", "Description"), new { @class = "form-control " })
+                        @Html.ValidationMessageFor(model => model.CurrencyId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">Date :</label>
+                        @Html.TextBoxFor(a => a.ExRDate, new { @class = "form-control m-input", type = "Date", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ExRDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">Selling Rate :</label>
+                        @Html.TextBoxFor(a => a.SellingRate, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.SellingRate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">Buying Rate :</label>
+                        @Html.TextBoxFor(a => a.BuyingRate, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BuyingRate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">120 Selling Rate :</label>
+                        @Html.TextBoxFor(a => a.Rate120Selling, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.Rate120Selling, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">120 Buying Rate :</label>
+                        @Html.TextBoxFor(a => a.Rate120Buying, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.Rate120Buying, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">Open Market Selling:</label>
+                        @Html.TextBoxFor(a => a.OpenMktSelling, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.OpenMktSelling, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 col-xl-6">
+                        <label for="exampleInputEmail1">Open Market Buying :</label>
+                        @Html.TextBoxFor(a => a.OpenMktBuying, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.OpenMktBuying, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="SubmitExchangeRatesForm()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

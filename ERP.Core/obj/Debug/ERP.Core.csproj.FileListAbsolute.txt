@@ -1,0 +1,116 @@
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\ERP.Core.dll.config
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\ERP.Core.dll
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\ERP.Core.pdb
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\EntityFramework.dll
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\EntityFramework.SqlServer.dll
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\EntityFramework.xml
+D:\projects\develop\net\VIGOR\ERP.Core\bin\Debug\EntityFramework.SqlServer.xml
+D:\projects\develop\net\VIGOR\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+D:\projects\develop\net\VIGOR\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+D:\projects\develop\net\VIGOR\ERP.Core\obj\Debug\ERP.Core.dll
+D:\projects\develop\net\VIGOR\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\VigourImpex\ERP.Core\obj\Debug\ERP.Core.dll
+E:\VigourImpex 29\VigourImpex\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\VigourImpex 29\VigourImpex\ERP.Core\bin\Debug\ERP.Core.dll
+E:\VigourImpex 29\VigourImpex\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Core\bin\Debug\AutoMapper.dll
+E:\VigourImpex 29\VigourImpex\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\VigourImpex 29\VigourImpex\ERP.Core\bin\Debug\AutoMapper.xml
+E:\VigourImpex 29\VigourImpex\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+D:\Develop\VIGOR\ERP.Core\bin\Debug\ERP.Core.dll.config
+D:\Develop\VIGOR\ERP.Core\bin\Debug\ERP.Core.dll
+D:\Develop\VIGOR\ERP.Core\bin\Debug\ERP.Core.pdb
+D:\Develop\VIGOR\ERP.Core\bin\Debug\AutoMapper.dll
+D:\Develop\VIGOR\ERP.Core\bin\Debug\EntityFramework.dll
+D:\Develop\VIGOR\ERP.Core\bin\Debug\EntityFramework.SqlServer.dll
+D:\Develop\VIGOR\ERP.Core\bin\Debug\AutoMapper.pdb
+D:\Develop\VIGOR\ERP.Core\bin\Debug\AutoMapper.xml
+D:\Develop\VIGOR\ERP.Core\bin\Debug\EntityFramework.xml
+D:\Develop\VIGOR\ERP.Core\bin\Debug\EntityFramework.SqlServer.xml
+D:\Develop\VIGOR\ERP.Core\obj\Debug\ERP.Core.dll
+D:\Develop\VIGOR\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\bin\Debug\ERP.Core.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\bin\Debug\AutoMapper.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\bin\Debug\AutoMapper.xml
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.dll
+E:\VigourImpex 29\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\vigour\Vigour-Impex\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\vigour\Vigour-Impex\ERP.Core\bin\Debug\ERP.Core.dll
+E:\vigour\Vigour-Impex\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\vigour\Vigour-Impex\ERP.Core\bin\Debug\AutoMapper.dll
+E:\vigour\Vigour-Impex\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\vigour\Vigour-Impex\ERP.Core\bin\Debug\AutoMapper.xml
+E:\vigour\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\vigour\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.dll
+E:\vigour\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\vigour\Vigour-Impex\ERP.Core\obj\Debug\ERP.Core.csprojAssemblyReference.cache
+E:\vigour\Vigour-ImpexA\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\vigour\Vigour-ImpexA\ERP.Core\bin\Debug\ERP.Core.dll
+E:\vigour\Vigour-ImpexA\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\vigour\Vigour-ImpexA\ERP.Core\bin\Debug\AutoMapper.dll
+E:\vigour\Vigour-ImpexA\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\vigour\Vigour-ImpexA\ERP.Core\bin\Debug\AutoMapper.xml
+E:\vigour\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\vigour\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.dll
+E:\vigour\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\vigour\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.csprojAssemblyReference.cache
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\bin\Debug\ERP.Core.dll
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\bin\Debug\AutoMapper.dll
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\bin\Debug\AutoMapper.xml
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.csprojAssemblyReference.cache
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.dll
+E:\VigourImpex 29\28-09-2019\Vigour-ImpexA\Vigour-ImpexA\ERP.Core\obj\Debug\ERP.Core.pdb
+D:\Vigour\Vigour30A\ERP.Core\bin\Debug\ERP.Core.dll.config
+D:\Vigour\Vigour30A\ERP.Core\bin\Debug\ERP.Core.dll
+D:\Vigour\Vigour30A\ERP.Core\bin\Debug\ERP.Core.pdb
+D:\Vigour\Vigour30A\ERP.Core\bin\Debug\AutoMapper.dll
+D:\Vigour\Vigour30A\ERP.Core\bin\Debug\AutoMapper.pdb
+D:\Vigour\Vigour30A\ERP.Core\bin\Debug\AutoMapper.xml
+D:\Vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.dll
+D:\Vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\vigour\Vigour30A\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\vigour\Vigour30A\ERP.Core\bin\Debug\ERP.Core.dll
+E:\vigour\Vigour30A\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\vigour\Vigour30A\ERP.Core\bin\Debug\AutoMapper.dll
+E:\vigour\Vigour30A\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\vigour\Vigour30A\ERP.Core\bin\Debug\AutoMapper.xml
+E:\vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.csprojAssemblyReference.cache
+E:\vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.dll
+E:\vigour\Vigour30A\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\bin\Debug\ERP.Core.dll
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\bin\Debug\AutoMapper.dll
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\bin\Debug\AutoMapper.xml
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\obj\Debug\ERP.Core.dll
+E:\VigourImpex 29\Vigour 9 Oct\ERP.Core\obj\Debug\ERP.Core.pdb
+E:\vigour\Vigour\ERP.Core\bin\Debug\ERP.Core.dll.config
+E:\vigour\Vigour\ERP.Core\bin\Debug\ERP.Core.dll
+E:\vigour\Vigour\ERP.Core\bin\Debug\ERP.Core.pdb
+E:\vigour\Vigour\ERP.Core\bin\Debug\AutoMapper.dll
+E:\vigour\Vigour\ERP.Core\bin\Debug\AutoMapper.pdb
+E:\vigour\Vigour\ERP.Core\bin\Debug\AutoMapper.xml
+E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.csprojAssemblyReference.cache
+E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
+E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.dll
+E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.pdb

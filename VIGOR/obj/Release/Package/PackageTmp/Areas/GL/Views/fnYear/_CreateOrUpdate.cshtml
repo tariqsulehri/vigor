@@ -1,0 +1,88 @@
+﻿@model ERP.Core.Models.Finance.FinFescalYear
+<div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "YearForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                if (ViewBag.Title != "Create Year")
+                {@Html.HiddenFor(a => a.Id)
+                @Html.HiddenFor(a => a.CreatedBy)
+                @Html.HiddenFor(a => a.CreatedOn)
+               
+            }
+
+
+            <div class="row">
+                <div class="form-group m-form__group col-sm-6">
+
+                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(a => a.StartDate, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = Model.StartDate.ToString("yyyy-MM-dd"), onchange = "Year()", Id = "startDate" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group m-form__group col-sm-6">
+
+                    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(a => a.EndDate, new { htmlAttributes = new { @class = "form-control ", @type = "date", @Value = Model.EndDate.ToString("yyyy-MM-dd"), onchange = "Year()", Id = "endtDate" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group m-form__group col-sm-12">
+                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(a => a.Title, new { @class = "form-control m-input", @placeholder = "", Id = "year", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(a => a.YearKey, new { Id = "YearKey" })
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group m-form__group col-sm-12">
+                    <label class="form-group m-form__group col-sm-6 m-checkbox  m-checkbox--focus">
+                        @Html.CheckBoxFor(a => a.Active) Active
+                        <span></span>
+                    </label>
+
+                </div>
+            </div>
+
+        }
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="SubmitYearForm()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function Year() {
+        if ($("#startDate").val() !== "" && $("#startDate").val() !== "") {
+            var startDate = new Date($("#startDate").val());
+            var endDate = new Date($("#endtDate").val());
+            $("#year").val(startDate.getFullYear() + " - " + endDate.getFullYear());
+            $("#YearKey").val(startDate.getFullYear() + " - " + endDate.getFullYear());
+        }
+        else { $("#year").val(''); $("#YearKey").val(''); }
+    }
+
+</script>

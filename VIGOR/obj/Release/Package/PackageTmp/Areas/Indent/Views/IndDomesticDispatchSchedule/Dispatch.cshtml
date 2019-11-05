@@ -1,0 +1,201 @@
+﻿@model ERP.Core.Models.Indenting.IndentDomestic.IndDomesticDispatchSchedule
+
+@{
+    ViewBag.Title = "Dispatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .bootstrap-touchspin .input-group-btn:first-child .btn {
+        display: none;
+    }
+
+    .input-group .input-group-btn:not(:first-child) > .btn:first-child {
+        display: none;
+    }
+</style>
+
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="m-portlet">
+                    @using (Html.BeginForm("Create", "IndDomesticDispatchSchedule", FormMethod.Post, new { id = "IndDomesticDispatchScheduleForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        if (ViewBag.Title != "Create")
+                        {
+                            @Html.HiddenFor(a => a.Id);
+                        }
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <h3 class="m-portlet__head-text">
+                                        Manage Dispatch
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="m-portlet__head-tools">
+                                <ul class="m-portlet__nav">
+                                    <li class="m-portlet__nav-item">
+                                        <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span>
+                                                <i class="fa fa-save"></i>
+                                                <span>Save</span>
+                                            </span>
+                                        </button>
+
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span style=" color:#ffffff">
+                                                <i class="flaticon-cancel"></i>
+                                                <span>Cancel</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="m-portlet__body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="m-form__group form-group row">
+                                        <div class="m-radio-list">
+                                            <label class="m-radio m-radio--primary">
+                                                <input type="radio" name="example_2" value="1"> Dispatch
+                                                <span></span>
+                                            </label>
+                                            <label class="m-radio m-radio--primary">
+                                                <input type="radio" name="example_2" value="2"> Return
+                                                <span></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-2">
+                                    <div class="form-group m-form__group">
+                                        <label>Contract No:</label>
+                                        @Html.TextBoxFor(a => a.IndentId, new { @class = "form-control m-input", @placeholder = "" })
+                                        @Html.ValidationMessageFor(model => model.IndentId, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <div class="col-lg-4">
+                                            <label>Tran No:</label>
+                                            @*@Html.TextBoxFor(a => a.t, new { @class = "form-control m-input", @placeholder = "" })*@
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label>Dated:</label>
+                                            @Html.TextBoxFor(a => a.TransDate, null, new { @class = "form-control", type = "Date" })
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label>Shipment Validity:</label>
+                                            @Html.TextBoxFor(a => a.ContractedDeliveryDate, null, new { @class = "form-control", type = "Date" })
+                                            @*<input value="27/04/2019" class="form-control" data-val="true" data-val-date="The field VoucherDate must be a date." data-val-required="Field is required...." id="datetimepicker" name="VoucherDate" type="date">*@
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Commodity:</label>
+                                            @Html.DropDownListFor(a => a.IndentId, new SelectList(new ERP.Infrastructure.Repositories.Indenting.CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), new { @class = "form-control " })
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label>Quantity:</label>
+                                            <div class="input-group bootstrap-touchspin">
+
+                                                @Html.TextBoxFor(a => a.Quantity, null, new { @class = "form-control bootstrap-touchspin-vertical-btn", value = "", name = "demo1", placeholder = "0", style = "display: block;", id = "m_touchspin_4" })
+                                                @*<input id="m_touchspin_4" type="text" class="form-control bootstrap-touchspin-vertical-btn" value="" name="demo1" placeholder="0" style="display: block;">*@
+
+                                                <span class="input-group-btn-vertical">
+                                                    <button class="btn btn-secondary bootstrap-touchspin-up" type="button"><i class="la la-plus"></i></button>
+                                                    <button class="btn btn-secondary bootstrap-touchspin-down" type="button"><i class="la la-minus"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <label>UOS:</label>
+                                            @Html.DropDownListFor(a => a.IndentId, new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description"), new { @class = "form-control " })
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Transporter:</label>
+                                            @Html.DropDownListFor(a => a.GoodsFarwarderID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.GoodsForwarderRepository().GetAllGoodsForwarder(), "Id", "Name"), new { @class = "form-control " })
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Builty No:</label>
+                                            @Html.TextBoxFor(a => a.BiltyNo, null, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <label>Vehicle No:</label>
+                                            @Html.TextBoxFor(a => a.VehicleNo, null, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Remarks:</label>
+                                            @Html.TextAreaFor(a => a.Remarks, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <div class="col-lg-12">
+
+                                            <h6>Salestax Information</h6>
+                                        </div>
+                                        <div class="col-lg-4" style="padding-top:15px;">
+                                            <div class="m-checkbox-list">
+                                                <label class="m-checkbox m-checkbox--state-primary">
+                                                    <input type="checkbox"> Salestax Invoice Received
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label>Dated:</label>
+                                            @Html.TextBoxFor(a => a.SalestaxInvoiceDate, null, new { @class = "form-control", type = "Date" })
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <label>Invoice No:</label>
+                                            @Html.TextBoxFor(a => a.SalestaxInvoiceNo, null, new { @class = "form-control" })
+                                        </div>
+                                        <div class="col-lg-12" style="padding-top:10px; padding-bottom:10px;">
+                                            <h6>Dispatch Delay Reason</h6>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Delay Category:</label>
+                                            @*@Html.DropDownListFor(a => a.t, new SelectList(new ERP.Infrastructure.Repositories.Common.CountryRepository().GetAllCountries(), "Id", "Name"), new { @class = "form-control " })*@
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label>Delay Remarks:</label>
+                                            @Html.TextAreaFor(a => a.DelayShipmentReasonDescription, new { @class = "form-control" })
+                                        </div>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/VigorJs/IndDomesticDispatchSchedule/Index.js"></script>
+<script src="~/Content/VigorJs/IndDomesticDispatchSchedule/_CreateOrUpdate.js"></script>
+
+<script src="~/assets/assets/demo/default/custom/crud/forms/widgets/bootstrap-datepicker.js"></script>
+<script src="~/assets/assets/demo/default/custom/crud/forms/widgets/bootstrap-touchspin.js" type="text/javascript"></script>
+

@@ -1,0 +1,194 @@
+﻿<!-- BEGIN: Left Aside -->
+<button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn"><i class="la la-close"></i></button>
+<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
+
+    <!-- BEGIN: Aside Menu -->
+    <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
+        <ul class="m-menu__nav m-menu__nav--dropdown-submenu-arrow">
+            <li class="m-menu__section m-menu__section--first">
+                <h4 class="m-menu__section-text">Departments</h4>
+                <i class="m-menu__section-icon flaticon-more-v2"></i>
+            </li>
+            <li class="m-menu__item  m-menu__item--active" aria-haspopup="true"><a href="index.html" class="m-menu__link "><span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Dashboard</span></a></li>
+            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-settings"></i><span class="m-menu__link-text">Settings</span><i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu ">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+
+                        <li class="m-menu__item " aria-haspopup="true"><a href="@Url.Action("Index","Region")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Region</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","Country")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Country</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","State")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">State</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","City")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">City</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","Area")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Area</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","Brand")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Brand</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","Certification")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Certification</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","Machinery")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Machinery</span></a></li>
+
+                    </ul>
+                </div>
+            </li>
+            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                    <span class="m-menu__item-here"></span><i class="m-menu__link-icon flaticon-layers"></i><span class="m-menu__link-text">Accounting</span><i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu ">
+                    <span class="m-menu__arrow"></span>
+                    <ul class="m-menu__subnav">
+
+                        <li class="m-menu__item " aria-haspopup="true"><a href="/GL/fnCOA/Index" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">COA</span></a></li>
+                        <li class="m-menu__item " aria-haspopup="true" m-menu-link-redirect="1"><a href="@Url.Action("Index","fnJV")" class="m-menu__link "><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">Journal Voucher</span></a></li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" m-menu-link-redirect="1" aria-haspopup="true">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link">
+                    <i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">Reports</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu  m-menu__submenu--fixed m-menu__submenu--left" style="width:1000px">
+                    <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    <div class="m-menu__subnav">
+                        <ul class="m-menu__content">
+                            <li class="m-menu__item">
+                                <h3 class="m-menu__heading m-menu__toggle"><span class="m-menu__link-text">Finance Reports</span><i class="m-menu__ver-arrow la la-angle-right"></i></h3>
+                                <ul class="m-menu__inner">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><i class="m-menu__link-icon flaticon-map"></i><span class="m-menu__link-text">Annual Reports</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><i class="m-menu__link-icon flaticon-user"></i><span class="m-menu__link-text">HR Reports</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><i class="m-menu__link-icon flaticon-clipboard"></i><span class="m-menu__link-text">IPO Reports</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><i class="m-menu__link-icon flaticon-graphic-1"></i><span class="m-menu__link-text">Finance Margins</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><i class="m-menu__link-icon flaticon-graphic-2"></i><span class="m-menu__link-text">Revenue Reports</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="m-menu__item">
+                                <h3 class="m-menu__heading m-menu__toggle"><span class="m-menu__link-text">Project Reports</span><i class="m-menu__ver-arrow la la-angle-right"></i></h3>
+                                <ul class="m-menu__inner">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--line"><span></span></i><span class="m-menu__link-text">
+                                                Coca
+                                                Cola CRM
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--line"><span></span></i><span class="m-menu__link-text">
+                                                Delta
+                                                Airlines Booking Site
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--line"><span></span></i><span class="m-menu__link-text">
+                                                Malibu
+                                                Accounting
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--line"><span></span></i><span class="m-menu__link-text">
+                                                Vineseed
+                                                Website Rewamp
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--line"><span></span></i><span class="m-menu__link-text">
+                                                Zircon
+                                                Mobile App
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--line"><span></span></i><span class="m-menu__link-text">
+                                                Mercury
+                                                CMS
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="m-menu__item">
+                                <h3 class="m-menu__heading m-menu__toggle"><span class="m-menu__link-text">HR Reports</span><i class="m-menu__ver-arrow la la-angle-right"></i></h3>
+                                <ul class="m-menu__inner">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">
+                                                Staff
+                                                Directory
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">
+                                                Client
+                                                Directory
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">
+                                                Salary
+                                                Reports
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">
+                                                Staff
+                                                Payslips
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">
+                                                Corporate
+                                                Expenses
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true">
+                                        <a href="header/actions.html" class="m-menu__link ">
+                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">
+                                                Project
+                                                Expenses
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="m-menu__item">
+                                <h3 class="m-menu__heading m-menu__toggle"><span class="m-menu__link-text">Reporting Apps</span><i class="m-menu__ver-arrow la la-angle-right"></i></h3>
+                                <ul class="m-menu__inner">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><span class="m-menu__link-text">Report Adjusments</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><span class="m-menu__link-text">Sources & Mediums</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><span class="m-menu__link-text">Reporting Settings</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><span class="m-menu__link-text">Conversions</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><span class="m-menu__link-text">Report Flows</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="header/actions.html" class="m-menu__link "><span class="m-menu__link-text">Audit & Logs</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- END: Aside Menu -->
+</div>
+
+<!-- END: Left Aside -->

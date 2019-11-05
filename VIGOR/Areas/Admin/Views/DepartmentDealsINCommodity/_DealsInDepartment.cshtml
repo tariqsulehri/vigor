@@ -1,0 +1,109 @@
+﻿@using ERP.Infrastructure.Repositories.Indenting
+<script src="~/Scripts/GL/VoucherDetails.js"></script>
+<div class="form-group row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-4">
+        <table id="detailGrid" class="table">
+            <thead style="background-color: #28469c; color: #ffffff">
+            <tr>
+                <th>Markete</th>
+                <th style="width: 20px">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if (Enumerable.Count(ViewBag.DealsInMarkeet) >0)
+            {
+                Int32 j = 0;
+                foreach (var item in ViewBag.DealsInMarkeet)
+                {
+                    <tr>
+                        <td>
+                            @Html.DropDownList("det[" + j + "][DealsInId]", new SelectList(new MarkeetDealsInRepository().GetAllMarkeetDealsIn(), "Id", "Description",item.DealsInId), "-- Select  --", new { @class = "form-control " })
+                        </td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                <td>
+                @Html.DropDownList("det[0][DealsInId]", new SelectList(new MarkeetDealsInRepository().GetAllMarkeetDealsIn(), "Id", "Description"), "-- Select  --", new { @class = "form-control ", id = "det[0][DeptId]" })
+                </td>
+
+            </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-4">
+        <table id="detailGrid" class="table">
+            <thead style="background-color: #28469c; color: #ffffff">
+            <tr>
+                <th>Commodity</th>
+                <th style="width: 20px">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tbody>
+            @if (Enumerable.Count(ViewBag.DealsInCommodity) >0)
+            {
+                Int32 j = 0;
+                foreach (var item in ViewBag.DealsInCommodity)
+                {
+                    <tr>
+                        <td>
+                            @Html.DropDownList("det[" + j + "][ComodityType]", new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description", item.ComodityType), "-- Select  --", new { @class = "form-control " })
+                        </td>
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.DropDownList("det[0][ComodityType]", new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "-- Select  --", new { @class = "form-control ", id = "det[0][DeptId]" })
+                    </td>
+
+                </tr>
+            }
+            </tbody>
+         
+        </table>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+@*<table id="detailGrid" class="table">
+    <thead style="background-color: #28469c; color: #ffffff">
+        <tr>
+            <th>Department</th>
+            <th style="width: 20px">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Enumerable.Count(ViewBag.query)>0)
+        {
+            Int32 j = 0;
+            foreach (var item in ViewBag.query)
+            {
+                <tr>
+                    <td>
+                        @Html.DropDownList("det[" + j + "][DeptId]", new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "Id", "Title", item.id), "-- Select  --", new { @class = "form-control ", id = "det[0][DeptId]" })
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>
+                    @Html.DropDownList("det[0][DeptId]", new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "Id", "Title"), "-- Select  --", new { @class = "form-control ", id = "det[0][DeptId]" }) @* m-select2   id = "m_select2_4
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>*@

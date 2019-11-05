@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSControlAccountSummary" targetNamespace="http://tempuri.org/DSControlAccountSummary.xsd" xmlns:mstns="http://tempuri.org/DSControlAccountSummary.xsd" xmlns="http://tempuri.org/DSControlAccountSummary.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ErpDbContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ErpDbContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ErpDbContext.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSControlAccountSummary" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSControlAccountSummary" msprop:Generator_UserDSName="DSControlAccountSummary">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ControlAccountSummary" msprop:Generator_TableClassName="ControlAccountSummaryDataTable" msprop:Generator_TableVarName="tableControlAccountSummary" msprop:Generator_TablePropName="ControlAccountSummary" msprop:Generator_RowDeletingName="ControlAccountSummaryRowDeleting" msprop:Generator_RowChangingName="ControlAccountSummaryRowChanging" msprop:Generator_RowEvHandlerName="ControlAccountSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="ControlAccountSummaryRowDeleted" msprop:Generator_UserTableName="ControlAccountSummary" msprop:Generator_RowChangedName="ControlAccountSummaryRowChanged" msprop:Generator_RowEvArgName="ControlAccountSummaryRowChangeEvent" msprop:Generator_RowClassName="ControlAccountSummaryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LevelOfAccount" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnLevelOfAccount" msprop:Generator_ColumnPropNameInRow="LevelOfAccount" msprop:Generator_ColumnPropNameInTable="LevelOfAccountColumn" msprop:Generator_UserColumnName="LevelOfAccount" type="xs:string" minOccurs="0" />
+              <xs:element name="ParentAccount" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnParentAccount" msprop:Generator_ColumnPropNameInRow="ParentAccount" msprop:Generator_ColumnPropNameInTable="ParentAccountColumn" msprop:Generator_UserColumnName="ParentAccount" type="xs:string" minOccurs="0" />
+              <xs:element name="AccountCode" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnAccountCode" msprop:Generator_ColumnPropNameInRow="AccountCode" msprop:Generator_ColumnPropNameInTable="AccountCodeColumn" msprop:Generator_UserColumnName="AccountCode" type="xs:string" minOccurs="0" />
+              <xs:element name="AccountTitle" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnAccountTitle" msprop:Generator_ColumnPropNameInRow="AccountTitle" msprop:Generator_ColumnPropNameInTable="AccountTitleColumn" msprop:Generator_UserColumnName="AccountTitle" type="xs:string" minOccurs="0" />
+              <xs:element name="OPBAL" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnOPBAL" msprop:Generator_ColumnPropNameInRow="OPBAL" msprop:Generator_ColumnPropNameInTable="OPBALColumn" msprop:Generator_UserColumnName="OPBAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Debit" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnDebit" msprop:Generator_ColumnPropNameInRow="Debit" msprop:Generator_ColumnPropNameInTable="DebitColumn" msprop:Generator_UserColumnName="Debit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Credit" msprop:Generator_ColumnVarNameInTable="columnCredit" msprop:Generator_ColumnPropNameInRow="Credit" msprop:Generator_ColumnPropNameInTable="CreditColumn" msprop:Generator_UserColumnName="Credit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Balancee" msprop:Generator_ColumnVarNameInTable="columnBalancee" msprop:Generator_ColumnPropNameInRow="Balancee" msprop:Generator_ColumnPropNameInTable="BalanceeColumn" msprop:Generator_UserColumnName="Balancee" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LEVEL" msprop:Generator_ColumnVarNameInTable="columnLEVEL" msprop:Generator_ColumnPropNameInRow="LEVEL" msprop:Generator_ColumnPropNameInTable="LEVELColumn" msprop:Generator_UserColumnName="LEVEL" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

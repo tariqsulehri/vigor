@@ -1,0 +1,238 @@
+﻿@model IEnumerable<ERP.Core.Models.Indenting.IndentDomestic.IndDomesticInquiry>
+@using ERP.Core.Enums
+@using ERP.Infrastructure.Repositories.HR
+@using ERP.Infrastructure.Repositories.Indenting
+@using ERP.Infrastructure.Repositories.Parties
+@using ERP.Common;
+
+@{
+    ViewBag.Title = "InquirySheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int dptid = Convert.ToInt32(Session["Departmentid"]);
+}
+
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="m-portlet">
+                    @using (Html.BeginForm("Index", "Inquiry", FormMethod.Post))
+                    {
+                       
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <h3 class="m-portlet__head-text">Enquiry List</h3>
+                                </div>
+                            </div>
+                            <div class="m-portlet__head-tools">
+                                <ul class="m-portlet__nav">
+                                    <li class="m-portlet__nav-item">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <a @*href="@Url.Action("Create", "Inquiry", new {Area = "Indent"})"*@ id="NewInquiery" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.InquirybtnAdd">
+                                            <span>
+                                                <i class="la la-plus"></i>
+                                                <span>Add</span>
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <button type="submit" class="btn btn-info hidden" Sec-menuId="@SecurityConstants.InquirybtnSearch">Search</button>
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <button type="button" class="btn btn-default hidden" Sec-menuId="@SecurityConstants.InquirybtnClearCriteria" id="clear">Clear Criteria</button>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="javascript:" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.InquirybtnPrint" id="btnPrint" @*onclick="OpenInquieryReviewModal('@Url.Action("Report","Inquiry", new{Area="Indent"})')"*@>
+                                            <span>
+                                                <i class="la la-print"></i>
+                                                <span>Print</span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="m-portlet__body">
+                           
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-lg-2">
+                                            <label>From:</label>
+                                            @Html.TextBox("DateFrom", "", new { @class = "form-control", type = "date", Value = ViewBag.DateFrom.ToString("yyyy-MM-dd") })
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label>To:</label>
+                                            @Html.TextBox("CreatedOn", "", new { @class = "form-control", type = "date", Value = ViewBag.CreatedOn.ToString("yyyy-MM-dd")})
+                                            @*<input type="date" name="DateFrom" class="form-control">*@
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label>Commodity:</label>
+                                            @Html.DropDownList("CommodityTypeId", new SelectList(new CommodityTypeRepository().GetAllCommodityType().Where(a => a.DomesticMarket.Equals("Y")), "Id", "Description"), "", new { @class = "form-control ", id = "ComdID", @onchange = "ValidNewInquery(),GetDealsInDepartment(this.value,'1')" })
+
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label>Department:</label>
+                                            @Html.DropDownList("DepartmentID", new SelectList("", "Id", "title"), "", new { @class = "form-control ", id = "Dept", @onchange = "ValidNewInquery()" })
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label>Buyer:</label>
+                                            @Html.DropDownList("CustomerId", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control ", id = "CustID" })
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <label>Status:</label>
+                                            @Html.DropDownList("InquiryStatus", Enum.GetValues(typeof(ERP.Common.InquieryStatus)).Cast<ERP.Common.InquieryStatus>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control" })
+
+                                            @*@Html.DropDownList("InquiryStatus", new SelectList(Enumeration.GetAll<ERP.Common.InquieryStatus>(), "Key", "Value"), new { @class = "form-control" })*@
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <thead style="background-color: #28469c; color: #ffffff">
+                                                <tr role="row">
+                                                    <th>Inquiry No.</th>
+                                                    <th>Date</th>
+                                                    <th>Sales Contract</th>
+                                                    <th>Customer</th>
+                                                    <th>Commodity</th>
+                                                    <th>Department</th>
+                                                    <th>Quantity</th>
+                                                    <th>UOS</th>
+                                                    <th>Status</th>
+                                                    <th>Closed</th>
+                                                    <th>Posted By</th>
+                                                    @*<th>State</th>*@
+                                                    <th>Actions</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @if (Model != null)
+                                                {
+
+                                                    foreach (var item in Model)
+                                                    {
+                                                        <tr role="row" class="odd">
+                                                            <td>@item.InquiryKey</td>
+                                                            <td>@item.InquiryDate.ToString("dd/MM/yyyy")</td>
+                                                            <td>@item.IndPaymentTerms.Description</td>
+                                                            <td>@item.FinParty.Title</td>
+                                                            <td>@item.CommodityType.Description</td>
+                                                            <td>@item.HrDepartment.Title</td>
+                                                            <td>@item.IndDomesticInquiryDetails.Where(a => a.InquiryId == @item.Id).FirstOrDefault().Quantity</td>
+                                                            <td>@item.IndDomesticInquiryDetails.Where(a => a.InquiryId == @item.Id).FirstOrDefault().UnitOfSale.Description</td>
+                                                            <td>
+                                                                @(Enum.GetName(typeof(ERP.Common.InquieryStatus), Convert.ToChar(item.InquiryStatus)))
+                                                            </td>
+                                                            <td>@(item.IsClosed == "Y" ? "Yes" : "NO")</td>
+
+                                                            <td></td>
+                                                            <td>
+                                                                <span class="dropdown">
+                                                                    <a href="#" class="btn btn-sm btn-danger dropdown-toggle hidden" Sec-menuId="@SecurityConstants.InquirybtnAction" data-toggle="dropdown" aria-expanded="false">action</a>
+                                                                    <div class="dropdown-menu dropdown-menu-right " x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-196px, -30px, 0px);">
+                                                                        <a class="dropdown-item hidden" Sec-menuId="@SecurityConstants.InquirybtnEdit" href="@Url.Action("Edit", "Inquiry", new {id = item.Id, Area = "Indent"})"><i class="la la-edit"></i> Edit</a>
+                                                                        @if (item.InquiryStatus != Convert.ToString((char)InquieryStatus.Close) && item.InquiryStatus != Convert.ToString((char)InquieryStatus.Cancel))
+                                                                        {
+                                                                            <a class="dropdown-item  hidden" href="#" id="view" Sec-menuId="@SecurityConstants.InquirybtnComplete" onclick="OpenInquieryReviewModal('@Url.Action("Create", "InquieryReview", new {id = item.Id, Area = "Indent"})')"><i class="la la-street-view"></i> Complete</a>
+                                                                            <a class="dropdown-item hidden" Sec-menuId="@SecurityConstants.InquirybtnDrop" href="@Url.Action("Delete", "Inquiry", new {id = item.Id, Area = "Indent"})"><i class="la la-trash"></i> Drop</a>
+                                                                        }
+
+
+                                                                    </div>
+                                                                </span>
+                                                            </td>
+
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+
+                                        </table>
+                                        
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Content/VigorJs/InquieryReview/InquierReview.js"></script>
+<script src="~/Content/VigorJs/CommonJS/DeilsInDepartment.js"></script>
+<script>
+
+    ValidNewInquery();
+    function ValidNewInquery() {
+        var DeptID = $("#Dept").val();
+        var ComdID = $("#ComdID").val();
+        if (DeptID != '' && ComdID != '') {
+            $("#NewInquiery").removeClass('disabled');
+            $("#btnPrint").removeClass('disabled');
+        } else {
+            $("#NewInquiery").addClass('disabled');
+            $("#btnPrint").addClass('disabled');
+        }
+    }
+    $(document).ready(function () {
+        
+
+        $('#NewInquiery').click(function () {
+
+            var url = '@Url.Action("Create", "Inquiry", new { Area = "Indent", DepartmentID = "_dptID", CommodityTypeId="_comdID" })';
+            if ($("#Dept").val() != '') { url = url.replace('_dptID', $("#Dept").val()); } else { url = url.replace('_dptID', ""); }
+            if ($("#ComdID").val() != '') { url = url.replace('_comdID', $("#ComdID").val()); } else { url = url.replace('_comdID', ""); }
+            url = url.replace(/\amp;/g, '');
+            location.href = url;
+        });
+        $('#btnPrint').click(function () {
+            var DepartmentID=   $("#Dept").val();
+            var CommadityID = $("#ComdID").val();
+            var DepartmentName = $("#Dept").text();
+            var url = '/Indent/Inquiry/Report?Department=' + DepartmentID + '&commodity=' + CommadityID + '&DepartmentName=' + DepartmentName+''
+            $.ajax({
+                type: "Get",
+                url: url,
+                success: function (data) {
+                    $('#ReviewModal').html(data);
+                    $('#ReviewModal').modal('show');
+                }
+            });
+
+
+        });
+        $('#clear').click(function() {
+            $("#Dept").val('');
+            $("#ComdID").val('');
+            $("#CustID").val('');
+            ValidNewInquery();
+        });
+        if (@dptid > 0) {
+            $("#Dept").val(@dptid);
+        }
+    });
+
+</script>

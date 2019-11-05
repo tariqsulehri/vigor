@@ -1,0 +1,40 @@
+﻿<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$(":input[type='button']").button();
+        $('#AddAdminModule').click(function () {
+            var _userId = $('#UserId').val();
+            var _id = $('#AdminModuleId').val();
+
+            if (_userId == '') {
+                return false;
+            }
+            var _parameters = { userId: _userId, id: _id };
+            $.ajax({
+                url: "/Admin/Users/AddAdminModuleReturnPartialView",
+                type: "GET",
+                data: _parameters,
+                success: function (data, textStatus, jqXHR) {
+                    $('#RefreshingMainPage').empty();
+                    $('#RefreshingMainPage').html(data);
+                }
+            });
+        });
+    });
+</script>
+<input name='UserId' id='UserId' type="hidden" value="@ViewBag.UserId" />
+<label>
+    Admin Module:
+</label>
+@Html.DropDownList("AdminModuleId", null, "Select-AdminModule", new { })
+<input type="button" id="AddAdminModule" value="Add" />
+@*<fieldset style="padding: 1em; font: 100%; color: Black; border-color: Black; border-style: solid;
+        border-width: thin; border-color: Silver;">
+        <legend><strong>Add AdminModule To User</strong></legend>
+        <br />
+        <label>
+            Admin Module:
+        </label>
+        @Html.DropDownList("AdminModuleId", null, "Select-AdminModule", new { })
+        <input type="button" id="AddAdminModule" value="Add" />
+    </fieldset>*@

@@ -1,0 +1,906 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A291AD_VigourDevelopmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.ALLCOAView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ALLCOAView">
+    <Key>
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="Code" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_disp_return_Summary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_domestic_disp_return_Summary">
+    <Key>
+      <PropertyRef Name="IndentId" />
+      <PropertyRef Name="CommodityId" />
+    </Key>
+    <Property Name="IndentId" Type="int" Nullable="false" />
+    <Property Name="CommodityId" Type="int" Nullable="false" />
+    <Property Name="DispQuantity" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="ReturnQuantity" Type="decimal" Precision="38" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inquiry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_domestic_inquiry">
+    <Key>
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commodity" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="PaymentTerms" />
+      <PropertyRef Name="ComodityType" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="SellectId" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="CustomerAsBuyer" />
+    </Key>
+    <Property Name="InquiryId" Type="int" Nullable="false" />
+    <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InquiryDate" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CommodityId" Type="int" Nullable="false" />
+    <Property Name="Commodity" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UOS" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentTerms" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ComodityType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UOR" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InquiryClosedDate" Type="datetime" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="Delivery" Type="nvarchar" MaxLength="200" />
+    <Property Name="InquiryStatus" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="IsClosed" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="SellectId" Type="int" Nullable="false" />
+    <Property Name="seller" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BuyerId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerAsBuyer" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_financial_trans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_financial_trans">
+    <Key>
+      <PropertyRef Name="VKey" />
+      <PropertyRef Name="VoucherNo" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="DeptId" />
+      <PropertyRef Name="EmpId" />
+      <PropertyRef Name="LocId" />
+      <PropertyRef Name="GlTitle" />
+      <PropertyRef Name="VoucherDate" />
+      <PropertyRef Name="FescalMonth" />
+      <PropertyRef Name="Vtype" />
+      <PropertyRef Name="L5Code" />
+      <PropertyRef Name="L1Code" />
+      <PropertyRef Name="L1Title" />
+      <PropertyRef Name="L2Code" />
+      <PropertyRef Name="L2Title" />
+      <PropertyRef Name="L3Code" />
+      <PropertyRef Name="L3Title" />
+      <PropertyRef Name="L4Code" />
+      <PropertyRef Name="L4Title" />
+    </Key>
+    <Property Name="VKey" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="VoucherNo" Type="int" Nullable="false" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="FinParty_Id" Type="int" />
+    <Property Name="DeptId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="Employee" Type="nvarchar(max)" />
+    <Property Name="Location" Type="nvarchar" MaxLength="30" />
+    <Property Name="LocId" Type="int" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" />
+    <Property Name="City_Id" Type="int" />
+    <Property Name="GlTitle" Type="nvarchar" MaxLength="90" Nullable="false" />
+    <Property Name="VoucherDate" Type="datetime" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar(max)" />
+    <Property Name="FescalMonth" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Vtype" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L5Code" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="L1Code" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="L1Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L2Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="L2Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L3Code" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="L3Title" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="L4Code" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="L4Title" Type="nvarchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_financial_trial_ledger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_financial_trial_ledger">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="VKey" />
+      <PropertyRef Name="GlCode" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="Detail" />
+      <PropertyRef Name="ChequeDate" />
+      <PropertyRef Name="ClearingDate" />
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="L1Code" />
+      <PropertyRef Name="l1Title" />
+      <PropertyRef Name="L2Code" />
+      <PropertyRef Name="l2Title" />
+      <PropertyRef Name="L3Code" />
+      <PropertyRef Name="L3Title" />
+      <PropertyRef Name="L4Code" />
+      <PropertyRef Name="l4Title" />
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="VKey" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GlCode" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="90" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ChequeDate" Type="datetime" Nullable="false" />
+    <Property Name="ClearingDate" Type="datetime" Nullable="false" />
+    <Property Name="ChequeNo" Type="nvarchar" MaxLength="25" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="L1Code" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="l1Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L2Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="l2Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L3Code" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="L3Title" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="L4Code" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="l4Title" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VIEW_FinLedger' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_FinLedger">
+    <Key>
+      <PropertyRef Name="CreateDate" />
+      <PropertyRef Name="VKey" />
+      <PropertyRef Name="GlCode" />
+      <PropertyRef Name="Detail" />
+      <PropertyRef Name="ChequeDate" />
+      <PropertyRef Name="ClearingDate" />
+      <PropertyRef Name="Debit" />
+      <PropertyRef Name="Credit" />
+      <PropertyRef Name="L1Code" />
+      <PropertyRef Name="l1_Title" />
+      <PropertyRef Name="L2Code" />
+      <PropertyRef Name="l2_Title" />
+      <PropertyRef Name="L3Code" />
+      <PropertyRef Name="l3_Title" />
+      <PropertyRef Name="L4Code" />
+      <PropertyRef Name="L4_Title" />
+      <PropertyRef Name="L5Code" />
+      <PropertyRef Name="L5_Title" />
+    </Key>
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="VKey" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="GlCode" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ChequeDate" Type="datetime" Nullable="false" />
+    <Property Name="ClearingDate" Type="datetime" Nullable="false" />
+    <Property Name="ChequeNo" Type="nvarchar" MaxLength="25" />
+    <Property Name="Debit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Credit" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="L1Code" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="l1_Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L2Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="l2_Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="L3Code" Type="nvarchar" MaxLength="9" Nullable="false" />
+    <Property Name="l3_Title" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="L4Code" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="L4_Title" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="L5Code" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="L5_Title" Type="nvarchar" MaxLength="90" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_detail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_IndDomestic_detail">
+    <Key>
+      <PropertyRef Name="indentId" />
+      <PropertyRef Name="LocalContractNo" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="InvoiceDueDate" />
+      <PropertyRef Name="Revision" />
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commodity" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="PaymentTerms" />
+      <PropertyRef Name="ComodityType" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="SellectId" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="CustomerAsBuyer" />
+      <PropertyRef Name="IndentStatus" />
+      <PropertyRef Name="indentClosed" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="IsSubmitForApproval" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+    </Key>
+    <Property Name="indentId" Type="int" Nullable="false" />
+    <Property Name="LocalContractNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IndentDate" Type="datetime" Nullable="false" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InvoiceDueDate" Type="datetime" Nullable="false" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="InquiryId" Type="int" Nullable="false" />
+    <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InquiryDate" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CommodityId" Type="int" Nullable="false" />
+    <Property Name="Commodity" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UOS" Type="nvarchar" MaxLength="50" />
+    <Property Name="DispQuantity" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="ReturnQuantity" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="BalanceQty" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="PaymentTerms" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ComodityType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UOR" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InquiryClosedDate" Type="datetime" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="Delivery" Type="nvarchar" MaxLength="200" />
+    <Property Name="InquiryStatus" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="IsClosed" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="SellectId" Type="int" Nullable="false" />
+    <Property Name="seller" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BuyerId" Type="int" Nullable="false" />
+    <Property Name="CustomerAsBuyer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IndentStatus" Type="bit" Nullable="false" />
+    <Property Name="indentClosed" Type="bit" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsSubmitForApproval" Type="bit" Nullable="false" />
+    <Property Name="PackingRemarks" Type="nvarchar" MaxLength="1500" />
+    <Property Name="DeliveryRemarks" Type="nvarchar" MaxLength="1500" />
+    <Property Name="DeliveryRemarksBuyer" Type="nvarchar" MaxLength="1000" />
+    <Property Name="GeneralRemarks" Type="nvarchar" MaxLength="2000" />
+    <Property Name="SpecialConditions" Type="nvarchar" MaxLength="1500" />
+    <Property Name="SpecialConditionsBuyer" Type="nvarchar" MaxLength="1500" />
+    <Property Name="SpecialConditionsSeller" Type="nvarchar" MaxLength="1500" />
+    <Property Name="QualityRemarks" Type="nvarchar" MaxLength="1500" />
+    <Property Name="FinancialRemarks" Type="nvarchar" MaxLength="1500" />
+    <Property Name="Specificatiions" Type="nvarchar" MaxLength="1500" />
+    <Property Name="PriceTerms" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_Inquiry_Offers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_IndDomestic_Inquiry_Offers">
+    <Key>
+      <PropertyRef Name="indentId" />
+      <PropertyRef Name="LocalContractNo" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="InvoiceDueDate" />
+      <PropertyRef Name="Revision" />
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commodity" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="PaymentTerms" />
+      <PropertyRef Name="ComodityType" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="SellectId" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="CustomerAsBuyer" />
+      <PropertyRef Name="IndentStatus" />
+      <PropertyRef Name="indentClosed" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="OfferPaymentTerms" />
+    </Key>
+    <Property Name="indentId" Type="int" Nullable="false" />
+    <Property Name="LocalContractNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IndentDate" Type="datetime" Nullable="false" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InvoiceDueDate" Type="datetime" Nullable="false" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="InquiryId" Type="int" Nullable="false" />
+    <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InquiryDate" Type="datetime" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CommodityId" Type="int" Nullable="false" />
+    <Property Name="Commodity" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UOS" Type="nvarchar" MaxLength="50" />
+    <Property Name="DispQuantity" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="ReturnQuantity" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="BalanceQty" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="PaymentTerms" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ComodityType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UOR" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InquiryClosedDate" Type="datetime" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="Delivery" Type="nvarchar" MaxLength="200" />
+    <Property Name="InquiryStatus" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="IsClosed" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="SellectId" Type="int" Nullable="false" />
+    <Property Name="seller" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BuyerId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerAsBuyer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IndentStatus" Type="bit" Nullable="false" />
+    <Property Name="indentClosed" Type="bit" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="ReviewId" Type="int" />
+    <Property Name="Rivew" Type="nvarchar" MaxLength="250" />
+    <Property Name="ReviewStatus" Type="bit" />
+    <Property Name="OfferedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="OfferedRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OfferMadeOn" Type="datetime" />
+    <Property Name="OfferRemarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="PaymentTermsId" Type="int" />
+    <Property Name="OfferPaymentTerms" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_inquiry_sheet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_IndDomestic_inquiry_sheet">
+    <Key>
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="InquiryID" />
+      <PropertyRef Name="PaymenTermsId" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="InqReviewQuestionId" />
+      <PropertyRef Name="InquiryReviewQuestion" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="IndentKey" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="Rate" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="CustomerIDasBuyer" />
+      <PropertyRef Name="buyer" />
+      <PropertyRef Name="CustomerIDasSeller" />
+      <PropertyRef Name="seller" />
+      <PropertyRef Name="InquiryDate" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
+      <PropertyRef Name="Product" />
+    </Key>
+    <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InquiryID" Type="int" Nullable="false" />
+    <Property Name="Delivery" Type="nvarchar" MaxLength="200" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="PaymenTermsId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="InqReviewQuestionId" Type="int" Nullable="false" />
+    <Property Name="InquiryReviewQuestion" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="IndentKey" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IndentDate" Type="datetime" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CustomerIDasBuyer" Type="int" Nullable="false" />
+    <Property Name="buyer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerIDasSeller" Type="int" Nullable="false" />
+    <Property Name="seller" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InquiryDate" Type="datetime" Nullable="false" />
+    <Property Name="InquiryStatus" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="IsClosed" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="InquiryClosedDate" Type="datetime" />
+    <Property Name="Product" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="UOS" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_sale_register' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_sale_register">
+    <Key>
+      <PropertyRef Name="IndentKey" />
+      <PropertyRef Name="IndentDate" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="CustomerIDasSeller" />
+      <PropertyRef Name="CustomerIDasBuyer" />
+      <PropertyRef Name="CustomerIDasLocalAgent" />
+      <PropertyRef Name="OfferDate" />
+      <PropertyRef Name="confirmDate" />
+      <PropertyRef Name="CommodityTypeId" />
+      <PropertyRef Name="CommodityType" />
+      <PropertyRef Name="InquiryId" />
+      <PropertyRef Name="InquiryKey" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="PaymenTermsId" />
+      <PropertyRef Name="CurrencyId" />
+      <PropertyRef Name="ExchangeRate" />
+      <PropertyRef Name="TotalValue" />
+      <PropertyRef Name="TotalValueOnCommRate" />
+      <PropertyRef Name="closedDate" />
+      <PropertyRef Name="ExecutedTotalValue" />
+      <PropertyRef Name="IsApproved" />
+      <PropertyRef Name="LastApprovedOn" />
+      <PropertyRef Name="ApprovedBy" />
+      <PropertyRef Name="MarketedBy" />
+      <PropertyRef Name="IsSubmitForApproval" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedOn" />
+      <PropertyRef Name="ModifiedBy" />
+      <PropertyRef Name="ModifiedOn" />
+      <PropertyRef Name="IndentStatus" />
+      <PropertyRef Name="isClosed" />
+      <PropertyRef Name="IsUpdated" />
+      <PropertyRef Name="isCancelled" />
+      <PropertyRef Name="isShipments" />
+      <PropertyRef Name="isInvoiced" />
+      <PropertyRef Name="InvoiceNo" />
+      <PropertyRef Name="InvoiceDueDate" />
+      <PropertyRef Name="CommodityId" />
+      <PropertyRef Name="Commidity" />
+      <PropertyRef Name="UosID" />
+      <PropertyRef Name="UOM" />
+      <PropertyRef Name="UOR" />
+      <PropertyRef Name="Factor" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Rate" />
+      <PropertyRef Name="CommRate" />
+      <PropertyRef Name="QuantityReq" />
+      <PropertyRef Name="ProductTotalAmount" />
+      <PropertyRef Name="ProductCommValue" />
+      <PropertyRef Name="ExecutedQuantity" />
+      <PropertyRef Name="ExecutedValue" />
+      <PropertyRef Name="CalculatedCommissionValue" />
+    </Key>
+    <Property Name="IndentKey" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IndentDate" Type="datetime" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="CustomerIDasSeller" Type="int" Nullable="false" />
+    <Property Name="SellerName" Type="nvarchar(max)" />
+    <Property Name="CustomerIDasBuyer" Type="int" Nullable="false" />
+    <Property Name="BuyerName" Type="nvarchar(max)" />
+    <Property Name="CustomerIDasLocalAgent" Type="int" Nullable="false" />
+    <Property Name="OfferDate" Type="datetime" Nullable="false" />
+    <Property Name="confirmDate" Type="datetime" Nullable="false" />
+    <Property Name="CommodityTypeId" Type="int" Nullable="false" />
+    <Property Name="CommodityType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="InquiryId" Type="int" Nullable="false" />
+    <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="PaymenTermsId" Type="int" Nullable="false" />
+    <Property Name="CurrencyId" Type="int" Nullable="false" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="QuantityVariance" Type="nvarchar" MaxLength="10" />
+    <Property Name="TotalValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TotalValueOnCommRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PackingRemarks" Type="nvarchar" MaxLength="1500" />
+    <Property Name="DeliveryRemarks" Type="nvarchar" MaxLength="1500" />
+    <Property Name="DeliveryRemarksBuyer" Type="nvarchar" MaxLength="1000" />
+    <Property Name="GeneralRemarks" Type="nvarchar" MaxLength="2000" />
+    <Property Name="SpecialConditions" Type="nvarchar" MaxLength="1500" />
+    <Property Name="PriceTerms" Type="nvarchar" MaxLength="200" />
+    <Property Name="Destination" Type="nvarchar" MaxLength="200" />
+    <Property Name="ClosingRemaks" Type="nvarchar" MaxLength="200" />
+    <Property Name="closedDate" Type="datetime" Nullable="false" />
+    <Property Name="ExecutedTotalValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="LastApprovedOn" Type="datetime" Nullable="false" />
+    <Property Name="ApprovedBy" Type="int" Nullable="false" />
+    <Property Name="MarketedBy" Type="int" Nullable="false" />
+    <Property Name="IsSubmitForApproval" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="int" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="IndentStatus" Type="bit" Nullable="false" />
+    <Property Name="isClosed" Type="bit" Nullable="false" />
+    <Property Name="IsUpdated" Type="bit" Nullable="false" />
+    <Property Name="isCancelled" Type="bit" Nullable="false" />
+    <Property Name="isShipments" Type="bit" Nullable="false" />
+    <Property Name="isInvoiced" Type="bit" Nullable="false" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="InvoiceDueDate" Type="datetime" Nullable="false" />
+    <Property Name="CommodityId" Type="int" Nullable="false" />
+    <Property Name="Commidity" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CommoditySpecification" Type="nvarchar" MaxLength="200" />
+    <Property Name="UosID" Type="int" Nullable="false" />
+    <Property Name="UOS" Type="nvarchar" MaxLength="50" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UOR" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Factor" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CommRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="QuantityReq" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductTotalAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductCommValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExecutedQuantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExecutedValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CalculatedCommissionValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_COA">
+    <Key>
+      <PropertyRef Name="LevelOfAccount" />
+      <PropertyRef Name="AccountCode" />
+      <PropertyRef Name="AccountTitle" />
+    </Key>
+    <Property Name="LevelOfAccount" Type="int" Nullable="false" />
+    <Property Name="ParentAccount" Type="nvarchar" MaxLength="13" />
+    <Property Name="AccountCode" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="AccountTitle" Type="nvarchar" MaxLength="90" Nullable="false" />
+  </EntityType>
+  <Function Name="SP_DEBIT_CRIDET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="From" Type="date" Mode="In" />
+    <Parameter Name="To" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SP_GETRECORD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="From" Type="date" Mode="In" />
+    <Parameter Name="To" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SP_Year_Accounts_Analysis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="DB_A291AD_VigourDevelopmentModelStoreContainer">
+    <EntitySet Name="ALLCOAView" EntityType="Self.ALLCOAView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ALLCOAView].[Code] AS [Code], 
+    [ALLCOAView].[Title] AS [Title]
+    FROM [dbo].[ALLCOAView] AS [ALLCOAView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_domestic_disp_return_Summary" EntityType="Self.view_domestic_disp_return_Summary" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_domestic_disp_return_Summary].[IndentId] AS [IndentId], 
+    [view_domestic_disp_return_Summary].[CommodityId] AS [CommodityId], 
+    [view_domestic_disp_return_Summary].[DispQuantity] AS [DispQuantity], 
+    [view_domestic_disp_return_Summary].[ReturnQuantity] AS [ReturnQuantity]
+    FROM [dbo].[view_domestic_disp_return_Summary] AS [view_domestic_disp_return_Summary]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_domestic_inquiry" EntityType="Self.view_domestic_inquiry" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_domestic_inquiry].[InquiryId] AS [InquiryId], 
+    [view_domestic_inquiry].[InquiryKey] AS [InquiryKey], 
+    [view_domestic_inquiry].[InquiryDate] AS [InquiryDate], 
+    [view_domestic_inquiry].[id] AS [id], 
+    [view_domestic_inquiry].[Department] AS [Department], 
+    [view_domestic_inquiry].[CommodityId] AS [CommodityId], 
+    [view_domestic_inquiry].[Commodity] AS [Commodity], 
+    [view_domestic_inquiry].[Quantity] AS [Quantity], 
+    [view_domestic_inquiry].[UOS] AS [UOS], 
+    [view_domestic_inquiry].[PaymentTerms] AS [PaymentTerms], 
+    [view_domestic_inquiry].[ComodityType] AS [ComodityType], 
+    [view_domestic_inquiry].[UOR] AS [UOR], 
+    [view_domestic_inquiry].[InquiryClosedDate] AS [InquiryClosedDate], 
+    [view_domestic_inquiry].[CreatedOn] AS [CreatedOn], 
+    [view_domestic_inquiry].[ModifiedOn] AS [ModifiedOn], 
+    [view_domestic_inquiry].[Delivery] AS [Delivery], 
+    [view_domestic_inquiry].[InquiryStatus] AS [InquiryStatus], 
+    [view_domestic_inquiry].[IsClosed] AS [IsClosed], 
+    [view_domestic_inquiry].[Title] AS [Title], 
+    [view_domestic_inquiry].[DepartmentID] AS [DepartmentID], 
+    [view_domestic_inquiry].[SellectId] AS [SellectId], 
+    [view_domestic_inquiry].[seller] AS [seller], 
+    [view_domestic_inquiry].[BuyerId] AS [BuyerId], 
+    [view_domestic_inquiry].[CustomerAsBuyer] AS [CustomerAsBuyer]
+    FROM [dbo].[view_domestic_inquiry] AS [view_domestic_inquiry]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_financial_trans" EntityType="Self.view_financial_trans" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_financial_trans].[VKey] AS [VKey], 
+    [view_financial_trans].[VoucherNo] AS [VoucherNo], 
+    [view_financial_trans].[Credit] AS [Credit], 
+    [view_financial_trans].[Debit] AS [Debit], 
+    [view_financial_trans].[FinParty_Id] AS [FinParty_Id], 
+    [view_financial_trans].[DeptId] AS [DeptId], 
+    [view_financial_trans].[Title] AS [Title], 
+    [view_financial_trans].[EmpId] AS [EmpId], 
+    [view_financial_trans].[Employee] AS [Employee], 
+    [view_financial_trans].[Location] AS [Location], 
+    [view_financial_trans].[LocId] AS [LocId], 
+    [view_financial_trans].[City] AS [City], 
+    [view_financial_trans].[City_Id] AS [City_Id], 
+    [view_financial_trans].[GlTitle] AS [GlTitle], 
+    [view_financial_trans].[VoucherDate] AS [VoucherDate], 
+    [view_financial_trans].[Detail] AS [Detail], 
+    [view_financial_trans].[FescalMonth] AS [FescalMonth], 
+    [view_financial_trans].[Vtype] AS [Vtype], 
+    [view_financial_trans].[L5Code] AS [L5Code], 
+    [view_financial_trans].[L1Code] AS [L1Code], 
+    [view_financial_trans].[L1Title] AS [L1Title], 
+    [view_financial_trans].[L2Code] AS [L2Code], 
+    [view_financial_trans].[L2Title] AS [L2Title], 
+    [view_financial_trans].[L3Code] AS [L3Code], 
+    [view_financial_trans].[L3Title] AS [L3Title], 
+    [view_financial_trans].[L4Code] AS [L4Code], 
+    [view_financial_trans].[L4Title] AS [L4Title]
+    FROM [dbo].[view_financial_trans] AS [view_financial_trans]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_financial_trial_ledger" EntityType="Self.view_financial_trial_ledger" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_financial_trial_ledger].[Id] AS [Id], 
+    [view_financial_trial_ledger].[CreateDate] AS [CreateDate], 
+    [view_financial_trial_ledger].[VKey] AS [VKey], 
+    [view_financial_trial_ledger].[GlCode] AS [GlCode], 
+    [view_financial_trial_ledger].[Title] AS [Title], 
+    [view_financial_trial_ledger].[Detail] AS [Detail], 
+    [view_financial_trial_ledger].[ChequeDate] AS [ChequeDate], 
+    [view_financial_trial_ledger].[ClearingDate] AS [ClearingDate], 
+    [view_financial_trial_ledger].[ChequeNo] AS [ChequeNo], 
+    [view_financial_trial_ledger].[Debit] AS [Debit], 
+    [view_financial_trial_ledger].[Credit] AS [Credit], 
+    [view_financial_trial_ledger].[UserId] AS [UserId], 
+    [view_financial_trial_ledger].[L1Code] AS [L1Code], 
+    [view_financial_trial_ledger].[l1Title] AS [l1Title], 
+    [view_financial_trial_ledger].[L2Code] AS [L2Code], 
+    [view_financial_trial_ledger].[l2Title] AS [l2Title], 
+    [view_financial_trial_ledger].[L3Code] AS [L3Code], 
+    [view_financial_trial_ledger].[L3Title] AS [L3Title], 
+    [view_financial_trial_ledger].[L4Code] AS [L4Code], 
+    [view_financial_trial_ledger].[l4Title] AS [l4Title], 
+    [view_financial_trial_ledger].[Type] AS [Type]
+    FROM [dbo].[view_financial_trial_ledger] AS [view_financial_trial_ledger]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_FinLedger" EntityType="Self.VIEW_FinLedger" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VIEW_FinLedger].[CreateDate] AS [CreateDate], 
+    [VIEW_FinLedger].[VKey] AS [VKey], 
+    [VIEW_FinLedger].[GlCode] AS [GlCode], 
+    [VIEW_FinLedger].[Detail] AS [Detail], 
+    [VIEW_FinLedger].[ChequeDate] AS [ChequeDate], 
+    [VIEW_FinLedger].[ClearingDate] AS [ClearingDate], 
+    [VIEW_FinLedger].[ChequeNo] AS [ChequeNo], 
+    [VIEW_FinLedger].[Debit] AS [Debit], 
+    [VIEW_FinLedger].[Credit] AS [Credit], 
+    [VIEW_FinLedger].[L1Code] AS [L1Code], 
+    [VIEW_FinLedger].[l1_Title] AS [l1_Title], 
+    [VIEW_FinLedger].[L2Code] AS [L2Code], 
+    [VIEW_FinLedger].[l2_Title] AS [l2_Title], 
+    [VIEW_FinLedger].[L3Code] AS [L3Code], 
+    [VIEW_FinLedger].[l3_Title] AS [l3_Title], 
+    [VIEW_FinLedger].[L4Code] AS [L4Code], 
+    [VIEW_FinLedger].[L4_Title] AS [L4_Title], 
+    [VIEW_FinLedger].[L5Code] AS [L5Code], 
+    [VIEW_FinLedger].[L5_Title] AS [L5_Title]
+    FROM [dbo].[VIEW_FinLedger] AS [VIEW_FinLedger]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_IndDomestic_detail" EntityType="Self.view_IndDomestic_detail" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_IndDomestic_detail].[indentId] AS [indentId], 
+    [view_IndDomestic_detail].[LocalContractNo] AS [LocalContractNo], 
+    [view_IndDomestic_detail].[IndentDate] AS [IndentDate], 
+    [view_IndDomestic_detail].[InvoiceNo] AS [InvoiceNo], 
+    [view_IndDomestic_detail].[InvoiceDueDate] AS [InvoiceDueDate], 
+    [view_IndDomestic_detail].[Revision] AS [Revision], 
+    [view_IndDomestic_detail].[InquiryId] AS [InquiryId], 
+    [view_IndDomestic_detail].[InquiryKey] AS [InquiryKey], 
+    [view_IndDomestic_detail].[InquiryDate] AS [InquiryDate], 
+    [view_IndDomestic_detail].[id] AS [id], 
+    [view_IndDomestic_detail].[Department] AS [Department], 
+    [view_IndDomestic_detail].[CommodityId] AS [CommodityId], 
+    [view_IndDomestic_detail].[Commodity] AS [Commodity], 
+    [view_IndDomestic_detail].[Quantity] AS [Quantity], 
+    [view_IndDomestic_detail].[UOS] AS [UOS], 
+    [view_IndDomestic_detail].[DispQuantity] AS [DispQuantity], 
+    [view_IndDomestic_detail].[ReturnQuantity] AS [ReturnQuantity], 
+    [view_IndDomestic_detail].[BalanceQty] AS [BalanceQty], 
+    [view_IndDomestic_detail].[PaymentTerms] AS [PaymentTerms], 
+    [view_IndDomestic_detail].[ComodityType] AS [ComodityType], 
+    [view_IndDomestic_detail].[UOR] AS [UOR], 
+    [view_IndDomestic_detail].[InquiryClosedDate] AS [InquiryClosedDate], 
+    [view_IndDomestic_detail].[CreatedOn] AS [CreatedOn], 
+    [view_IndDomestic_detail].[ModifiedOn] AS [ModifiedOn], 
+    [view_IndDomestic_detail].[Delivery] AS [Delivery], 
+    [view_IndDomestic_detail].[InquiryStatus] AS [InquiryStatus], 
+    [view_IndDomestic_detail].[IsClosed] AS [IsClosed], 
+    [view_IndDomestic_detail].[Title] AS [Title], 
+    [view_IndDomestic_detail].[DepartmentID] AS [DepartmentID], 
+    [view_IndDomestic_detail].[SellectId] AS [SellectId], 
+    [view_IndDomestic_detail].[seller] AS [seller], 
+    [view_IndDomestic_detail].[BuyerId] AS [BuyerId], 
+    [view_IndDomestic_detail].[CustomerAsBuyer] AS [CustomerAsBuyer], 
+    [view_IndDomestic_detail].[IndentStatus] AS [IndentStatus], 
+    [view_IndDomestic_detail].[indentClosed] AS [indentClosed], 
+    [view_IndDomestic_detail].[IsApproved] AS [IsApproved], 
+    [view_IndDomestic_detail].[IsSubmitForApproval] AS [IsSubmitForApproval], 
+    [view_IndDomestic_detail].[PackingRemarks] AS [PackingRemarks], 
+    [view_IndDomestic_detail].[DeliveryRemarks] AS [DeliveryRemarks], 
+    [view_IndDomestic_detail].[DeliveryRemarksBuyer] AS [DeliveryRemarksBuyer], 
+    [view_IndDomestic_detail].[GeneralRemarks] AS [GeneralRemarks], 
+    [view_IndDomestic_detail].[SpecialConditions] AS [SpecialConditions], 
+    [view_IndDomestic_detail].[SpecialConditionsBuyer] AS [SpecialConditionsBuyer], 
+    [view_IndDomestic_detail].[SpecialConditionsSeller] AS [SpecialConditionsSeller], 
+    [view_IndDomestic_detail].[QualityRemarks] AS [QualityRemarks], 
+    [view_IndDomestic_detail].[FinancialRemarks] AS [FinancialRemarks], 
+    [view_IndDomestic_detail].[Specificatiions] AS [Specificatiions], 
+    [view_IndDomestic_detail].[PriceTerms] AS [PriceTerms]
+    FROM [dbo].[view_IndDomestic_detail] AS [view_IndDomestic_detail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_IndDomestic_Inquiry_Offers" EntityType="Self.view_IndDomestic_Inquiry_Offers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_IndDomestic_Inquiry_Offers].[indentId] AS [indentId], 
+    [view_IndDomestic_Inquiry_Offers].[LocalContractNo] AS [LocalContractNo], 
+    [view_IndDomestic_Inquiry_Offers].[IndentDate] AS [IndentDate], 
+    [view_IndDomestic_Inquiry_Offers].[InvoiceNo] AS [InvoiceNo], 
+    [view_IndDomestic_Inquiry_Offers].[InvoiceDueDate] AS [InvoiceDueDate], 
+    [view_IndDomestic_Inquiry_Offers].[Revision] AS [Revision], 
+    [view_IndDomestic_Inquiry_Offers].[InquiryId] AS [InquiryId], 
+    [view_IndDomestic_Inquiry_Offers].[InquiryKey] AS [InquiryKey], 
+    [view_IndDomestic_Inquiry_Offers].[InquiryDate] AS [InquiryDate], 
+    [view_IndDomestic_Inquiry_Offers].[id] AS [id], 
+    [view_IndDomestic_Inquiry_Offers].[Department] AS [Department], 
+    [view_IndDomestic_Inquiry_Offers].[CommodityId] AS [CommodityId], 
+    [view_IndDomestic_Inquiry_Offers].[Commodity] AS [Commodity], 
+    [view_IndDomestic_Inquiry_Offers].[Quantity] AS [Quantity], 
+    [view_IndDomestic_Inquiry_Offers].[UOS] AS [UOS], 
+    [view_IndDomestic_Inquiry_Offers].[DispQuantity] AS [DispQuantity], 
+    [view_IndDomestic_Inquiry_Offers].[ReturnQuantity] AS [ReturnQuantity], 
+    [view_IndDomestic_Inquiry_Offers].[BalanceQty] AS [BalanceQty], 
+    [view_IndDomestic_Inquiry_Offers].[PaymentTerms] AS [PaymentTerms], 
+    [view_IndDomestic_Inquiry_Offers].[ComodityType] AS [ComodityType], 
+    [view_IndDomestic_Inquiry_Offers].[UOR] AS [UOR], 
+    [view_IndDomestic_Inquiry_Offers].[InquiryClosedDate] AS [InquiryClosedDate], 
+    [view_IndDomestic_Inquiry_Offers].[CreatedOn] AS [CreatedOn], 
+    [view_IndDomestic_Inquiry_Offers].[ModifiedOn] AS [ModifiedOn], 
+    [view_IndDomestic_Inquiry_Offers].[Delivery] AS [Delivery], 
+    [view_IndDomestic_Inquiry_Offers].[InquiryStatus] AS [InquiryStatus], 
+    [view_IndDomestic_Inquiry_Offers].[IsClosed] AS [IsClosed], 
+    [view_IndDomestic_Inquiry_Offers].[Title] AS [Title], 
+    [view_IndDomestic_Inquiry_Offers].[DepartmentID] AS [DepartmentID], 
+    [view_IndDomestic_Inquiry_Offers].[SellectId] AS [SellectId], 
+    [view_IndDomestic_Inquiry_Offers].[seller] AS [seller], 
+    [view_IndDomestic_Inquiry_Offers].[BuyerId] AS [BuyerId], 
+    [view_IndDomestic_Inquiry_Offers].[CustomerAsBuyer] AS [CustomerAsBuyer], 
+    [view_IndDomestic_Inquiry_Offers].[IndentStatus] AS [IndentStatus], 
+    [view_IndDomestic_Inquiry_Offers].[indentClosed] AS [indentClosed], 
+    [view_IndDomestic_Inquiry_Offers].[IsApproved] AS [IsApproved], 
+    [view_IndDomestic_Inquiry_Offers].[ReviewId] AS [ReviewId], 
+    [view_IndDomestic_Inquiry_Offers].[Rivew] AS [Rivew], 
+    [view_IndDomestic_Inquiry_Offers].[ReviewStatus] AS [ReviewStatus], 
+    [view_IndDomestic_Inquiry_Offers].[OfferedBy] AS [OfferedBy], 
+    [view_IndDomestic_Inquiry_Offers].[OfferedRate] AS [OfferedRate], 
+    [view_IndDomestic_Inquiry_Offers].[OfferMadeOn] AS [OfferMadeOn], 
+    [view_IndDomestic_Inquiry_Offers].[OfferRemarks] AS [OfferRemarks], 
+    [view_IndDomestic_Inquiry_Offers].[PaymentTermsId] AS [PaymentTermsId], 
+    [view_IndDomestic_Inquiry_Offers].[OfferPaymentTerms] AS [OfferPaymentTerms]
+    FROM [dbo].[view_IndDomestic_Inquiry_Offers] AS [view_IndDomestic_Inquiry_Offers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_IndDomestic_inquiry_sheet" EntityType="Self.view_IndDomestic_inquiry_sheet" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_IndDomestic_inquiry_sheet].[InquiryKey] AS [InquiryKey], 
+    [view_IndDomestic_inquiry_sheet].[InquiryID] AS [InquiryID], 
+    [view_IndDomestic_inquiry_sheet].[Delivery] AS [Delivery], 
+    [view_IndDomestic_inquiry_sheet].[Remarks] AS [Remarks], 
+    [view_IndDomestic_inquiry_sheet].[PaymenTermsId] AS [PaymenTermsId], 
+    [view_IndDomestic_inquiry_sheet].[Description] AS [Description], 
+    [view_IndDomestic_inquiry_sheet].[InqReviewQuestionId] AS [InqReviewQuestionId], 
+    [view_IndDomestic_inquiry_sheet].[InquiryReviewQuestion] AS [InquiryReviewQuestion], 
+    [view_IndDomestic_inquiry_sheet].[Status] AS [Status], 
+    [view_IndDomestic_inquiry_sheet].[IndentKey] AS [IndentKey], 
+    [view_IndDomestic_inquiry_sheet].[IndentDate] AS [IndentDate], 
+    [view_IndDomestic_inquiry_sheet].[Rate] AS [Rate], 
+    [view_IndDomestic_inquiry_sheet].[Quantity] AS [Quantity], 
+    [view_IndDomestic_inquiry_sheet].[CustomerIDasBuyer] AS [CustomerIDasBuyer], 
+    [view_IndDomestic_inquiry_sheet].[buyer] AS [buyer], 
+    [view_IndDomestic_inquiry_sheet].[CustomerIDasSeller] AS [CustomerIDasSeller], 
+    [view_IndDomestic_inquiry_sheet].[seller] AS [seller], 
+    [view_IndDomestic_inquiry_sheet].[InquiryDate] AS [InquiryDate], 
+    [view_IndDomestic_inquiry_sheet].[InquiryStatus] AS [InquiryStatus], 
+    [view_IndDomestic_inquiry_sheet].[IsClosed] AS [IsClosed], 
+    [view_IndDomestic_inquiry_sheet].[InquiryClosedDate] AS [InquiryClosedDate], 
+    [view_IndDomestic_inquiry_sheet].[Product] AS [Product], 
+    [view_IndDomestic_inquiry_sheet].[UOS] AS [UOS]
+    FROM [dbo].[view_IndDomestic_inquiry_sheet] AS [view_IndDomestic_inquiry_sheet]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_sale_register" EntityType="Self.view_sale_register" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_sale_register].[IndentKey] AS [IndentKey], 
+    [view_sale_register].[IndentDate] AS [IndentDate], 
+    [view_sale_register].[CustomerId] AS [CustomerId], 
+    [view_sale_register].[CustomerIDasSeller] AS [CustomerIDasSeller], 
+    [view_sale_register].[SellerName] AS [SellerName], 
+    [view_sale_register].[CustomerIDasBuyer] AS [CustomerIDasBuyer], 
+    [view_sale_register].[BuyerName] AS [BuyerName], 
+    [view_sale_register].[CustomerIDasLocalAgent] AS [CustomerIDasLocalAgent], 
+    [view_sale_register].[OfferDate] AS [OfferDate], 
+    [view_sale_register].[confirmDate] AS [confirmDate], 
+    [view_sale_register].[CommodityTypeId] AS [CommodityTypeId], 
+    [view_sale_register].[CommodityType] AS [CommodityType], 
+    [view_sale_register].[InquiryId] AS [InquiryId], 
+    [view_sale_register].[InquiryKey] AS [InquiryKey], 
+    [view_sale_register].[DepartmentID] AS [DepartmentID], 
+    [view_sale_register].[PaymenTermsId] AS [PaymenTermsId], 
+    [view_sale_register].[CurrencyId] AS [CurrencyId], 
+    [view_sale_register].[ExchangeRate] AS [ExchangeRate], 
+    [view_sale_register].[QuantityVariance] AS [QuantityVariance], 
+    [view_sale_register].[TotalValue] AS [TotalValue], 
+    [view_sale_register].[TotalValueOnCommRate] AS [TotalValueOnCommRate], 
+    [view_sale_register].[PackingRemarks] AS [PackingRemarks], 
+    [view_sale_register].[DeliveryRemarks] AS [DeliveryRemarks], 
+    [view_sale_register].[DeliveryRemarksBuyer] AS [DeliveryRemarksBuyer], 
+    [view_sale_register].[GeneralRemarks] AS [GeneralRemarks], 
+    [view_sale_register].[SpecialConditions] AS [SpecialConditions], 
+    [view_sale_register].[PriceTerms] AS [PriceTerms], 
+    [view_sale_register].[Destination] AS [Destination], 
+    [view_sale_register].[ClosingRemaks] AS [ClosingRemaks], 
+    [view_sale_register].[closedDate] AS [closedDate], 
+    [view_sale_register].[ExecutedTotalValue] AS [ExecutedTotalValue], 
+    [view_sale_register].[IsApproved] AS [IsApproved], 
+    [view_sale_register].[LastApprovedOn] AS [LastApprovedOn], 
+    [view_sale_register].[ApprovedBy] AS [ApprovedBy], 
+    [view_sale_register].[MarketedBy] AS [MarketedBy], 
+    [view_sale_register].[IsSubmitForApproval] AS [IsSubmitForApproval], 
+    [view_sale_register].[CreatedBy] AS [CreatedBy], 
+    [view_sale_register].[CreatedOn] AS [CreatedOn], 
+    [view_sale_register].[ModifiedBy] AS [ModifiedBy], 
+    [view_sale_register].[ModifiedOn] AS [ModifiedOn], 
+    [view_sale_register].[IndentStatus] AS [IndentStatus], 
+    [view_sale_register].[isClosed] AS [isClosed], 
+    [view_sale_register].[IsUpdated] AS [IsUpdated], 
+    [view_sale_register].[isCancelled] AS [isCancelled], 
+    [view_sale_register].[isShipments] AS [isShipments], 
+    [view_sale_register].[isInvoiced] AS [isInvoiced], 
+    [view_sale_register].[InvoiceNo] AS [InvoiceNo], 
+    [view_sale_register].[InvoiceDueDate] AS [InvoiceDueDate], 
+    [view_sale_register].[CommodityId] AS [CommodityId], 
+    [view_sale_register].[Commidity] AS [Commidity], 
+    [view_sale_register].[CommoditySpecification] AS [CommoditySpecification], 
+    [view_sale_register].[UosID] AS [UosID], 
+    [view_sale_register].[UOS] AS [UOS], 
+    [view_sale_register].[UOM] AS [UOM], 
+    [view_sale_register].[UOR] AS [UOR], 
+    [view_sale_register].[Factor] AS [Factor], 
+    [view_sale_register].[Quantity] AS [Quantity], 
+    [view_sale_register].[Rate] AS [Rate], 
+    [view_sale_register].[CommRate] AS [CommRate], 
+    [view_sale_register].[QuantityReq] AS [QuantityReq], 
+    [view_sale_register].[ProductTotalAmount] AS [ProductTotalAmount], 
+    [view_sale_register].[ProductCommValue] AS [ProductCommValue], 
+    [view_sale_register].[ExecutedQuantity] AS [ExecutedQuantity], 
+    [view_sale_register].[ExecutedValue] AS [ExecutedValue], 
+    [view_sale_register].[CalculatedCommissionValue] AS [CalculatedCommissionValue]
+    FROM [dbo].[view_sale_register] AS [view_sale_register]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_COA" EntityType="Self.VW_COA" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_COA].[LevelOfAccount] AS [LevelOfAccount], 
+    [VW_COA].[ParentAccount] AS [ParentAccount], 
+    [VW_COA].[AccountCode] AS [AccountCode], 
+    [VW_COA].[AccountTitle] AS [AccountTitle]
+    FROM [dbo].[VW_COA] AS [VW_COA]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

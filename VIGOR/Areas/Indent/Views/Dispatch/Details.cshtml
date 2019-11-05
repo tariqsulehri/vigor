@@ -1,0 +1,203 @@
+﻿@using ERP.Infrastructure.Repositories.Indenting
+@model ERP.Core.Models.Indenting.IndentDomestic.IndDomestic
+@{
+    ViewBag.Title = "Dispatch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;s
+        height: 200px;
+        overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+ 
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="m-portlet">
+
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Dispatch
+                                </h3>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="m-portlet__body">
+
+
+                        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                  
+                                    @Html.HiddenFor(a=>a.Id, new{id="IndentID"})
+                                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline DispatchDetailtable" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                        <thead style="background-color: #28469c; color: #ffffff">
+                                        <tr role="row">
+                                            <th >Commodity</th>
+                                            <th >Quantity</th>
+                                            <th >Unit</th>
+                                            <th >Rate</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        @if (Model.IndDomesticDetails.Count > 0)
+                                        {
+                                            Int32 j = 0;
+                                            foreach (var item in Model.IndDomesticDetails)
+                                            {
+                                                <tr role="row" class="odd">
+
+                                                    <td>
+
+                                                        @Html.DropDownList("det[" + j + "][CommodityId]", new SelectList(new ProductRepository().GetAllProduct(), "Id", "Description", item.CommodityId), "", new {@class = "form-control ", disabled = "disabled"})
+
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBox("det[" + j + "][Quantity]", null, new {@class = "form-control", type = "number", @Value = item.Quantity, disabled = "disabled"})
+
+
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DropDownList("det[" + j + "][UosID]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description", item.UosID), "Select", new {@class = "form-control UosID", disabled = "disabled"})
+
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBox("det[" + j + "][Rate]", null, new {@class = "form-control Rate", type = "number", @Value = item.Rate, disabled = "disabled"})
+
+                                                    </td>
+
+
+                                                </tr>
+                                                j++;
+                                            }
+                                        }
+                                        </
+                                        tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" m-demo__preview--btn">
+                            @if (Model.isCancelled || Model.isClosed || !(Model.IndentStatus))
+                            {
+
+                                <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only disabled">
+                                    <i class="flaticon-plus"></i>
+                                </a>}
+                            else
+                            {
+                                <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only" onclick="OpenIndDomesticDispatchScheduleModal('@Url.Action("Create", "Dispatch", new { id = Model.Id })')">
+                                    <i class="flaticon-plus"></i>
+                                </a>
+                            }
+                        </div>
+
+                        <div id="m_table_2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline IndDomesticDispatchScheduleTable"  role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                        <thead style="background-color:#28469c; color:#ffffff">
+                                            <tr role="row">
+                                                <th></th>
+                                                <th>Tran Date</th>
+                                                <th>Commodity</th>
+                                                <th>Quantity</th>
+                                                <th>Balance</th>
+                                                <th>Transporter</th>
+                                                <th>Delayed</th>
+                                                <th>Type</th>
+                                                <th>Remarks</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody></tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                              </div>
+
+                        <div class=" m-demo__preview--btn">
+                            @if (Model.isCancelled || Model.isClosed || !(Model.IndentStatus))
+                            {
+                                <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only disabled">
+                                    <i class="flaticon-plus"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only" onclick="OpenIndDomesticDispatchScheduleModal('@Url.Action("Create", "IndDomesticDispatchPayment", new { id = Model.Id })')">
+                                    <i class="flaticon-plus"></i>
+                                </a>
+                            }
+
+                        </div>
+
+                        <div id="m_table_3_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline IndDomesticDispatchPaymentTable"  role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                        <thead style="background-color:#28469c; color:#ffffff">
+                                        <tr role="row">
+                                            
+                                                   <th></th>
+                                            <th>Tran Date</th>
+                                            <th>Quantity</th>
+                                            <th>Received Amount</th>
+                                            <th>Remarks</th>
+                                            <th></th>
+
+                                        </tr>
+                                        </thead>
+
+                                        <tbody></tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+
+<div class="modal fade" id="IndDomesticDispatchScheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="FollowUpSheetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Content/VigorJs/Vouchers.js"></script>*@
+<script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>
+<script src="~/Content/VigorJs/IndDomesticDispatchSchedule/Index.js"></script>
+<script src="~/Content/VigorJs/IndDomesticDispatchSchedule/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/Dispatch/_CreateOrUpdate.js"></script>

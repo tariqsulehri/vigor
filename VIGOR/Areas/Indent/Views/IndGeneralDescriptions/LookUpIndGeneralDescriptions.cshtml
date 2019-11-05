@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ERP.Core.Models.Indenting.IndGeneralDescriptions>
+@{
+    ViewBag.Title = "General Descriptions";
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            
+            <div class="m-portlet__body">
+                <div class="row">
+                    <table class="table table-striped- table-bordered table-hover table-checkable" id="VoucherTable"> 
+                        <thead>
+                        <tr>
+                            <th>Descriptions</th>
+                            <th style="width: 10px;">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                    
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                                <td><button class="btn btn-focus btn-sm btnSelect">Select</button></td>
+                            </tr>
+                          
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/VigorJs/IndGeneralDescriptions/_CreateOrUpdate.js"></script>

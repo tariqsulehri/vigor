@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Task";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="m-portlet">
+
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Task
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item">
+                                    <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <span>
+                                            <i class="fa fa-save"></i>
+                                            <span>Save</span>
+                                        </span>
+                                    </button>
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <span style=" color:#ffffff">
+                                            <i class="flaticon-cancel"></i>
+                                            <span>Cancel</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form class="m-form m-form--fit ">
+                        <div class="m-portlet__body" style="padding:20px;">
+
+                            <div class="form-group row">
+                                <div class="col-lg-2">
+                                    <label>Job No:</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Date:</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Req. UpTo:</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Subject:</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-lg-2">
+                                    <label>Assigned to:</label>
+                                    <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                        <option value="1"></option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2" style="padding-top:10px;">
+                                    <div class=" m-demo__preview--btn">
+                                        <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only" title="Attach file">
+                                            <i class="flaticon-attachment"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Description:</label>
+                                    <textarea class="form-control" cols="20" id="Detail" name="Detail" rows="2"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

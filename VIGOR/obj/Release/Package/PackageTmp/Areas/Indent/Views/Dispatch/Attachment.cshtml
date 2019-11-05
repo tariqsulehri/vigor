@@ -1,0 +1,219 @@
+﻿@model ERP.Core.Models.Indenting.IndentDomestic.EFilingSystem
+@using ERP.Core.Models.Indenting.IndentDomestic
+@using ERP.Infrastructure.Repositories.Indenting.IndentDemestic
+@{
+    Layout = null;
+    var lstEfile = (List<EFilingSystem>)ViewBag.Efile;
+
+}
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;s
+        height: 200px;
+        overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header p-3">
+            <h5 class="modal-title" id="exampleModalLabel">Efile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body p-0">
+            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "Efilling" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(a => a.CompanyId)
+                    @Html.HiddenFor(a => a.Company_Key)
+                    @Html.HiddenFor(a => a.ReferenceID1)
+                    @Html.HiddenFor(a => a.ReferenceID2)
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                <thead style="background-color:#28469c; color:#ffffff">
+                                    <tr role="row">
+                                        <th>Type of Attachment</th>
+                                        <th>Description</th>
+                                        <th>Attached File</th>
+                                        <td></td>
+                                        <td></td>
+                                        <th width="30"></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @if (lstEfile.Count > 0)
+                                    {
+                                        Int32 j = 0;
+                                        foreach (var item in lstEfile)
+                                        {
+                                            <tr role="row" class="odd">
+                                                <td hidden>
+                                                    @Html.Hidden("det[" + j + "][EFilingID]", "", new { @Value = item.EFilingID })
+                                                </td>
+                                                <td hidden>
+                                                    @Html.Hidden("det[" + j + "][ReferenceID1]", "", new { @Value = item.ReferenceID1 })
+                                                </td>
+                                                <td hidden>
+                                                    @Html.Hidden("det[" + j + "][ReferenceID2]", "", new { @Value = item.ReferenceID2 })
+                                                </td>
+                                                <td>
+                                                    @Html.DropDownList("det[" + j + "][DocumentType]", new SelectList(new DocumentEFilingTypeRepository().GetAllDocumentEFilingType(), "DocumentID", "Description", item.DocumentType), "", new { @class = "form-control " })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBox("det[" + j + "][FileDescription]", null, new { @class = "form-control", @Value = item.FileDescription })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBox("det[" + j + "][FileAttached]", "", new { @class = "form-control", @Value = item.FileAttached })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBox("files", "", new { @class = "form-control", type = "File" })
+                                                </td>
+                                                <td>
+                                                    @if (!string.IsNullOrEmpty(item.FileAttached))
+                                                    {
+                                                        <a href="~/File/@item.FileAttached">Download</a>}
+                                                </td>
+                                            </tr>
+                                            j++;
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        <tr role="row" class="odd">
+                                            <td hidden>
+                                                @Html.Hidden("det[0][EFilingID]", "")
+                                            </td>
+                                            <td hidden>
+                                                @Html.Hidden("det[0][FileAttached]", "")
+                                            </td>
+                                            <td hidden>
+                                                @Html.Hidden("det[0][ReferenceID2]", "")
+                                            </td>
+                                            <td>
+                                                @Html.DropDownList("det[0][DocumentType]", new SelectList(new DocumentEFilingTypeRepository().GetAllDocumentEFilingType(), "DocumentID", "Description"), "", new { @class = "form-control " })
+                                            </td>
+                                            <td>
+                                                @Html.TextBox("det[0][FileDescription]", null, new { @class = "form-control" })
+                                            </td>
+
+                                            <td>
+                                                @Html.TextBox("files", "", new { @class = "form-control", type = "File", })
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="SubmitEFile()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 15px 25px !important;">
+                <h5 class="modal-title" id="exampleModalLabel">Attachment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding: 10px 10px !important;">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "DispatchAttachmentsForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group m-form__group">
+                                <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="detailGrid">
+                                    <thead style="background-color: #28469c; color: #ffffff">
+                                        <tr>
+                                            <th>Type of Attachment</th>
+                                            <th>Description</th>
+                                            <th>Attachment</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                @Html.DropDownList("drd", new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description"), "Select", new { @class = "form-control UosID" })
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                            </td>
+                                            <td>
+                                                <input type="file" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer" style="padding: 10px 25px !important;">
+                <button type="button" class="btn btn-success" onclick="SubmitIndDomesticDispatchScheduleForm()">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <span>
+                        <i class="fa fa-times"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>*@
+<script src="~/Content/VigorJs/Vouchers.js"></script>
+<script src="~/Scripts/GL/VoucherDetails.js"></script>
+<script src="~/Content/VigorJs/EFile/EFile.js"></script>

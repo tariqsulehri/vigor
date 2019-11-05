@@ -1,0 +1,200 @@
+﻿@using ERP.Infrastructure.Repositories.HR
+@using ERP.Infrastructure.Repositories.Indenting
+@model ERP.Core.Models.Indenting.IndentDomestic.IndCommissionInvoice
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;s
+        height: 200px;
+        overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+
+
+<div class="m-portlet__body" style="padding: 20px;">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(a => a.IndentId)
+    @Html.HiddenFor(a => a.CurrencyId)
+    @Html.HiddenFor(a => a.Currency)
+    @Html.HiddenFor(a => a.ExchangeRate)
+    @Html.HiddenFor(a => a.IndentDomestic)
+    <div class="form-group row">
+        <div class="col-lg-2">
+            <label>Date:</label>
+            @Html.TextBoxFor(a => a.CreatedOn, new { @class = "form-control ", type = "date", Value = @System.DateTime.Now.ToString("yyyy-MM-dd") })
+        </div>
+        <div class="col-lg-2">
+            <label>Invoice:</label>
+            @Html.TextBoxFor(a => a.CommissionInvoiceKey, new { @class = "form-control ", disabled = "disabled" })
+        </div>
+        <div class="col-lg-2">
+            <label>Cotract No:</label>
+            @Html.HiddenFor(a => a.IndentDomestic.IndentKey)
+            @Html.TextBoxFor(a => a.IndentDomestic.IndentKey, new { @class = "form-control ", disabled = "disabled" })
+        </div>
+        <div class="col-lg-2">
+            <label>Date:</label>
+            @Html.HiddenFor(a => a.IndentDomestic.IndentDate)
+            @Html.TextBoxFor(a => a.IndentDomestic.IndentDate, new { @class = "form-control ", type = "date", Value = @Model.IndentDomestic.IndentDate.ToString("yyyy-MM-dd"), disabled = "disabled" })
+        </div>
+        <div class="col-lg-3">
+            <label>Department:</label>
+            @Html.DropDownListFor(a => a.IndentDomestic.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control", @disabled = "disabled" })
+        </div>
+        <div class="col-lg-2">
+            <label>Contract Closed:</label>
+            @Html.Hidden("isClosed", new { Value = Model.IndentDomestic.isClosed })
+            <input type="text" class="form-control" value="@(Model.IndentDomestic.isClosed == true ? "Yes" : "No")" disabled="disabled" />
+        </div>
+        <div class="col-lg-2">
+            <label>Revenue Authority:</label>
+            @Html.DropDownListFor(a => a.TaxOfficeId, new SelectList(new SalesTaxOfficeRepository().GetAllSalesTaxOffices(), "Id", "Description"), new { @class = "form-control" })
+
+        </div>
+        <div class="col-lg-2">
+            <label>SalesTax Rate %:</label>
+            @Html.TextBoxFor(a => a.SalesTaxRate, new { @class = "form-control ", type = "number", onchange = "SalesTaxChanged()" })
+        </div>
+        <div class="col-lg-2" style="padding-top: 20px;">
+            <div class="m-checkbox-list">
+                <label class="m-checkbox m-checkbox--state-primary">
+                    <input type="checkbox" name="IsPosted"> Post Sales Tax
+                    <span></span>
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-2" style="padding-top: 10px;">
+            <button type="button" class="btn btn-primary" onclick="GetDetails('@Model.IndentDomestic.isClosed.ToString()','@Model.IndentDomestic.Id')">Get Details</button>
+        </div>
+        <div class="col-lg-12">
+            <label><strong>Included Dispatch</strong></label>
+        </div>
+        <div class="col-lg-2">
+            <label>From:</label>
+            @*@Html.HiddenFor(a => a.DispatchIncludeFrom)*@
+            @Html.TextBoxFor(a => a.DispatchIncludeFrom, new { @class = "form-control", id = "fromDate", type = "date", Value = ViewBag.FromDate.ToString("yyyy-MM-dd"), min = ViewBag.FromDate.ToString("yyyy-MM-dd") })
+            @*@Html.TextBoxFor(a => a.DispatchIncludeFrom, Model.IndentDomestic.isClosed == false ? (object)new { @class = "form-control", id = "fromDate", type = "date", Value = @Model.IndentDomestic.IndentDate.ToString("yyyy-MM-dd") } : new { @class = "form-control ", id = "fromDate", type = "date", Value = @Model.IndentDomestic.IndentDate.ToString("yyyy-MM-dd"), @disabled = "disabled" })*@
+        </div>
+        <div class="col-lg-2">
+            <label>To:</label>
+            @*@Html.HiddenFor(a => a.DispatchIncludeTo)*@
+            @Html.TextBoxFor(a => a.DispatchIncludeTo, new { @class = "form-control", id = "toDate", type = "date", Value = ViewBag.Todate.ToString("yyyy-MM-dd") })
+            @*@Html.TextBoxFor(a => a.DispatchIncludeTo, new { @class = "form-control", id = "toDate", type = "date", Value = ViewBag.Todate.ToString("yyyy-MM-dd"), max = ViewBag.Todate.ToString("yyyy-MM-dd") })*@
+        </div>
+        <div class="col-lg-3" style="padding-top: 20px;">
+            <textarea class="form-control" readonly="" rows="2" disabled="disabled"></textarea>
+        </div>
+        <div class="col-lg-3">
+            <label>Shipper:</label>
+            <textarea class="form-control" readonly="" rows="2" disabled="disabled">@Model.IndentDomestic.CustomerSellerName</textarea>
+        </div>
+        <div class="col-lg-2">
+            <label>Buyer:</label>
+            <textarea class="form-control" readonly="" rows="2" disabled="disabled">@Model.IndentDomestic.CustomerBuyerName</textarea>
+        </div>
+    </div>
+    <div id="commDiv">
+
+    </div>
+    <div id="commDivvvv">
+        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline " id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                        <thead style="background-color: #28469c; color: #ffffff">
+                            <tr>
+                                <th width="100">Commodity</th>
+                                <th width="15">Quantity</th>
+                                <th width="80">Rate</th>
+                                <th width="80">Unit</th>
+                                <th width="80">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td><input type="text" class="form-control" /></td>
+                                <td><input type="text" class="form-control" /></td>
+                                <td><input type="text" class="form-control" /></td>
+                                <td><input type="text" class="form-control" /></td>
+                                <td><input type="text" class="form-control" /></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline " id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                        <thead style="background-color: #28469c; color: #ffffff">
+                            <tr>
+                                <th width="">Commision Paid To</th>
+                                <th width="">Commision Paid From</th>
+                                <th width="80">Rate</th>
+                                <th width="80">%/QTY</th>
+                                <th width="">Is Local</th>
+                                <th width="">Commision</th>
+                                <th>Sales Tax</th>
+                                <th width="60">Ne</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr role="row" class="odd">
+                                <td>
+                                    <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                        <option value="1"></option>
+                                        <option value="1"></option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                        <option value="1"></option>
+                                        <option value="1"></option>
+                                    </select>
+                                </td>
+                                <td><input type="number" class="form-control" /></td>
+                                <td><input type="text" class="form-control" /></td>
+                                <td>
+                                    <div class="form-group row">
+                                        <input type="checkbox" class="form-control"><span></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control"><span></span>
+                                </td>
+                                <td><input type="text" class="form-control" /></td>
+                                <td><input type="text" class="form-control" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/VigorJs/DomesticCommInv/_CreateOrUpdate.js"></script>

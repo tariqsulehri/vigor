@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSDomesticInquiry" targetNamespace="http://tempuri.org/DSDomesticInquiry.xsd" xmlns:mstns="http://tempuri.org/DSDomesticInquiry.xsd" xmlns="http://tempuri.org/DSDomesticInquiry.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSDomesticInquiry" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSDomesticInquiry" msprop:Generator_UserDSName="DSDomesticInquiry">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DomesticInquiry" msprop:Generator_TableClassName="DomesticInquiryDataTable" msprop:Generator_TableVarName="tableDomesticInquiry" msprop:Generator_TablePropName="DomesticInquiry" msprop:Generator_RowDeletingName="DomesticInquiryRowDeleting" msprop:Generator_RowChangingName="DomesticInquiryRowChanging" msprop:Generator_RowEvHandlerName="DomesticInquiryRowChangeEventHandler" msprop:Generator_RowDeletedName="DomesticInquiryRowDeleted" msprop:Generator_UserTableName="DomesticInquiry" msprop:Generator_RowChangedName="DomesticInquiryRowChanged" msprop:Generator_RowEvArgName="DomesticInquiryRowChangeEvent" msprop:Generator_RowClassName="DomesticInquiryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InquiryId" msprop:Generator_ColumnVarNameInTable="columnInquiryId" msprop:Generator_ColumnPropNameInRow="InquiryId" msprop:Generator_ColumnPropNameInTable="InquiryIdColumn" msprop:Generator_UserColumnName="InquiryId" type="xs:int" minOccurs="0" />
+              <xs:element name="InquiryKey" msprop:Generator_ColumnVarNameInTable="columnInquiryKey" msprop:Generator_ColumnPropNameInRow="InquiryKey" msprop:Generator_ColumnPropNameInTable="InquiryKeyColumn" msprop:Generator_UserColumnName="InquiryKey" type="xs:string" minOccurs="0" />
+              <xs:element name="InquiryDate" msprop:Generator_ColumnVarNameInTable="columnInquiryDate" msprop:Generator_ColumnPropNameInRow="InquiryDate" msprop:Generator_ColumnPropNameInTable="InquiryDateColumn" msprop:Generator_UserColumnName="InquiryDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="Department" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Department" msprop:Generator_ColumnVarNameInTable="columnDepartment" msprop:Generator_ColumnPropNameInTable="DepartmentColumn" msprop:Generator_UserColumnName="Department" type="xs:string" default=" " minOccurs="0" />
+              <xs:element name="CommodityId" msprop:Generator_ColumnVarNameInTable="columnCommodityId" msprop:Generator_ColumnPropNameInRow="CommodityId" msprop:Generator_ColumnPropNameInTable="CommodityIdColumn" msprop:Generator_UserColumnName="CommodityId" type="xs:int" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Commodity" msprop:Generator_ColumnVarNameInTable="columnCommodity" msprop:Generator_ColumnPropNameInRow="Commodity" msprop:Generator_ColumnPropNameInTable="CommodityColumn" msprop:Generator_UserColumnName="Commodity" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UOS" msprop:Generator_ColumnVarNameInTable="columnUOS" msprop:Generator_ColumnPropNameInRow="UOS" msprop:Generator_ColumnPropNameInTable="UOSColumn" msprop:Generator_UserColumnName="UOS" type="xs:string" minOccurs="0" />
+              <xs:element name="PaymentTerms" msprop:Generator_ColumnVarNameInTable="columnPaymentTerms" msprop:Generator_ColumnPropNameInRow="PaymentTerms" msprop:Generator_ColumnPropNameInTable="PaymentTermsColumn" msprop:Generator_UserColumnName="PaymentTerms" type="xs:string" minOccurs="0" />
+              <xs:element name="ComodityType" msprop:Generator_ColumnVarNameInTable="columnComodityType" msprop:Generator_ColumnPropNameInRow="ComodityType" msprop:Generator_ColumnPropNameInTable="ComodityTypeColumn" msprop:Generator_UserColumnName="ComodityType" type="xs:string" minOccurs="0" />
+              <xs:element name="UOR" msprop:Generator_ColumnVarNameInTable="columnUOR" msprop:Generator_ColumnPropNameInRow="UOR" msprop:Generator_ColumnPropNameInTable="UORColumn" msprop:Generator_UserColumnName="UOR" type="xs:string" minOccurs="0" />
+              <xs:element name="InquiryClosedDate" msprop:Generator_ColumnVarNameInTable="columnInquiryClosedDate" msprop:Generator_ColumnPropNameInRow="InquiryClosedDate" msprop:Generator_ColumnPropNameInTable="InquiryClosedDateColumn" msprop:Generator_UserColumnName="InquiryClosedDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreatedOn" msprop:Generator_ColumnVarNameInTable="columnCreatedOn" msprop:Generator_ColumnPropNameInRow="CreatedOn" msprop:Generator_ColumnPropNameInTable="CreatedOnColumn" msprop:Generator_UserColumnName="CreatedOn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ModifiedO" msprop:Generator_ColumnVarNameInTable="columnModifiedO" msprop:Generator_ColumnPropNameInRow="ModifiedO" msprop:Generator_ColumnPropNameInTable="ModifiedOColumn" msprop:Generator_UserColumnName="ModifiedO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CustomerAsBuyer" msprop:Generator_ColumnVarNameInTable="columnCustomerAsBuyer" msprop:Generator_ColumnPropNameInRow="CustomerAsBuyer" msprop:Generator_ColumnPropNameInTable="CustomerAsBuyerColumn" msprop:Generator_UserColumnName="CustomerAsBuyer" type="xs:string" minOccurs="0" />
+              <xs:element name="InquiryStatus" msprop:Generator_ColumnVarNameInTable="columnInquiryStatus" msprop:Generator_ColumnPropNameInRow="InquiryStatus" msprop:Generator_ColumnPropNameInTable="InquiryStatusColumn" msprop:Generator_UserColumnName="InquiryStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="IsClosed" msprop:Generator_ColumnVarNameInTable="columnIsClosed" msprop:Generator_ColumnPropNameInRow="IsClosed" msprop:Generator_ColumnPropNameInTable="IsClosedColumn" msprop:Generator_UserColumnName="IsClosed" type="xs:string" minOccurs="0" />
+              <xs:element name="seller" msprop:Generator_ColumnVarNameInTable="columnseller" msprop:Generator_ColumnPropNameInRow="seller" msprop:Generator_ColumnPropNameInTable="sellerColumn" msprop:Generator_UserColumnName="seller" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

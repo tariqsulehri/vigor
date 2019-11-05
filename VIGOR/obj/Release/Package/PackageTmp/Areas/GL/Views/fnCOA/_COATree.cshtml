@@ -1,0 +1,72 @@
+﻿
+@model IEnumerable<ERP.Core.Models.Finance.CoaL1>
+<script src="~/assets/assets/demo/default/custom/components/base/treeview.js"></script>
+
+    <div class="m-portlet__body">
+        <div id="m_tree_1" class=" my-custom-scrollbar">
+            <ul>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <li >
+                            <span onclick="showForm('@item.L1Code','L1')">
+                                @item.Title
+                            </span>
+
+                            <ul>
+                                @foreach (var coa2 in item.CoaL2.Where(a => a.L1Code == item.L1Code))
+                                {
+                                    <li >
+                                        <span onclick="showForm('@coa2.L2Code','L2')">
+
+                                            @coa2.Title
+                                        </span>
+
+                                        <ul>
+                                            @foreach (var coa3 in coa2.CoaL3.Where(a => a.L2Code == coa2.L2Code))
+                                            {
+                                                <li >
+                                                    <span onclick="showForm('@coa3.L3Code','L3')">
+
+
+                                                        @coa3.Title
+                                                    </span>
+                                                    <ul>
+                                                        @foreach (var coa4 in coa3.CoaL4.Where(a => a.L3Code == coa3.L3Code))
+                                                        {
+                                                            <li >
+                                                                <span onclick="showForm('@coa4.L4Code','L4')">
+
+                                                                    @coa4.Title
+                                                                </span>
+
+                                                                <ul>
+                                                                    @foreach (var coa5 in coa4.CoaL5.Where(a => a.L4Code == coa4.L4Code))
+                                                                    {
+                                                                        <li data-jstree='{"icon" : "fa fa-file m--font-danger " }'>
+                                                                            <span onclick="showForm('@coa5.L5Code','L5')">
+                                                                                @coa5.Title
+                                                                            </span>
+
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+
+                    }
+                }
+            </ul>
+        </div>
+
+    </div>
+

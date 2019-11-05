@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ERP.Core.Models.Indenting.IndentDomestic.IndCommissionInvoice>
+
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="m-portlet m-portlet--mobile">
+    @using (Html.BeginForm("Index", "DomesticCommInv", FormMethod.Post))
+    {
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Local Commission Invoice
+                    </h3>
+                </div>
+            </div>
+            <div class="m-portlet__head-tools">
+                <ul class="m-portlet__nav">
+                    <li class="m-portlet__nav-item">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </li>
+                    <li class="m-portlet__nav-item">
+                        <button type="submit" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden">Search</button>
+                    </li>
+                    <li class="m-portlet__nav-item">
+                        <a href="@Url.Action("Create", "DomesticCommInv", new {Area = "Indent"})" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air hidden">
+                            <span>
+                                <i class="la la-plus"></i>
+                                <span>Add</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-portlet__body" style="padding-top: 1.0rem !important;">
+            <div class="form-group m-form__group row">
+                <div class="col-lg-2">
+                    <label>From:</label>
+                    @Html.TextBox("FromDate", "", new { @class = "form-control", type = "date", min = ViewBag.FromDate.ToString("yyyy-MM-dd"), max = ViewBag.Todate.ToString("yyyy-MM-dd"), Value = ViewBag.FromDate.ToString("yyyy-MM-dd"), id = "dateFrom" })
+
+                </div>
+                <div class="col-lg-2">
+                    <label>To:</label>
+                    @Html.TextBox("Todate", "", new { @class = "form-control", type = "date", min = ViewBag.FromDate.ToString("yyyy-MM-dd"), max = ViewBag.Todate.ToString("yyyy-MM-dd"), Value = ViewBag.Todate.ToString("yyyy-MM-dd"), id = "dateTo" })
+
+                </div>
+
+
+            </div>
+            <table class="table table-striped- table-bordered table-hover table-checkable" id="VoucherTable">
+                <thead>
+                    <tr>
+                        <th>Invoice Date</th>
+                        <th>Invoice Key</th>
+                        <th>Indent Key</th>
+                        <th>Department</th>
+                        <th>Revenue Authority</th>
+                        <th>SalesTax Rate %</th>
+                        <th>Shipper</th>
+                        <th>Buyer</th>
+                        <th>IsClosed</th>
+                        <th>IsPosted</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                    <tr role="row" class="odd">
+                        <td>@item.InvoiceDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.CommissionInvoiceKey</td>
+                        <td>@item.IndentKey</td>
+                        <td>@item.IndentDomestic.HrDepartment.Title</td>
+                        <td>@item.SalesTaxOffice.Description</td>
+                        <td>@item.SalesTaxRate</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@(item.IsPosted == true ? "Yes" : "NO")</td>
+                        <td></td>
+                    </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

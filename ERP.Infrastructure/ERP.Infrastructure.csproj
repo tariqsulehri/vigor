@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{32503CDF-EBD1-486C-BEBE-E2B34752AA25}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Infrastructure</RootNamespace>
+    <AssemblyName>ERP.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Vigour Live\ERP.Infrastructure\bin\Debug\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ErpDbContext.cs" />
+    <Compile Include="ErpInitalizeDB.cs" />
+    <Compile Include="Migrations\201906160745041_initital-migration-again.cs" />
+    <Compile Include="Migrations\201906160745041_initital-migration-again.Designer.cs">
+      <DependentUpon>201906160745041_initital-migration-again.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906171708201_CharacterToBoolIndAndInsp.cs" />
+    <Compile Include="Migrations\201906171708201_CharacterToBoolIndAndInsp.Designer.cs">
+      <DependentUpon>201906171708201_CharacterToBoolIndAndInsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906171726154_update-reation-party-indDomDetail.cs" />
+    <Compile Include="Migrations\201906171726154_update-reation-party-indDomDetail.Designer.cs">
+      <DependentUpon>201906171726154_update-reation-party-indDomDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906181628597_InquiryRelationUpdate.cs" />
+    <Compile Include="Migrations\201906181628597_InquiryRelationUpdate.Designer.cs">
+      <DependentUpon>201906181628597_InquiryRelationUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906181748193_InqPaymentTermsRelationUpdate.cs" />
+    <Compile Include="Migrations\201906181748193_InqPaymentTermsRelationUpdate.Designer.cs">
+      <DependentUpon>201906181748193_InqPaymentTermsRelationUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906181808165_InqPaymentTermsRelationUpdate1.cs" />
+    <Compile Include="Migrations\201906181808165_InqPaymentTermsRelationUpdate1.Designer.cs">
+      <DependentUpon>201906181808165_InqPaymentTermsRelationUpdate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906251758285_addExportInqTablesDomInqRel.cs" />
+    <Compile Include="Migrations\201906251758285_addExportInqTablesDomInqRel.Designer.cs">
+      <DependentUpon>201906251758285_addExportInqTablesDomInqRel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906251829199_ExportInquiryOffersReviewQuestion.cs" />
+    <Compile Include="Migrations\201906251829199_ExportInquiryOffersReviewQuestion.Designer.cs">
+      <DependentUpon>201906251829199_ExportInquiryOffersReviewQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907191724154_CommInvoiceAnd.cs" />
+    <Compile Include="Migrations\201907191724154_CommInvoiceAnd.Designer.cs">
+      <DependentUpon>201907191724154_CommInvoiceAnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907202017358_IndentDomesticPaymentAddOn.cs" />
+    <Compile Include="Migrations\201907202017358_IndentDomesticPaymentAddOn.Designer.cs">
+      <DependentUpon>201907202017358_IndentDomesticPaymentAddOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907231826492_taskRegisterAndProgress.cs" />
+    <Compile Include="Migrations\201907231826492_taskRegisterAndProgress.Designer.cs">
+      <DependentUpon>201907231826492_taskRegisterAndProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907251837508_addandRemoveFields.cs" />
+    <Compile Include="Migrations\201907251837508_addandRemoveFields.Designer.cs">
+      <DependentUpon>201907251837508_addandRemoveFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907291723019_AddOnTemplate.cs" />
+    <Compile Include="Migrations\201907291723019_AddOnTemplate.Designer.cs">
+      <DependentUpon>201907291723019_AddOnTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301737084_RevenueAuthority.cs" />
+    <Compile Include="Migrations\201907301737084_RevenueAuthority.Designer.cs">
+      <DependentUpon>201907301737084_RevenueAuthority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908021823531_UserPrivAndSystemOptions.cs" />
+    <Compile Include="Migrations\201908021823531_UserPrivAndSystemOptions.Designer.cs">
+      <DependentUpon>201908021823531_UserPrivAndSystemOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908021940102_InquiryViewUpdate.cs" />
+    <Compile Include="Migrations\201908021940102_InquiryViewUpdate.Designer.cs">
+      <DependentUpon>201908021940102_InquiryViewUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908061901557_MarkeetRepository.cs" />
+    <Compile Include="Migrations\201908061901557_MarkeetRepository.Designer.cs">
+      <DependentUpon>201908061901557_MarkeetRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908071930067_userPrevUpdate.cs" />
+    <Compile Include="Migrations\201908071930067_userPrevUpdate.Designer.cs">
+      <DependentUpon>201908071930067_userPrevUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908190834259_domesticPaymentAddOnsAddittion.cs" />
+    <Compile Include="Migrations\201908190834259_domesticPaymentAddOnsAddittion.Designer.cs">
+      <DependentUpon>201908190834259_domesticPaymentAddOnsAddittion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908190838282_domesticPaymentAddOnsAddittionStringLength.cs" />
+    <Compile Include="Migrations\201908190838282_domesticPaymentAddOnsAddittionStringLength.Designer.cs">
+      <DependentUpon>201908190838282_domesticPaymentAddOnsAddittionStringLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908191011522_UserDealsInDepartment.cs" />
+    <Compile Include="Migrations\201908191011522_UserDealsInDepartment.Designer.cs">
+      <DependentUpon>201908191011522_UserDealsInDepartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908191739423_updateStoredProceduresAndMarkeetRepository.cs" />
+    <Compile Include="Migrations\201908191739423_updateStoredProceduresAndMarkeetRepository.Designer.cs">
+      <DependentUpon>201908191739423_updateStoredProceduresAndMarkeetRepository.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908231933289_update-FiledOnly.cs" />
+    <Compile Include="Migrations\201908231933289_update-FiledOnly.Designer.cs">
+      <DependentUpon>201908231933289_update-FiledOnly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908251642352_ReviewQuestionAndOtherChanges.cs" />
+    <Compile Include="Migrations\201908251642352_ReviewQuestionAndOtherChanges.Designer.cs">
+      <DependentUpon>201908251642352_ReviewQuestionAndOtherChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908251657260_PaymentAddOnRelation.cs" />
+    <Compile Include="Migrations\201908251657260_PaymentAddOnRelation.Designer.cs">
+      <DependentUpon>201908251657260_PaymentAddOnRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909161046230_CustomerUnitsAndRelations.cs" />
+    <Compile Include="Migrations\201909161046230_CustomerUnitsAndRelations.Designer.cs">
+      <DependentUpon>201909161046230_CustomerUnitsAndRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909161144577_AddPostFlag.cs" />
+    <Compile Include="Migrations\201909161144577_AddPostFlag.Designer.cs">
+      <DependentUpon>201909161144577_AddPostFlag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241512030_YarnInspectionUsterTable.cs" />
+    <Compile Include="Migrations\201909241512030_YarnInspectionUsterTable.Designer.cs">
+      <DependentUpon>201909241512030_YarnInspectionUsterTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241522472_YarnInspectionUsterTableUpdate.cs" />
+    <Compile Include="Migrations\201909241522472_YarnInspectionUsterTableUpdate.Designer.cs">
+      <DependentUpon>201909241522472_YarnInspectionUsterTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241556238_LocationTableAdd.cs" />
+    <Compile Include="Migrations\201909241556238_LocationTableAdd.Designer.cs">
+      <DependentUpon>201909241556238_LocationTableAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241559582_LocationTableAdd1.cs" />
+    <Compile Include="Migrations\201909241559582_LocationTableAdd1.Designer.cs">
+      <DependentUpon>201909241559582_LocationTableAdd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909271436220_HR_Tables.cs" />
+    <Compile Include="Migrations\201909271436220_HR_Tables.Designer.cs">
+      <DependentUpon>201909271436220_HR_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909281537564_walkingCustomer.cs" />
+    <Compile Include="Migrations\201909281537564_walkingCustomer.Designer.cs">
+      <DependentUpon>201909281537564_walkingCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909291434091_AddPoNumber and SuppContract.cs" />
+    <Compile Include="Migrations\201909291434091_AddPoNumber and SuppContract.Designer.cs">
+      <DependentUpon>201909291434091_AddPoNumber and SuppContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909301603096_HRTableUpdate.cs" />
+    <Compile Include="Migrations\201909301603096_HRTableUpdate.Designer.cs">
+      <DependentUpon>201909301603096_HRTableUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909301701469_HRUpdatesFromSirNusrat.cs" />
+    <Compile Include="Migrations\201909301701469_HRUpdatesFromSirNusrat.Designer.cs">
+      <DependentUpon>201909301701469_HRUpdatesFromSirNusrat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910010716090_efilingRepositories.cs" />
+    <Compile Include="Migrations\201910010716090_efilingRepositories.Designer.cs">
+      <DependentUpon>201910010716090_efilingRepositories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910021619451_CommInvoiceCommAgentRelation.cs" />
+    <Compile Include="Migrations\201910021619451_CommInvoiceCommAgentRelation.Designer.cs">
+      <DependentUpon>201910021619451_CommInvoiceCommAgentRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910021956430_AddDepartmentFields.cs" />
+    <Compile Include="Migrations\201910021956430_AddDepartmentFields.Designer.cs">
+      <DependentUpon>201910021956430_AddDepartmentFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910030316519_CommTablesUpdation.cs" />
+    <Compile Include="Migrations\201910030316519_CommTablesUpdation.Designer.cs">
+      <DependentUpon>201910030316519_CommTablesUpdation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910030934271_addCompanyIDinAgentComm.cs" />
+    <Compile Include="Migrations\201910030934271_addCompanyIDinAgentComm.Designer.cs">
+      <DependentUpon>201910030934271_addCompanyIDinAgentComm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910031758376_DifferentUpdates.cs" />
+    <Compile Include="Migrations\201910031758376_DifferentUpdates.Designer.cs">
+      <DependentUpon>201910031758376_DifferentUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910031809396_FurtherChangesComm.cs" />
+    <Compile Include="Migrations\201910031809396_FurtherChangesComm.Designer.cs">
+      <DependentUpon>201910031809396_FurtherChangesComm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041458112_fieldsRevised.cs" />
+    <Compile Include="Migrations\201910041458112_fieldsRevised.Designer.cs">
+      <DependentUpon>201910041458112_fieldsRevised.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910041523032_RevisedCommCodeToId.cs" />
+    <Compile Include="Migrations\201910041523032_RevisedCommCodeToId.Designer.cs">
+      <DependentUpon>201910041523032_RevisedCommCodeToId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910081434272_UnitOfSaleUpdattion.cs" />
+    <Compile Include="Migrations\201910081434272_UnitOfSaleUpdattion.Designer.cs">
+      <DependentUpon>201910081434272_UnitOfSaleUpdattion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091256257_EfilingFNLCommAndOtherReationUpdate.cs" />
+    <Compile Include="Migrations\201910091256257_EfilingFNLCommAndOtherReationUpdate.Designer.cs">
+      <DependentUpon>201910091256257_EfilingFNLCommAndOtherReationUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910091532573_inddomesticViewChanged.cs" />
+    <Compile Include="Migrations\201910091532573_inddomesticViewChanged.Designer.cs">
+      <DependentUpon>201910091532573_inddomesticViewChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910101938540_emailAndEfilingEfilingDovTypeEtc.cs" />
+    <Compile Include="Migrations\201910101938540_emailAndEfilingEfilingDovTypeEtc.Designer.cs">
+      <DependentUpon>201910101938540_emailAndEfilingEfilingDovTypeEtc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111436265_yarn-HR-Approval-updates.cs" />
+    <Compile Include="Migrations\201910111436265_yarn-HR-Approval-updates.Designer.cs">
+      <DependentUpon>201910111436265_yarn-HR-Approval-updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910111543200_HR-updates.cs" />
+    <Compile Include="Migrations\201910111543200_HR-updates.Designer.cs">
+      <DependentUpon>201910111543200_HR-updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910120120542_HR_ReationsAndOtherUpdates.cs" />
+    <Compile Include="Migrations\201910120120542_HR_ReationsAndOtherUpdates.Designer.cs">
+      <DependentUpon>201910120120542_HR_ReationsAndOtherUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910120700048_ReationsUpdates.cs" />
+    <Compile Include="Migrations\201910120700048_ReationsUpdates.Designer.cs">
+      <DependentUpon>201910120700048_ReationsUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910120748234_AddedReferenceKeys.cs" />
+    <Compile Include="Migrations\201910120748234_AddedReferenceKeys.Designer.cs">
+      <DependentUpon>201910120748234_AddedReferenceKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910120852438_CPA_Tables.cs" />
+    <Compile Include="Migrations\201910120852438_CPA_Tables.Designer.cs">
+      <DependentUpon>201910120852438_CPA_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910151649506_DeptDescriptRequiredRemoved.cs" />
+    <Compile Include="Migrations\201910151649506_DeptDescriptRequiredRemoved.Designer.cs">
+      <DependentUpon>201910151649506_DeptDescriptRequiredRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910181905349_InspectionLocalExportTables.cs" />
+    <Compile Include="Migrations\201910181905349_InspectionLocalExportTables.Designer.cs">
+      <DependentUpon>201910181905349_InspectionLocalExportTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201155176_updateFieldsExport.cs" />
+    <Compile Include="Migrations\201910201155176_updateFieldsExport.Designer.cs">
+      <DependentUpon>201910201155176_updateFieldsExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910221448081_IndDomestic-Efiling-hrEmp.cs" />
+    <Compile Include="Migrations\201910221448081_IndDomestic-Efiling-hrEmp.Designer.cs">
+      <DependentUpon>201910221448081_IndDomestic-Efiling-hrEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910291254085_RefIdInConfigModels.cs" />
+    <Compile Include="Migrations\201910291254085_RefIdInConfigModels.Designer.cs">
+      <DependentUpon>201910291254085_RefIdInConfigModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910300739417_HR_CNIC_Repo.cs" />
+    <Compile Include="Migrations\201910300739417_HR_CNIC_Repo.Designer.cs">
+      <DependentUpon>201910300739417_HR_CNIC_Repo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910301024127_AdminUserDealsInDeptRepo.cs" />
+    <Compile Include="Migrations\201910301024127_AdminUserDealsInDeptRepo.Designer.cs">
+      <DependentUpon>201910301024127_AdminUserDealsInDeptRepo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
+    <Compile Include="Repositories\Admin\AdminModulesRepository.cs" />
+    <Compile Include="Repositories\Admin\AdminUserDealsInDepartmentRepository.cs" />
+    <Compile Include="Repositories\Admin\SystemOptionRepository.cs" />
+    <Compile Include="Repositories\Admin\UserModuleDetailsRepository.cs" />
+    <Compile Include="Repositories\Admin\UserModulesRepository.cs" />
+    <Compile Include="Repositories\Admin\UserPrevilageRepository.cs" />
+    <Compile Include="Repositories\Admin\UserRepository.cs" />
+    <Compile Include="Repositories\Common\BusinessTypesRepository.cs" />
+    <Compile Include="Repositories\Common\LocationsRepository.cs" />
+    <Compile Include="Repositories\Common\PatryCommon\CertificationsRepository.cs" />
+    <Compile Include="Repositories\Common\CompanyRepository.cs" />
+    <Compile Include="Repositories\Common\PatryCommon\ContactTypesRepository.cs" />
+    <Compile Include="Repositories\Common\PatryCommon\SocialRepository.cs" />
+    <Compile Include="Repositories\Common\PatryCommon\SpecialInstructionRepository.cs" />
+    <Compile Include="Repositories\Common\PatryCommon\MachineRepository.cs" />
+    <Compile Include="Repositories\Common\StateRepository.cs" />
+    <Compile Include="Repositories\Common\CountryRepository.cs" />
+    <Compile Include="Repositories\Common\CityRepository.cs" />
+    <Compile Include="Repositories\Common\RegionRepository.cs" />
+    <Compile Include="Repositories\Fin\CoaL5Repository.cs" />
+    <Compile Include="Repositories\Fin\CoaL4Repository.cs" />
+    <Compile Include="Repositories\Fin\CoaL3Repository.cs" />
+    <Compile Include="Repositories\Fin\CoaL2Repository.cs" />
+    <Compile Include="Repositories\Fin\CoaL1Repository.cs" />
+    <Compile Include="Repositories\Fin\FinBookTypeRepositry.cs" />
+    <Compile Include="Repositories\Fin\FinVoucherRepository.cs" />
+    <Compile Include="Repositories\Fin\FinVTypeRepository.cs" />
+    <Compile Include="Repositories\Fin\FinFescalYearRepository.cs" />
+    <Compile Include="Repositories\Fin\FinFescalYearDetailRepository.cs" />
+    <Compile Include="Repositories\HR\HrDepartmentRepository.cs" />
+    <Compile Include="Repositories\HR\HrEmployeeRepository.cs" />
+    <Compile Include="Repositories\HR\HR_AllowanceModeRepository.cs" />
+    <Compile Include="Repositories\HR\HR_AllowancesRepository.cs" />
+    <Compile Include="Repositories\HR\HR_AttendanceTimingsRepository.cs" />
+    <Compile Include="Repositories\HR\HR_CINCRRepository.cs" />
+    <Compile Include="Repositories\HR\HR_DayStatusRepository.cs" />
+    <Compile Include="Repositories\HR\HR_DegreeRepository.cs" />
+    <Compile Include="Repositories\HR\HR_DesignationRepository.cs" />
+    <Compile Include="Repositories\HR\HR_EmployeeAllowancesRepository.cs" />
+    <Compile Include="Repositories\HR\HR_EmployeeExperienceRepository.cs" />
+    <Compile Include="Repositories\HR\HR_EmployeeLeaveBalanceRepository.cs" />
+    <Compile Include="Repositories\HR\HR_EmployeeLoanAdvanceBalanceRepository.cs" />
+    <Compile Include="Repositories\HR\HR_EmployeeQualificationRepository.cs" />
+    <Compile Include="Repositories\HR\HR_EmployeeTypeRepository.cs" />
+    <Compile Include="Repositories\HR\HR_GazzettedDaysRepository.cs" />
+    <Compile Include="Repositories\HR\HR_HistoryDetailsRepository.cs" />
+    <Compile Include="Repositories\HR\HR_HistoryRepository.cs" />
+    <Compile Include="Repositories\HR\HR_LeaveRequestRepository.cs" />
+    <Compile Include="Repositories\HR\HR_LoanAdvanceApplicationRepository.cs" />
+    <Compile Include="Repositories\HR\HR_LoanAdvanceRepository.cs" />
+    <Compile Include="Repositories\HR\HR_MonthlyAttendanceRepository.cs" />
+    <Compile Include="Repositories\HR\HR_SalaryDetailRepository.cs" />
+    <Compile Include="Repositories\HR\HR_SalaryMasterRepository.cs" />
+    <Compile Include="Repositories\HR\HR_ShortLeavesRepository.cs" />
+    <Compile Include="Repositories\HR\Task\HrTaskProgressRepository.cs" />
+    <Compile Include="Repositories\HR\Task\HrTaskRegisterRepository.cs" />
+    <Compile Include="Repositories\Indenting\CommodityTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CPAAttachments_2BDeletedRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CpaFclRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CPAFindingNatureRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CPAFindingNCTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CPAFindingNCTypeSubRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CPAFindingTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CPALogSheetRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CpaNcTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CpaRepository.cs" />
+    <Compile Include="Repositories\Indenting\cpa\CpaTypesRepository.cs" />
+    <Compile Include="Repositories\Indenting\CurrencyRepository.cs" />
+    <Compile Include="Repositories\Indenting\DeptDealsInCommodityTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\DeptDealsInMarkeetRepository.cs" />
+    <Compile Include="Repositories\Indenting\ExchangeRatesRepository.cs" />
+    <Compile Include="Repositories\Indenting\GoodsForwarderRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndColourRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndDelayShipmentCategoryRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndDelayShipmentReasonRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndDesignRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\CommInvoiceAgentCommRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\DocumentEFilingTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\EFilingSystemRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\EmailContractApprovalRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\FabricSampleRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndCommissionInvoiceRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndCommissionRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticDispatchScheduleRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticEFilingRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticInquiryOfferRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticInquiryRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticInquiryReviewRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticPaymentAddOnRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndentRevisionLogRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentDemestic\IndInquiryReviewQuestionRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryOfferRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryReviewQuestionRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryReviewRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndGeneralDescriptionsRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndLeadTimeRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndPaymentTermsRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndPriceTermsRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndSizeGroupRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndSizeRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndUnitOfMeasureRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabInspReportLocalSum.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabInspTypePerformedRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabricInspLoomTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabricInspReportLocalRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabricInspStandardRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabricInspStatusRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabricInspTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\FabricTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\IndentInspectionRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\KnittedFabricInspBleachedRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\KnittedFabricInspDyedRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\KnittedFabricInspectionAttachmentRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\KnittedFabricInspectionRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\KnittedFabricInspGreyRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\QcInspectorRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\YarnInspectionAttachmentsRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\YarnInspectionGradeRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\YarnInspectionReportTypeRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\YarnInspectionRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\YarnInspectionUsterSettingRepository.cs" />
+    <Compile Include="Repositories\Indenting\Inspection\YarnInspUstersRepository.cs" />
+    <Compile Include="Repositories\Indenting\InspExport\FabricInspReportExport4PointDetailsRepository.cs" />
+    <Compile Include="Repositories\Indenting\InspExport\FabricInspReportExport4PointResultsRepository.cs" />
+    <Compile Include="Repositories\Indenting\InspExport\FabricInspReportExportRepository.cs" />
+    <Compile Include="Repositories\Indenting\InspExport\FabricInspRptExp4PFormat2Repository.cs" />
+    <Compile Include="Repositories\Indenting\MarkeetDealsInRepository.cs" />
+    <Compile Include="Repositories\Indenting\SalesTaxRepository.cs" />
+    <Compile Include="Repositories\Indenting\ProductRepository.cs" />
+    <Compile Include="Repositories\Indenting\ShipingLineRepository.cs" />
+    <Compile Include="Repositories\Indenting\UnitOfRateRepository.cs" />
+    <Compile Include="Repositories\Indenting\UnitOfSaleRepository.cs" />
+    <Compile Include="Repositories\Inventory\BrandRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerBrandRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerCertificationRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerContactPersonRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerContactRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerInstructionRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerMachineRepository.cs" />
+    <Compile Include="Repositories\Party\CustomerSocialRepository.cs" />
+    <Compile Include="Repositories\Party\FinPartyRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\VMFinLedger.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906160745041_initital-migration-again.resx">
+      <DependentUpon>201906160745041_initital-migration-again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906171708201_CharacterToBoolIndAndInsp.resx">
+      <DependentUpon>201906171708201_CharacterToBoolIndAndInsp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906171726154_update-reation-party-indDomDetail.resx">
+      <DependentUpon>201906171726154_update-reation-party-indDomDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906181628597_InquiryRelationUpdate.resx">
+      <DependentUpon>201906181628597_InquiryRelationUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906181748193_InqPaymentTermsRelationUpdate.resx">
+      <DependentUpon>201906181748193_InqPaymentTermsRelationUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906181808165_InqPaymentTermsRelationUpdate1.resx">
+      <DependentUpon>201906181808165_InqPaymentTermsRelationUpdate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906251758285_addExportInqTablesDomInqRel.resx">
+      <DependentUpon>201906251758285_addExportInqTablesDomInqRel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906251829199_ExportInquiryOffersReviewQuestion.resx">
+      <DependentUpon>201906251829199_ExportInquiryOffersReviewQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907191724154_CommInvoiceAnd.resx">
+      <DependentUpon>201907191724154_CommInvoiceAnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907202017358_IndentDomesticPaymentAddOn.resx">
+      <DependentUpon>201907202017358_IndentDomesticPaymentAddOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907231826492_taskRegisterAndProgress.resx">
+      <DependentUpon>201907231826492_taskRegisterAndProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907251837508_addandRemoveFields.resx">
+      <DependentUpon>201907251837508_addandRemoveFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291723019_AddOnTemplate.resx">
+      <DependentUpon>201907291723019_AddOnTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301737084_RevenueAuthority.resx">
+      <DependentUpon>201907301737084_RevenueAuthority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908021823531_UserPrivAndSystemOptions.resx">
+      <DependentUpon>201908021823531_UserPrivAndSystemOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908021940102_InquiryViewUpdate.resx">
+      <DependentUpon>201908021940102_InquiryViewUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908061901557_MarkeetRepository.resx">
+      <DependentUpon>201908061901557_MarkeetRepository.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908071930067_userPrevUpdate.resx">
+      <DependentUpon>201908071930067_userPrevUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908190834259_domesticPaymentAddOnsAddittion.resx">
+      <DependentUpon>201908190834259_domesticPaymentAddOnsAddittion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908190838282_domesticPaymentAddOnsAddittionStringLength.resx">
+      <DependentUpon>201908190838282_domesticPaymentAddOnsAddittionStringLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908191011522_UserDealsInDepartment.resx">
+      <DependentUpon>201908191011522_UserDealsInDepartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908191739423_updateStoredProceduresAndMarkeetRepository.resx">
+      <DependentUpon>201908191739423_updateStoredProceduresAndMarkeetRepository.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908231933289_update-FiledOnly.resx">
+      <DependentUpon>201908231933289_update-FiledOnly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908251642352_ReviewQuestionAndOtherChanges.resx">
+      <DependentUpon>201908251642352_ReviewQuestionAndOtherChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908251657260_PaymentAddOnRelation.resx">
+      <DependentUpon>201908251657260_PaymentAddOnRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909161046230_CustomerUnitsAndRelations.resx">
+      <DependentUpon>201909161046230_CustomerUnitsAndRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909161144577_AddPostFlag.resx">
+      <DependentUpon>201909161144577_AddPostFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241512030_YarnInspectionUsterTable.resx">
+      <DependentUpon>201909241512030_YarnInspectionUsterTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241522472_YarnInspectionUsterTableUpdate.resx">
+      <DependentUpon>201909241522472_YarnInspectionUsterTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241556238_LocationTableAdd.resx">
+      <DependentUpon>201909241556238_LocationTableAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241559582_LocationTableAdd1.resx">
+      <DependentUpon>201909241559582_LocationTableAdd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909271436220_HR_Tables.resx">
+      <DependentUpon>201909271436220_HR_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909281537564_walkingCustomer.resx">
+      <DependentUpon>201909281537564_walkingCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909291434091_AddPoNumber and SuppContract.resx">
+      <DependentUpon>201909291434091_AddPoNumber and SuppContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909301603096_HRTableUpdate.resx">
+      <DependentUpon>201909301603096_HRTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909301701469_HRUpdatesFromSirNusrat.resx">
+      <DependentUpon>201909301701469_HRUpdatesFromSirNusrat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910010716090_efilingRepositories.resx">
+      <DependentUpon>201910010716090_efilingRepositories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021322550_testfromShamraiz.resx" />
+    <EmbeddedResource Include="Migrations\201910021619451_CommInvoiceCommAgentRelation.resx">
+      <DependentUpon>201910021619451_CommInvoiceCommAgentRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910021956430_AddDepartmentFields.resx">
+      <DependentUpon>201910021956430_AddDepartmentFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910030316519_CommTablesUpdation.resx">
+      <DependentUpon>201910030316519_CommTablesUpdation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910030934271_addCompanyIDinAgentComm.resx">
+      <DependentUpon>201910030934271_addCompanyIDinAgentComm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031758376_DifferentUpdates.resx">
+      <DependentUpon>201910031758376_DifferentUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910031809396_FurtherChangesComm.resx">
+      <DependentUpon>201910031809396_FurtherChangesComm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041458112_fieldsRevised.resx">
+      <DependentUpon>201910041458112_fieldsRevised.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910041523032_RevisedCommCodeToId.resx">
+      <DependentUpon>201910041523032_RevisedCommCodeToId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910081434272_UnitOfSaleUpdattion.resx">
+      <DependentUpon>201910081434272_UnitOfSaleUpdattion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091256257_EfilingFNLCommAndOtherReationUpdate.resx">
+      <DependentUpon>201910091256257_EfilingFNLCommAndOtherReationUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910091532573_inddomesticViewChanged.resx">
+      <DependentUpon>201910091532573_inddomesticViewChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910101938540_emailAndEfilingEfilingDovTypeEtc.resx">
+      <DependentUpon>201910101938540_emailAndEfilingEfilingDovTypeEtc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111436265_yarn-HR-Approval-updates.resx">
+      <DependentUpon>201910111436265_yarn-HR-Approval-updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910111543200_HR-updates.resx">
+      <DependentUpon>201910111543200_HR-updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910120120542_HR_ReationsAndOtherUpdates.resx">
+      <DependentUpon>201910120120542_HR_ReationsAndOtherUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910120700048_ReationsUpdates.resx">
+      <DependentUpon>201910120700048_ReationsUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910120748234_AddedReferenceKeys.resx">
+      <DependentUpon>201910120748234_AddedReferenceKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910120852438_CPA_Tables.resx">
+      <DependentUpon>201910120852438_CPA_Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910151649506_DeptDescriptRequiredRemoved.resx">
+      <DependentUpon>201910151649506_DeptDescriptRequiredRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910181905349_InspectionLocalExportTables.resx">
+      <DependentUpon>201910181905349_InspectionLocalExportTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201155176_updateFieldsExport.resx">
+      <DependentUpon>201910201155176_updateFieldsExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910221448081_IndDomestic-Efiling-hrEmp.resx">
+      <DependentUpon>201910221448081_IndDomestic-Efiling-hrEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910291254085_RefIdInConfigModels.resx">
+      <DependentUpon>201910291254085_RefIdInConfigModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910300739417_HR_CNIC_Repo.resx">
+      <DependentUpon>201910300739417_HR_CNIC_Repo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910301024127_AdminUserDealsInDeptRepo.resx">
+      <DependentUpon>201910301024127_AdminUserDealsInDeptRepo.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Core\ERP.Core.csproj">
+      <Project>{dbf622a8-799b-45ad-a5df-8088d39dc616}</Project>
+      <Name>ERP.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

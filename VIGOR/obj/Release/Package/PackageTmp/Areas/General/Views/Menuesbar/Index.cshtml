@@ -1,0 +1,144 @@
+﻿@using ERP.Core.Models.Admin;
+@using ERP.Common;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<style>
+    #a1 {
+        background-color: #fff;
+        border: 2px solid #fff;
+        box-shadow: 2px;
+        padding: 30px !important;
+    }
+
+        #a1 i {
+            color: #28469c;
+        }
+
+        #a1 span {
+            color: #000;
+        }
+
+        #a1:hover {
+            background-color: #28469c;
+            border: 2px solid #28469c;
+        }
+
+            #a1:hover i, #a1:hover span {
+                color: #fff;
+            }
+    .m-nav-grid > .m-nav-grid_row > .m-nav-grid_item {
+        display: inline-block !important;
+    }
+    .m-nav-grid > .m-nav-grid__row {
+        display: inline-block !important;
+    }
+</style>
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="m-nav-grid" style="display:inline-block !important;">
+            <div class="m-nav-grid__row">
+                <a href="@Url.Action("Index","Company",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Company" id="a1">
+                    <i class="m-nav-grid__icon flaticon-presentation"></i>
+                    <span class="m-nav-grid__text">Company</span>
+                </a>
+                <a href="@Url.Action("Index","Region",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Region" id="a1">
+                    <i class="m-nav-grid__icon flaticon-map"></i>
+                    <span class="m-nav-grid__text">Region</span>
+                </a>
+                <a href="@Url.Action("Index","Country",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Country" id="a1">
+                    <i class="m-nav-grid__icon flaticon-globe"></i>
+                    <span class="m-nav-grid__text">Country</span>
+                </a>
+                <a href="@Url.Action("Index","State",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.State" id="a1">
+                    <i class="m-nav-grid__icon flaticon-statistics"></i>
+                    <span class="m-nav-grid__text">State</span>
+                </a>
+                <a href="@Url.Action("Index","City",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.City" id="a1">
+                    <i class="m-nav-grid__icon flaticon-home-1"></i>
+                    <span class="m-nav-grid__text">City</span>
+                </a>
+                @*<a href="@Url.Action("Index","Locations",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Area" id="a1">*@
+                    <a href="@Url.Action("Index","Locations",new { Area="General"})" class="m-nav-grid__item hidden" id="a1">
+                        <i class="m-nav-grid__icon flaticon-placeholder"></i>
+                        <span class="m-nav-grid__text">Location</span>
+                    </a>
+                    <a href="@Url.Action("Index","Customer",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Customers" id="a1">
+                        <i class="m-nav-grid__icon flaticon-users"></i>
+                        <span class="m-nav-grid__text">Customers</span>
+                    </a>
+                    <a href="@Url.Action("Index","Brand",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Brand" id="a1">
+                        <i class="m-nav-grid__icon flaticon-shapes"></i>
+                        <span class="m-nav-grid__text">Brand</span>
+                    </a>
+                    <a href="@Url.Action("Index","Certification",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Certification" id="a1">
+                        <i class="m-nav-grid__icon flaticon-folder-1"></i>
+                        <span class="m-nav-grid__text">Certification</span>
+                    </a>
+            </div>
+            <div class="m-nav-grid__row">
+                <a href="@Url.Action("Index","Machinery",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Machinery" id="a1">
+                    <i class="m-nav-grid__icon flaticon-technology-1"></i>
+                    <span class="m-nav-grid__text">Machinery</span>
+                </a>
+                <a href="@Url.Action("Index","Department",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Department" id="a1">
+                    <i class="m-nav-grid__icon flaticon-presentation-1"></i>
+                    <span class="m-nav-grid__text">Department</span>
+                </a>
+                <a href="@Url.Action("Index","Employee",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Employee" id="a1">
+                    <i class="m-nav-grid__icon flaticon-profile-1"></i>
+                    <span class="m-nav-grid__text">Employee</span>
+                </a>
+                <a href="@Url.Action("Index","QcInspectors",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Employee" id="a1">
+                    <i class="m-nav-grid__icon flaticon-profile-1"></i>
+                    <span class="m-nav-grid__text">Qc Inspector</span>
+                </a>
+                <a href="@Url.Action("Index","Social",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Social_Details" id="a1">
+                    <i class="m-nav-grid__icon flaticon-mark"></i>
+                    <span class="m-nav-grid__text">Social Details</span>
+                </a>
+                <a href="@Url.Action("Index","SpecialInstruction",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Special_Instructions" id="a1">
+                    <i class="m-nav-grid__icon flaticon-information"></i>
+                    <span class="m-nav-grid__text">Special Instructions</span>
+                </a>
+                <a href="@Url.Action("Index","BusinessTypes",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Business_Types" id="a1">
+                    <i class="m-nav-grid__icon flaticon-suitcase"></i>
+                    <span class="m-nav-grid__text">Business Types</span>
+                </a>
+                <a href="@Url.Action("Index","ContactType",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Contact_Types" id="a1">
+                    <i class="m-nav-grid__icon flaticon-profile"></i>
+                    <span class="m-nav-grid__text">Contact Types</span>
+                </a>
+                @*<a href="@Url.Action("Index","DealsIn",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Deals_In" id="a1">
+            <i class="m-nav-grid__icon flaticon-bag"></i>
+            <span class="m-nav-grid__text">Deals In</span>
+        </a>
+        <a href="@Url.Action("Index","Group",new { Area="General"})" class="m-nav-grid__item hidden" Sec-menuId="@SecurityConstants.Groups" id="a1">
+            <i class="m-nav-grid__icon flaticon-globe"></i>
+            <span class="m-nav-grid__text">Groups</span>
+        </a>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript">
+        $(function () {
+            var list = @UserPrevilageJson;
+            $('.hidden').each(function () {
+                var SystemOption = $(this).attr('Sec-menuId');
+                $("[Sec-menuId=" + SystemOption + "]").css("display", "none");
+               var newValue = $.inArray(parseInt(SystemOption, 10), list);
+                if (newValue != -1) {
+                    $("[Sec-menuId=" + SystemOption + "]").css("display", "");
+                }
+            });
+        });
+    </script>*@
+
+

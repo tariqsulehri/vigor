@@ -1,0 +1,47 @@
+﻿@model ERP.Core.Models.Common.Locations
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "LocationsForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                if (ViewBag.Title != "Create")
+                {
+                    @Html.HiddenFor(model => model.Id);
+                    @Html.HiddenFor(model => model.LocationID);
+                    @Html.HiddenFor(model => model.Company);
+
+                }
+
+                <div class="form-group m-form__group">
+                    <div class="form-group m-form__group col-sm-12">
+                        <label for="exampleInputEmail1">Location Name:</label>
+                        @Html.TextBoxFor(a => a.LocationDescription, new { @class = "form-control m-input", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.LocationDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="SubmitLocationsForm()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

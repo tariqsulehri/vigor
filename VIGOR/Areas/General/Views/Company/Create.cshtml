@@ -1,0 +1,149 @@
+﻿@model ERP.Core.Models.Common.Company
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <div class="m-demo__preview">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="m-portlet" style="padding: 10px;">
+                    @using (Html.BeginForm("Create", "Company", FormMethod.Post, new { id = "CompanyForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <h3 class="m-portlet__head-text">
+                                        Company Information
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="m-portlet__head-tools">
+                                <ul class="m-portlet__nav">
+                                    <li class="m-portlet__nav-item">
+                                        <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span>
+                                                <i class="fa fa-save"></i>
+                                                <span>Save</span>
+                                            </span>
+                                        </button>
+
+                                    </li>
+                                    <li class="m-portlet__nav-item">
+                                        <a href="@Url.Action("Index","Company",new {Area="General" })" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                            <span style=" color:#ffffff">
+                                                <i class="flaticon-cancel"></i>
+                                                <span>Cancel</span>
+                                            </span>
+                                        </a>
+
+                                    </li>
+                                    @*<li class="m-portlet__nav-item">
+                                            <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air">
+                                                <span>
+                                                    <i class="flaticon-delete"></i>
+                                                    <span>Delete</span>
+                                                </span>
+                                            </a>
+                                        </li>*@
+                                </ul>
+                            </div>
+                        </div>
+                        <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+                            <div class="m-portlet__body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-xl-6">
+                                        <div class="form-group m-form__group">
+                                            <label for="exampleInputEmail1">Company Name:</label>
+                                            @Html.TextBoxFor(a => a.Name, new { @class = "form-control m-input", @placeholder = "" })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6">
+                                        <div class="form-group m-form__group">
+                                            <br />
+                                            <div class="m-checkbox-inline">
+                                                <label class="m-checkbox">
+                                                    @Html.CheckBoxFor(a => a.IsActive)Active
+                                                    <span style="height: 14px; width: 14px;"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-xl-6">
+                                        <div class="form-group m-form__group">
+                                            <label for="exampleInputEmail1">City</label>
+                                            @Html.DropDownListFor(a => a.CityId, new SelectList(new ERP.Infrastructure.Repositories.Common.CityRepository().GetAllCities(), "Id", "Name"), new { @class = "form-control " })
+                                            @Html.ValidationMessageFor(model => model.CityId, "", new { @class = "text-danger" })
+
+                                            <label for="exampleInputEmail1">Business Type</label>
+                                            @Html.DropDownListFor(a => a.BusId, new SelectList(new ERP.Infrastructure.Repositories.Common.BusinessTypesRepository().GetAllBusinessTypes(), "Id", "BusinessTitle"), new { @class = "form-control " })
+                                            @Html.ValidationMessageFor(model => model.BusId, "", new { @class = "text-danger" })
+
+                                            <label for="exampleInputEmail1">Mailing Address</label>
+                                            @Html.TextAreaFor(a => a.MailAddress, new { @class = "form-control m-input", @rows = 5, @placeholder = "" })
+                                            @Html.ValidationMessageFor(model => model.MailAddress, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6">
+                                        <div class="form-group m-form__group">
+                                            <label for="exampleInputEmail1">Fax #</label>
+                                            @Html.TextBoxFor(a => a.Fax, new { @class = "form-control m-input", @placeholder = "" })
+                                            @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+
+                                            <label for="exampleInputEmail1">Email :</label>
+                                            @Html.TextBoxFor(a => a.Email, new { @class = "form-control m-input", @placeholder = "" })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+                                            <label for="exampleInputEmail1">Web Address :</label>
+                                            @Html.TextBoxFor(a => a.WebAddress, new { @class = "form-control m-input", @placeholder = "" })
+                                            @Html.ValidationMessageFor(model => model.WebAddress, "", new { @class = "text-danger" })
+
+                                            <label for="exampleInputEmail1">Phone #</label>
+                                            @Html.TextBoxFor(a => a.Phone, new { @class = "form-control m-input", @placeholder = "" })
+                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/VigorJs/Vouchers.js"></script>
+<script src="~/Content/VigorJs/Company/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/Company/Index.js"></script>
+<script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>

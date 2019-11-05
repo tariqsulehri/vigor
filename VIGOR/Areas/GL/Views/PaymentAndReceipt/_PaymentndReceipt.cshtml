@@ -1,0 +1,67 @@
+﻿
+@using ERP.Core.Models.Finance
+@model IEnumerable<ERP.Core.Models.Finance.FinLedger>
+<table width="100%" id="table">
+    <tbody>
+
+        <tr id="tr">
+            <td id="tr" style="text-align: left">@Html.Raw(ViewBag.Criteria)</td>
+        </tr>
+    </tbody>
+</table>
+<table width="100%">
+    <thead>
+        <tr>
+            <th width="7%">Dated</th>
+            <th width="15%" class="center">Voucher</th>
+            <th>Narration</th>
+            <th width="10%" class="center">Payment</th>
+            <th width="10%" class="center">Receipt</th>
+            <th width="10%" class="center">Balance</th>
+        </tr>
+    </thead> @{
+        decimal balance = 0;
+        decimal TotalDebit = 0;
+        decimal TotalCredit = 0;
+
+    }
+    <tbody>
+        @if (ViewBag.openingBalance != null)
+        {
+            foreach (var bal in ViewBag.openingBalance as List<FinLedger>)
+            {
+                balance = 0;
+                TotalDebit = 0;
+                TotalCredit = 0;
+                balance = balance + (bal.Debit);
+                <tr>
+                    <th colspan="5" style="text-align: right"><span>Account Code : @bal.GlCode</span><br />Opening Balance as on:</th>
+                    <th class="decimal">@balance</th>
+                </tr>
+                foreach (var item in Model.Where(a => a.GlCode.Equals(bal.GlCode)))
+                {
+                    balance = balance + (-@item.Debit + @item.Credit);
+                    TotalDebit = TotalDebit + @item.Debit;
+                    TotalCredit = TotalCredit + @item.Credit;
+                    <tr>
+                        <td>@item.CreateDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.GlCode</td>
+                        <td>@item.CoaL5.Title<br />@item.Detail</td>
+                        <td class="decimal">@item.Debit</td>
+                        <td class="decimal">@item.Credit</td>
+                        <td class="decimal">@balance</td>
+                    </tr>
+                }
+                <tr>
+                    <th colspan="3" style="text-align: right">Total :</th>
+                    <th class="decimal">@TotalDebit</th>
+                    <th class="decimal">@TotalCredit</th>
+                    <th class="decimal">@balance</th>
+                </tr>
+            }
+        }
+
+    </tbody>
+
+
+</table>

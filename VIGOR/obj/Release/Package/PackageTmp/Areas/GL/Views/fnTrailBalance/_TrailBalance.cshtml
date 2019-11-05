@@ -1,0 +1,76 @@
+﻿@*@model IEnumerable<ERP.Core.Models.Finance.CoaL1>*@
+@model IEnumerable<VIGOR.Areas.GL.Models.TrailBalanceModel>
+    
+<table width="100%" id="table">
+    <tbody>
+        <tr id="tr">
+            <td id="tr" style="text-align: left">@Html.Raw(ViewBag.Criteria)</td>
+            <th id="tr" class="customP" colspan="3"> Trial Balance</th>
+        </tr>
+        <tr id="tr">
+            <th id="tr" style="width: 25%;text-align: center">
+                Opening Balance:
+
+            </th>
+            <th id="tr" style="width: 25%">
+                Debit:
+
+            </th>
+            <th id="tr" style="width: 25%">
+                Credit:
+
+            </th>
+            <th id="tr" style="width: 25%">
+                Balance:
+
+            </th>
+
+        </tr>
+        <tr id="tr">
+            <th id="tr" style="width: 25%">
+                <input type="number" class="form-control"  disabled="disabled"  value="@ViewBag.Opebal">
+            </th>
+            <th id="tr" style="width: 25%">
+                <input type="number" class="form-control"  disabled="disabled"value="@ViewBag.debit">
+            </th>
+            <th id="tr" style="width: 25%">
+                <input type="number" class="form-control"  disabled="disabled" value="@ViewBag.credit">
+            </th>
+            <th id="tr" style="width: 25%">
+                <input type="number" class="form-control"  disabled="disabled" value="@ViewBag.balance">
+            </th>
+        </tr>
+    </tbody>
+</table>
+<table width="100%">
+    <thead style="background-color:#a2a5a5">
+        <tr>
+            <th width="15%">Account Code</th>
+            <th>Account title</th>
+            <th width="15%" class="center">Opening</th>
+            <th width="10%" class="center">Debit</th>
+            <th width="10%" class="center">Credit</th>
+            <th width="15%" class="center">Balance</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AccountCode</td>
+                    <td>@item.AccountTitle</td>
+                    <td class="decimal">@item.OPBAL</td>
+                    <td>@item.Debit</td>
+                    <td>@item.Credit</td>
+                    <td>@item.Balancee</td>
+                </tr>
+
+            }
+        }
+    </tbody>
+
+
+</table>

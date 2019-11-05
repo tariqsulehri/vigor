@@ -1,0 +1,343 @@
+﻿@model ERP.Core.Models.Admin.User
+    @using ERP.Core.Enums
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .avatar-upload {
+        position: relative;
+        max-width: 205px;
+        margin: 50px auto;
+    }
+
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+    }
+
+        .avatar-edit input {
+            display: none;
+        }
+
+        .avatar-edit label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all .2s ease-in-out;
+        }
+
+            .avatar-edit label:hover {
+                background: #f1f1f1;
+                border-color: #d6d6d6;
+            }
+
+            .avatar-edit label:after {
+                content: "\f040";
+                font-family: 'FontAwesome';
+                color: #757575;
+                position: absolute;
+                top: 10px;
+                left: 0;
+                right: 0;
+                text-align: center;
+                margin: auto;
+            }
+
+
+    .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+        .avatar-preview div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("Create", "Users", FormMethod.Post, new { @class = "m-form m-form--label-right" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-label">
+                        <h3 class="m-portlet__head-title">
+                            User Information
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+                    <div class="m-section">
+                        <div class="m-section__content">
+                            <div>
+                                @*<button class="btn btn-primary">Assign Company</button>
+                                <button class="btn btn-primary">Assign Department</button>
+                                <button class="btn btn-primary">Privileges</button>
+                                <button class="btn btn-danger">Cancel</button>
+                                <button class="btn btn-danger">Delete</button>*@
+                                <button class="btn btn-primary" type="submit">Save</button>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Login Information</h4>
+                                    <!--begin::Form-->
+                                    <div class="col-lg-12">
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    @Html.LabelFor(model => model.UserName)
+                                                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User name" } })
+                                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                                    @*<label>Login:</label>
+                                                        <input type="email" class="form-control" placeholder="User name">*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    @Html.LabelFor(model => model.Email)
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "Email", @placeholder = "Email" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    @*<label class="">Password:</label>
+                                                        <input type="email" class="form-control" placeholder="Password">*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    @Html.LabelFor(model => model.Password)
+                                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "Password", @placeholder = "Password" } })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                    @*<label class="">Password:</label>
+                                                        <input type="email" class="form-control" placeholder="Password">*@
+                                                </div>
+                                            </div>
+                                            @*<div class="pull-right">
+                                                    <button class="btn btn-primary">Check Availability</button>
+                                                </div>*@
+                                        <!--end::Form-->
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Preferences</h4>
+                                    <!--begin::Form-->
+                                    <div class="col-lg-8">
+                                            <div class="form-group row">
+
+                                                @*<div class="col-lg-12">
+                                                        <label>User Role</label>
+                                                        <select class="browser-default custom-select">
+                                                            <option selected>Open this select menu</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                        </select>
+                                                    </div>*@
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <div class="m-checkbox-list">
+                                                        <label class="m-checkbox m-checkbox--brand">
+                                                            @Html.LabelFor(model => model.ChangePasswordWhenLogon)
+                                                            @Html.EditorFor(model => model.ChangePasswordWhenLogon, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.ChangePasswordWhenLogon, "", new { @class = "text-danger" })
+                                                        </label>
+                                                        <label class="m-checkbox m-checkbox--brand">
+                                                            @Html.LabelFor(model => model.PasswordNeverExpire)
+                                                            @Html.EditorFor(model => model.PasswordNeverExpire, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.PasswordNeverExpire, "", new { @class = "text-danger" })
+                                                        </label>
+                                                        <label class="m-checkbox m-checkbox--brand">
+                                                            @Html.LabelFor(model => model.IncludedCEOInEmail)
+                                                            @Html.EditorFor(model => model.IncludedCEOInEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.IncludedCEOInEmail, "", new { @class = "text-danger" })
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-6">
+                                                    @Html.LabelFor(model => model.Status)
+                                                    @Html.DropDownListFor(model => model.Status, new SelectList(Enumeration.GetAll<UserStatus>(), "Key", "Value"), new { @class = "form-control" } )
+                                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                                    @*<label class="">Status:</label>
+                                                        <input type="email" class="form-control" placeholder="">*@
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    @Html.LabelFor(model => model.ExpiresOn)
+                                                    @Html.EditorFor(model => model.ExpiresOn, new { htmlAttributes = new { @class = "form-control", @placeholder = "Select date" } })
+                                                    @Html.ValidationMessageFor(model => model.ExpiresOn, "", new { @class = "text-danger" })
+                                                    @*<label>Expires on</label>
+                                                        <input type="text" class="form-control" id="m_datepicker_1" readonly  />*@
+
+                                                </div>
+                                            </div>
+
+                                        <!--end::Form-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Profile</h4>
+                                    <!--begin::Form-->
+                                    <div class="col-lg-12">
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    @*<label>First Name:</label>
+                                                        <input type="email" class="form-control" placeholder="First name">*@
+                                                    @Html.LabelFor(model => model.FirstName)
+                                                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First name" } })
+                                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    @Html.LabelFor(model => model.LastName)
+                                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last name" } })
+                                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                                    @*<label class="">Last Name:</label>
+                                                        <input type="email" class="form-control" placeholder="Last name">*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-6">
+                                                    @Html.LabelFor(model => model.DateOfBirth)
+                                                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", placeholder = "Select Date" } })
+                                                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                                                    @*<label class="">Date of Birth:</label>
+                                                        <input type="date" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />*@
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    @Html.LabelFor(model => model.Gender)
+                                                    @Html.DropDownListFor(model => model.Gender, new SelectList(Enumeration.GetAll<Gender>(),"Key","Value"),  new { @class = "form-control", placeholder = "Gender" })
+                                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                                    @*<label class="">Gender:</label>
+                                                    <select class="browser-default custom-select">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">Male</option>
+                                                        <option value="2">Female</option>
+                                                    </select>*@
+                                                </div>
+                                            </div>
+                                            @*<div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label class="">Email:</label>
+                                                        <input type="email" class="form-control" placeholder="Email">
+                                                    </div>
+                                                </div>*@
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    @Html.LabelFor(model => model.ContactNumber)
+                                                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Contact Number" } })
+                                                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                                                    @*<label class="">Contact Number:</label>
+                                                        <input type="email" class="form-control" placeholder="Contact number">*@
+                                                </div>
+                                            </div>
+                                        <!--end::Form-->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h4>Preferences</h4>
+                                    <!--begin::Form-->
+                                    <div class="col-lg-8">
+                                            @*<div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label class="">User ID:</label>
+                                                        <input type="email" class="form-control" placeholder="User id">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-12">
+                                                        <label class="">Creation Date:</label>
+                                                        <input type="text" class="form-control" id="m_datepicker_1" readonly placeholder="Select date" />
+                                                    </div>
+                                                </div>*@
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <label>Employee Code</label>
+                                                    <select class="browser-default custom-select">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">Ali</option>
+                                                        <option value="2">Jamshad</option>
+                                                        <option value="3">Noor ud din</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <div class="m-checkbox-list">
+                                                        <label class="m-checkbox m-checkbox--brand">
+                                                            @Html.LabelFor(model => model.IsAdmin)
+                                                            @Html.EditorFor(model => model.IsAdmin, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
+                                                            @*<input type="checkbox" />Is Admin
+                                                                <span></span>*@
+                                                        </label>
+                                                        <label class="m-checkbox m-checkbox--brand">
+                                                            @Html.LabelFor(model => model.IsManagmentRepresentative)
+                                                            @Html.EditorFor(model => model.IsManagmentRepresentative, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.IsManagmentRepresentative, "", new { @class = "text-danger" })
+                                                            @*<input type="checkbox" />Is Management Representative
+                                                                <span></span>*@
+                                                        </label>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        <!--end::Form-->
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+@*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

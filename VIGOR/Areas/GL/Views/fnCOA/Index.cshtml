@@ -1,0 +1,182 @@
+﻿@using ERP.Common;
+@*@model IEnumerable<ERP.Core.Models.Finance.CoaL1>*@
+@model VIGOR.Areas.GL.Models.COAModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 400px;
+        overflow: auto;
+    }
+</style>
+
+<div class="">
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <div class="col-lg-6">
+                                <h3 class="m-portlet__head-text">
+                                    Chart of Accounts
+                                </h3>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="btn-group pull-right" role="group" aria-label="First group">
+                                    @*<button type="button" class="m-btn btn btn-primary"><i class="flaticon-refresh"></i></button>*@
+                                    <button type="button" class="m-btn btn btn-success" Id="btnexpand"><i class="la la-expand"></i></button>
+                                    <button type="button" class="m-btn btn btn-warning"><i class="la la-compress" style="color:#fff;"></i></button>
+                                    <a href="@Url.Action("Print","fnCOA")" target="_blank" class="m-btn btn btn-info hidden" Sec-menuId="@SecurityConstants.COAbtnPrint"><i class="flaticon-technology" style="color:#fff;"></i></a>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="Tree"></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div id="COAForm">
+                @using (Html.BeginForm(null, null, FormMethod.Post,new{id= "COAF" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="m-portlet">
+                        
+                        <div class="m-portlet__body">
+                            @Html.HiddenFor(a => a.leveltype, new {Id="LevelType"})
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label>
+                                        Account Code
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L1Code, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="col-lg-9">
+                                    <label>
+                                        Account Title
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L1Title, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label>
+                                        Account Code
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L2Code, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="col-lg-9">
+                                    <label>
+                                        Account Title
+
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L2Title, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label>
+                                        Account Code
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L3Code, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="col-lg-9">
+                                    <label>
+                                        Account Title
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L3Title, new { @class = "form-control" })
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>
+                                        Account Code
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L4Code, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>
+                                        Account Title
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L4Title, new { @class = "form-control" })
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label>
+                                        Account Code
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L5Code, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>
+                                        Account Title
+                                    </label>
+                                    @Html.TextBoxFor(a => a.L5Title, new { @class = "form-control", @required = "required", @id = "COAL5" })
+                                </div>
+
+                                <div class="col-lg-12">
+
+                                    <br />
+                                    <label class="m-checkbox  m-checkbox--focus">
+
+                                        @Html.CheckBoxFor(a => a.Active) Is Active
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset class="field_set">
+                                        <legend>Attach:</legend>
+
+                                        <label class="m-checkbox  m-checkbox--focus">
+
+                                            @Html.CheckBoxFor(a => a.IsDept) Department
+                                            <span></span>
+
+                                        </label>
+                                        <label class="m-checkbox  m-checkbox--focus" style="margin-left:5px">
+
+                                            @Html.CheckBoxFor(a => a.IsLoc)Location
+                                            <span></span>
+
+                                        </label>
+                                        <label class="m-checkbox  m-checkbox--focus">
+
+                                            @Html.CheckBoxFor(a => a.IsEmp)Employee
+                                            <span></span>
+
+                                        </label>
+                                        <label class="m-checkbox  m-checkbox--focus" style="margin-left:20px">
+
+                                            @Html.CheckBoxFor(a => a.IsCust)Customer
+                                            <span></span>
+
+                                        </label>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <br />
+                                    <button type="button" class="btn btn-success hidden" Sec-menuId="@SecurityConstants.COAbtnSave" id="btnSave">Save</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/GL/COA.js"></script>
+

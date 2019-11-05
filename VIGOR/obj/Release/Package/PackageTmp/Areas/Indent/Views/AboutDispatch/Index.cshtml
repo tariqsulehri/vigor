@@ -1,0 +1,209 @@
+﻿@using ERP.Common;
+@model ERP.Core.Models.Indenting.IndentDomestic.IndDomestic
+
+@using ERP.Core.Enums
+@using ERP.Core.Models.Indenting.IndentDomestic
+@using ERP.Infrastructure.Repositories.HR
+@using ERP.Infrastructure.Repositories.Indenting
+@using ERP.Core.Models.Admin
+@using ERP.Infrastructure.Repositories.Parties
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .iframe-container {
+        position: relative;
+        overflow: hidden;
+        padding-top: 56.25%;
+    }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs" role="tablist" style="margin-bottom: 0px !important" id="rpttab">
+            <li class="nav-item">
+                <a class="nav-link active show " data-toggle="tab" href="#tabs_0">Criteria</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="tabcontent">
+            <div class="tab-pane active show" id="tabs_0" role="tabpanel">
+                <div class="m-portlet">
+
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                    Dispatch Report
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item">
+                                    <a href="javascript:" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air" id="btnPrint">
+                                        <span>
+                                            <i class="fa fa-print"></i>
+                                            <span>Print</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <span style=" color:#ffffff">
+                                            <i class="flaticon-cancel"></i>
+                                            <span>Cancel</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="m-portlet__body">
+                        <div class="row">
+                            <div class="form-group row">
+                                <div class="col-lg-3">
+                                    <label>From:</label>
+                                    @Html.TextBox("FromDate", "", new { @class = "form-control", type = "date", id = "FromDate", @min = ViewBag.FromDate.ToString("yyyy-MM-dd"), @max = ViewBag.Todate.ToString("yyyy-MM-dd"), Value = ViewBag.FromDate.ToString("yyyy-MM-dd") })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>To:</label>
+                                    @Html.TextBox("Todate", "", new { @class = "form-control", type = "date", id = "Todate", @min = ViewBag.FromDate.ToString("yyyy-MM-dd"), @max = ViewBag.Todate.ToString("yyyy-MM-dd"), Value = ViewBag.Todate.ToString("yyyy-MM-dd") })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Commodity Type:</label>
+                                    @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType().Where(a => a.DomesticMarket.Equals("Y")), "Id", "Description"), "", new { @class = "form-control", id = "ComdID", @onchange = "ValidNewInquery(),GetDealsInDepartment(this.value,'1'),GetProdects(this.value)" })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Department:</label>
+                                    @Html.DropDownListFor(a => a.DepartmentID, new SelectList("", "Id", "title"), "", new { @class = "form-control", id = "Dept", @onchange = "ValidNewInquery()" })
+
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label>Product:</label>
+                                    @Html.DropDownList("ProductID", new SelectList("", "Id", "title"), "", new { @class = "form-control", id = "Product" })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Indent No:</label>
+                                    @Html.TextBoxFor(a => a.IndentKey, new { @class = "form-control", id = "IndentKey" })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Indent Status:</label>
+                                    @Html.DropDownList("InquiryStatus", Enum.GetValues(typeof(ERP.Common.InquieryStatus)).Cast<ERP.Common.InquieryStatus>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control", id = "IndStatus" })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Marketing Person:</label>
+                                    <div class="input-group">
+                                        <input class="form-control m-input" id="" name="" type="text" value="">
+                                        <div class="input-group-append">
+                                            <input type="button" name="" class="btn btn-info" onclick="" style="padding: 2px; width: 20px;" value="+">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Seller:</label>
+                                    @Html.DropDownListFor(a => a.CustomerIDasSeller, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsSeller == true), "Id", "Title"), "", new { @class = "form-control ", id = "SellerID" })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Buyer:</label>
+                                    @Html.DropDownListFor(a => a.CustomerIDasBuyer, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true), "Id", "Title"), "", new { @class = "form-control ", id = "BuyerID" })
+
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Agent:</label>
+                                    <select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." data-val-required="This is Required field...." id="CityCode" name="CityCode">
+                                        <option value="1"></option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label>Report Type:</label>
+                                    @Html.DropDownList("ReportType", ((SelectList)ViewBag.ReportType).OrderBy(a => a.Text), new { @class = "form-control", id = "ReportType" })
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<script src="~/Content/VigorJs/CommonJS/DeilsInDepartment.js"></script>
+
+<script>
+    ValidNewInquery();
+    function ValidNewInquery() {
+
+        var ComdID = $("#ComdID").val();
+        if ( ComdID != '') { $("#btnPrint").removeClass('disabled'); }
+        else { $("#btnPrint").addClass('disabled'); }
+
+    }
+    $('#clear').click(function () {
+        $("#Dept").val('');
+        $("#ComdID").val('');
+        $("#CustID").val('');
+        ValidNewInquery();
+    })
+</script>
+
+<script>
+    var tabid = 0;
+    $("#btnPrint").on("click", function () {
+        tabid = tabid + 1;
+        LoadData();
+        $("#rpttab ").append('<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tabs_' + tabid + '">Report</a></li>');
+    })
+    function LoadData() {
+        var DateFrom = $("#FromDate").val();
+        var DateTo = $("#Todate").val();
+        var ComdID = $("#ComdID").val();
+        var Dept = $("#Dept").val();
+        var Product = $("#Product").val();
+        var IndentKey = $("#IndentKey").val();
+        var IndStatus = $("#IndStatus").val();
+        var SellerID = $("#SellerID").val();
+        var BuyerID = $("#BuyerID").val();
+        var ReportType = $("#ReportType").val();
+        var url = '/Indent/AboutDispatch/Report?tabid=' + tabid + '';
+        $.ajax({
+            type: "Get",
+            url: url,
+            data: {
+                DateFrom: DateFrom, DateTo: DateTo, ComdID: ComdID, Dept: Dept, Product: Product,
+                IndentKey: IndentKey, IndStatus: IndStatus, SellerID: SellerID, BuyerID: BuyerID, ReportType: ReportType
+            },
+            success: function (data) {
+
+                $('#tabcontent').append(data);
+            },
+            error: function (jq, status, message) {
+                alert('A jQuery error has occurred. Status: ' + status + ' - Message: ' + message);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,39 @@
+﻿@model ERP.Core.Models.Admin.User
+<div class="col-md-5">
+    <div class="m-portlet">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Add AdminModule To User
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            @Html.Partial("_ListEditableUserModuleTable")
+            <div id="UserModuleTable">
+                @Html.Partial("_ListUserModuleTable", Model)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-7">
+    <div class="m-portlet">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Add AdminModuleDetail To User
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__body">
+            @Html.Partial("_ListEditableUserModuleDetailTable")
+            <div id="UserModuleDetailTable">
+                @Html.Partial("_ListUserModuleDetailTable", Model)
+            </div>
+        </div>
+    </div>
+</div>

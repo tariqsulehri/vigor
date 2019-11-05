@@ -1,0 +1,131 @@
+﻿@model VIGOR.Areas.GL.Models.COAModel
+@using (Html.BeginForm(null, null, FormMethod.Post, new { Id = "COAF" }))
+{
+    <div class="m-portlet">
+
+        <div class="m-portlet__body">
+            @Html.HiddenFor(a => a.leveltype)
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>
+
+                        Account Code
+
+                    </label>
+                    @Html.TextBoxFor(a => a.L1Code, new { @class = "form-control", disabled = "disabled" })
+                </div>
+                <div class="col-lg-9">
+                    <label>
+                        Account Title
+                    </label>
+                    @Html.TextBoxFor(a => a.L1Title, new { @class = "form-control", disabled = "disabled" })
+                </div>
+
+                <div class="col-lg-3">
+                    <label>
+                        Account Code
+                    </label>
+                    @Html.TextBoxFor(a => a.L2Code, new { @class = "form-control", disabled = "disabled" })
+                </div>
+                <div class="col-lg-9">
+                    <label>
+                        Account Title
+
+                    </label>
+                    @Html.TextBoxFor(a => a.L2Title, new { @class = "form-control", disabled = "disabled" })
+                </div>
+                <div class="col-lg-3">
+                    <label>
+                        Account Code
+                    </label>
+                    @Html.TextBoxFor(a => a.L3Code, new { @class = "form-control", disabled = "disabled" })
+                </div>
+                <div class="col-lg-9">
+                    <label>
+                        Account Title
+                    </label>
+                    @Html.TextBoxFor(a => a.L3Title, new { @class = "form-control", disabled = "disabled" })
+                </div>
+                <div class="col-lg-3">
+                    <label>
+                        Account Code
+                    </label>
+                    @Html.TextBoxFor(a => a.L4Code, new { @class = "form-control", disabled = "disabled" })
+                    @Html.HiddenFor(a => a.L4Code)
+                </div>
+                <div class="col-lg-9">
+                    <label>
+                        Account Title
+                    </label>
+                    @Html.TextBoxFor(a => a.L4Title, new { @class = "form-control", disabled = "disabled" })
+                </div>
+                <div class="col-lg-6">
+                    <label>
+                        Account Code
+                    </label>
+                    @Html.TextBoxFor(a => a.L5Code, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-lg-12">
+                    <label>
+                        Account Title
+                    </label>
+                    @Html.TextBoxFor(a => a.L5Title, new { @class = "form-control", @required = "required", @id = "COAL5" })
+                </div>
+                <div class="col-lg-6">
+                    <label>
+                        Book Type
+                    </label>
+                    @Html.DropDownListFor(a => a.BookType, new SelectList(new ERP.Infrastructure.Repositories.Fin.FinBookTypeRepositry().GetAllbBookTypes(), "BookType", "Description"), new { @class = "form-control " })
+
+                </div>
+                <div class="col-lg-6">
+
+                    <br />
+                    <label class="m-checkbox  m-checkbox--focus">
+
+                        @Html.CheckBoxFor(a => a.Active) Is Active
+                        <span></span>
+
+                    </label>
+
+                </div>
+                <div class="col-lg-12">
+                    <fieldset class="field_set">
+                        <legend>Attach:</legend>
+
+                        <label class="m-checkbox  m-checkbox--focus">
+
+                            @Html.CheckBoxFor(a => a.IsDept) Department
+                            <span></span>
+
+                        </label>
+                        <label class="m-checkbox  m-checkbox--focus" style="margin-left:5px">
+
+                            @Html.CheckBoxFor(a => a.IsLoc)Location
+                            <span></span>
+
+                        </label>
+                        <label class="m-checkbox  m-checkbox--focus">
+
+                            @Html.CheckBoxFor(a => a.IsEmp)Employee
+                            <span></span>
+
+                        </label>
+                        <label class="m-checkbox  m-checkbox--focus" style="margin-left:20px">
+
+                            @Html.CheckBoxFor(a => a.IsCust)Customer
+                            <span></span>
+
+                        </label>
+                    </fieldset>
+                </div>
+                <div class="col-lg-12">
+                    <br />
+                    <button type="button" class="btn btn-success" id="btnSave">Save</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

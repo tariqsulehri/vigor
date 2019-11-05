@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A291AD_VigourDevelopmentModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ALLCOAViews">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.ALLCOAView">
+        <MappingFragment StoreEntitySet="ALLCOAView">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_financial_trans">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_financial_trans">
+        <MappingFragment StoreEntitySet="view_financial_trans">
+          <ScalarProperty Name="VKey" ColumnName="VKey" />
+          <ScalarProperty Name="VoucherNo" ColumnName="VoucherNo" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="FinParty_Id" ColumnName="FinParty_Id" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="Employee" ColumnName="Employee" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="LocId" ColumnName="LocId" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+          <ScalarProperty Name="GlTitle" ColumnName="GlTitle" />
+          <ScalarProperty Name="VoucherDate" ColumnName="VoucherDate" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="FescalMonth" ColumnName="FescalMonth" />
+          <ScalarProperty Name="Vtype" ColumnName="Vtype" />
+          <ScalarProperty Name="L5Code" ColumnName="L5Code" />
+          <ScalarProperty Name="L1Code" ColumnName="L1Code" />
+          <ScalarProperty Name="L1Title" ColumnName="L1Title" />
+          <ScalarProperty Name="L2Code" ColumnName="L2Code" />
+          <ScalarProperty Name="L2Title" ColumnName="L2Title" />
+          <ScalarProperty Name="L3Code" ColumnName="L3Code" />
+          <ScalarProperty Name="L3Title" ColumnName="L3Title" />
+          <ScalarProperty Name="L4Code" ColumnName="L4Code" />
+          <ScalarProperty Name="L4Title" ColumnName="L4Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_financial_trial_ledger">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_financial_trial_ledger">
+        <MappingFragment StoreEntitySet="view_financial_trial_ledger">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="VKey" ColumnName="VKey" />
+          <ScalarProperty Name="GlCode" ColumnName="GlCode" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="ClearingDate" ColumnName="ClearingDate" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="L1Code" ColumnName="L1Code" />
+          <ScalarProperty Name="l1Title" ColumnName="l1Title" />
+          <ScalarProperty Name="L2Code" ColumnName="L2Code" />
+          <ScalarProperty Name="l2Title" ColumnName="l2Title" />
+          <ScalarProperty Name="L3Code" ColumnName="L3Code" />
+          <ScalarProperty Name="L3Title" ColumnName="L3Title" />
+          <ScalarProperty Name="L4Code" ColumnName="L4Code" />
+          <ScalarProperty Name="l4Title" ColumnName="l4Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_FinLedger">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.VIEW_FinLedger">
+        <MappingFragment StoreEntitySet="VIEW_FinLedger">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="VKey" ColumnName="VKey" />
+          <ScalarProperty Name="GlCode" ColumnName="GlCode" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="ClearingDate" ColumnName="ClearingDate" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="L1Code" ColumnName="L1Code" />
+          <ScalarProperty Name="l1_Title" ColumnName="l1_Title" />
+          <ScalarProperty Name="L2Code" ColumnName="L2Code" />
+          <ScalarProperty Name="l2_Title" ColumnName="l2_Title" />
+          <ScalarProperty Name="L3Code" ColumnName="L3Code" />
+          <ScalarProperty Name="l3_Title" ColumnName="l3_Title" />
+          <ScalarProperty Name="L4Code" ColumnName="L4Code" />
+          <ScalarProperty Name="L4_Title" ColumnName="L4_Title" />
+          <ScalarProperty Name="L5Code" ColumnName="L5Code" />
+          <ScalarProperty Name="L5_Title" ColumnName="L5_Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_COA">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.VW_COA">
+        <MappingFragment StoreEntitySet="VW_COA">
+          <ScalarProperty Name="LevelOfAccount" ColumnName="LevelOfAccount" />
+          <ScalarProperty Name="ParentAccount" ColumnName="ParentAccount" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_DEBIT_CRIDET" FunctionName="DB_A291AD_VigourDevelopmentModel.Store.SP_DEBIT_CRIDET">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.SP_DEBIT_CRIDET_Result">
+          <ScalarProperty Name="LevelOfAccount" ColumnName="LevelOfAccount" />
+          <ScalarProperty Name="ParentAccount" ColumnName="ParentAccount" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+          <ScalarProperty Name="OPBAL" ColumnName="OPBAL" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Balancee" ColumnName="Balancee" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GETRECORD" FunctionName="DB_A291AD_VigourDevelopmentModel.Store.SP_GETRECORD">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.SP_GETRECORD_Result">
+          <ScalarProperty Name="LevelOfAccount" ColumnName="LevelOfAccount" />
+          <ScalarProperty Name="ParentAccount" ColumnName="ParentAccount" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="AccountTitle" ColumnName="AccountTitle" />
+          <ScalarProperty Name="OPBAL" ColumnName="OPBAL" />
+          <ScalarProperty Name="Debit" ColumnName="Debit" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Year_Accounts_Analysis" FunctionName="DB_A291AD_VigourDevelopmentModel.Store.SP_Year_Accounts_Analysis">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.SP_Year_Accounts_Analysis_Result">
+          <ScalarProperty Name="GlCode" ColumnName="GlCode" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="l1Title" ColumnName="l1Title" />
+          <ScalarProperty Name="l2Title" ColumnName="l2Title" />
+          <ScalarProperty Name="L3Title" ColumnName="L3Title" />
+          <ScalarProperty Name="l4Title" ColumnName="l4Title" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="OPBAL" ColumnName="OPBAL" />
+          <ScalarProperty Name="JAN" ColumnName="JAN" />
+          <ScalarProperty Name="FEB" ColumnName="FEB" />
+          <ScalarProperty Name="MAR" ColumnName="MAR" />
+          <ScalarProperty Name="APR" ColumnName="APR" />
+          <ScalarProperty Name="MAY" ColumnName="MAY" />
+          <ScalarProperty Name="JUN" ColumnName="JUN" />
+          <ScalarProperty Name="JUL" ColumnName="JUL" />
+          <ScalarProperty Name="AUG" ColumnName="AUG" />
+          <ScalarProperty Name="SEP" ColumnName="SEP" />
+          <ScalarProperty Name="OCT" ColumnName="OCT" />
+          <ScalarProperty Name="NOV" ColumnName="NOV" />
+          <ScalarProperty Name="DEC" ColumnName="DEC" />
+          <ScalarProperty Name="AYBAL" ColumnName="AYBAL" />
+          <ScalarProperty Name="CLBAL" ColumnName="CLBAL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="view_domestic_inquiry">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_domestic_inquiry">
+        <MappingFragment StoreEntitySet="view_domestic_inquiry">
+          <ScalarProperty Name="CustomerAsBuyer" ColumnName="CustomerAsBuyer" />
+          <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+          <ScalarProperty Name="seller" ColumnName="seller" />
+          <ScalarProperty Name="SellectId" ColumnName="SellectId" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="InquiryStatus" ColumnName="InquiryStatus" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="InquiryClosedDate" ColumnName="InquiryClosedDate" />
+          <ScalarProperty Name="UOR" ColumnName="UOR" />
+          <ScalarProperty Name="ComodityType" ColumnName="ComodityType" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="UOS" ColumnName="UOS" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="InquiryDate" ColumnName="InquiryDate" />
+          <ScalarProperty Name="InquiryKey" ColumnName="InquiryKey" />
+          <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_domestic_disp_return_Summary">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_domestic_disp_return_Summary">
+        <MappingFragment StoreEntitySet="view_domestic_disp_return_Summary">
+          <ScalarProperty Name="ReturnQuantity" ColumnName="ReturnQuantity" />
+          <ScalarProperty Name="DispQuantity" ColumnName="DispQuantity" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="IndentId" ColumnName="IndentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_IndDomestic_Inquiry_Offers">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_Inquiry_Offers">
+        <MappingFragment StoreEntitySet="view_IndDomestic_Inquiry_Offers">
+          <ScalarProperty Name="OfferPaymentTerms" ColumnName="OfferPaymentTerms" />
+          <ScalarProperty Name="PaymentTermsId" ColumnName="PaymentTermsId" />
+          <ScalarProperty Name="OfferRemarks" ColumnName="OfferRemarks" />
+          <ScalarProperty Name="OfferMadeOn" ColumnName="OfferMadeOn" />
+          <ScalarProperty Name="OfferedRate" ColumnName="OfferedRate" />
+          <ScalarProperty Name="OfferedBy" ColumnName="OfferedBy" />
+          <ScalarProperty Name="ReviewStatus" ColumnName="ReviewStatus" />
+          <ScalarProperty Name="Rivew" ColumnName="Rivew" />
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="indentClosed" ColumnName="indentClosed" />
+          <ScalarProperty Name="IndentStatus" ColumnName="IndentStatus" />
+          <ScalarProperty Name="CustomerAsBuyer" ColumnName="CustomerAsBuyer" />
+          <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+          <ScalarProperty Name="seller" ColumnName="seller" />
+          <ScalarProperty Name="SellectId" ColumnName="SellectId" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="InquiryStatus" ColumnName="InquiryStatus" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="InquiryClosedDate" ColumnName="InquiryClosedDate" />
+          <ScalarProperty Name="UOR" ColumnName="UOR" />
+          <ScalarProperty Name="ComodityType" ColumnName="ComodityType" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+          <ScalarProperty Name="ReturnQuantity" ColumnName="ReturnQuantity" />
+          <ScalarProperty Name="DispQuantity" ColumnName="DispQuantity" />
+          <ScalarProperty Name="UOS" ColumnName="UOS" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="InquiryDate" ColumnName="InquiryDate" />
+          <ScalarProperty Name="InquiryKey" ColumnName="InquiryKey" />
+          <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="InvoiceDueDate" ColumnName="InvoiceDueDate" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="IndentDate" ColumnName="IndentDate" />
+          <ScalarProperty Name="LocalContractNo" ColumnName="LocalContractNo" />
+          <ScalarProperty Name="indentId" ColumnName="indentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_IndDomestic_inquiry_sheet">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_inquiry_sheet">
+        <MappingFragment StoreEntitySet="view_IndDomestic_inquiry_sheet">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UOS" ColumnName="UOS" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="InquiryClosedDate" ColumnName="InquiryClosedDate" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="InquiryStatus" ColumnName="InquiryStatus" />
+          <ScalarProperty Name="InquiryDate" ColumnName="InquiryDate" />
+          <ScalarProperty Name="seller" ColumnName="seller" />
+          <ScalarProperty Name="CustomerIDasSeller" ColumnName="CustomerIDasSeller" />
+          <ScalarProperty Name="buyer" ColumnName="buyer" />
+          <ScalarProperty Name="CustomerIDasBuyer" ColumnName="CustomerIDasBuyer" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="IndentDate" ColumnName="IndentDate" />
+          <ScalarProperty Name="IndentKey" ColumnName="IndentKey" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="InquiryReviewQuestion" ColumnName="InquiryReviewQuestion" />
+          <ScalarProperty Name="InqReviewQuestionId" ColumnName="InqReviewQuestionId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PaymenTermsId" ColumnName="PaymenTermsId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="InquiryID" ColumnName="InquiryID" />
+          <ScalarProperty Name="InquiryKey" ColumnName="InquiryKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_sale_register">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_sale_register">
+        <MappingFragment StoreEntitySet="view_sale_register">
+          <ScalarProperty Name="CalculatedCommissionValue" ColumnName="CalculatedCommissionValue" />
+          <ScalarProperty Name="ExecutedValue" ColumnName="ExecutedValue" />
+          <ScalarProperty Name="ExecutedQuantity" ColumnName="ExecutedQuantity" />
+          <ScalarProperty Name="ProductCommValue" ColumnName="ProductCommValue" />
+          <ScalarProperty Name="ProductTotalAmount" ColumnName="ProductTotalAmount" />
+          <ScalarProperty Name="QuantityReq" ColumnName="QuantityReq" />
+          <ScalarProperty Name="CommRate" ColumnName="CommRate" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Factor" ColumnName="Factor" />
+          <ScalarProperty Name="UOR" ColumnName="UOR" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="UOS" ColumnName="UOS" />
+          <ScalarProperty Name="UosID" ColumnName="UosID" />
+          <ScalarProperty Name="CommoditySpecification" ColumnName="CommoditySpecification" />
+          <ScalarProperty Name="Commidity" ColumnName="Commidity" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="InvoiceDueDate" ColumnName="InvoiceDueDate" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="isInvoiced" ColumnName="isInvoiced" />
+          <ScalarProperty Name="isShipments" ColumnName="isShipments" />
+          <ScalarProperty Name="isCancelled" ColumnName="isCancelled" />
+          <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+          <ScalarProperty Name="isClosed" ColumnName="isClosed" />
+          <ScalarProperty Name="IndentStatus" ColumnName="IndentStatus" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsSubmitForApproval" ColumnName="IsSubmitForApproval" />
+          <ScalarProperty Name="MarketedBy" ColumnName="MarketedBy" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="LastApprovedOn" ColumnName="LastApprovedOn" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ExecutedTotalValue" ColumnName="ExecutedTotalValue" />
+          <ScalarProperty Name="closedDate" ColumnName="closedDate" />
+          <ScalarProperty Name="ClosingRemaks" ColumnName="ClosingRemaks" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="PriceTerms" ColumnName="PriceTerms" />
+          <ScalarProperty Name="SpecialConditions" ColumnName="SpecialConditions" />
+          <ScalarProperty Name="GeneralRemarks" ColumnName="GeneralRemarks" />
+          <ScalarProperty Name="DeliveryRemarksBuyer" ColumnName="DeliveryRemarksBuyer" />
+          <ScalarProperty Name="DeliveryRemarks" ColumnName="DeliveryRemarks" />
+          <ScalarProperty Name="PackingRemarks" ColumnName="PackingRemarks" />
+          <ScalarProperty Name="TotalValueOnCommRate" ColumnName="TotalValueOnCommRate" />
+          <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+          <ScalarProperty Name="QuantityVariance" ColumnName="QuantityVariance" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="PaymenTermsId" ColumnName="PaymenTermsId" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="InquiryKey" ColumnName="InquiryKey" />
+          <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
+          <ScalarProperty Name="CommodityType" ColumnName="CommodityType" />
+          <ScalarProperty Name="CommodityTypeId" ColumnName="CommodityTypeId" />
+          <ScalarProperty Name="confirmDate" ColumnName="confirmDate" />
+          <ScalarProperty Name="OfferDate" ColumnName="OfferDate" />
+          <ScalarProperty Name="CustomerIDasLocalAgent" ColumnName="CustomerIDasLocalAgent" />
+          <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+          <ScalarProperty Name="CustomerIDasBuyer" ColumnName="CustomerIDasBuyer" />
+          <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+          <ScalarProperty Name="CustomerIDasSeller" ColumnName="CustomerIDasSeller" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="IndentDate" ColumnName="IndentDate" />
+          <ScalarProperty Name="IndentKey" ColumnName="IndentKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_IndDomestic_detail">
+      <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_detail">
+        <MappingFragment StoreEntitySet="view_IndDomestic_detail">
+          <ScalarProperty Name="PriceTerms" ColumnName="PriceTerms" />
+          <ScalarProperty Name="Specificatiions" ColumnName="Specificatiions" />
+          <ScalarProperty Name="FinancialRemarks" ColumnName="FinancialRemarks" />
+          <ScalarProperty Name="QualityRemarks" ColumnName="QualityRemarks" />
+          <ScalarProperty Name="SpecialConditionsSeller" ColumnName="SpecialConditionsSeller" />
+          <ScalarProperty Name="SpecialConditionsBuyer" ColumnName="SpecialConditionsBuyer" />
+          <ScalarProperty Name="SpecialConditions" ColumnName="SpecialConditions" />
+          <ScalarProperty Name="GeneralRemarks" ColumnName="GeneralRemarks" />
+          <ScalarProperty Name="DeliveryRemarksBuyer" ColumnName="DeliveryRemarksBuyer" />
+          <ScalarProperty Name="DeliveryRemarks" ColumnName="DeliveryRemarks" />
+          <ScalarProperty Name="PackingRemarks" ColumnName="PackingRemarks" />
+          <ScalarProperty Name="IsSubmitForApproval" ColumnName="IsSubmitForApproval" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="indentClosed" ColumnName="indentClosed" />
+          <ScalarProperty Name="IndentStatus" ColumnName="IndentStatus" />
+          <ScalarProperty Name="CustomerAsBuyer" ColumnName="CustomerAsBuyer" />
+          <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+          <ScalarProperty Name="seller" ColumnName="seller" />
+          <ScalarProperty Name="SellectId" ColumnName="SellectId" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="InquiryStatus" ColumnName="InquiryStatus" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="InquiryClosedDate" ColumnName="InquiryClosedDate" />
+          <ScalarProperty Name="UOR" ColumnName="UOR" />
+          <ScalarProperty Name="ComodityType" ColumnName="ComodityType" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+          <ScalarProperty Name="ReturnQuantity" ColumnName="ReturnQuantity" />
+          <ScalarProperty Name="DispQuantity" ColumnName="DispQuantity" />
+          <ScalarProperty Name="UOS" ColumnName="UOS" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Commodity" ColumnName="Commodity" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="InquiryDate" ColumnName="InquiryDate" />
+          <ScalarProperty Name="InquiryKey" ColumnName="InquiryKey" />
+          <ScalarProperty Name="InquiryId" ColumnName="InquiryId" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="InvoiceDueDate" ColumnName="InvoiceDueDate" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="IndentDate" ColumnName="IndentDate" />
+          <ScalarProperty Name="LocalContractNo" ColumnName="LocalContractNo" />
+          <ScalarProperty Name="indentId" ColumnName="indentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

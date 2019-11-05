@@ -1,0 +1,53 @@
+﻿@model ERP.Core.Models.Indenting.IndSize
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "IndentSizeForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                if (ViewBag.Title != "Create")
+                {
+                    @Html.HiddenFor(a => a.Id);
+                    @Html.HiddenFor(a => a.CreatedBy);
+                    @Html.HiddenFor(a => a.CreatedOn);
+                }
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Name :</label>
+                    @Html.TextBoxFor(a => a.Description, new { @class = "form-control m-input", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">PriorityinGroup :</label>
+                    @Html.TextBoxFor(a => a.PriorityinGroup, new { @class = "form-control", @placeholder = "",type="number" })
+                    @Html.ValidationMessageFor(model => model.PriorityinGroup, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">Size Group :</label>
+                    @Html.DropDownListFor(a => a.SizeGroupId,new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndSizeGroupRepository().GetAllIndSizeGroups(),"Id", "Description")," ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SizeGroupId, "", new { @class = "text-danger" })
+                </div>
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="SubmitIndentSizeForm()">
+                <span>
+                    <i class="fa fa-save"></i>
+                    <span>Save</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                <span>
+                    <i class="flaticon-cancel"></i>
+                    <span>Cancel</span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

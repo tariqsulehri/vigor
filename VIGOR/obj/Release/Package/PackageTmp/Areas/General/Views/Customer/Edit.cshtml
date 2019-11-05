@@ -1,0 +1,822 @@
+﻿@model ERP.Core.Models.Party.FinParty
+@using ERP.Core.Enums
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="m-portlet">
+            @using (Html.BeginForm("Edit", "Customer", FormMethod.Post, new { id = "CustomerForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                if (ViewBag.Title != "Create")
+                {
+                    @Html.HiddenFor(a => a.Id);
+                    @Html.HiddenFor(a => a.CreatedOn);
+                    if (Model.IsGlCustomer)
+                    {
+                        @Html.HiddenFor(a => a.GlCode);
+                        @Html.HiddenFor(a => a.IsGlCustomer);
+                    }
+                }
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Customer Information
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                            <li class="m-portlet__nav-item">
+                                <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span>
+                                        <i class="fa fa-save"></i>
+                                        <span>Save</span>
+                                    </span>
+                                </button>
+
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="@Url.Action("Index","Customer",new {Area="General" })" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span style=" color:#ffffff">
+                                        <i class="flaticon-cancel"></i>
+                                        <span>Cancel</span>
+                                    </span>
+                                </a>
+
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                <a href="#" class="btn btn-danger m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <span>
+                                        <i class="flaticon-delete"></i>
+                                        <span>Delete</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+                    <div class="m-portlet__body">
+                        <div class="row" style="margin-bottom:0px;">
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="form-group m-form__group">
+
+                                    <label class="m-checkbox">
+                                        @Html.CheckBoxFor(a => a.IsGlCustomer, Model.GlCode == "20-02-002-002-0000" ? (object)new { @class = "form-control ", id = "CustomerType" } : new { @class = "form-control ", @disabled = "disabled", id = "CustomerType" })Is GLCustomer
+                                        <br />
+                                        <span style="height: 14px; width: 14px;"></span>
+                                    </label>
+
+
+                                    <div>
+                                        <label><b>G/L Account :</b></label>
+                                        @Html.DropDownListFor(a => a.GlCode, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.CoaL5Repository().GetL5Accounts(), "L5Code", "Title"), "-- Select Account --", new { @class = "form-control", @id = "drop", onchange = "SelectionChanged()" })
+                                        @Html.ValidationMessageFor(model => model.GlCode, "", new { @class = "text-danger" })
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label for="exampleInputEmail1"><b>Customer Name</b></label>
+                                        @Html.TextBoxFor(a => a.Title, new { @class = "form-control m-input", @id = "customerName" })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label for="exampleInputEmail1"><b>Company Name</b></label>
+                                        @Html.TextBoxFor(a => a.CompanyName, new { @class = "form-control m-input", @placeholder = "" })
+                                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <label for="exampleInputEmail1"><b>Group</b></label>
+                                        @Html.DropDownList("Group", new SelectList("", "Id", "Name"), new { @class = "form-control " })
+                                        @*@Html.HiddenFor(a => a.GlCode, new { @Value = "10-01-001-001-0001" })*@
+                                    </div>
+                                </div>
+
+                                <div class="form-group m-form__group row">
+                                    <div class="col-6 form-group m-form__group">
+                                        <label for="exampleInputEmail1"><b>Country</b></label>
+                                        @Html.DropDownListFor(a => a.CountryCode, new SelectList(new ERP.Infrastructure.Repositories.Common.CountryRepository().GetAllCountries(), "Id", "Name"), new { @class = "form-control " })
+                                    </div>
+                                    <div class="col-6 form-group m-form__group">
+                                        <label for="exampleInputEmail1"><b>City</b></label>
+                                        @Html.DropDownListFor(a => a.CityCode, new SelectList(new ERP.Infrastructure.Repositories.Common.CityRepository().GetAllCities(), "Id", "Name"), new { @class = "form-control " })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="form-group m-form__group">
+                                    <div class="m-form__group form-group">
+                                        <label for=""><b>Customer Role</b></label>
+                                        <div class="m-checkbox-inline">
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsAgent)Agent
+
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsSeller)Seller
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsBuyer)Buyer
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsCust)Customer
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.Active)Active
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="m-form__group form-group">
+                                        <label for=""><b>Customer Type</b></label>
+                                        <div class="m-checkbox-inline">
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsDomestic)Domestic
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                            <label class="m-checkbox">
+                                                @Html.CheckBoxFor(a => a.IsInternational)International
+                                                <span style="height: 14px; width: 14px;"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <!--begin::Portlet-->
+                                <div class="m-portlet">
+                                    <div class="m-portlet__body">
+                                        <ul class="nav nav-pills" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#m_tabs_3_1">General Info</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_2">Business Info</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_3">Contact Persons</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_4">Machinery Details</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_5">Certifications</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_6">Social Compliance</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#m_tabs_3_7">Special Instructions</a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="m_tabs_3_1" role="tabpanel">
+
+                                                @*<div id="GeneralInfo"></div>*@
+
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-xl-6 row">
+                                                        <div class="col-lg-6 col-xl-6">
+                                                            <label for="exampleInputEmail1"><b>Phone #</b></label>
+                                                            @Html.TextBoxFor(a => a.Phone, new { @class = "form-control m-input ", @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                                            <label for="exampleInputEmail1"><b>Fax #</b></label>
+                                                            @Html.TextBoxFor(a => a.Fax, new { @class = "form-control m-input ", @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                                                            <label for="exampleInputEmail1"><b>NTN #</b></label>
+                                                            @Html.TextBoxFor(a => a.NtnNo, new { @class = "form-control m-input", @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.NtnNo, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                        <div class="col-lg-6 col-xl-6">
+                                                            <label for="exampleInputEmail1"><b>Email</b></label>
+                                                            @Html.TextBoxFor(a => a.EmailAddress, new { @class = "form-control m-input", @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                                            <label for="exampleInputEmail1"><b>Web Page</b></label>
+                                                            @Html.TextBoxFor(a => a.WebPage, new { @class = "form-control m-input", @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.WebPage, "", new { @class = "text-danger" })
+                                                            <label for="exampleInputEmail1"><b>GST #</b></label>
+                                                            @Html.TextBoxFor(a => a.GstNo, new { @class = "form-control m-input", @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.GstNo, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                        <div class="form-group m-form__group col-lg-12 col-xl-12">
+                                                            <br />
+                                                            <label for="exampleInputEmail1"><b>Mailing Address</b></label>
+                                                            @Html.TextAreaFor(a => a.MailingAddress, new { @class = "form-control m-input", @rows = 5, @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.MailingAddress, "", new { @class = "text-danger" })
+                                                            <br />
+                                                            <label for="exampleInputEmail1"><b>Dispatch Address</b></label>
+                                                            @Html.TextAreaFor(a => a.DispatchAddress, new { @class = "form-control m-input", @rows = 5, @placeholder = "" })
+                                                            @Html.ValidationMessageFor(model => model.DispatchAddress, "", new { @class = "text-danger" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-xl-6">
+
+                                                        <br />
+                                                        <!--begin::Portlet-->
+                                                        <div class="m-portlet" style="margin:0px;">
+                                                            <div class="form-group m-form__group">
+                                                                <table class="table table-striped- table-bordered table-hover table-checkable detailGrid">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Contact Type</th>
+                                                                            <th>Contact Number</th>
+                                                                            <th>Action</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @if (Model.CustomerContactType.Count > 0)
+                                                                        {
+                                                                            Int32 j = 0;
+                                                                            foreach (var item in Model.CustomerContactType)
+                                                                            {
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        @Html.DropDownList("det[" + j + "][ContTypeId]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.ContactTypesRepository().GetAllContactsTypes(), "Id", "Title", item.ContTypeId), "Select", new { @class = "form-control " })
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @Html.TextBox("det[" + j + "][Number]", null, new { @class = "form-control", @Value = item.ContactNumber })
+                                                                                    </td>
+                                                                                </tr>
+                                                                                j++;
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[0][ContTypeId]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.ContactTypesRepository().GetAllContactsTypes(), "Id", "Title"), "Select", new { @class = "form-control " })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[0][Number]", null, new { @class = "form-control" })
+                                                                                </td>
+                                                                            </tr>
+
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <!--end::Form-->
+                                                        </div>
+                                                        <!--end::Portlet-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="m_tabs_3_2" role="tabpanel">
+                                                <div class="m-portlet" style="margin:0px;">
+                                                    <div class="row">
+
+
+                                                        <div class="col-md-6">
+                                                            <div class="row">
+
+                                                                <div class="col-lg-6 col-xl-6">
+                                                                    <label for="exampleInputEmail1"><b>NTN #</b></label>
+                                                                    <input type="text" class="form-control" />
+                                                                    <label for="exampleInputEmail1"><b>GST #</b></label>
+                                                                    <input type="text" class="form-control" />
+                                                                    <label for="exampleInputEmail1"><b>Date of Issue</b></label>
+                                                                    <input type="date" class="form-control" />
+
+                                                                </div>
+                                                                <div class="col-lg-6 col-xl-6">
+                                                                    <label for="exampleInputEmail1"><b>Trade License #</b></label>
+                                                                    <input type="text" class="form-control" />
+
+                                                                    <label for="exampleInputEmail1"><b>Place of Registration</b></label>
+                                                                    <input type="text" class="form-control" />
+
+                                                                    <label for="exampleInputEmail1"><b>No of Employees</b></label>
+                                                                    <input type="text" class="form-control" />
+
+
+                                                                </div>
+                                                                <div class="form-group m-form__group col-lg-12 col-xl-12">
+                                                                    <br />
+                                                                    <div class="form-group m-form__group">
+                                                                        <table class="table table-striped- table-bordered table-hover table-checkable " id="detailGrid">
+                                                                            <thead style="background-color: #28469c; color: #ffffff">
+                                                                                <tr>
+                                                                                    <th>Deals In</th>
+                                                                                    <th>Description</th>
+                                                                                    <th>Active</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <input type="text" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="m-portlet__body">
+
+                                                                <ul class="nav nav-pills" role="tablist">
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link active" data-toggle="tab" href="#m_tabs_3_9">Brands</a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" data-toggle="tab" href="#m_tabs_3_10">Units</a>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active" id="m_tabs_3_9" role="tabpanel">
+                                                                        <!--begin::Section-->
+                                                                        <div class="form-group m-form__group">
+                                                                            <table class="table table-striped- table-bordered table-hover table-checkable detailGrid">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Brand</th>
+                                                                                        <th>Active</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    @if (Model.CustomerBrands.Count > 0)
+                                                                                    {
+                                                                                        Int32 j = 0;
+                                                                                        foreach (var item in Model.CustomerBrands)
+                                                                                        {
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    @Html.TextBox("det[" + j + "][brand]", null, new { @class = "form-control ", Value = item.BrandName })
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    @Html.DropDownList("det[" + j + "][bIsActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", item.IsActive == true ? 1 : 0), new { @class = "form-control" })
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            j++;
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                @Html.TextBox("det[0][brand]", null, new { @class = "form-control " })
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @Html.DropDownList("det[0][bIsActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", 1), new { @class = "form-control" })
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                        <!--end::Section-->
+                                                                    </div>
+                                                                    <div class="tab-pane" id="m_tabs_3_10" role="tabpanel">
+                                                                        <div class="form-group m-form__group">
+                                                                            <table class="table table-striped- table-bordered table-hover table-checkable detailGrid">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Unit</th>
+                                                                                        <th>Active</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    @if (Model.CustomerUnits.Count > 0)
+                                                                                    {
+                                                                                        Int32 j = 0;
+                                                                                        foreach (var item in Model.CustomerUnits)
+                                                                                        {
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    @Html.TextBox("det[" + j + "][unit]", null, new { @class = "form-control", Value = item.UnitTitle })
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    @Html.DropDownList("det[" + j + "][uIsActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", item.IsActive == true ? 1 : 0), new { @class = "form-control" })
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            j++;
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                @Html.TextBox("det[0][unit]", null, new { @class = "form-control" })
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                @Html.DropDownList("det[0][uIsActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", 1), new { @class = "form-control" })
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    }
+
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Form-->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_3" role="tabpanel">
+                                                <div class="m-portlet" style="margin:0px;">
+                                                    <div class="m-portlet__body">
+                                                        <!--begin::Section-->
+                                                        <div class="form-group m-form__group">
+                                                            <table class="table table-striped- table-bordered table-hover table-checkable detailGrid">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Contact Type</th>
+                                                                        <th>Contact Person</th>
+                                                                        <th>Designation</th>
+                                                                        <th>Contact Number</th>
+                                                                        <th>Email</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (Model.CustomerContactPerson.Count > 0)
+                                                                    {
+                                                                        Int32 j = 0;
+                                                                        foreach (var item in Model.CustomerContactPerson)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][contact]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.ContactTypesRepository().GetAllContactsTypes(), "Id", "Title", item.ContTypeId), "Select", new { @class = "form-control " })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][Person]", null, new { @class = "form-control", @Value = item.Name })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][Jobtitle]", null, new { @class = "form-control", @Value = item.Jobtitle })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][ContactNumber]", null, new { @class = "form-control", @Value = item.ContactNumber })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][Email]", null, new { @class = "form-control", @Value = item.Email })
+                                                                                </td>
+                                                                            </tr>
+                                                                            j++;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][contact]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.ContactTypesRepository().GetAllContactsTypes(), "Id", "Title"), "Select", new { @class = "form-control " })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][Person]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][Jobtitle]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][ContactNumber]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][Email]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!--end::Section-->
+                                                    </div>
+                                                    <!--end::Form-->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_4" role="tabpanel">
+                                                <div class="m-portlet" style="margin:0px;">
+                                                    <div class="m-portlet__body">
+                                                        <!--begin::Section-->
+                                                        <div class="form-group m-form__group">
+                                                            <table class="table table-striped- table-bordered table-hover table-checkable " id="detailGrid">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th width="60%">Description</th>
+                                                                        <th>Quantity</th>
+                                                                        <th>Active</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (Model.CustomerMachineses.Count > 0)
+                                                                    {
+                                                                        Int32 j = 0;
+                                                                        foreach (var item in Model.CustomerMachineses)
+                                                                        {
+                                                                            <tr>
+
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][machinery]", null, new { @class = "form-control", @Value = item.Details })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][NumOfMachines]", null, new { @class = "form-control", @Value = item.NumOfMachines })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][IsMachineActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", item.IsActive == true ? 1 : 0), new { @class = "form-control" })
+                                                                                </td>
+                                                                            </tr>
+                                                                            j++;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][machinery]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][NumOfMachines]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][IsMachineActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", 1), new { @class = "form-control" })
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!--end::Section-->
+                                                    </div>
+                                                    <!--end::Form-->
+                                                </div>
+
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_5" role="tabpanel">
+                                                <div class="m-portlet" style="margin:0px;">
+                                                    <div class="m-portlet__body">
+                                                        <!--begin::Section-->
+                                                        <div class="form-group m-form__group">
+                                                            <table class="table table-striped- table-bordered table-hover table-checkable " id="detailGrid">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Certification</th>
+                                                                        <th>Issued On</th>
+                                                                        <th>Valid Till</th>
+                                                                        <th>Active</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (Model.CustomerCertifications.Count > 0)
+                                                                    {
+                                                                        Int32 j = 0;
+                                                                        foreach (var item in Model.CustomerCertifications)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][certificate]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.CertificationsRepository().GetAllCertifications(), "Id", "CertificationName", item.CertifyId), "Select", new { @class = "form-control " })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][IssuedOn]", null, new { @class = "form-control", type = "Date", @Value = item.IssuedOn.ToString("yyyy-MM-dd") })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][ValidTill]", null, new { @class = "form-control", type = "Date", @Value = item.ValidTill.ToString("yyyy-MM-dd") })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][IsCertificateActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", item.IsActive == true ? 1 : 0), new { @class = "form-control" })
+                                                                                </td>
+                                                                            </tr>
+                                                                            j++;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][certificate]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.CertificationsRepository().GetAllCertifications(), "Id", "CertificationName"), "Select", new { @class = "form-control " })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][IssuedOn]", null, new { @class = "form-control", type = "Date" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][ValidTill]", null, new { @class = "form-control", type = "Date" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][IsCertificateActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", 1), new { @class = "form-control" })
+                                                                                @*@Html.CheckBox("det[0][IsActive]", new { @class = "form-control" })*@
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!--end::Section-->
+                                                    </div>
+                                                    <!--end::Form-->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_6" role="tabpanel">
+                                                <div class="m-portlet" style="margin:0px;">
+                                                    <div class="m-portlet__body">
+                                                        <!--begin::Section-->
+                                                        <div class="form-group m-form__group">
+                                                            <table class="table table-striped- table-bordered table-hover table-checkable " id="detailGrid">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Social</th>
+                                                                        <th>Detail</th>
+                                                                        <th>Active</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (Model.CustomerSocials.Count > 0)
+                                                                    {
+                                                                        Int32 j = 0;
+                                                                        foreach (var item in Model.CustomerSocials)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][social]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.SocialRepository().GetAllSocials(), "Id", "Detail", item.Sid), "Select", new { @class = "form-control " })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][Details]", null, new { @class = "form-control", @Value = item.Details })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][IsSocialActive]", EnumHelper.GetSelectList(typeof(ERP.Common.ActiveStatus)), new { @class = "form-control" })
+                                                                                </td>
+                                                                            </tr>
+                                                                            j++;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][social]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.SocialRepository().GetAllSocials(), "Id", "Detail"), "Select", new { @class = "form-control " })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][Details]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][IsSocialActive]", EnumHelper.GetSelectList(typeof(ERP.Common.ActiveStatus)), new { @class = "form-control" })
+                                                                                @*@Html.CheckBox("det[0][IsActive]", new { @class = "form-control" })*@
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!--end::Section-->
+                                                    </div>
+                                                    <!--end::Form-->
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="m_tabs_3_7" role="tabpanel">
+                                                <div class="m-portlet" style="margin:0px;">
+                                                    <div class="m-portlet__body">
+                                                        <!--begin::Section-->
+                                                        <div class="form-group m-form__group">
+                                                            <table class="table table-striped- table-bordered table-hover table-checkable " id="detailGrid">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Special Instructions</th>
+                                                                        <th>Name</th>
+                                                                        <th>Active</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (Model.CustomerSpecialInstructions.Count > 0)
+                                                                    {
+                                                                        Int32 j = 0;
+                                                                        foreach (var item in Model.CustomerSpecialInstructions)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][instruction]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.SpecialInstructionRepository().GetAllSpecialInstructions(), "Id", "Name", item.CiId), "Select", new { @class = "form-control " })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.TextBox("det[" + j + "][Name]", null, new { @class = "form-control", @Value = item.Name })
+                                                                                </td>
+                                                                                <td>
+                                                                                    @Html.DropDownList("det[" + j + "][IsInstructionActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", item.IsActive == true ? 1 : 0), new { @class = "form-control" })
+                                                                                </td>
+                                                                            </tr>
+                                                                            j++;
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][instruction]", new SelectList(new ERP.Infrastructure.Repositories.Common.PatryCommon.SpecialInstructionRepository().GetAllSpecialInstructions(), "Id", "Name"), "Select", new { @class = "form-control " })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.TextBox("det[0][Name]", null, new { @class = "form-control" })
+                                                                            </td>
+                                                                            <td>
+                                                                                @Html.DropDownList("det[0][IsInstructionActive]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", 1), new { @class = "form-control" })
+                                                                                @*@Html.CheckBox("det[0][IsActive]", new { @class = "form-control" })*@
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!--end::Section-->
+                                                    </div>
+                                                    <!--end::Form-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Portlet-->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="GLCOA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Content/VigorJs/Customer/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/Customer/Index.js"></script>
+@*<script src="~/Content/VigorJs/Vouchers.js"></script>*@
+<script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#CustomerType').click(function () {
+
+            if ($(this).prop("checked") == true) {
+                $('#drop').prop("disabled", false); $('#').val("");
+                $('#customerName').prop("disabled", true); $('#').val("");
+
+            }
+            else if ($(this).prop("checked") == false) {
+                $('#drop').prop("disabled", true);
+                $('#customerName').prop("disabled", false); $('#').val("");
+
+            }
+        });
+        customerValidDate();
+        function customerValidDate() {
+            $('#drop').prop("disabled", true);
+            $('#customerName').prop("disabled", false); $('#').val("");
+        }
+    });
+
+
+</script>
