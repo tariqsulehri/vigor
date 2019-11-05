@@ -9,6 +9,12 @@ namespace ERP.Core.Models.Indenting.IndentExport
 {
     public class IndExportInquiry
     {
+        public IndExportInquiry()
+        {
+            this.IndExportInquiryDetail = new HashSet<IndExportInquiryDetail>();
+            this.IndExportInquiryOffer = new HashSet<IndExportInquiryOffer>();
+            this.IndExportInquiryReview = new HashSet<IndExportInquiryReview>();
+        }
         public int Id { get; set; }
 
         [MaxLength(13)]
