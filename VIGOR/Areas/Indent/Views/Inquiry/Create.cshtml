@@ -38,7 +38,6 @@
                 @using (Html.BeginForm("Create", "Inquiry", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
                     @Html.HiddenFor(a=>a.InquiryStatus)
                     <div class="m-portlet">
                         <div class="m-portlet__head">
@@ -52,6 +51,9 @@
                             <div class="m-portlet__head-tools">
                                 <ul class="m-portlet__nav">
                                     <li class="m-portlet__nav-item">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    </li>
+                                    <li class="m-portlet__nav-item">
                                         <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
                                             <span>
                                                 <i class="fa fa-save"></i>
@@ -61,7 +63,7 @@
 
                                     </li>
                                     <li class="m-portlet__nav-item">
-                                        <a href="@Url.Action("Index","Inquiry",new {Area="Indent" })" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <a href="@Url.Action("Index", "Inquiry", new {Area = "Indent"})" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
                                             <span style="color: #ffffff">
                                                 <i class="flaticon-cancel"></i>
                                                 <span>Cancel</span>

@@ -72,6 +72,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public string IsClosed { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         [NotMapped]
         public decimal Quantity { get; set; }
         [Required(ErrorMessage = "Field is required....")]

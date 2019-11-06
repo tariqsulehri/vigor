@@ -118,6 +118,17 @@ namespace VIGOR.Areas.Indent.Controllers
                 }
                 ViewBag.NewCommodity = Request.Form["NewCommodity"].ToString();
                 model = GetIquiryOffers(model);
+                int CurrentMonth = DateTime.Now.Month;
+                if (!string.IsNullOrEmpty(model.InquiryDate.ToString()) && model.InquiryDate.Month != CurrentMonth)
+                {
+                    ModelState.AddModelError("", "Inquiry Date should be Current Month");
+                    return View(model);
+                }
+                if (model.IndDomesticInquiryOffers.Count() == 0)
+                {
+                    ModelState.AddModelError("", "Inquiry Offers must be selected ");
+                    return View(model);
+                }
                 if (ModelState.IsValid)
                 {
                     model.CreatedOn = DateTime.Now;
@@ -290,8 +301,10 @@ namespace VIGOR.Areas.Indent.Controllers
                             _indDomesticInquiryOffer.ModifiedOn = DateTime.Now;
                             try
                             {
-
-                                model.IndDomesticInquiryOffers.Add(_indDomesticInquiryOffer);
+                                if (_indDomesticInquiryOffer.OfferedRate > 0)
+                                {
+                                    model.IndDomesticInquiryOffers.Add(_indDomesticInquiryOffer);
+                                }
                             }
                             catch (Exception e)
                             {

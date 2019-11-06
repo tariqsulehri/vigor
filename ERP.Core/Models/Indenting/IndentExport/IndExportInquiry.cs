@@ -9,6 +9,7 @@ namespace ERP.Core.Models.Indenting.IndentExport
 {
     public class IndExportInquiry
     {
+
         public IndExportInquiry()
         {
             this.IndExportInquiryDetail = new HashSet<IndExportInquiryDetail>();

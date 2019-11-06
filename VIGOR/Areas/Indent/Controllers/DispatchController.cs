@@ -122,6 +122,7 @@ namespace VIGOR.Areas.Indent.Controllers
         {
             try
             {
+                ViewBag.IndentKey = IndentKey;
                 ModelState.Remove("DelayShipmentReason");
                 ModelState.Remove("SalesContractDetail");
                 ModelState.Remove("LocalDispatchNo");

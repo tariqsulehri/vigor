@@ -782,6 +782,19 @@
     <Content Include="Content\VigorJs\GoodsForwarder\_CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\Group\Index.js" />
     <Content Include="Content\VigorJs\Group\_CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\Allowance\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\CINCR\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\CINCR\Index.js" />
+    <Content Include="Content\VigorJs\HR\EmpType\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\EmpType\Index.js" />
+    <Content Include="Content\VigorJs\HR\Intimation\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\Intimation\Index.js" />
+    <Content Include="Content\VigorJs\HR\LoanAdvanceApplication\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\LoanAdvanceApplication\Index.js" />
+    <Content Include="Content\VigorJs\HR\Non_Confirmity\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\Non_Confirmity\Index.js" />
+    <Content Include="Content\VigorJs\HR\Position\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\Position\Index.js" />
     <Content Include="Content\VigorJs\IndColour\IndColour.js" />
     <Content Include="Content\VigorJs\IndDomesticDispatchSchedule\Index.js" />
     <Content Include="Content\VigorJs\IndDomesticDispatchSchedule\_CreateOrUpdate.js" />
@@ -1949,6 +1962,18 @@
     <Content Include="Areas\HR\Views\SalarySheet\Index.cshtml" />
     <Content Include="Areas\HR\Views\web.config" />
     <Content Include="Areas\Indent\Views\FabricInspection\Edit.cshtml" />
+    <Content Include="Areas\Indent\Views\IndExportInquiry\Edit.cshtml" />
+    <Content Include="Areas\Indent\Views\IndExportInquiry\GetFinPartiesList.cshtml" />
+    <Content Include="Areas\HR\Views\EmpCriticalIncident\Index.cshtml" />
+    <Content Include="Areas\HR\Views\EmpIntimation\Edit.cshtml" />
+    <Content Include="Areas\HR\Views\EmpLoanAdvApplication\Edit.cshtml" />
+    <Content Include="Areas\HR\Views\EmpLoanAdvApplication\Index.cshtml" />
+    <Content Include="Areas\HR\Views\EmpNonConfirmity\Edit.cshtml" />
+    <Content Include="Areas\HR\Views\EmpType\Create.cshtml" />
+    <Content Include="Areas\HR\Views\EmpType\Edit.cshtml" />
+    <Content Include="Areas\HR\Views\EmpType\Index.cshtml" />
+    <Content Include="Areas\HR\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HR\Views\_ViewStart.cshtml" />
     <None Include="DataSets\CONTROLBALANCE.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2095,6 +2120,7 @@
     <Compile Include="Areas\HR\Controllers\EmpResignController.cs" />
     <Compile Include="Areas\HR\Controllers\EmpRevisionController.cs" />
     <Compile Include="Areas\HR\Controllers\EmpTransferController.cs" />
+    <Compile Include="Areas\HR\Controllers\EmpTypeController.cs" />
     <Compile Include="Areas\HR\Controllers\GazzettedDayController.cs" />
     <Compile Include="Areas\HR\Controllers\LeaveVisitApprovalController.cs" />
     <Compile Include="Areas\HR\Controllers\LoanAdvApprovalController.cs" />
@@ -2660,7 +2686,6 @@
     <Folder Include="Areas\General\Models\" />
     <Folder Include="Areas\GL\Views\VoucherList\" />
     <Folder Include="Areas\HR\Models\" />
-    <Folder Include="Areas\HR\Views\Shared\" />
     <Folder Include="Areas\Indent\Models\" />
     <Folder Include="Areas\Indent\Views\CommonIndent\" />
     <Folder Include="Areas\Indent\Views\ContractFabrics\" />

@@ -1,4 +1,4 @@
-﻿
+﻿@model ERP.Core.Models.HR.HR_History
 @{
     Layout = null;
 }
@@ -23,49 +23,49 @@
                         </div>
                         <div class="col-lg-6">
                             <label class="">Department:</label>
-                            <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                <option></option>
-                            </select>
+                            @Html.DropDownListFor(a => a.PreviousDepartment, new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "id", "Title"), "-- Select Department --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.PreviousDepartment, "", new { @class = "text-danger" })
+
                         </div>
                         <div class="col-lg-6">
                             <label class="">Position:</label>
-                            <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                <option></option>
-                            </select>
+                            @Html.DropDownListFor(a => a.PreviousDesignation, new SelectList(new ERP.Infrastructure.Repositories.HR.HR_DesignationRepository().GetAllHR_Designation(), "DesignationId", "Description"), "--Select Designation --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.PreviousDesignation, "", new { @class = "text-danger" })
+
                         </div>
                         <div class="col-lg-12">
                             <label class=""><strong>Salary Status</strong></label>
                         </div>
                         <div class="col-lg-4">
                             <label>Basic Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+                            @Html.TextBoxFor(a=>a.psBasic,new {@type="number",@class="form-control",@readonly="readonly"})
                         </div>
                         <div class="col-lg-4">
                             <label class="">Allowances:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+                            @Html.TextBoxFor(a=>a.psAllowance,new {@type="number",@class="form-control", @readonly = "readonly" })
                         </div>
                         <div class="col-lg-4">
                             <label class="">Gross Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+                            @Html.TextBoxFor(a=>a.psCurrent,new {@type="number",@class="form-control", @readonly = "readonly" })
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="border-left: 1px gray solid">
                     <div class="form-group row">
                         <div class="col-lg-12">
                             <label class=""><strong>Salary BreakUp</strong></label>
                         </div>
                         <div class="col-lg-4">
                             <label class="">Basic Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+                            @Html.TextBoxFor(a => a.nsBasic, new { @type = "number", @class = "form-control"})
                         </div>
                         <div class="col-lg-4">
                             <label class="">Allowances:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+                            @Html.TextBoxFor(a => a.nsAllowance, new { @type = "number", @class = "form-control" })
                         </div>
                         <div class="col-lg-4">
                             <label class="">Gross Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+                            @Html.TextBoxFor(a => a.nsCurrent, new { @type = "number", @class = "form-control" })
                         </div>
                         <div class="col-lg-12">
                             <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -82,21 +82,60 @@
 
                                             <tbody>
 
-                                                <tr role="row" class="odd">
-                                                    <td>
-                                                        <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                                            <option></option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control m-input" placeholder="">
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                                            <option></option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
+                                                @if (Model.HR_EmployeeAllowances.Count > 0)
+                                                {
+                                                    Int32 j = 0;
+                                                    foreach (var item in Model.HR_EmployeeAllowances)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 pr-0">
+                                                                        @Html.DropDownList("det[" + j + "][AllowanceID]", new SelectList(new ERP.Infrastructure.Repositories.HR.HR_AllowancesRepository().GetAllHR_Allowances(), "AllowanceID", "Description", item.AllowanceID), "Select", new { @class = "form-control " })
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Amount]", null, new { @class = "form-control SI_GrandTotal", @Value = item.Amount, onkeyup = "SumOfTotalPrices()" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("det[0][Mode]",
+                                                                    new List<SelectListItem>
+                                                                    {
+                                                                        new SelectListItem() {Text = "Fixed", Value = "f"},
+                                                                        new SelectListItem() {Text = "Percent", Value = "p"}
+                                                                    }, "-- Select  Mode --", new {@type = "text", @class = "form-control", @placeholder = "Select Mode"})
+                                                            </td>
+                                                        </tr>
+                                                        j++;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-lg-12 pr-0">
+                                                                    @Html.DropDownList("det[0][AllowanceID]", new SelectList(new ERP.Infrastructure.Repositories.HR.HR_AllowancesRepository().GetAllHR_Allowances(), "AllowanceID", "Description"), "Select", new { @class = "form-control " })
+                                                                </div>
+                                                               
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[0][Amount]", null, new { @class = "form-control SI_GrandTotal", @id = "AllowanceAmount", onkeyup = "SumOfTotalPrices()" })
+                                                        </td>
+                                                        <td>
+                                                            @Html.DropDownList("det[0][Mode]",
+                                                                new List<SelectListItem>
+                                                                {
+                                                                    new SelectListItem() {Text = "Fixed", Value = "f"},
+                                                                    new SelectListItem() {Text = "Percent", Value = "p"}
+                                                                }, "-- Select  Mode --", new {@type = "text", @class = "form-control", @placeholder = "Select Mode"})
+                                                        </td>
+                                                    </tr>
+
+                                                }
                                             </tbody>
                                         </table>
                                     </div>
