@@ -43,6 +43,10 @@ namespace ERP.Core.Models.Indenting.IndentExport
         public string SaleContractIssued{ get; set; }
         public char status { get; set; }
 
+        [StringLength(16)]
+        [Required(ErrorMessage = "Field is required....")]
+        public string InquiryDetailNo { get; set; }
+
         [MaxLength(200)]
         public string SizeAndSpecification { get; set; }
         public bool isSampleRecevied { get; set; }

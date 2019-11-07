@@ -90,20 +90,24 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
             model.CustomerasBuyer = model.CustomerId;
             model.IsClosed = "C";// 'C';
 
-            //if (ModelState.IsValid)
-            //{
-            try
-            {
-                model = GetIndExportInquiry(model);
-                model = GetIndExportInquiryOffer(model);
-                _indExportInquiryRepository.Add(model);
+            ModelState.Remove("Companyid");
+            ModelState.Remove("InquiryMarket");
+            ModelState.Remove("InquieryStatus");
 
-                return RedirectToAction("Index");
-            }
-            catch (Exception e)
+            if (ModelState.IsValid)
             {
+                try
+                {
+                    model = GetIndExportInquiry(model);
+                    model = GetIndExportInquiryOffer(model);
+                    _indExportInquiryRepository.Add(model);
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e)
+                {
+                }
             }
-            //}
             return View(model);
         }
 
@@ -117,12 +121,27 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
         // GET: Indent/IndExportInquiry/Edit/5
         public ActionResult Edit(int id)
         {
+            List<FinParty> finPartyList = new List<FinParty>();
+            List<IndExportInquiryOffer> indExportInquiryOfferList = new List<IndExportInquiryOffer>();
             if (id == null)
             { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
             var inq = _indExportInquiryRepository.FindById(id);
             inq.IndExportInquiryDetail = inq.IndExportInquiryDetail.Where(a => a.InquiryId == inq.Id).ToList();
             //ViewBag.NewCommodity
             inq.IndExportInquiryOffer = inq.IndExportInquiryOffer.Where(a => a.InquiryId == inq.Id).ToList();
+
+            foreach (var item in inq.IndExportInquiryDetail)
+            {
+                indExportInquiryOfferList = inq.IndExportInquiryOffer.Where(x => x.InquiryDetailNo.Equals(item.InquiryDetailNo)).ToList();
+                break;
+            }
+            foreach (var item in indExportInquiryOfferList)
+            {
+                FinParty finParty = new FinParty();
+                finParty.Title = item.FinParty.Title;
+                finPartyList.Add(finParty);
+            }
+            ViewBag.CustomerTitleList = finPartyList;
             return View(inq);
         }
 
@@ -141,11 +160,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
             }
             model.ModifiedBy = 1;
             model.ModifiedOn = DateTime.Now;
-            model.Companyid = 2.ToString();
-            model.InquiryMarket = "E";
-            model.InquieryStatus = "A";
             model.CustomerasBuyer = model.CustomerId;
-            model.IsClosed = "C";// 'C';
 
             //if (ModelState.IsValid)
             //{
@@ -189,6 +204,8 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
         #region Get Indent Export Inquiry Detail add
         private IndExportInquiry GetIndExportInquiry(IndExportInquiry model)
         {
+            var inquiryDetailNo = "";
+            int counter = 0;
             IndExportInquiryDetail _IndExportInquiryDetail;
             IndExportInquiryOffer _indExportInquiryOffer;
             var indExportInquiryDetailList = new List<string>();
@@ -205,6 +222,11 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                     var index = "0";
                     index = Key.Replace("][ProductId]", "");
                     index = index.Replace("det[", "");
+
+                    counter = counter + 1;
+                    inquiryDetailNo = "00" + counter + model.InquiryKey;
+
+
                     if (Request.Form.AllKeys.Any(k => k == "det[" + index + "][ProductId]"))
                     {
                         _IndExportInquiryDetail = new IndExportInquiryDetail();
@@ -225,6 +247,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                             _IndExportInquiryDetail.trimDetail = false;
                             _IndExportInquiryDetail.colorPantoneCode = false;
                             _IndExportInquiryDetail.internalCosting = false;
+                            _IndExportInquiryDetail.InquiryDetailNo = inquiryDetailNo;
 
                             try
                             {
@@ -253,6 +276,8 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
             var thirdColCustomerId = 0;
             var fourthColCustomerId = 0;
             var fifthColCustomerId = 0;
+            var inquiryDetailNo = "";
+            int counter = 0;
             var indExportInquiryDetailList = new List<string>();
             foreach (var k in Request.Form.Keys)
             {
@@ -266,6 +291,10 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                     var index = "0";
                     index = Key.Replace("][ProductId]", "");
                     index = index.Replace("det[", "");
+
+                    counter = counter + 1;
+                    inquiryDetailNo = "00" + counter + model.InquiryKey;
+
                     if (Request.Form.AllKeys.Any(k => k == "det[" + index + "][ProductId]"))
                     {
                         if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][ProductId]"]))
@@ -276,6 +305,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][OfferCustomerId1]"]))
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = Convert.ToInt32(Request.Form["det[" + index + "][OfferCustomerId1]"]);
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount1]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -284,6 +314,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
                                     try
@@ -300,6 +331,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (firstColCustomerId > 0)
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = firstColCustomerId;
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount1]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -307,6 +339,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
 
@@ -325,6 +358,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][OfferCustomerId2]"]))
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = Convert.ToInt32(Request.Form["det[" + index + "][OfferCustomerId2]"]);
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount2]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -333,6 +367,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
                                     try
@@ -349,6 +384,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (secondColCustomerId > 0)
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = secondColCustomerId;
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount2]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -356,6 +392,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
 
@@ -374,6 +411,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][OfferCustomerId3]"]))
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = Convert.ToInt32(Request.Form["det[" + index + "][OfferCustomerId3]"]);
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount3]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -382,6 +420,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
                                     try
@@ -398,6 +437,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (thirdColCustomerId > 0)
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = thirdColCustomerId;
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount3]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -405,6 +445,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
 
@@ -423,6 +464,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][OfferCustomerId4]"]))
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = Convert.ToInt32(Request.Form["det[" + index + "][OfferCustomerId4]"]);
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount4]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -431,6 +473,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
                                     try
@@ -447,6 +490,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (fourthColCustomerId > 0)
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = fourthColCustomerId;
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount4]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -454,6 +498,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
 
@@ -472,6 +517,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][OfferCustomerId5]"]))
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = Convert.ToInt32(Request.Form["det[" + index + "][OfferCustomerId5]"]);
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount5]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -480,6 +526,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
                                     try
@@ -496,6 +543,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                 if (fifthColCustomerId > 0)
                                 {
                                     IndExportInquiryOffer _indExportInquiryOffer = new IndExportInquiryOffer();
+                                    _indExportInquiryOffer.ProductId = Convert.ToInt32(Request.Form["det[" + index + "][ProductId]"]);
                                     _indExportInquiryOffer.CustomerId = fifthColCustomerId;
                                     _indExportInquiryOffer.OfferedRate = Convert.ToDecimal(Request.Form["det[" + index + "][OfferAmount5]"]);
                                     _indExportInquiryOffer.Remarks = Convert.ToString(Request.Form["det[" + index + "][Remarks]"]);
@@ -503,6 +551,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                                     _indExportInquiryOffer.InquiryId = model.Id;
                                     _indExportInquiryOffer.InquiryKey = model.InquiryKey;
                                     _indExportInquiryOffer.PaymentTermsId = model.PaymenTermsId;
+                                    _indExportInquiryOffer.InquiryDetailNo = inquiryDetailNo;
 
                                     _indExportInquiryOffer = AssignValueIndExportInquiryOffer(_indExportInquiryOffer);
 
@@ -537,6 +586,8 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
             _indExportInquiryOffer.InquiryId = model.Id;
             _indExportInquiryOffer.InquiryKey = model.InquiryKey;
             _indExportInquiryOffer.PaymentTermsId = model.PaymentTermsId;
+            _indExportInquiryOffer.InquiryDetailNo = model.InquiryDetailNo;
+            _indExportInquiryOffer.ProductId = model.ProductId;
 
             _indExportInquiryOffer.OfferMadeOn = DateTime.Now;
             _indExportInquiryOffer.OfferedBy = "xyz";

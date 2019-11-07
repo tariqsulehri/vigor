@@ -49,10 +49,18 @@ namespace ERP.Core.Models.Indenting.IndentExport
 
         public int ModifiedBy { get; set; }
 
+        [StringLength(16)]
+        [Required(ErrorMessage = "Field is required....")]
+        public string InquiryDetailNo { get; set; }
+
+        public int ProductId { get; set; }
+
         [Required(ErrorMessage = "Field is required....")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime ModifiedOn { get; set; }
+
+        public bool IsFinalized { get; set; }
 
     }
 }
