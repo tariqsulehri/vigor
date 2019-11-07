@@ -768,6 +768,7 @@ E:\vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.csproj.CoreCompi
 E:\vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.csproj.CopyComplete
 E:\vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.dll
 E:\vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.pdb
+<<<<<<< HEAD
 E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\bin\Debug\Migrations\VMFinLedger.sql
 E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\bin\Debug\ERP.Infrastructure.dll.config
 E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\bin\Debug\ERP.Infrastructure.dll
@@ -844,3 +845,6 @@ E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure
 E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.csproj.CopyComplete
 E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.dll
 E:\Own Projects\NWS\Vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.pdb
+=======
+E:\vigour\vigor\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndDomesticAndHrUpdates.resources
+>>>>>>> 641ab9a85007cb68bd29b32aefbda0be40f953ee

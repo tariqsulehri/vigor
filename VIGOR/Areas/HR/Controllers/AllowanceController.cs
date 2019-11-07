@@ -26,44 +26,10 @@ namespace VIGOR.Areas.HR.Controllers
         {
             return View();
         }
-        // GET: HR/Allowance/CreateOrUpdate
+        // GET: General/Allowance/CreateOrUpdate
         public ActionResult CreateOrUpdate()
         {
             return View();
-        }
-        [HttpPost]
-        public ActionResult CreateOrUpdate(HR_Allowances model)
-        {
-            try
-            {
-                model.CreatedBy = 0;
-                model.CreatedOn=DateTime.Now;
-                model.ModifiedOn=DateTime.Now;
-                model.ModifiedBy = 0;
-                if (_hrAllowancesRepository.IsDuplicate(model))
-                {
-                    ModelState.AddModelError(String.Empty, "Duplicate Data is Not Allowed");
-                    return View(model);
-                }
-                else
-                {
-                    if (ModelState.IsValid)
-                    {
-                        _hrAllowancesRepository.Add(model);
-                        return null;
-                    }
-                    else
-                    {
-                        return View(model);
-                    }
-
-                }
-
-            }
-            catch
-            {
-                return View();
-            }
         }
         // GET: General/Allowance/Create
         public ActionResult Create()
@@ -95,7 +61,7 @@ namespace VIGOR.Areas.HR.Controllers
                     if (ModelState.IsValid)
                     {
                         _hrAllowancesRepository.Add(model);
-                        return null;
+                        return View();
                     }
                     else
                     {
@@ -108,39 +74,22 @@ namespace VIGOR.Areas.HR.Controllers
                 return View();
             }
         }
-        [HttpGet]
-        // GET: HR/Allowance/Edit/5
-        public ActionResult Edit(string id)
+
+        // GET: General/Allowance/Edit/5
+        public ActionResult Edit(int id)
         {
-            return View(_hrAllowancesRepository.FindById(id));
+            return View();
         }
 
         // POST: General/Allowance/Edit/5
         [HttpPost]
-        public ActionResult Edit(HR_Allowances model)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                model.ModifiedBy = 0;
-                model.ModifiedOn = DateTime.Now;
-                //model.CreatedOn=DateTime.Now;
-                if (_hrAllowancesRepository.IsDuplicate(model))
-                {
-                    ModelState.AddModelError(String.Empty, "Duplicate Data is Not allowed");
-                    return View(model);
-                }
-                else
-                {
-                    if (ModelState.IsValid)
-                    {
-                        _hrAllowancesRepository.Edit(model);
-                        return null;
-                    }
-                    else
-                    {
-                        return View(model);
-                    }
-                }
+                // TODO: Add update logic here
+
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -149,20 +98,9 @@ namespace VIGOR.Areas.HR.Controllers
         }
 
         // GET: General/Allowance/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-
-           var result= _hrAllowancesRepository.Remove(id);
-           if (result = !false)
-           {
-               return null;
-            }
-           else
-           {
-               ModelState.AddModelError(String.Empty, "Not found");
-           }
-           return null;
-
+            return View();
         }
 
         // POST: General/Allowance/Delete/5
@@ -179,20 +117,6 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 return View();
             }
-        }
-
-        public ActionResult GetAllowanceInfo()
-        {
-            var result = _hrAllowancesRepository.GetAllHR_Allowances().ToList();
-            var collection = result.Select(x => new
-            {
-                Id=x.AllowanceID,
-                Title=x.Description,
-                Type=x.Type,
-                SubType=x.SubType,
-                TaxStatus=x.TaxStatus
-            }).ToList();
-            return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
         }
     }
 }

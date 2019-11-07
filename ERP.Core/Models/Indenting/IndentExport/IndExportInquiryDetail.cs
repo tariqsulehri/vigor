@@ -18,7 +18,9 @@ namespace ERP.Core.Models.Indenting.IndentExport
 
         [StringLength(16)]
         public string InquiryNoDetailIDRef { get; set; }
-
+        [StringLength(16)]
+        [Required(ErrorMessage = "Field is required....")]
+        public string InquiryDetailNo { get; set; }
         [MaxLength(13)]
         [Required(ErrorMessage = "Field is required....")]
         public string InquiryKey { get; set; }
