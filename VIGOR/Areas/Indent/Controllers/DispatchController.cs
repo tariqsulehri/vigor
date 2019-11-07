@@ -120,9 +120,21 @@ namespace VIGOR.Areas.Indent.Controllers
         [HttpPost]
         public ActionResult Create(IndDomesticDispatchSchedule model, string IndentKey)
         {
+            var data = _indDomestic.FindById(model.Id).IndDomesticDetails;
+            decimal dispatchedQuantity = 0;
+            dispatchedQuantity = _indDomesticDispatchScheduleRepository.GetAllIndDomesticDispatchSchedule()
+                .Where(a => a.IndentId == model.Id && a.TypeOfTransaction == "D").Sum(a => a.Quantity);
+            decimal Quantity = 0;
+
             try
             {
                 ViewBag.IndentKey = IndentKey;
+                if (model.TypeOfTransaction == "R")
+                {
+                    ModelState.Remove("DelayShipmentReasonDescription");
+                    model.DelayShipmentReason = "_";
+                    model.DelayShipmentReasonDescription = "_";
+                }
                 ModelState.Remove("DelayShipmentReason");
                 ModelState.Remove("SalesContractDetail");
                 ModelState.Remove("LocalDispatchNo");
@@ -133,6 +145,8 @@ namespace VIGOR.Areas.Indent.Controllers
 
                 if (ModelState.IsValid)
                 {
+                    Quantity = data.Where(a => a.CommodityId == model.CommodityId).FirstOrDefault().Quantity;
+
                     if (model.IsDelayed == "N")
                     {
                         model.DelayShipmentReason = "_";
@@ -143,7 +157,10 @@ namespace VIGOR.Areas.Indent.Controllers
                     decimal Rate = Convert.ToDecimal(Request.Form["Rate"]);
                     var UOS = _unitOfSaleRepository.FindById(UnitOsSaleID);
                     var domesticIndent = _indDomestic.FindById(model.IndentId);
-                    model.Balance = model.Quantity * Rate * UOS.Factor;
+                    if (model.TypeOfTransaction == "R")
+                        model.Balance = Quantity - dispatchedQuantity + model.Quantity;// * Rate * UOS.Factor;
+                    else
+                        model.Balance = Quantity - dispatchedQuantity - model.Quantity;// * Rate * UOS.Factor;
                     model.CompanyId = LoggedinUser.Company.Id;
                     model.LocalDispatchNo = LoggedinUser.Company.Id.ToString() + IndentKey;
                     model.SalesContractDetail = model.LocalDispatchNo;
@@ -168,6 +185,7 @@ namespace VIGOR.Areas.Indent.Controllers
                             Id = Prodect.Id,
                             Description = Prodect.Description
                         }), "Id", "Description");
+                    model.Id = 0;
                     return View(model);
                 }
             }
@@ -182,6 +200,14 @@ namespace VIGOR.Areas.Indent.Controllers
         {
             IndDomesticDispatchSchedule model = new IndDomesticDispatchSchedule();
             model = _indDomesticDispatchScheduleRepository.FindById(id);
+
+            var data = _indDomestic.FindById(model.IndentId);
+            if (data.isCancelled || data.isClosed || !(data.IndentStatus))
+            {
+                ModelState.AddModelError("", "You cant not perform operations of closed or cancel Contract");
+                return null;
+            }
+
             var indent = _indDomestic.FindById(model.IndentId);
             ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
                 Prodect => Prodect.Id,
@@ -200,6 +226,11 @@ namespace VIGOR.Areas.Indent.Controllers
         {
             try
             {
+                var data = _indDomestic.FindById(model.Id).IndDomesticDetails;
+                decimal dispatchedQuantity = 0;
+                dispatchedQuantity = _indDomesticDispatchScheduleRepository.GetAllIndDomesticDispatchSchedule()
+                    .Where(a => a.IndentId == model.Id && a.TypeOfTransaction == "D").Sum(a => a.Quantity);
+                decimal Quantity = 0;
 
                 ModelState.Remove("TypeOfTransaction");
                 ModelState.Remove("DelayShipmentReason");
@@ -265,6 +296,16 @@ namespace VIGOR.Areas.Indent.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 IndDomesticDispatchSchedule model = new IndDomesticDispatchSchedule();
+
+                model = _indDomesticDispatchScheduleRepository.FindById(id);
+
+                var data = _indDomestic.FindById(model.IndentId);
+                if (data.isCancelled || data.isClosed || !(data.IndentStatus))
+                {
+                    ModelState.AddModelError("", "You cant not perform operations of closed or cancel Contract");
+                    return null;
+                }
+
                 model.Id = id;
                 _indDomesticDispatchScheduleRepository.Remove(model);
                 return Json("Success", JsonRequestBehavior.AllowGet);
