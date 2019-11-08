@@ -1,0 +1,46 @@
+﻿@model ERP.Core.Models.HR.HR_EmployeeType
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content ">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Employee Type</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @using (Html.BeginForm("Create", "EmpType", FormMethod.Post, new { id = "EmployeeTypeForm" }))
+        {
+            <div class="modal-body">
+                <div class="form-group row" id="productform">
+                    <div class="col-lg-6">
+                        <label>Employee Type ID:</label>
+                        @Html.TextBoxFor(a => a.EmployeeTypeID, new { @class = "form-control", @id = "HirarchyPriority" })
+                        @Html.ValidationMessageFor(a => a.EmployeeTypeID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Description:</label>
+                        @Html.TextBoxFor(a => a.Description, new { @class = "form-control", @id = "HirarchyPriority" })
+                        @Html.ValidationMessageFor(a => a.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SubmitEmpTypeForm()">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <span>
+                        <i class="flaticon-cancel"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        }
+    </div>
+</div>

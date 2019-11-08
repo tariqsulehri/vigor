@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ERP.Infrastructure.Repositories.HR;
 
 namespace VIGOR.Areas.HR.Controllers
 {
     public class EmpIncrementController : Controller
     {
         // GET: HR/EmpIncrement
+        private HrEmployeeRepository _hrEmployeeRepository;
+
+        public EmpIncrementController()
+        {
+            _hrEmployeeRepository=new HrEmployeeRepository();
+        }
         public ActionResult Index()
         {
             return View();
@@ -21,9 +28,9 @@ namespace VIGOR.Areas.HR.Controllers
         }
 
         // GET: HR/EmpIncrement/Create
-        public ActionResult Create()
+        public ActionResult Create(int EmplId)
         {
-            return View();
+            return View(_hrEmployeeRepository.FindById(EmplId));
         }
 
         // POST: HR/EmpIncrement/Create

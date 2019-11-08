@@ -17,8 +17,8 @@ namespace VIGOR.Areas.HR.Controllers.Settings
         private ErpDbContext _dbContext;
         public EmployeeController()
         {
-            _dbContext=new ErpDbContext();
-            _companyRepository=new CompanyRepository();
+            _dbContext = new ErpDbContext();
+            _companyRepository = new CompanyRepository();
             _hrEmployeeRepository = new HrEmployeeRepository();
         }
         public ActionResult Index()
@@ -35,7 +35,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
         // GET: HR/Employee/Create
         public ActionResult Create()
         {
-            HrEmployee model=new HrEmployee();
+            HrEmployee model = new HrEmployee();
             model.Title = "-";
             model.PermanentCityIdKey = "-";
             model.TemporaryCityKey = "-";
@@ -52,7 +52,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
             model.CreatedOn = DateTime.Now;
             model.ModifiedOn = DateTime.Now;
             model.Title = model.FirstName;
-            
+
             try
             {
                 if (_hrEmployeeRepository.IsDuplicate(model))
@@ -62,7 +62,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
                 }
                 else
                 {
-                     model = GetCustomerDetails(model);
+                    model = GetCustomerDetails(model);
                     if (ModelState.IsValid)
                     {
                         _hrEmployeeRepository.Add(model);
@@ -73,7 +73,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
                         return View(model);
                     }
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -86,7 +86,15 @@ namespace VIGOR.Areas.HR.Controllers.Settings
         // GET: HR/Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(_hrEmployeeRepository.FindById(id));
+            var list = _hrEmployeeRepository.FindById(id);
+            HR_History model=new HR_History();
+            model.psBasic = Convert.ToDouble(list.CurrentBasicSalary);
+            model.psAllowance = Convert.ToDouble(list.CurrentAllowances);
+            model.psCurrent = Convert.ToDouble(list.CurrentGrossSalary);
+            model.PreviousDepartment = list.HrDepartment.Title;
+            model.PreviousDesignation = list.HrDesignation.DesignationId;
+            
+            return View(model);
         }
 
         // POST: HR/Employee/Edit/5
@@ -99,16 +107,16 @@ namespace VIGOR.Areas.HR.Controllers.Settings
             try
             {
                 model = GetCustomerDetails(model);
-                    if (ModelState.IsValid)
-                    {
-                        _hrEmployeeRepository.Edit(model);
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        return View(model);
-                    }
-              
+                if (ModelState.IsValid)
+                {
+                    _hrEmployeeRepository.Edit(model);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(model);
+                }
+
 
             }
             catch (Exception e)
@@ -160,7 +168,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
             var employeeQualificationList = new List<string>();
             var empExperienceList = new List<string>();
             var empAllownaceList = new List<string>();
-            
+
 
             foreach (var k in Request.Form.Keys)
             {
@@ -197,7 +205,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
                     empAllownaceList.Add(k.ToString());
                 if (k.ToString().Contains("Mode"))
                     empAllownaceList.Add(k.ToString());
-                
+
             }
             try
             {
@@ -217,14 +225,14 @@ namespace VIGOR.Areas.HR.Controllers.Settings
                             _hrEmployeeQualification.Grade = (Request.Form["det[" + index + "][Grade]"]);
                             _hrEmployeeQualification.Division = (Request.Form["det[" + index + "][Division]"]);
                             _hrEmployeeQualification.DegreeSession = (Request.Form["det[" + index + "][DegreeSession]"]);
-                            _hrEmployeeQualification.Marks_gpa= (Request.Form["det[" + index + "][Grade]"]);
+                            _hrEmployeeQualification.Marks_gpa = (Request.Form["det[" + index + "][Grade]"]);
                             _hrEmployeeQualification.EmployeeId = hrEmployee.Id;
                             _hrEmployeeQualification.EmployeeNo = hrEmployee.EmployeeID;
                             _hrEmployeeQualification.Status = "-";
                             _hrEmployeeQualification.CreatedBy = 0;
-                            _hrEmployeeQualification.CreatedOn=DateTime.Now;
+                            _hrEmployeeQualification.CreatedOn = DateTime.Now;
                             _hrEmployeeQualification.ModifiedBy = 0;
-                            _hrEmployeeQualification.ModifiedOn=DateTime.Now;
+                            _hrEmployeeQualification.ModifiedOn = DateTime.Now;
 
                             try
                             {
@@ -261,7 +269,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
                             _hrEmployeeAllowances.ModifiedBy = 0;
                             _hrEmployeeAllowances.EmployeeId = hrEmployee.Id;
                             _hrEmployeeAllowances.EmployeeNo = hrEmployee.EmployeeID;
-                            
+
                             try
                             {
                                 hrEmployee.HR_EmployeeAllowances.Add(_hrEmployeeAllowances);
