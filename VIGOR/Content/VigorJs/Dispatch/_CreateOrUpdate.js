@@ -1,6 +1,17 @@
 ﻿$(document).ready(function () {
-           
+    DispatchTypeChanged();
 });
+
+function DispatchTypeChanged() {
+    var dropdown = document.getElementById('DispatchTypeDrop');
+    if (dropdown.selectedIndex > 0) {
+        document.getElementById('DelayCat').disabled = true;
+        document.getElementById('DelayRem').disabled = true;
+    } else {
+        document.getElementById('DelayCat').disabled = false;
+        document.getElementById('DelayRem').disabled = false;
+    }
+}
 
 function CommSelectionChanged() {
     var dropdown = document.getElementById('drop');

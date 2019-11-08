@@ -13,8 +13,11 @@ function OpenIndDomesticDispatchAttechmentModal(url) {
         type: "Get",
         url: url,
         success: function (data) {
-            $('#FollowUpSheetModal').html(data);
-            $('#FollowUpSheetModal').modal('show');
+            if (data !== null && data!=='' && data!==undefined) {
+                $('#FollowUpSheetModal').html(data);
+                $('#FollowUpSheetModal').modal('show');
+            }
+
         }
     });
 }
@@ -24,8 +27,10 @@ function OpenIndDomesticDispatchScheduleModal(url) {
         type: "Get",
         url: url,
         success: function (data) {
-            $('#IndDomesticDispatchScheduleModal').html(data);
-            $('#IndDomesticDispatchScheduleModal').modal('show');
+            if (data !== null && data!=='' && data!==undefined) {
+                $('#IndDomesticDispatchScheduleModal').html(data);
+                $('#IndDomesticDispatchScheduleModal').modal('show');
+            }
         }
     });
 }
@@ -62,25 +67,25 @@ function deleteOrder(OrderID) {
         cancelButtonClass: "btn btn-secondary m-btn m-btn--pill m-btn--icon"
     });
     $('#delete').click(function (e) {
-            $.ajax({
-                url: "/Indent/Dispatch/Delete?id=" + OrderID,
-                type: "DELETE"
-            }).done(function (data) {
-                    LoadIndDomesticDispatchScheduleTable();
-                    sweetAlert
-                        ({
-                            title: "Deleted!",
-                            text: "Your file was successfully deleted!",
-                            type: "success"
-                        },
-                        function () {
-                          
-                        });
-                })
-                .error(function (data) {
-                    swal("Oops", "We couldn't connect to the server!", "error");
+        $.ajax({
+            url: "/Indent/Dispatch/Delete?id=" + OrderID,
+            type: "DELETE"
+        }).done(function (data) {
+            LoadIndDomesticDispatchScheduleTable();
+            sweetAlert
+                ({
+                    title: "Deleted!",
+                    text: "Your file was successfully deleted!",
+                    type: "success"
+                },
+                function () {
+
                 });
-        });
+        })
+            .error(function (data) {
+                swal("Oops", "We couldn't connect to the server!", "error");
+            });
+    });
 }
 
 
@@ -98,19 +103,19 @@ function deletePayment(PaymentID) {
     $('#deletePayment').click(function (e) {
         $.ajax({
             url: "/Indent/IndDomesticDispatchPayment/Delete?id=" + PaymentID,
-                type: "DELETE"
-            }).done(function (data) {
-                LoadIndDomesticDispatchPaymentTable();
-                sweetAlert
+            type: "DELETE"
+        }).done(function (data) {
+            LoadIndDomesticDispatchPaymentTable();
+            sweetAlert
                 ({
-                        title: "Deleted!",
-                        text: "Your file was successfully deleted!",
-                        type: "success"
-                    },
-                    function () {
+                    title: "Deleted!",
+                    text: "Your file was successfully deleted!",
+                    type: "success"
+                },
+                function () {
 
-                    });
-            })
+                });
+        })
             .error(function (data) {
                 swal("Oops", "We couldn't connect to the server!", "error");
             });

@@ -58,5 +58,7 @@ namespace ERP.Core.Models.Indenting.IndentExport
         [DataType(DataType.Date)]
         public DateTime ModifiedOn { get; set; }
 
+        public bool IsFinalized { get; set; }
+
     }
 }
