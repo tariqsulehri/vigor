@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ERP.Core.Models.HR;
 using ERP.Infrastructure.Repositories.HR;
 
 namespace VIGOR.Areas.HR.Controllers
@@ -30,7 +31,14 @@ namespace VIGOR.Areas.HR.Controllers
         // GET: HR/EmpIncrement/Create
         public ActionResult Create(int EmplId)
         {
-            return View(_hrEmployeeRepository.FindById(EmplId));
+            var list = _hrEmployeeRepository.FindById(EmplId);
+            HR_History model = new HR_History();
+            model.psBasic = Convert.ToDouble(list.CurrentBasicSalary);
+            model.psAllowance = Convert.ToDouble(list.CurrentAllowances);
+            model.psCurrent = Convert.ToDouble(list.CurrentGrossSalary);
+            model.PreviousDepartment = list.HrDepartment.id.ToString();
+            model.PreviousDesignation = list.HrDesignation.DesignationId;
+            return View(model);
         }
 
         // POST: HR/EmpIncrement/Create

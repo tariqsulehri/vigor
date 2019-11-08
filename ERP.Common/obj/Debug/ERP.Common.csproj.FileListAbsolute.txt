@@ -162,3 +162,14 @@ E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.dll
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.pdb
+F:\Development\vigor\ERP.Common\bin\Debug\ERP.Common.dll.config
+F:\Development\vigor\ERP.Common\bin\Debug\ERP.Common.dll
+F:\Development\vigor\ERP.Common\bin\Debug\ERP.Common.pdb
+F:\Development\vigor\ERP.Common\bin\Debug\ERP.Core.dll
+F:\Development\vigor\ERP.Common\bin\Debug\ERP.Core.pdb
+F:\Development\vigor\ERP.Common\bin\Debug\ERP.Core.dll.config
+F:\Development\vigor\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
+F:\Development\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
+F:\Development\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
+F:\Development\vigor\ERP.Common\obj\Debug\ERP.Common.dll
+F:\Development\vigor\ERP.Common\obj\Debug\ERP.Common.pdb

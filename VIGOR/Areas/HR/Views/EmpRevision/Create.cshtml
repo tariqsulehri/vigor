@@ -1,104 +1,116 @@
-﻿
+﻿@model ERP.Core.Models.HR.HR_History
 @{
     Layout = null;
 }
+<script>
+    $('#AddAllowanceGrid,.AddAllowanceGrid').grider({ countRow: true, countRowAdd: true });
+</script>
 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content ">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Salary Revision</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Annual Increment</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <div class="col-lg-6">
-                            <label class="">Date:</label>
-                            <input type="date" class="form-control m-input" placeholder="">
-                        </div>
-                        <div class="col-lg-12">
-                            <label class=""><strong>Transfer/Promotion</strong></label>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="">Department:</label>
-                            <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                <option></option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="">Position:</label>
-                            <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                <option></option>
-                            </select>
-                        </div>
-                        <div class="col-lg-12">
-                            <label class=""><strong>Salary Status</strong></label>
-                        </div>
-                        <div class="col-lg-4">
-                            <label>Basic Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="">Allowances:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="">Gross Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
+        @using (Html.BeginForm("Create", "EmpIncrement", FormMethod.Post, new { id = "IncrementForm" }))
+        {
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label class="">Date:</label>
+                                <input type="date" class="form-control m-input" placeholder="">
+                            </div>
+                            <div class="col-lg-12">
+                                <label class=""><strong>Transfer/Promotion</strong></label>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="">Department:</label>
+                                @Html.DropDownListFor(a => a.PreviousDepartment, new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "id", "Title"), "-- Select Department --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.PreviousDepartment, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="">Position:</label>
+                                @Html.DropDownListFor(a => a.PreviousDesignation, new SelectList(new ERP.Infrastructure.Repositories.HR.HR_DesignationRepository().GetAllHR_Designation(), "DesignationId", "Description"), "--Select Designation --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.PreviousDesignation, "", new { @class = "text-danger" })
+
+                            </div>
+                            <div class="col-lg-12">
+                                <label class=""><strong>Salary Status</strong></label>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Basic Salary:</label>
+                                @Html.TextBoxFor(a => a.psBasic, new { @type = "number", @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="">Allowances:</label>
+                                @Html.TextBoxFor(a => a.psAllowance, new { @type = "number", @class = "form-control", @readonly = "readonly" })
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="">Gross Salary:</label>
+                                @Html.TextBoxFor(a => a.psCurrent, new { @type = "number", @class = "form-control", @readonly = "readonly" })
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group row">
-                        <div class="col-lg-12">
-                            <label class=""><strong>Salary BreakUp</strong></label>
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="">Basic Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="">Allowances:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
-                        </div>
-                        <div class="col-lg-4">
-                            <label class="">Gross Salary:</label>
-                            <input type="number" class="form-control m-input" placeholder="">
-                        </div>
-                        <div class="col-lg-12">
-                            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
-                                            <thead style="background-color:#28469c; color:#ffffff">
-                                                <tr role="row">
-                                                    <th>Allowance</th>
-                                                    <th width="80">Amount</th>
-                                                    <th>Mode</th>
-                                                </tr>
-                                            </thead>
+                    <div class="col-md-6" style="border-left: 1px gray solid">
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label class=""><strong>Salary BreakUp</strong></label>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="">Basic Salary:</label>
+                                @Html.TextBoxFor(a => a.nsBasic, new { @type = "number", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="">Allowances:</label>
+                                @Html.TextBoxFor(a => a.nsAllowance, new { @type = "number", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="">Gross Salary:</label>
+                                @Html.TextBoxFor(a => a.nsCurrent, new { @type = "number", @class = "form-control" })
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline AddAllowanceGrid" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                                <thead style="background-color:#28469c; color:#ffffff">
+                                                    <tr role="row">
+                                                        <th>Allowance</th>
+                                                        <th>Amount</th>
+                                                        <th>Mode</th>
+                                                        <th width="30"></th>
+                                                    </tr>
+                                                </thead>
 
-                                            <tbody>
-
-                                                <tr role="row" class="odd">
-                                                    <td>
-                                                        <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                                            <option></option>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control m-input" placeholder="">
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control " data-val="true" data-val-number="The field CustomerIDasSeller must be a number." data-val-required="The CustomerIDasSeller field is required." id="CustomerIDasSeller" name="CustomerIDasSeller">
-                                                            <option></option>
-                                                        </select>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-lg-12 pr-0">
+                                                                    @Html.DropDownList("det[0][AllowanceID]", new SelectList(new ERP.Infrastructure.Repositories.HR.HR_AllowancesRepository().GetAllHR_Allowances(), "AllowanceID", "Description"), "Select", new { @class = "form-control " })
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            @Html.TextBox("det[0][Amount]", null, new { @class = "form-control SI_GrandTotal", @id = "AllowanceAmount", onkeyup = "SumOfTotalPrices()" })
+                                                        </td>
+                                                        <td>
+                                                            @*@Html.DropDownList("det[" + j + "][Mode]", new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value", item.IsActive == true ? 1 : 0), new { @class = "form-control" })*@
+                                                            @Html.DropDownList("det[0][Mode]",
+                                                                new List<SelectListItem>
+                                                                {
+                                                                    new SelectListItem() {Text = "Fixed", Value = "f"},
+                                                                    new SelectListItem() {Text = "Percent", Value = "p"}
+                                                                }, "-- Select  Mode --", new {@type = "text", @class = "form-control", @placeholder = "Select Mode"})
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -106,22 +118,20 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success" onclick="">
-                <span>
-                    <i class="fa fa-save"></i>
-                    <span>Save</span>
-                </span>
-            </button>
-            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                <span>
-                    <i class="flaticon-cancel"></i>
-                    <span>Cancel</span>
-                </span>
-            </button>
-        </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" onclick="">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <span>
+                        <i class="flaticon-cancel"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        }
     </div>
 </div>

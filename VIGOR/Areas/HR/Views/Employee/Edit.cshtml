@@ -191,11 +191,11 @@
                                     <div class="collapse register-box" id="s_data">
                                         <div class="m-list-search">
                                             <div class="m-list-search__results">
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpIncrement",new {EmplId = Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenIncrementModal('@Url.Action("Create", "EmpIncrement",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-add"></i></span>
                                                     <span class="m-list-search__result-item-text">Increment</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpResign",new {EmplId = Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpRevision",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-refresh"></i></span>
                                                     <span class="m-list-search__result-item-text">Revision</span>
                                                 </a>
@@ -845,11 +845,19 @@
 </div>
 <div class="modal fade" id="EmployeeNCRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
+<div class="modal fade" id="IncreamentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+
+
+
+
 <script src="~/Content/VigorJs/HR/Non_Confirmity/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/LoanAdvanceApplication/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/CINCR/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/Intimation/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/Employee/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/Increment/CreateOrUpdate.js"></script>
 <script>
     $(document).ready(function () {
         $(".history").click(function () {

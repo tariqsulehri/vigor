@@ -787,6 +787,7 @@
     <Content Include="Content\VigorJs\HR\CINCR\Index.js" />
     <Content Include="Content\VigorJs\HR\EmpType\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\EmpType\Index.js" />
+    <Content Include="Content\VigorJs\HR\Increment\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\Intimation\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\Intimation\Index.js" />
     <Content Include="Content\VigorJs\HR\LoanAdvanceApplication\CreateOrUpdate.js" />
