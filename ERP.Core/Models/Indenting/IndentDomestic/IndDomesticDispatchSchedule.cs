@@ -62,7 +62,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(2)]
         public string IsReceivedStinv { get; set; }
-        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
+
         public decimal Quantity { get; set; }
         public decimal Balance { get; set; }
 

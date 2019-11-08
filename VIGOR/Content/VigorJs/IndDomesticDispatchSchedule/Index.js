@@ -2,17 +2,7 @@
 
     LoadIndDomesticDispatchScheduleTable();
     LoadIndDomesticDispatchPaymentTable();
-    //HighlightReturnRows();
-
 });
-var HighlightReturnRows = function () {
-    $("#IndDomesticDispatchScheduleTable tbody tr").each(function () {
-
-        var UnitName = $('.Type', this).val();
-        alert(UnitName);
-    });
-}
-
 var LoadIndDomesticDispatchScheduleTable = function () {
     var id = $("#IndentID").val();
 

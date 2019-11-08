@@ -12,7 +12,7 @@ namespace VIGOR.Areas.HR.Controllers
     public class DepartmentController : Controller
     {
         HrDepartmentRepository _hrDepartmentRepository;
-
+        
         public DepartmentController()
         {
             _hrDepartmentRepository = new HrDepartmentRepository();
@@ -52,7 +52,7 @@ namespace VIGOR.Areas.HR.Controllers
             model.Title = model.DeptDescription.ToString();
             model.CompanyID = "001";
             model.isActve = "y";
-            model.DeptCreatedOn = DateTime.Now;
+            model.DeptCreatedOn=DateTime.Now;
             try
             {
                 if (_hrDepartmentRepository.IsDuplicate(model))
@@ -60,15 +60,15 @@ namespace VIGOR.Areas.HR.Controllers
                     ModelState.AddModelError(string.Empty, "Duplicate Data is not Allowed");
                     return View(model);
                 }
-                //  if (ModelState.IsValid) {
-                _hrDepartmentRepository.Add(model);
-                return null;
-                //}
-                //    else{
-                //        return View(model);
-                //    }
+              //  if (ModelState.IsValid) {
+                    _hrDepartmentRepository.Add(model);
+                    return null;
+            //}
+            //    else{
+            //        return View(model);
+            //    }
 
-
+               
             }
             catch (Exception ex)
             {
@@ -97,8 +97,8 @@ namespace VIGOR.Areas.HR.Controllers
                 }
                 //if (ModelState.IsValid)
                 //{
-                _hrDepartmentRepository.Edit(model);
-                return null;
+                    _hrDepartmentRepository.Edit(model);
+                    return null;
                 //}
                 //else
                 //{

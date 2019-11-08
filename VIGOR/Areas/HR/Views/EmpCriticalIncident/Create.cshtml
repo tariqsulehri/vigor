@@ -1,20 +1,14 @@
-﻿@model ERP.Core.Models.HR.ViewModels.HR_CINCR_VM
+﻿@model ERP.Core.Models.HR.HR_CINCR
 @{
     Layout = null;
 }
-<div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content ">
         @using (Html.BeginForm("Create", "EmpCriticalIncident", FormMethod.Post, new { id = "CIform" }))
         {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-            @Html.HiddenFor(a => a.EmployeeId)
-            @Html.HiddenFor(a => a.EmployeeNo)
-            @Html.HiddenFor(a => a.TypeOfIncident)
-            @Html.HiddenFor(a => a.Dep_id)
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Critical Incident</h5>
-                <button type="button" class="close" id="btnClose" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -37,23 +31,18 @@
                     </div>
                     <div class="col-lg-3">
                         <label class="">In Favor Of:</label>
-                        @Html.TextBoxFor(a => a.EmpName, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.EmployeeNo, new SelectList(new ERP.Infrastructure.Repositories.HR.HrEmployeeRepository().GetAllEmployees(), "Id", "Title"), "-- Select Employee --", new { @class = "form-control", @id = "EmpName", @name = "EmpName", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
                         <label class="">Department:</label>
-                        @Html.DropDownListFor(a => a.EmpDept, new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "id", "Title"), "-- Select Department --", new { @class = "form-control", @id = "DepartmentName", @name = "DepartmentName", @readonly = "readonly" })
+                        @Html.TextBoxFor(a => a.EmpDept, new { @class = "form-control", @id = "DepartmentName", @name = "DepartmentName", disabled="disabled" })
                         @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="">Designation:</label>
-                        @Html.TextBoxFor(a => a.Designation, new { @type = "text", @class = "form-control", @id = "Designation", @name = "Designation", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.Designation, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label class="">Description:</label>
                         @Html.TextAreaFor(a => a.Incident, new { @type = "text", @class = "form-control", @cols = "20", @rows = "2" })
-                        @Html.ValidationMessageFor(model => model.Incident, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -65,7 +54,7 @@
                         <span>Save</span>
                     </span>
                 </button>
-                <button type="button" class="btn btn-warning" id="btnCancel">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
                     <span>
                         <i class="flaticon-cancel"></i>
                         <span>Cancel</span>
@@ -75,12 +64,4 @@
         }
     </div>
 </div>
-
-<script>
-    $("#btnClose").click(function () {
-        $('#EmployeeCINCRCreateModal').modal('hide');
-    });
-    $("#btnCancel").click(function () {
-        $('#EmployeeCINCRCreateModal').modal('hide');
-    });
-</script>
+<script src="~/Content/VigorJs/HR/Critical Incident/CreateOrUpdate.js"></script>

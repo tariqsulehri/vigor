@@ -5,17 +5,17 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content ">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Allowance</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Degree</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        @using (Html.BeginForm("create", "Degree", FormMethod.Post))
+        @using (Html.BeginForm("Edit", "Degree", FormMethod.Post , new { id = "DegreeForm"}))
         {
             <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-lg-6">
-                        <label>Description:</label>
+                        <label>ID:</label>
                         @Html.TextBoxFor(a => a.DegreeID, new { @class = "form-control", @id = "DegreeId" })
                         @Html.ValidationMessageFor(a => a.DegreeID, "", new { @class = "text-danger" })
                     </div>
@@ -29,7 +29,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" onclick="">
+                <button type="submit" class="btn btn-success" onclick="SubmitDegreeForm()">
                     <span>
                         <i class="fa fa-save"></i>
                         <span>Save</span>

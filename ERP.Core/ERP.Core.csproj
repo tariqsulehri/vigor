@@ -265,11 +265,7 @@
     <Compile Include="Models\HR\HR_ShortLeaves.cs" />
     <Compile Include="Models\HR\Task\HrTaskProgress.cs" />
     <Compile Include="Models\HR\Task\HrTaskRegister.cs" />
-    <Compile Include="Models\HR\ViewModels\CINCRViewModel.cs" />
-    <Compile Include="Models\HR\ViewModels\HR_CINCR_VM.cs" />
     <Compile Include="Models\HR\ViewModels\HR_EmployeeViewModel.cs" />
-    <Compile Include="Models\HR\ViewModels\HR_LeaveRequestVM.cs" />
-    <Compile Include="Models\HR\ViewModels\LoanAdvanceApp_VM.cs" />
     <Compile Include="Models\Indenting\CommodityType.cs" />
     <Compile Include="Models\Indenting\cpa\Cpa.cs" />
     <Compile Include="Models\Indenting\cpa\CPAAttachments_2BDeleted.cs" />

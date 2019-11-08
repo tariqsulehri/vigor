@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ERP.Core.Models.HR.ViewModels;
 
 namespace VIGOR.Areas.HR.Controllers
 {
@@ -34,50 +33,37 @@ namespace VIGOR.Areas.HR.Controllers
         // GET: HR/EmpNonConfirmity/Create
         public ActionResult Create(int EmplId)
         {
-            HR_CINCR_VM obj = new HR_CINCR_VM();
+            HR_CINCR obj = new HR_CINCR();
             if (EmplId > 0)
             {
+                HrEmployee employee = new HrEmployeeRepository().FindById(Convert.ToInt32(EmplId));
+                if (employee != null)
+                {
+                    obj.EmpDept = employee.HrDepartment.Title;
+                    obj.EmployeeNo = employee.FirstName;
 
-                HrEmployee HrEmployee = new HrEmployeeRepository().FindById(EmplId);
-                obj.EmployeeId = HrEmployee.Id;
-                obj.EmpName = HrEmployee.FirstName;
-                obj.Designation = HrEmployee.HrDesignation.Description;
-                obj.EmployeeNo = HrEmployee.EmployeeID;
-                obj.TypeOfIncident = "NC";
-                HrDepartment dept = new HrDepartment();
-                obj.Dep_id = dept.id;
-                obj.EmpDept = dept.Title;
+                }
 
             }
+            //var result = _hrEmployeeRepository.FindById(id);
+            //ViewBag.EmpTitle = result.Title;
 
             return View(obj);
         }
 
         // POST: HR/EmpNonConfirmity/Create
         [HttpPost]
-        public ActionResult Create(HR_CINCR_VM model)
+        public ActionResult Create(HR_CINCR model)
         {
             try
             {
-                HR_CINCR obj = new HR_CINCR()
-                {
-                    id = model.id,
-                    EmployeeId = model.EmployeeId,
-                    EmployeeNo = model.EmployeeNo,
-                    EmpDept = model.EmpDept,
-                    ReportedBy = model.ReportedBy,
-                    ReportedDate = model.ReportedDate,
-                    Incident = model.Incident,
-                    TypeOfIncident = model.TypeOfIncident,
-                    CreatedBy = 0,
-                    CreatedOn = DateTime.Now,
-                    ModifiedBy = 0,
-                    ModifiedOn = DateTime.Now
-
-                };
-
-
-                if (_HR_CINCRRepository.IsDuplicate(obj))
+                model.ReportedDate = DateTime.Now;
+                model.CreatedBy = 0;
+                model.CreatedOn = DateTime.Now;
+                model.ModifiedBy = 0;
+                model.ModifiedOn = DateTime.Now;
+                model.TypeOfIncident = "NC";
+                if (_HR_CINCRRepository.IsDuplicate(model))
                 {
                     ModelState.AddModelError(String.Empty, "Duplicated data Is Not allowed");
                     return View(model);
@@ -86,7 +72,7 @@ namespace VIGOR.Areas.HR.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                        _HR_CINCRRepository.Add(obj);
+                        _HR_CINCRRepository.Add(model);
                         return null;
                     }
                     else
@@ -95,90 +81,38 @@ namespace VIGOR.Areas.HR.Controllers
                     }
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 return View(e);
             }
         }
 
         // GET: HR/EmpNonConfirmity/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
-            var data = _HR_CINCRRepository.FindById(id);
-            HR_CINCR_VM obj = new HR_CINCR_VM()
-            {
-                id = data.id,
-                EmployeeId = data.EmployeeId,
-                EmployeeNo = data.EmployeeNo,
-                EmpDept = data.EmpDept,
-                Designation = data.HrEmployee.HrDesignation.Description,
-                EmpName = data.HrEmployee.Title,
-                ReportedBy = data.ReportedBy,
-                ReportedDate = data.ReportedDate,
-                Incident = data.Incident,
-                TypeOfIncident = data.TypeOfIncident,
-                CreatedBy = data.CreatedBy,
-                CreatedOn = data.CreatedOn,
-                ModifiedBy = data.ModifiedBy,
-                ModifiedOn = data.ModifiedOn
-            };
-
-            return View(obj);
+            return View();
         }
 
         // POST: HR/EmpNonConfirmity/Edit/5
         [HttpPost]
-        public ActionResult Edit(HR_CINCR_VM model)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                HR_CINCR obj = new HR_CINCR()
-                {
-                    id = model.id,
-                    EmployeeId = model.EmployeeId,
-                    EmployeeNo = model.EmployeeNo,
-                    EmpDept = model.EmpDept,
-                    ReportedBy = model.ReportedBy,
-                    ReportedDate = model.ReportedDate,
-                    Incident = model.Incident,
-                    TypeOfIncident = model.TypeOfIncident,
-                    CreatedBy = 0,
-                    CreatedOn = DateTime.Now,
-                    ModifiedBy = 0,
-                    ModifiedOn = DateTime.Now
+                // TODO: Add update logic here
 
-                };
-
-
-                if (_HR_CINCRRepository.IsDuplicate(obj))
-                {
-                    ModelState.AddModelError(String.Empty, "Duplicated data Is Not allowed");
-                    return View(model);
-                }
-                else
-                {
-                    if (ModelState.IsValid)
-                    {
-                        _HR_CINCRRepository.Edit(obj);
-                        return null;
-                    }
-                    else
-                    {
-                        return View(model);
-                    }
-                }
+                return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch
             {
-                return View(e);
+                return View();
             }
         }
 
         // GET: HR/EmpNonConfirmity/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            _HR_CINCRRepository.Remove(id);
-            return null;
+            return View();
         }
 
         // POST: HR/EmpNonConfirmity/Delete/5
@@ -195,20 +129,6 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 return View();
             }
-        }
-        public ActionResult GetEmpNCR(int empId)
-        {
-            var CINCRData = _HR_CINCRRepository.GetAllHR_CINCR().Where(x => x.EmployeeId == empId && x.TypeOfIncident == "NC").ToList();
-            //var IntimationData = _db.HR_LeaveRequests.Where(x => x.EmployeeId == id);
-            var collection = CINCRData.Select(x => new
-            {
-                Id = x.id,
-                Employee = x.HrEmployee.Id,
-                EmpName = x.HrEmployee.FirstName,
-                Type = x.TypeOfIncident
-
-            }).ToList();
-            return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
         }
     }
 }

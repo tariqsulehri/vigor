@@ -189,9 +189,6 @@ namespace VIGOR.Areas.Indent.Controllers
                 {
                     _detail.CommodityId = item.ProductId;
                     _detail.UosID = item.UosId;
-                    _detail.Quantity = item.Quantity;
-                    decimal Rate = _detail.Rate = inquiery.IndDomesticInquiryOffers.Where(a => a.InquiryId == inquiery.Id && a.OfferedBy == model.CustomerIDasBuyer.ToString()).FirstOrDefault().OfferedRate;
-                    _detail.Rate = Rate;
                     model.IndDomesticDetails.Add(_detail);
                 }
 
@@ -267,56 +264,35 @@ namespace VIGOR.Areas.Indent.Controllers
         }
         public ActionResult ViewContractFabric(int id)
         {
-            var domestic = _indDomestic.FindById(id);
-            if (domestic.CommodityTypeId.Equals(2))
+            var a = _indDomestic.FindById(id);
+            if (a.CommodityTypeId.Equals(2))
             {
                 return RedirectToAction("ViewContractYarn", new { id });
             }
             else
             {
-                decimal DispatchCount = new IndDomesticDispatchScheduleRepository().GetAllIndDomesticDispatchSchedule().Where(a => a.IndentId == id && a.TypeOfTransaction == "D").ToList().Count();
-                if (DispatchCount > 0)
-                    domestic.IsScheduleGenerated = true;
-                decimal invoicedCount = new IndCommissionInvoiceRepository().GetAllIndIndCommissionInvoice().Where(a => a.IndentId == id).ToList().Count();
-
-                if (invoicedCount > 0)
-                    domestic.isInvoiced = true;
-                return View(domestic);
+                return View(a);
             }
 
         }
         public ActionResult ViewContractYarn(int id)
         {
-            var domestic = _indDomestic.FindById(id);
-            if (domestic.CommodityTypeId.Equals(1))
+            var a = _indDomestic.FindById(id);
+            if (a.CommodityTypeId.Equals(1))
             {
                 return RedirectToAction("ViewContractFabric", new { id });
             }
             else
             {
-                decimal DispatchCount = new IndDomesticDispatchScheduleRepository().GetAllIndDomesticDispatchSchedule().Where(a => a.IndentId == id && a.TypeOfTransaction == "D").ToList().Count();
-                if (DispatchCount > 0)
-                    domestic.IsScheduleGenerated = true;
-                decimal invoicedCount = new IndCommissionInvoiceRepository().GetAllIndIndCommissionInvoice().Where(a => a.IndentId == id).ToList().Count();
-
-                if (invoicedCount > 0)
-                    domestic.isInvoiced = true;
-                return View(domestic);
+                return View(a);
             }
 
         }
 
         public ActionResult EditYarn(int id)
         {
-            var domestic = _indDomestic.FindById(id);
-            decimal DispatchCount = new IndDomesticDispatchScheduleRepository().GetAllIndDomesticDispatchSchedule().Where(a => a.IndentId == id && a.TypeOfTransaction == "D").ToList().Count();
-            if (DispatchCount > 0)
-                domestic.IsScheduleGenerated = true;
-            decimal invoicedCount = new IndCommissionInvoiceRepository().GetAllIndIndCommissionInvoice().Where(a => a.IndentId == id).ToList().Count();
-
-            if (invoicedCount > 0)
-                domestic.isInvoiced = true;
-            return View(domestic);
+            var a = _indDomestic.FindById(id);
+            return View(a);
         }
 
         [HttpPost]
@@ -366,21 +342,14 @@ namespace VIGOR.Areas.Indent.Controllers
 
         public ActionResult Edit(int id)
         {
-            var domestic = _indDomestic.FindById(id);
-            if (domestic.CommodityTypeId.Equals(2))
+            var a = _indDomestic.FindById(id);
+            if (a.CommodityTypeId.Equals(2))
             {
                 return RedirectToAction("EditYarn", new { id });
             }
             else
             {
-                decimal DispatchCount = new IndDomesticDispatchScheduleRepository().GetAllIndDomesticDispatchSchedule().Where(a => a.IndentId == id && a.TypeOfTransaction == "D").ToList().Count();
-                if (DispatchCount > 0)
-                    domestic.IsScheduleGenerated = true;
-                decimal invoicedCount = new IndCommissionInvoiceRepository().GetAllIndIndCommissionInvoice().Where(a => a.IndentId == id).ToList().Count();
-
-                if (invoicedCount > 0)
-                    domestic.isInvoiced = true;
-                return View(domestic);
+                return View(a);
             }
 
         }

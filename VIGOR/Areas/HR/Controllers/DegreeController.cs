@@ -27,11 +27,37 @@ namespace VIGOR.Areas.HR.Controllers
         {
             return View();
         }
-
-        // GET: General/Degree/CreateOrUpdate
         public ActionResult CreateOrUpdate()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult CreateOrUpdate(HR_Degree model)
+        {
+            try
+            {
+                if (_hrDegreeRepository.IsDuplicate(model))
+                {
+                    ModelState.AddModelError(string.Empty,"Duplicate Data is not Allowed");
+                    return View(model);
+                }
+                else
+                {
+                    if(ModelState.IsValid)
+                    {
+                        _hrDegreeRepository.Add(model);
+                        return null;
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
+                }
+            }
+            catch
+            {
+                return View(model);
+            }
         }
         // GET: General/Degree/Create
         public ActionResult Create()
@@ -73,20 +99,34 @@ namespace VIGOR.Areas.HR.Controllers
         }
 
         // GET: General/Degree/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            return View(_hrDegreeRepository.FindById(id));
         }
 
         // POST: General/Degree/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(HR_Degree model)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (_hrDegreeRepository.IsDuplicate(model))
+                {
+                    ModelState.AddModelError(String.Empty, "Duplicate Data is not allowed");
+                    return View(model);
+                }
+                else
+                {
+                    if (ModelState.IsValid)
+                    {
+                        _hrDegreeRepository.Edit(model);
+                        return null;
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
+                }
             }
             catch
             {
@@ -95,9 +135,10 @@ namespace VIGOR.Areas.HR.Controllers
         }
 
         // GET: General/Degree/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            _hrDegreeRepository.Remove(id);
+            return null;
         }
 
         // POST: General/Degree/Delete/5
@@ -114,6 +155,17 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult GetDegreeInfo()
+        {
+            var result = _hrDegreeRepository.GetAllHR_Degree().ToList();
+           var collection=result.Select(x=>new
+           {
+               Id=x.DegreeID,
+               Title=x.Description
+           }).ToList();
+            return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
         }
     }
 }

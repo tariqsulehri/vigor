@@ -20,13 +20,14 @@
                 <div class="form-group row">
                     <div class="col-lg-3">
                         <label>Department ID:</label>
-                        @Html.TextBoxFor(a=>a.id,new {@class="form-control", @type = "number",@readonly="readonly" })
-                        @Html.ValidationMessageFor(a=>a.id, "" , new{ @class = "text-danger" } )
+                        @Html.TextBoxFor(a=>a.DepartmentKey,new {@class="form-control", @type = "number" })
+                        @Html.ValidationMessageFor(a=>a.DepartmentKey, "" , new{ @class = "text-danger" } )
                     </div>
                     <div class="col-lg-3">
                         <label>Description:</label>
-                        @Html.TextBoxFor(a => a.DeptDescription, new { @class = "form-control", @type = "text" })
+                        @Html.TextBoxFor(a => a.DeptDescription, new { @class = "form-control", @type = "text",@id="deptdescription" })
                         @Html.ValidationMessageFor(a => a.DeptDescription, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(a=>a.Title,new{@id="title"}); 
                     </div>
                     <div class="col-lg-3">
                         <label>HOD Name:</label>
@@ -61,8 +62,8 @@
                     </div>
                     <div class="col-lg-3">
                         <label>Markets Deals In:</label>
-                        @Html.DropDownListFor(a => a.DeptDealsInMarkeet, new SelectList(new ERP.Infrastructure.Repositories.Indenting.MarkeetDealsInRepository().GetAllMarkeetDealsIn(), "Id", "Description"), "-- Select Market --", new { @class = "form-control", @id = "MarketDealsIn", @name = "MarketDealsIn" })
-                        @Html.ValidationMessageFor(model => model.DeptDealsInMarkeet, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.MarketNature, new SelectList(new ERP.Infrastructure.Repositories.Indenting.MarkeetDealsInRepository().GetAllMarkeetDealsIn(), "Id", "Description"), "-- Select Market --", new { @class = "form-control", @id = "MarketDealsIn", @name = "MarketDealsIn" })
+                        @Html.ValidationMessageFor(model => model.MarketNature, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
                         <label>Schedule Update Type:</label>
@@ -81,24 +82,24 @@
                     </div>
                     <div class="col-lg-3">
                         <label class="">Commission Account:</label>
-                        @Html.TextBoxFor(a => a.FCSalesCommissionAccount, new { @class = "form-control  m-input", @type = "text" })
-                        @Html.ValidationMessageFor(a => a.FCSalesCommissionAccount, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.FCSalesCommissionAccount, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.CoaL5Repository().GetL5Accounts(), "L5Code", "Title"), "-- Select Account --", new {@class = "form-control", @id = "drop", onchange = "SelectionChanged()"})
+                        @Html.ValidationMessageFor(model => model.FCSalesCommissionAccount, "", new {@class = "text-danger"})
                         
                     </div>
                     <div class="col-lg-3">
                         <label class="">Commission Account[FC]:</label>
-                        @Html.TextBoxFor(a => a.FCSalesCommissionAccountRef, new { @class = "form-control  m-input", @type = "text" })
-                        @Html.ValidationMessageFor(a => a.FCSalesCommissionAccountRef, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.FCSalesCommissionAccountRef, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.CoaL5Repository().GetL5Accounts(), "L5Code", "Title"), "-- Select Account --", new {@class = "form-control", @id = "drop", onchange = "SelectionChanged()"})
+                        @Html.ValidationMessageFor(model => model.FCSalesCommissionAccountRef, "", new {@class = "text-danger"})
                     </div>
                     <div class="col-lg-3">
                         <label class="">Bad Debt Account:</label>
-                        @Html.TextBoxFor(a => a.BadDebtAccount, new { @class = "form-control  m-input", @type = "text" })
-                        @Html.ValidationMessageFor(a => a.BadDebtAccountRef, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.BadDebtAccount, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.CoaL5Repository().GetL5Accounts(), "L5Code", "Title"), "-- Select Account --", new {@class = "form-control", @id = "drop", onchange = "SelectionChanged()"})
+                        @Html.ValidationMessageFor(model => model.BadDebtAccount, "", new {@class = "text-danger"})
                     </div>
                     <div class="col-lg-3">
                         <label class="">Claim Account:</label>
-                        @Html.TextBoxFor(a => a.ClaimAccount, new { @class = "form-control  m-input", @type = "text" })
-                        @Html.ValidationMessageFor(a => a.ClaimAccount, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(a => a.ClaimAccount, new SelectList(new ERP.Infrastructure.Repositories.FinRepository.CoaL5Repository().GetL5Accounts(), "L5Code", "Title"), "-- Select Account --", new {@class = "form-control", @id = "drop", onchange = "SelectionChanged()"})
+                        @Html.ValidationMessageFor(model => model.ClaimAccount, "", new {@class = "text-danger"})
                     </div>
                     <div class="col-lg-6">
                     </div>
@@ -119,12 +120,13 @@
                                             <tr role="row" class="odd">
                                                 <td>
                                                     <div class="form-group row" style="margin-bottom:0px !important;">
-                                                        @Html.TextBoxFor(a => a.isActve, new { @class = "form-control", @type = "checkbox" })
-                                                    </div>
+                                                        @*@Html.TextBoxFor(a => a.IsAllow, new { @class = "form-control", @type = "checkbox" })*@
+                                                        <input type="checkbox" class="form-control"><span></span>
+                                                        </div>
                                                 </td>
                                                 <td>
-                                                    @Html.DropDownListFor(a=>a.DeptDealsInCommodityType,new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndUnitOfMeasureRepository().GetAllIndUnitOfMeasure(), "Id","Description"),"-- Select Unit --" , new {@class="form-control", @id = "standeredUnit", @name = "standeredUnit" })
-                                                    @Html.ValidationMessageFor(model => model.StandardUnit, "", new { @class = "text-danger" })
+                                                    @*@Html.DropDownListFor(a=>a.DeptDealsInCommodityType,new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndUnitOfMeasureRepository().GetAllIndUnitOfMeasure(), "Id","Description"),"-- Select Unit --" , new {@class="form-control", @id = "standeredUnit", @name = "standeredUnit" })
+                                                    @Html.ValidationMessageFor(model => model.StandardUnit, "", new { @class = "text-danger" })*@
                                                 </td>
 
                                             </tr>

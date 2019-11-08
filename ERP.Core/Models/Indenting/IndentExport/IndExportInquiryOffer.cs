@@ -27,11 +27,7 @@ namespace ERP.Core.Models.Indenting.IndentExport
         [ForeignKey("FinParty")]
         public int CustomerId { get; set; }
         public virtual FinParty FinParty { get; set; }
-        [StringLength(16)]
-        [Required(ErrorMessage = "Field is required....")]
-        public string InquiryDetailNo { get; set; }
 
-        public int ProductId { get; set; }
         [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(50)]
         public string OfferedBy { get; set; }

@@ -304,10 +304,6 @@
     <Compile Include="Migrations\201910301024127_AdminUserDealsInDeptRepo.Designer.cs">
       <DependentUpon>201910301024127_AdminUserDealsInDeptRepo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911061430558_IndDomesticAndHrUpdates.cs" />
-    <Compile Include="Migrations\201911061430558_IndDomesticAndHrUpdates.Designer.cs">
-      <DependentUpon>201911061430558_IndDomesticAndHrUpdates.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -653,9 +649,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910301024127_AdminUserDealsInDeptRepo.resx">
       <DependentUpon>201910301024127_AdminUserDealsInDeptRepo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201911061430558_IndDomesticAndHrUpdates.resx">
-      <DependentUpon>201911061430558_IndDomesticAndHrUpdates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

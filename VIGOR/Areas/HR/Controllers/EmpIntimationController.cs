@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ERP.Core.Models.HR.ViewModels;
-using ERP.Core.Models.Common;
 
 namespace VIGOR.Areas.HR.Controllers
 {
@@ -23,9 +21,8 @@ namespace VIGOR.Areas.HR.Controllers
             _db = new ErpDbContext();
         }
         // GET: HR/EmpIntimation
-        public ActionResult Index(int EmplId)
+        public ActionResult Index()
         {
-            ViewBag.ID = EmplId;
             return View();
         }
 
@@ -40,30 +37,21 @@ namespace VIGOR.Areas.HR.Controllers
         public ActionResult Create(int EmplId)
         {
             //EmplId = 222;
-            HR_LeaveRequestVM obj = new HR_LeaveRequestVM();
-           
+            HR_LeaveRequest obj = new HR_LeaveRequest();
             if (EmplId > 0)
             {
                 
-               HrEmployee HrEmployee = new HrEmployeeRepository().FindById(EmplId);
-
-                obj.EmployeeId = HrEmployee.Id;
-                obj.EmployeeNo = HrEmployee.EmployeeID;
-                obj.DeptName = HrEmployee.HrDepartment.Title;
-                obj.Designation = HrEmployee.HrDesignation.Description;
-                obj.Emp_Name = HrEmployee.FirstName;
-                Company company = _db.Companies.FirstOrDefault();
-
-                obj.companyID = company.Id;
-                obj.CompanyKey = "-";
-               
+                obj.HrEmployee = new HrEmployeeRepository().FindById(EmplId);
+                obj.EmployeeNo = obj.HrEmployee.EmployeeID;
+                obj.companyID = obj.HrEmployee.companyID;
+                obj.CompanyKey = obj.HrEmployee.CompanyKey;
             }
            
             return View(obj);
         }
         // POST: HR/EmpIntimation/Create
         [HttpPost]
-        public ActionResult Create(HR_LeaveRequestVM model)
+        public ActionResult Create(HR_LeaveRequest model)
         {
             try
             {
@@ -77,7 +65,6 @@ namespace VIGOR.Areas.HR.Controllers
                     ApplicationType=model.ApplicationType,
                     companyID=model.companyID,
                     CompanyKey=model.CompanyKey,
-                    Reason=model.Reason,
                     ApplicationDate = DateTime.Now,
                     Userid_as_ApprovedBy = 0,
                     ApprovedOn = DateTime.Now,
@@ -110,109 +97,38 @@ namespace VIGOR.Areas.HR.Controllers
                     }
                 }
             }
-            catch(Exception e)
+            catch
             {
-                return View(e);
+                return View();
             }
-        }                                                                           
+        }
 
         // GET: HR/EmpIntimation/Edit/5
-        public ActionResult Edit(string Id)
+        public ActionResult Edit(int id)
         {
-            
-            var data = _HR_LeaveRequestRepository.FindById(Id);
-            //ViewBag.To = data.LeaveRequestedTo;
-            //ViewBag.From = data.LeaveRequiredFrom;
-            HR_LeaveRequestVM obj = new HR_LeaveRequestVM()
-            {
-                LeaveRequestMasterID = data.LeaveRequestMasterID,
-                LeaveRequiredFrom = data.LeaveRequiredFrom,
-                LeaveRequestedTo = data.LeaveRequestedTo,
-                EmployeeId = data.EmployeeId,
-                EmployeeNo = data.EmployeeNo,
-                Emp_Name=data.HrEmployee.Title,
-                DeptName=data.HrEmployee.HrDepartment.Title,
-                Designation=data.HrEmployee.HrDesignation.Description,
-                ApplicationType = data.ApplicationType,
-                companyID = data.companyID,
-                CompanyKey = data.CompanyKey,
-                ApplicationDate = data.ApplicationDate,
-                Userid_as_ApprovedBy = data.Userid_as_ApprovedBy,
-                ApprovedOn = data.ApprovedOn,
-                CreatedBy = data.CreatedBy,
-                CreatedOn = data.CreatedOn,
-                ModifiedBy = data.ModifiedBy,
-                ModifiedOn = data.ModifiedOn,
-                Reason=data.Reason,
-                IsActive = false,
-                IsApproved = false,
-                IsPending = false
-
-            };
-            return View(obj);
+            return View();
         }
 
         // POST: HR/EmpIntimation/Edit/5
         [HttpPost]
-        public ActionResult Edit(HR_LeaveRequestVM model)
+        public ActionResult Edit(int id, FormCollection collection)
         {
-            
             try
             {
-                HR_LeaveRequest obj = new HR_LeaveRequest()
-                {
-                    LeaveRequestMasterID = model.LeaveRequestMasterID,
-                    LeaveRequiredFrom = model.LeaveRequiredFrom,
-                    LeaveRequestedTo = model.LeaveRequestedTo,
-                    EmployeeId = model.EmployeeId,
-                    EmployeeNo = model.EmployeeNo,
-                    ApplicationType = model.ApplicationType,
-                    companyID = model.companyID,
-                    CompanyKey = model.CompanyKey,
-                    ApplicationDate = model.ApplicationDate,
-                    Userid_as_ApprovedBy = 0,
-                    ApprovedOn = model.ApprovedOn,
-                    CreatedBy = model.CreatedBy,
-                    CreatedOn = model.CreatedOn,
-                    Reason=model.Reason,
-                    ModifiedBy = 0,
-                    ModifiedOn = DateTime.Now,
-                    IsActive = false,
-                    IsApproved = false,
-                    IsPending = false
+                // TODO: Add update logic here
 
-                };
-
-                
-                if (_HR_LeaveRequestRepository.IsDuplicate(obj))
-                {
-                    ModelState.AddModelError(String.Empty, "Duplicated data Is Not allowed");
-                    return View(model);
-                }
-                else
-                {
-                    if (ModelState.IsValid)
-                    {
-                        _HR_LeaveRequestRepository.Edit(obj);
-                        return null;
-                    }
-                    else
-                    {
-                        return View(model);
-                    }
-                }
+                return RedirectToAction("Index");
             }
-            catch (Exception e)
+            catch
             {
-                return View(e);
+                return View();
             }
         }
 
         // GET: HR/EmpIntimation/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            _HR_LeaveRequestRepository.Remove(id);
-            return null;
+            return View();
         }
 
         // POST: HR/EmpIntimation/Delete/5
@@ -230,16 +146,16 @@ namespace VIGOR.Areas.HR.Controllers
                 return View();
             }
         }
-        public ActionResult GetEmpIntimation(int empId)
+        public ActionResult GetEmpIntimation(int id)
         {
-            var IntimationData = _HR_LeaveRequestRepository.GetAllHR_LeaveRequests().Where(x=>x.EmployeeId==empId).ToList();
-            //var IntimationData = _db.HR_LeaveRequests.Where(x => x.EmployeeId == id);.Where(a => a.EmployeeId == EmplID)
+            var IntimationData = _HR_LeaveRequestRepository.GetAllHr_LeaveRequest().ToList();
+            //var IntimationData = _db.HR_LeaveRequests.Where(x => x.EmployeeId == id);
             var collection = IntimationData.Select(x => new
             {
                 Id = x.LeaveRequestMasterID,
-                Employee = x.HrEmployee.Id,
-                From=x.LeaveRequiredFrom.ToString(),
-                To=x.LeaveRequestedTo.ToString(),
+                Employee = x.HrEmployee.Title,
+                From=x.LeaveRequiredFrom,
+                To=x.LeaveRequestedTo,
                 Type=x.ApplicationType
             }).ToList();
             return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);

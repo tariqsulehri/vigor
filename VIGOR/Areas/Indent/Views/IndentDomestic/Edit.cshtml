@@ -425,7 +425,7 @@
                                             <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
                                                             <thead style="background-color: #28469c; color: #ffffff">
 
                                                                 <tr>
@@ -435,7 +435,6 @@
                                                                     <th width="80">Rate</th>
                                                                     <th width="60">%/QTY</th>
                                                                     <th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>
-                                                                    <th></th>
 
                                                                 </tr>
                                                             </thead>
@@ -490,9 +489,9 @@
                                                                     </tr>
                                                                 }
                                                             </tbody>
-                                                            @*<tfoot>
+                                                            <tfoot>
                                                                 <tr><td colspan="4" style=" text-align: right">Total &nbsp;&nbsp;</td><td>@Html.TextBoxFor(a => a.TotalValueOnCommRate, new { type = "number", id = "CommBalance", @readonly = "readonly" })</td></tr>
-                                                            </tfoot>*@
+                                                            </tfoot>
                                                         </table>
                                                     </div>
                                                 </div>

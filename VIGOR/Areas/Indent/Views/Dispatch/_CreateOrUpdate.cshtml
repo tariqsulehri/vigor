@@ -22,7 +22,7 @@
                             <div class=" form-group row">
                                 <div class="col-md-12">
                                     <label>Type:</label>
-                                    @Html.DropDownListFor(a => a.TypeOfTransaction, Enum.GetValues(typeof(ERP.Common.DispatchType)).Cast<ERP.Common.DispatchType>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control",@id= "DispatchTypeDrop", onchange = "DispatchTypeChanged()"  })
+                                    @Html.DropDownListFor(a => a.TypeOfTransaction, Enum.GetValues(typeof(ERP.Common.DispatchType)).Cast<ERP.Common.DispatchType>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control " })
 
                                     @Html.ValidationMessageFor(model => model.TypeOfTransaction, "", new { @class = "text-danger" })
                                 </div>
@@ -145,13 +145,13 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Delay Category:</label>
-                                    @Html.DropDownListFor(a => a.DelayShipmentReason, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndDelayShipmentReasonRepository().GetAllIndDelayShipmentReasons(), "Id", "Description"), "", Model.IsDelayed == "Y" ? (object)new { @class = "form-control ",@id="DelayCat", required = "required" } : new { @class = "form-control ", @id = "DelayCat", @disabled = "disabled" })
+                                    @Html.DropDownListFor(a => a.DelayShipmentReason, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndDelayShipmentReasonRepository().GetAllIndDelayShipmentReasons(), "Id", "Description"), "", Model.IsDelayed == "Y" ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.DelayShipmentReason, "", new { @class = "text-danger" })
 
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Delay Remarks:</label>
-                                    @Html.TextAreaFor(a => a.DelayShipmentReasonDescription, Model.IsDelayed == "Y" ? (object)new { @class = "form-control ", @id = "DelayRem", required = "required" } : new { @class = "form-control ", @id = "DelayRem", })
+                                    @Html.TextAreaFor(a => a.DelayShipmentReasonDescription, Model.IsDelayed == "Y" ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", })
                                     @Html.ValidationMessageFor(model => model.DelayShipmentReasonDescription, "", new { @class = "text-danger" })
 
                                 </div>

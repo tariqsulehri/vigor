@@ -1,17 +1,13 @@
-﻿@model ERP.Core.Models.HR.ViewModels.HR_CINCR_VM
+﻿@model ERP.Core.Models.HR.HR_CINCR
 @{
     Layout = null;
 }
-<div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content ">
-        @using (Html.BeginForm("Create", "EmpNonConfirmity", FormMethod.Post, new { id = "NCform" }))
+        @using (Html.BeginForm("Create", "EmpNonConfirmity", FormMethod.Post, new { id = "CIform" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-            @Html.HiddenFor(a => a.EmployeeId)
-            @Html.HiddenFor(a => a.EmployeeNo)
-            @Html.HiddenFor(a => a.TypeOfIncident)
-            @Html.HiddenFor(a => a.Dep_id)
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Non Confirmity</h5>
                 <button type="button" class="close" id="btnClose" aria-label="Close">
@@ -32,28 +28,28 @@
                     </div>
                     <div class="col-lg-3">
                         <label>Reported By:</label>
-                        @Html.DropDownListFor(a => a.ReportedBy, new SelectList(new ERP.Infrastructure.Repositories.HR.HrEmployeeRepository().GetAllEmployees(), "Id", "Title"), "-- Select Employee --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller" })
+                        @Html.DropDownListFor(a => a.ReportedBy, new SelectList(new ERP.Infrastructure.Repositories.HR.HrEmployeeRepository().GetAllEmployees(), "Id", "Title"), "-- Select Department --", new { @class = "form-control", @id = "CustomerIDasSeller", @name = "CustomerIDasSeller" })
                         @Html.ValidationMessageFor(model => model.ReportedBy, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
                         <label class="">In Favor Of:</label>
-                        @Html.TextBoxFor(a => a.EmpName, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(model => model.EmpName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(a => a.EmployeeNo, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @value = " ViewBag.EmpTitle", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.EmployeeNo, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
                         <label class="">Department:</label>
-                        @Html.DropDownListFor(a => a.EmpDept, new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "id", "Title"), "-- Select Department --", new { @class = "form-control", @id = "DepartmentName", @name = "DepartmentName", @readonly = "readonly" })
+                        @Html.TextBoxFor(a => a.EmpDept, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @value = " ViewBag.EmpTitle", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-lg-3">
-                        <label class="">Designation:</label>
-                        @Html.TextBoxFor(a => a.Designation, new { @type = "text", @class = "form-control", @id = "Designation", @name = "Designation", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.Designation, "", new { @class = "text-danger" })
-                    </div>
+                    @*<div class="col-lg-3">
+                        <label class="">Department:</label>
+                        @Html.DropDownListFor(a => a.EmpDept, new SelectList(new ERP.Infrastructure.Repositories.HR.HrDepartmentRepository().GetAllDepartment(), "Id", "Title"), "-- Select dept --", new { @class = "form-control", @id = "DepartmentName", @name = "DepartmentName", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
+                    </div>*@
                     <div class="col-lg-6">
                         <label class="">Description:</label>
                         @Html.TextAreaFor(a => a.Incident, new { @type = "text", @class = "form-control", @cols = "20", @rows = "2" })
-                        @Html.ValidationMessageFor(model => model.Incident, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.EmpDept, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -77,9 +73,9 @@
 </div>
 <script>
     $("#btnClose").click(function () {
-        $('#EmployeeCINCRCreateModal').modal('hide');
+        $('#NonConfirmityCreateModal').modal('hide');
     });
     $("#btnCancel").click(function () {
-        $('#EmployeeCINCRCreateModal').modal('hide');
+        $('#NonConfirmityCreateModal').modal('hide');
     });
 </script>

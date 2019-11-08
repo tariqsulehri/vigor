@@ -122,7 +122,7 @@
 
                                     </li>
                                     <li class="m-portlet__nav-item">
-                                        <a href="~/Areas/HR/Views/Employee/Index.cshtml" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
                                             <span style=" color:#ffffff">
                                                 <i class="flaticon-cancel"></i>
                                                 <span>Cancel</span>
@@ -574,7 +574,7 @@
                                                                             @Html.TextBox("det[0][JoinigDate]", null, new { @class = "form-control", type = "Date" })
                                                                         </td>
                                                                         <td>
-                                                                            @Html.TextBox("det[0][ResignedOn]", null, new { @class = "form-control", type = "Date" })
+                                                                            @Html.TextBox("det[0][ResignedOn]", null, new { @class = "form-control" ,type = "Date" })
                                                                         </td>
                                                                         <td>
                                                                             @Html.TextBox("det[0][ReasonToLeave]", null, new { @class = "form-control" })
@@ -709,12 +709,12 @@
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label>Allowances:</label>
-                                                            @Html.TextBoxFor(a => a.CurrentAllowances, new { @class = "form-control", @type = "text", @placeholder = "Basic Allowances", @readonly = "readonly", @id = "TotalEmpAllowance" })
+                                                            @Html.TextBoxFor(a => a.CurrentAllowances, new { @class = "form-control", @type = "text", @placeholder = "Basic Allowances", @disabled = "true", @id = "TotalEmpAllowance" })
                                                             @Html.ValidationMessageFor(a => a.CurrentAllowances, "", new { @class = "text-danger" })
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label>Gross Salary:</label>
-                                                            @Html.TextBoxFor(a => a.CurrentGrossSalary, new { @class = "form-control", @type = "text", @placeholder = "Gross Salary", @readonly = "readonly", @id = "GrossSalary" })
+                                                            @Html.TextBoxFor(a => a.CurrentGrossSalary, new { @class = "form-control", @type = "text", @placeholder = "Gross Salary", @disabled = "true", @id = "GrossSalary" })
                                                             @Html.ValidationMessageFor(a => a.CurrentGrossSalary, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -729,8 +729,9 @@
                                                         <div class="col-lg-6">
                                                             <div class="m-checkbox-list">
                                                                 <label class="m-checkbox m-checkbox--primary">
-                                                                    @Html.CheckBoxFor(a => a.IsLeaveQuotaImplement) Leave Quota Implement
-                                                                    <span></span>
+                                                                    @Html.CheckBoxFor(a => a.IsLeaveQuotaImplement)Leave Quota Implement
+                                                                    @*<input type="checkbox" style="position:inherit !important;"> Leave Quota Implement
+                                                        <span></span>*@
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -832,7 +833,7 @@
                                             </div>
                                         </div>
                                     </div>
-                            </div> 
+                                </div>
                             </div>
                         </div>
                     }

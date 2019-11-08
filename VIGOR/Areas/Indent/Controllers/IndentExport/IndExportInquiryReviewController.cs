@@ -74,37 +74,42 @@ namespace VIGOR.Areas.Indent.Controllers.IndentExport
                 string CustomerId = string.Empty;
                 List<IndExportInquiryReview> IndExportInquiryReviewList = new List<IndExportInquiryReview>();
                 List<IndExportInquiryDetail> IndExportInquiryDetailList = new List<IndExportInquiryDetail>();
-                IndExportInquiryReviewList = GetInquieryQuestion(model);
-                IndExportInquiryDetailList = GetIndExportInquiryDetail();
 
-                //model.Id = 0;
                 CustomerId = Request.Form["CustomerId"];
+                if (string.IsNullOrEmpty(CustomerId))
+                {
+                    ModelState.AddModelError("CustomerId", "Please select order comfirm to.");
+                }
+                ModelState.Remove("InquiryReviewQuestion");
                 model.InquiryId = model.Id;
                 model.CreatedOn = DateTime.Now;
                 model.CreatedBy = 1;
                 model.ModifiedOn = DateTime.Now;
-                //   model.IndDomesticInquiry = _indDomesticInquiryRepository.FindById(model.InquiryId);
                 model.InquiryKey = model.InquiryKey;
-
-                foreach (var question in IndExportInquiryReviewList)
+                if (ModelState.IsValid)
                 {
-                    model.InqReviewQuestionId = question.InqReviewQuestionId;
-                    model.Status = question.Status;
-                    model.InquiryReviewQuestion = question.InquiryReviewQuestion;
-
-                    _indExportInquiryReviewRepository.Add(model);
-                }
-
-                foreach (var item in IndExportInquiryDetailList)
-                {
-                    if (item.InquiryDetailNo != null)
+                    IndExportInquiryReviewList = GetInquieryQuestion(model);
+                    IndExportInquiryDetailList = GetIndExportInquiryDetail();
+                    foreach (var question in IndExportInquiryReviewList)
                     {
-                        var exportInquiryOfferList = _indExportInquiryOfferRepository.GetAllIndExportInquiryOffers().Where(x => x.InquiryDetailNo == item.InquiryDetailNo && x.CustomerId == int.Parse(CustomerId));
-                        foreach (var InquiryOffer in exportInquiryOfferList)
+                        model.InqReviewQuestionId = question.InqReviewQuestionId;
+                        model.Status = question.Status;
+                        model.InquiryReviewQuestion = question.InquiryReviewQuestion;
+
+                        _indExportInquiryReviewRepository.Add(model);
+                    }
+
+                    foreach (var item in IndExportInquiryDetailList)
+                    {
+                        if (item.InquiryDetailNo != null)
                         {
-                            var foundInquiryOffer = _indExportInquiryOfferRepository.FindById(InquiryOffer.Id);
-                            foundInquiryOffer.IsFinalized = true;
-                            _indExportInquiryOfferRepository.Edit(foundInquiryOffer);
+                            var exportInquiryOfferList = _indExportInquiryOfferRepository.GetAllIndExportInquiryOffers().Where(x => x.InquiryDetailNo == item.InquiryDetailNo && x.CustomerId == int.Parse(CustomerId));
+                            foreach (var InquiryOffer in exportInquiryOfferList)
+                            {
+                                var foundInquiryOffer = _indExportInquiryOfferRepository.FindById(InquiryOffer.Id);
+                                foundInquiryOffer.IsFinalized = true;
+                                _indExportInquiryOfferRepository.Edit(foundInquiryOffer);
+                            }
                         }
                     }
                 }
