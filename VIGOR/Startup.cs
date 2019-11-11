@@ -1,10 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
-using Microsoft.Owin;
 using Owin;
+
 using VIGOR.Models;
 
 [assembly: OwinStartup(typeof(VIGOR.Startup))]

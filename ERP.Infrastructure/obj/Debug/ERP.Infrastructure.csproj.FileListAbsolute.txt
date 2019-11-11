@@ -921,3 +921,4 @@ E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastr
 E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.dll
 E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.pdb
 E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndDomesticAndHrUpdates.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndDomesticAndHrUpdates.resources

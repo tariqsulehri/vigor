@@ -23,20 +23,76 @@ namespace ERP.Infrastructure.Repositories.HR
 
         public void Edit(HrEmployee hrEmployee)
         {
-            try
-            {
-                var existingRecord = _db.HrEmployee.Find(hrEmployee.EmployeeID);
-                _db.Entry(existingRecord).CurrentValues.SetValues(hrEmployee);
-                _db.SaveChanges();
 
-            }
-            catch (Exception ex)
+            using (var context = _db.Database.BeginTransaction())
             {
-                //Console.WriteLine(ex.Message);  
-                throw ex;
+                try
+                {
+
+                    var existingRecord = _db.HrEmployee.Find(hrEmployee.EmployeeID);
+                    _db.Entry(existingRecord).CurrentValues.SetValues(hrEmployee);
+
+                    HrEmployee employee = _db.HrEmployee.Find(hrEmployee.Id);
+                    var cmd = ("DELETE FROM HR_EmployeeExperience WHERE EmployeeId = '" + hrEmployee.Id + "'");
+                    _db.Database.ExecuteSqlCommand(cmd);
+
+                    var cmd1 = ("DELETE FROM HR_EmployeeQualification WHERE EmployeeId = '" + hrEmployee.Id + "'");
+                    _db.Database.ExecuteSqlCommand(cmd1);
+
+                    foreach (var ex in hrEmployee.HR_EmployeeExperience)
+                    {
+                        HR_EmployeeExperience exp = new HR_EmployeeExperience();
+                                exp.EmployeeNo = ex.EmployeeNo;
+                                exp.Organization = ex.Organization;
+                                exp.Designation = ex.Designation;
+                                exp.ResignedOn = ex.ResignedOn;
+                                exp.ReasonToLeave = ex.ReasonToLeave;
+                                exp.JoinigDate = ex.JoinigDate;
+                                exp.CreatedBy = ex.CreatedBy;
+                                exp.CreatedOn = ex.CreatedOn;
+                                exp.ModifiedBy = ex.ModifiedBy;
+                                exp.ModifiedOn = DateTime.Now;
+                                exp.EmployeeId = ex.EmployeeId;
+
+                    }
+
+                    foreach (var qu in hrEmployee.HR_EmployeeQualification)
+                    {
+                        HR_EmployeeQualification quli = new HR_EmployeeQualification();
+
+                                quli.EmployeeNo = qu.EmployeeNo;
+                                quli.DegreeId = qu.DegreeId;
+                                quli.Institution = qu.Institution;
+                                quli.Marks_gpa = qu.Marks_gpa;
+                                quli.Grade = qu.Grade;
+                                quli.Division = qu.Division;
+                                quli.Status = qu.Status;
+                                quli.DegreeSession = qu.DegreeSession;
+                                quli.CreatedBy = qu.CreatedBy;
+                                quli.CreatedOn = qu.CreatedOn;
+                                quli.ModifiedBy = qu.ModifiedBy;
+                                quli.ModifiedOn = DateTime.Now;
+                                quli.EmployeeId = qu.EmployeeId;
+
+                                _db.HR_EmployeeQualification.Add(quli);
+
+                    }
+
+                    
+
+                    _db.SaveChanges();
+                    context.Commit();
+
+                }
+                catch (Exception ex)
+                {
+                    context.Rollback();
+                    //Console.WriteLine(ex.Message);  
+                    throw ex;
+                }
             }
         }
-		 public bool IsDuplicate(HrEmployee hrEmployee)
+        public bool IsDuplicate(HrEmployee hrEmployee)
         {
 
             if (hrEmployee.Id == 0)
