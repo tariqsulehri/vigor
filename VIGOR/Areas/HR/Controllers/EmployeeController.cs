@@ -86,15 +86,15 @@ namespace VIGOR.Areas.HR.Controllers.Settings
         // GET: HR/Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            var list = _hrEmployeeRepository.FindById(id);
-            HR_History model=new HR_History();
-            model.psBasic = Convert.ToDouble(list.CurrentBasicSalary);
-            model.psAllowance = Convert.ToDouble(list.CurrentAllowances);
-            model.psCurrent = Convert.ToDouble(list.CurrentGrossSalary);
-            model.PreviousDepartment = list.HrDepartment.Title;
-            model.PreviousDesignation = list.HrDesignation.DesignationId;
+           // var list = _hrEmployeeRepository.FindById(id);
+            //HR_History model=new HR_History();
+            //model.psBasic = Convert.ToDouble(list.CurrentBasicSalary);
+            //model.psAllowance = Convert.ToDouble(list.CurrentAllowances);
+            //model.psCurrent = Convert.ToDouble(list.CurrentGrossSalary);
+            //model.PreviousDepartment = list.HrDepartment.Title;
+            //model.PreviousDesignation = list.HrDesignation.DesignationId;
             
-            return View(model);
+            return View(_hrEmployeeRepository.FindById(id));
         }
 
         // POST: HR/Employee/Edit/5

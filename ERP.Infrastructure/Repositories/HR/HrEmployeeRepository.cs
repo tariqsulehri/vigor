@@ -78,8 +78,6 @@ namespace ERP.Infrastructure.Repositories.HR
 
                     }
 
-                    
-
                     _db.SaveChanges();
                     context.Commit();
 
