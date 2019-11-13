@@ -75,12 +75,6 @@ namespace ERP.Core.Models.Indenting.Inspection
             };
         }
 
-        public string GetInspectionSerialID()
-        {
-            int maxno = db.IndentInspections.Count();
-            maxno = maxno + 1;
-            string SerialID = LoggedinUser.Company.Id.ToString().PadLeft(3,'0') +"L"/*+LoggedinUser.CurrentFiscalYear.YearKey*/ + maxno.ToString().PadLeft(5, '0');
-            return SerialID;
-        }
+        
     }
 }

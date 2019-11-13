@@ -177,8 +177,8 @@ namespace VIGOR.Areas.Indent.Controllers
                 model.DepartmentID = inquiery.DepartmentID;
                 model.CommodityTypeId = inquiery.CommodityTypeId;
 
-                model.CurrencyId = LoggedinUser.Company.LocalCurrencyId;
-                model.CustomerIDasLocalAgent = LoggedinUser.Company.domesticAgentID;
+                //model.CurrencyId = LoggedinUser.Company.LocalCurrencyId;
+                //model.CustomerIDasLocalAgent = LoggedinUser.Company.domesticAgentID;
 
                 //model.CustomerIDasBuyer = inquiery.IndDomesticInquiryReviews.FirstOrDefault().BuyerId;
                 //model.CustomerIDasSeller = inquiery.IndDomesticInquiryReviews.FirstOrDefault().SellerId;
