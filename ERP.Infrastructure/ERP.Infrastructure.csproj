@@ -56,9 +56,137 @@
   <ItemGroup>
     <Compile Include="ErpDbContext.cs" />
     <Compile Include="ErpInitalizeDB.cs" />
+    <Compile Include="Migrations\201903201550596_coa-parse1.cs" />
+    <Compile Include="Migrations\201903201550596_coa-parse1.Designer.cs">
+      <DependentUpon>201903201550596_coa-parse1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903210726397_Coapase2.cs" />
+    <Compile Include="Migrations\201903210726397_Coapase2.Designer.cs">
+      <DependentUpon>201903210726397_Coapase2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903210811504_Coapase3.cs" />
+    <Compile Include="Migrations\201903210811504_Coapase3.Designer.cs">
+      <DependentUpon>201903210811504_Coapase3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903291921232_init-database.cs" />
+    <Compile Include="Migrations\201903291921232_init-database.Designer.cs">
+      <DependentUpon>201903291921232_init-database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903292006386_init-database1.cs" />
+    <Compile Include="Migrations\201903292006386_init-database1.Designer.cs">
+      <DependentUpon>201903292006386_init-database1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011820117_ledger-table.cs" />
+    <Compile Include="Migrations\201904011820117_ledger-table.Designer.cs">
+      <DependentUpon>201904011820117_ledger-table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904041643258_commonTablesAndEdits.cs" />
+    <Compile Include="Migrations\201904041643258_commonTablesAndEdits.Designer.cs">
+      <DependentUpon>201904041643258_commonTablesAndEdits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904061618213_CustomerTables.cs" />
+    <Compile Include="Migrations\201904061618213_CustomerTables.Designer.cs">
+      <DependentUpon>201904061618213_CustomerTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904091756238_AdminTables.cs" />
+    <Compile Include="Migrations\201904091756238_AdminTables.Designer.cs">
+      <DependentUpon>201904091756238_AdminTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904161922408_FinLedger-relation.cs" />
+    <Compile Include="Migrations\201904161922408_FinLedger-relation.Designer.cs">
+      <DependentUpon>201904161922408_FinLedger-relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904161929346_admin-rel-update.cs" />
+    <Compile Include="Migrations\201904161929346_admin-rel-update.Designer.cs">
+      <DependentUpon>201904161929346_admin-rel-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904201700508_uniqueCkecks.cs" />
+    <Compile Include="Migrations\201904201700508_uniqueCkecks.Designer.cs">
+      <DependentUpon>201904201700508_uniqueCkecks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904201703236_PaymenTermsTable.cs" />
+    <Compile Include="Migrations\201904201703236_PaymenTermsTable.Designer.cs">
+      <DependentUpon>201904201703236_PaymenTermsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211552118_indexFurtherChanges.cs" />
+    <Compile Include="Migrations\201904211552118_indexFurtherChanges.Designer.cs">
+      <DependentUpon>201904211552118_indexFurtherChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905121718493_indentLocalInquiryTables.cs" />
+    <Compile Include="Migrations\201905121718493_indentLocalInquiryTables.Designer.cs">
+      <DependentUpon>201905121718493_indentLocalInquiryTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905122200402_DomesticIndentTables.cs" />
+    <Compile Include="Migrations\201905122200402_DomesticIndentTables.Designer.cs">
+      <DependentUpon>201905122200402_DomesticIndentTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905132005542_IndentTablesDomestic.cs" />
+    <Compile Include="Migrations\201905132005542_IndentTablesDomestic.Designer.cs">
+      <DependentUpon>201905132005542_IndentTablesDomestic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905141537150_VMFinLedgerAndUpdates.cs" />
+    <Compile Include="Migrations\201905141537150_VMFinLedgerAndUpdates.Designer.cs">
+      <DependentUpon>201905141537150_VMFinLedgerAndUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905141539367_VMFinLedgerAndUpdates1.cs" />
+    <Compile Include="Migrations\201905141539367_VMFinLedgerAndUpdates1.Designer.cs">
+      <DependentUpon>201905141539367_VMFinLedgerAndUpdates1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905141658375_LedgerView.cs" />
+    <Compile Include="Migrations\201905141658375_LedgerView.Designer.cs">
+      <DependentUpon>201905141658375_LedgerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905141909371_IndentCommissionAndSchedule.cs" />
+    <Compile Include="Migrations\201905141909371_IndentCommissionAndSchedule.Designer.cs">
+      <DependentUpon>201905141909371_IndentCommissionAndSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905191833484_indentsInspectionTables.cs" />
+    <Compile Include="Migrations\201905191833484_indentsInspectionTables.Designer.cs">
+      <DependentUpon>201905191833484_indentsInspectionTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905191838152_LeadTimeTables.cs" />
+    <Compile Include="Migrations\201905191838152_LeadTimeTables.Designer.cs">
+      <DependentUpon>201905191838152_LeadTimeTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905252004434_CommissionInvoiceTables.cs" />
+    <Compile Include="Migrations\201905252004434_CommissionInvoiceTables.Designer.cs">
+      <DependentUpon>201905252004434_CommissionInvoiceTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905252118208_CommissionInvoiceDetailTables.cs" />
+    <Compile Include="Migrations\201905252118208_CommissionInvoiceDetailTables.Designer.cs">
+      <DependentUpon>201905252118208_CommissionInvoiceDetailTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905281922064_DelayShipmentTables.cs" />
+    <Compile Include="Migrations\201905281922064_DelayShipmentTables.Designer.cs">
+      <DependentUpon>201905281922064_DelayShipmentTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905300542119_create-firstMiggration.cs" />
+    <Compile Include="Migrations\201905300542119_create-firstMiggration.Designer.cs">
+      <DependentUpon>201905300542119_create-firstMiggration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906071351406_initial migration for waqar.cs" />
+    <Compile Include="Migrations\201906071351406_initial migration for waqar.Designer.cs">
+      <DependentUpon>201906071351406_initial migration for waqar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906071415147_contact-type and comodity Relations.cs" />
+    <Compile Include="Migrations\201906071415147_contact-type and comodity Relations.Designer.cs">
+      <DependentUpon>201906071415147_contact-type and comodity Relations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906081146432_Yarn inspection Tables.cs" />
+    <Compile Include="Migrations\201906081146432_Yarn inspection Tables.Designer.cs">
+      <DependentUpon>201906081146432_Yarn inspection Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906091113372_FabricSampleAndRelations.cs" />
+    <Compile Include="Migrations\201906091113372_FabricSampleAndRelations.Designer.cs">
+      <DependentUpon>201906091113372_FabricSampleAndRelations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201906160745041_initital-migration-again.cs" />
     <Compile Include="Migrations\201906160745041_initital-migration-again.Designer.cs">
       <DependentUpon>201906160745041_initital-migration-again.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906170925427_abc.cs" />
+    <Compile Include="Migrations\201906170925427_abc.Designer.cs">
+      <DependentUpon>201906170925427_abc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201906171708201_CharacterToBoolIndAndInsp.cs" />
     <Compile Include="Migrations\201906171708201_CharacterToBoolIndAndInsp.Designer.cs">
@@ -111,6 +239,10 @@
     <Compile Include="Migrations\201907301737084_RevenueAuthority.cs" />
     <Compile Include="Migrations\201907301737084_RevenueAuthority.Designer.cs">
       <DependentUpon>201907301737084_RevenueAuthority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908011152369_ImplementSecurity.cs" />
+    <Compile Include="Migrations\201908011152369_ImplementSecurity.Designer.cs">
+      <DependentUpon>201908011152369_ImplementSecurity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201908021823531_UserPrivAndSystemOptions.cs" />
     <Compile Include="Migrations\201908021823531_UserPrivAndSystemOptions.Designer.cs">
@@ -308,6 +440,10 @@
     <Compile Include="Migrations\201911061430558_IndDomesticAndHrUpdates.Designer.cs">
       <DependentUpon>201911061430558_IndDomesticAndHrUpdates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911071633575_ComanyAndDecimalPointUnitOfSale.cs" />
+    <Compile Include="Migrations\201911071633575_ComanyAndDecimalPointUnitOfSale.Designer.cs">
+      <DependentUpon>201911071633575_ComanyAndDecimalPointUnitOfSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -467,8 +603,110 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ERP.Core\ERP.Core.csproj">
+      <Project>{dbf622a8-799b-45ad-a5df-8088d39dc616}</Project>
+      <Name>ERP.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903201550596_coa-parse1.resx">
+      <DependentUpon>201903201550596_coa-parse1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903210726397_Coapase2.resx">
+      <DependentUpon>201903210726397_Coapase2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903210811504_Coapase3.resx">
+      <DependentUpon>201903210811504_Coapase3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291921232_init-database.resx">
+      <DependentUpon>201903291921232_init-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903292006386_init-database1.resx">
+      <DependentUpon>201903292006386_init-database1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011820117_ledger-table.resx">
+      <DependentUpon>201904011820117_ledger-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904041643258_commonTablesAndEdits.resx">
+      <DependentUpon>201904041643258_commonTablesAndEdits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904061618213_CustomerTables.resx">
+      <DependentUpon>201904061618213_CustomerTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904091756238_AdminTables.resx">
+      <DependentUpon>201904091756238_AdminTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904161922408_FinLedger-relation.resx">
+      <DependentUpon>201904161922408_FinLedger-relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904161929346_admin-rel-update.resx">
+      <DependentUpon>201904161929346_admin-rel-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904201700508_uniqueCkecks.resx">
+      <DependentUpon>201904201700508_uniqueCkecks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904201703236_PaymenTermsTable.resx">
+      <DependentUpon>201904201703236_PaymenTermsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211552118_indexFurtherChanges.resx">
+      <DependentUpon>201904211552118_indexFurtherChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905121718493_indentLocalInquiryTables.resx">
+      <DependentUpon>201905121718493_indentLocalInquiryTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905122200402_DomesticIndentTables.resx">
+      <DependentUpon>201905122200402_DomesticIndentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905132005542_IndentTablesDomestic.resx">
+      <DependentUpon>201905132005542_IndentTablesDomestic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141537150_VMFinLedgerAndUpdates.resx">
+      <DependentUpon>201905141537150_VMFinLedgerAndUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141539367_VMFinLedgerAndUpdates1.resx">
+      <DependentUpon>201905141539367_VMFinLedgerAndUpdates1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141658375_LedgerView.resx">
+      <DependentUpon>201905141658375_LedgerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141909371_IndentCommissionAndSchedule.resx">
+      <DependentUpon>201905141909371_IndentCommissionAndSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191833484_indentsInspectionTables.resx">
+      <DependentUpon>201905191833484_indentsInspectionTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905191838152_LeadTimeTables.resx">
+      <DependentUpon>201905191838152_LeadTimeTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905252004434_CommissionInvoiceTables.resx">
+      <DependentUpon>201905252004434_CommissionInvoiceTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905252118208_CommissionInvoiceDetailTables.resx">
+      <DependentUpon>201905252118208_CommissionInvoiceDetailTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905281922064_DelayShipmentTables.resx">
+      <DependentUpon>201905281922064_DelayShipmentTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905300542119_create-firstMiggration.resx">
+      <DependentUpon>201905300542119_create-firstMiggration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906071351406_initial migration for waqar.resx">
+      <DependentUpon>201906071351406_initial migration for waqar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906071415147_contact-type and comodity Relations.resx">
+      <DependentUpon>201906071415147_contact-type and comodity Relations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906081146432_Yarn inspection Tables.resx">
+      <DependentUpon>201906081146432_Yarn inspection Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906091113372_FabricSampleAndRelations.resx">
+      <DependentUpon>201906091113372_FabricSampleAndRelations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906160745041_initital-migration-again.resx">
       <DependentUpon>201906160745041_initital-migration-again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906170925427_abc.resx">
+      <DependentUpon>201906170925427_abc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906171708201_CharacterToBoolIndAndInsp.resx">
       <DependentUpon>201906171708201_CharacterToBoolIndAndInsp.cs</DependentUpon>
@@ -508,6 +746,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907301737084_RevenueAuthority.resx">
       <DependentUpon>201907301737084_RevenueAuthority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908011152369_ImplementSecurity.resx">
+      <DependentUpon>201908011152369_ImplementSecurity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908021823531_UserPrivAndSystemOptions.resx">
       <DependentUpon>201908021823531_UserPrivAndSystemOptions.cs</DependentUpon>
@@ -578,7 +819,6 @@
     <EmbeddedResource Include="Migrations\201910010716090_efilingRepositories.resx">
       <DependentUpon>201910010716090_efilingRepositories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910021322550_testfromShamraiz.resx" />
     <EmbeddedResource Include="Migrations\201910021619451_CommInvoiceCommAgentRelation.resx">
       <DependentUpon>201910021619451_CommInvoiceCommAgentRelation.cs</DependentUpon>
     </EmbeddedResource>
@@ -657,12 +897,9 @@
     <EmbeddedResource Include="Migrations\201911061430558_IndDomesticAndHrUpdates.resx">
       <DependentUpon>201911061430558_IndDomesticAndHrUpdates.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ERP.Core\ERP.Core.csproj">
-      <Project>{dbf622a8-799b-45ad-a5df-8088d39dc616}</Project>
-      <Name>ERP.Core</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201911071633575_ComanyAndDecimalPointUnitOfSale.resx">
+      <DependentUpon>201911071633575_ComanyAndDecimalPointUnitOfSale.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
