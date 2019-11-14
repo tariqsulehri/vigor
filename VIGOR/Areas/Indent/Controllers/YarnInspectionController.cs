@@ -20,7 +20,7 @@ namespace VIGOR.Areas.Indent.Controllers
         private IndDomesticRepository _indDomesticRepository;
         private FinPartyRepository _finPartyRepository;
         private IndentInspectionRepository _indentInspectionRepository;
-        
+
         public YarnInspectionController()
         {
             _inspectionRepository = new YarnInspectionRepository();
@@ -106,8 +106,8 @@ namespace VIGOR.Areas.Indent.Controllers
                     indentInspection = new IndentInspection();
                     if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][isAllow]"]))
                     {
-                        indentInspection.IndentKey= (Request.Form["det[" + index + "][Contract]"]);
-                        indentInspection.SalesContractDetail= (Request.Form["det[" + index + "][DetailId]"]);
+                        indentInspection.IndentKey = (Request.Form["det[" + index + "][Contract]"]);
+                        indentInspection.SalesContractDetail = (Request.Form["det[" + index + "][DetailId]"]);
                         indentInspection.CommodityTypeId = model.CommodityId;
                         indentInspection.IndentId = model.IndentId;// model.SalesContractDetailID
                         indentInspection.InspSrno = model.InspectionSerialID;
@@ -129,6 +129,9 @@ namespace VIGOR.Areas.Indent.Controllers
         public ActionResult Create()
         {
             YarnInspection modeInspection = new YarnInspection();
+            modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID();
+            modeInspection.RegisterNo = modeInspection.InspectionSerialID;
+            modeInspection.InspectionDate = DateTime.Now;
             return View(modeInspection);
         }
 
@@ -139,7 +142,8 @@ namespace VIGOR.Areas.Indent.Controllers
             try
             {
                 ModelState.Remove("IndentKey");
-
+                modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID();
+                modeInspection.RegisterNo = modeInspection.InspectionSerialID;
                 if (ModelState.IsValid)
                 {
                     modeInspection.IndentKey = _indDomesticRepository.FindById(modeInspection.IndentId).IndentKey;
@@ -151,7 +155,7 @@ namespace VIGOR.Areas.Indent.Controllers
                     modeInspection.CreatedOn = DateTime.Now;
                     modeInspection.ModifiedOn = DateTime.Now;
                     modeInspection.CustomerId = modeInspection.CustomerIDasBuyer;
-                    modeInspection.ShipmentScheduleId =26;
+                    modeInspection.ShipmentScheduleId = 26;
                     modeInspection = GetYarnInspectionDetail(modeInspection);
                     _inspectionRepository.Add(modeInspection);
                     foreach (var file in files)
@@ -299,7 +303,7 @@ namespace VIGOR.Areas.Indent.Controllers
                     if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][Id]"]))
                     {
                         usterSetting.UsterResultTypeId = (Request.Form["det[" + index + "][Id]"]);
-                        usterSetting.value = Convert.ToDecimal(Request.Form["det[" + index + "][value]"]);
+                        usterSetting.value = !string.IsNullOrEmpty(Request.Form["det[" + index + "][value]"]) ? Convert.ToDecimal(Request.Form["det[" + index + "][value]"]) : 0;
                         usterSetting.CreatedBy = 0;
                         usterSetting.ModifiedBy = 0;
                         usterSetting.CreatedOn = DateTime.Now;
@@ -313,6 +317,5 @@ namespace VIGOR.Areas.Indent.Controllers
             }
             return model;
         }
-
     }
 }

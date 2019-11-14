@@ -6,11 +6,8 @@
 @{
     /**/
 
-    /**/
-
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Int32 counter = 0;
 }
 
 <style>
@@ -51,10 +48,6 @@
                         @Html.HiddenFor(a => a.InquiryStatus)
                         @Html.HiddenFor(a => a.CommodityTypeId)
                         @Html.HiddenFor(a => a.DepartmentID)
-                        @Html.HiddenFor(a => a.Companyid)
-                        @Html.HiddenFor(a => a.InquiryMarket)
-                        @Html.HiddenFor(a => a.InquieryStatus)
-                        @Html.HiddenFor(a => a.IsClosed)
                         <div class="m-portlet__head">
                             <div class="m-portlet__head-caption">
                                 <div class="m-portlet__head-title">
@@ -210,27 +203,17 @@
                                                     <th width="80">Sheet Ref.</th>
                                                     <th width="80">Costing</th>
                                                     <th>Remarks</th>
-                                                    @if (ViewBag.CustomerTitleList != null)
-                                                    {
-                                                        foreach (var item in ViewBag.CustomerTitleList)
-                                                        {
-                                                            <th>@item.Title</th>
-                                                        }
-                                                    }
                                                     @*<th width="60" col="TotalValue" summary="sum">Offers</th>*@
-
                                                     <th width="30"></th>
-
                                                 </tr>
                                             </thead>
                                             <tbody class="tbodyExportInquiry">
                                                 @if (Model.IndExportInquiryDetail.Count() > 0)
                                                 {
                                                     Int32 j = 0;
-
+                                                    Int32 counter = 1;
                                                     foreach (var item in Model.IndExportInquiryDetail)
                                                     {
-                                                        counter = 0;
                                                         <tr role="row" class="odd parentRowGrider">
                                                             <td>
                                                                 @Html.DropDownList("det[" + j + "][ProductId]", new SelectList(new ProductRepository().GetAllProduct().Where(a => a.Id > 1), "Id", "Description", item.ProductId), "Select", new { @class = "form-control " })
@@ -254,18 +237,17 @@
                                                                 @Html.TextBox("det[" + j + "][Costing]", null, new { @class = "form-control" })
                                                             </td>
                                                             <td>   @Html.TextBox("det[" + j + "][Remarks]", null, new { @class = "form-control", @Value = item.InquiryLineItemRemarks })</td>
-                                                            @foreach (var exportInquiryOffer in Model.IndExportInquiryOffer.Where(x => x.InquiryDetailNo == item.InquiryDetailNo).ToList())
+
+                                                            @*@if (Model.IndExportInquiryOffer.Count() > 0)
                                                             {
-                                                                counter = counter + 1;
-                                                                <td>
-                                                                    @Html.TextBox("det[" + j + "][OfferCustomerId" + counter + "]", null, new { @class = "form-control", @Value = exportInquiryOffer.CustomerId, @type = "hidden" })
-                                                                    @Html.TextBox("det[" + j + "][OfferAmount" + counter + "]", null, new { @class = "form-control", @Value = exportInquiryOffer.OfferedRate })
-                                                                </td>
-                                                                /**/
-                                                            }
+                                                                foreach (var dynamicColumn in Model.IndExportInquiryOffer)
+                                                                {
+                                                                    <td>@Html.TextBox("det[" + j + "][OfferCustomerId" + counter + "]", null, new { @class = "form-control", @Value = dynamicColumn.OfferedRate, @type = "hidden" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][OfferAmount" + counter + "]", null, new { @class = "form-control", @Value = dynamicColumn.OfferedRate })</td>
+                                                                }
+                                                            }*@
 
                                                         </tr>
-                                                        j = j + 1;
                                                     }
                                                 }
                                                 else
@@ -317,26 +299,3 @@
 <div class="modal fade" id="FinPartyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 <script src="~/Content/VigorJs/IndExportInquiry/_CreateOrUpdate.js"></script>
-<script>
-    var CounterVal = 0;
-    var dt = -1;
-    var inc = 0;
-    var SelectPartySetInGrid = function (ele) {
-        if (inc == 0) {
-            CounterVal = '@counter';
-            inc++;
-        }
-        CounterVal = parseInt(CounterVal) + 1;
-        var foundPartyIdAttr = $(ele).attr('id');
-        var partyTitle = $('#' + foundPartyIdAttr).children().eq(0).text();
-        $('#FinPartyModal').modal('hide');
-        $('.ExportInquiryTable').find('tr').each(function () {
-
-            $(this).find('th').eq(-2).after('<th>' + partyTitle + '</th>');
-            $(this).find('td').eq(-2).after('<td><input type="number" name="det[' + dt + '][OfferAmount' + CounterVal + ']" class="form-control"><input type="hidden" name="det[' + dt + '][OfferCustomerId' + CounterVal + ']" value="' + foundPartyIdAttr + '"></td>');
-            $('.summary').children().eq(-2).html(' ');
-            dt++;
-        });
-        dt = -1;
-    };
-</script>

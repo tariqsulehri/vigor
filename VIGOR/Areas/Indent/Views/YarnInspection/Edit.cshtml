@@ -62,17 +62,17 @@
         <div class="form-group row">
             <div class="col-lg-6">
                 <label>Serial No:</label>
-                @Html.TextBoxFor(a => a.InspectionSerialID, new {@class = "form-control "})
+                @Html.TextBoxFor(a => a.InspectionSerialID, new {@class = "form-control ",@readonly= "readonly" })
                 @Html.ValidationMessageFor(model => model.InspectionSerialID, "", new {@class = "text-danger"})
             </div>
             <div class="col-lg-6">
                 <label>Register No:</label>
-                @Html.TextBoxFor(a => a.RegisterNo, new {@class = "form-control "})
+                @Html.TextBoxFor(a => a.RegisterNo, new {@class = "form-control ", @readonly = "readonly" })
                 @Html.ValidationMessageFor(model => model.RegisterNo, "", new {@class = "text-danger"})
             </div>
             <div class="col-lg-6">
                 <label>Date:</label>
-                @Html.TextBoxFor(a => a.InspectionDate, new {@class = "form-control ", type = "Date", Value = Model.InspectionDate.ToString("yyyy-MM-dd")})
+                @Html.TextBoxFor(a => a.InspectionDate, new {@class = "form-control ", type = "Date", @readonly = "readonly", Value = Model.InspectionDate.ToString("yyyy-MM-dd")})
                 @Html.ValidationMessageFor(model => model.InspectionDate, "", new {@class = "text-danger"})
             </div>
             <div class="col-lg-6">

@@ -71,8 +71,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                                 ProductId = vDetail.ProductId,
                                 Quantity = vDetail.Quantity,
                                 UosId = vDetail.UosId,
-                                InquiryDetailNo = vDetail.InquiryDetailNo,
-                                InquiryLineItemRemarks = vDetail.InquiryLineItemRemarks,
                             };
 
                             existingRecord.IndExportInquiryDetail.Add(dtl);
@@ -94,8 +92,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                                 CreatedOn = vDetail.CreatedOn,
                                 ModifiedOn = vDetail.ModifiedOn,
                                 ModifiedBy = vDetail.ModifiedBy,
-                                InquiryDetailNo = vDetail.InquiryDetailNo,
-                                ProductId = vDetail.ProductId,
 
                             };
 

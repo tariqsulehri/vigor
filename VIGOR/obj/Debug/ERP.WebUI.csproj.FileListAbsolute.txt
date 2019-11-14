@@ -428,54 +428,15 @@ E:\vigour\vigor\VIGOR\bin\Migrations\VMFinLedger.sql
 E:\vigour\vigor\VIGOR\bin\VIGOR.dll.config
 E:\vigour\vigor\VIGOR\bin\VIGOR.dll
 E:\vigour\vigor\VIGOR\bin\VIGOR.pdb
-E:\vigour\vigor\VIGOR\bin\roslyn\csc.exe
 E:\vigour\vigor\VIGOR\bin\roslyn\csc.exe.config
 E:\vigour\vigor\VIGOR\bin\roslyn\csc.rsp
-E:\vigour\vigor\VIGOR\bin\roslyn\csi.exe
 E:\vigour\vigor\VIGOR\bin\roslyn\csi.exe.config
 E:\vigour\vigor\VIGOR\bin\roslyn\csi.rsp
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.Managed.Core.targets
 E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.Win32.Primitives.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.AppContext.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Collections.Immutable.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Console.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Diagnostics.StackTrace.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Globalization.Calendars.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.Compression.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.Compression.ZipFile.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.FileSystem.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.FileSystem.Primitives.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Net.Http.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Net.Sockets.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Reflection.Metadata.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.Encoding.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.Primitives.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Text.Encoding.CodePages.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Threading.Tasks.Extensions.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.ValueTuple.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.ReaderWriter.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XmlDocument.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XPath.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XPath.XDocument.dll
-E:\vigour\vigor\VIGOR\bin\roslyn\vbc.exe
 E:\vigour\vigor\VIGOR\bin\roslyn\vbc.exe.config
 E:\vigour\vigor\VIGOR\bin\roslyn\vbc.rsp
-E:\vigour\vigor\VIGOR\bin\roslyn\VBCSCompiler.exe
 E:\vigour\vigor\VIGOR\bin\roslyn\VBCSCompiler.exe.config
 E:\vigour\vigor\VIGOR\bin\AjaxControlToolkit.dll
 E:\vigour\vigor\VIGOR\bin\Antlr3.Runtime.dll
@@ -544,109 +505,42 @@ E:\vigour\vigor\VIGOR\obj\Debug\ERP.WebUI.csproj.CoreCompileInputs.cache
 E:\vigour\vigor\VIGOR\obj\Debug\ERP.WebUI.csproj.CopyComplete
 E:\vigour\vigor\VIGOR\obj\Debug\VIGOR.dll
 E:\vigour\vigor\VIGOR\obj\Debug\VIGOR.pdb
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\Migrations\VMFinLedger.sql
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\VIGOR.dll.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\VIGOR.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\VIGOR.pdb
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\csc.exe.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\csc.rsp
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\csi.exe.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\csi.rsp
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\Microsoft.Managed.Core.targets
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\vbc.exe.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\vbc.rsp
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\roslyn\VBCSCompiler.exe.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\AjaxControlToolkit.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.CrystalReports.Engine.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportSource.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.Shared.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.Web.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Common.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Core.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Infrastructure.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\Microsoft.ReportViewer.Common.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\Microsoft.ReportViewer.WebForms.DLL
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\PagedList.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\PagedList.Mvc.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.Controllers.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.Prompting.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\stdole.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Common.pdb
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Common.dll.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Core.pdb
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Core.dll.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Infrastructure.pdb
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\ERP.Infrastructure.dll.config
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\PagedList.xml
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\bin\PagedList.Mvc.xml
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\obj\Debug\ERP.WebUI.csprojAssemblyReference.cache
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\obj\Debug\ERP.WebUI.csproj.CoreCompileInputs.cache
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\obj\Debug\ERP.WebUI.csproj.CopyComplete
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\obj\Debug\VIGOR.dll
-E:\Own Projects\NWS\Vigour\vigor\VIGOR\obj\Debug\VIGOR.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\Migrations\VMFinLedger.sql
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\VIGOR.dll.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\VIGOR.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\VIGOR.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\csc.exe.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\csc.rsp
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\csi.exe.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\csi.rsp
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\Microsoft.Managed.Core.targets
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\vbc.exe.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\vbc.rsp
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\roslyn\VBCSCompiler.exe.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\AjaxControlToolkit.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.CrystalReports.Engine.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportSource.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.Shared.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.Web.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Common.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Core.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Infrastructure.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\Microsoft.ReportViewer.Common.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\Microsoft.ReportViewer.WebForms.DLL
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\PagedList.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\PagedList.Mvc.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.Controllers.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.Prompting.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\stdole.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Common.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Common.dll.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Core.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Core.dll.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Infrastructure.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\ERP.Infrastructure.dll.config
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\PagedList.xml
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\bin\PagedList.Mvc.xml
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\obj\Debug\ERP.WebUI.csprojAssemblyReference.cache
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\obj\Debug\ERP.WebUI.csproj.CoreCompileInputs.cache
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\obj\Debug\ERP.WebUI.csproj.CopyComplete
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\obj\Debug\VIGOR.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\VIGOR\obj\Debug\VIGOR.pdb
+E:\vigour\vigor\VIGOR\bin\roslyn\csc.exe
+E:\vigour\vigor\VIGOR\bin\roslyn\csi.exe
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.AppContext.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Collections.Immutable.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Console.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Globalization.Calendars.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.Compression.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.FileSystem.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Net.Http.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Net.Sockets.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Reflection.Metadata.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.ValueTuple.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XmlDocument.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XPath.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\vigour\vigor\VIGOR\bin\roslyn\vbc.exe
+E:\vigour\vigor\VIGOR\bin\roslyn\VBCSCompiler.exe

@@ -38,7 +38,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentExport
                 existingRecord.CreatedBy = indExportInquiryOffer.CreatedBy;
                 existingRecord.ModifiedBy = indExportInquiryOffer.ModifiedBy;
                 existingRecord.ModifiedOn = DateTime.Now;
-                existingRecord.IsFinalized = indExportInquiryOffer.IsFinalized;
 
                 _db.Entry(existingRecord).State = System.Data.Entity.EntityState.Modified;
                 _db.SaveChanges();

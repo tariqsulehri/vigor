@@ -162,25 +162,3 @@ E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.dll
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.pdb
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\bin\Debug\ERP.Common.dll.config
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\bin\Debug\ERP.Common.dll
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\bin\Debug\ERP.Common.pdb
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\bin\Debug\ERP.Core.dll
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\bin\Debug\ERP.Core.pdb
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\bin\Debug\ERP.Core.dll.config
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\obj\Debug\ERP.Common.dll
-E:\Own Projects\NWS\Vigour\vigor\ERP.Common\obj\Debug\ERP.Common.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\bin\Debug\ERP.Common.dll.config
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\bin\Debug\ERP.Common.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\bin\Debug\ERP.Common.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\bin\Debug\ERP.Core.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\bin\Debug\ERP.Core.pdb
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\bin\Debug\ERP.Core.dll.config
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\obj\Debug\ERP.Common.dll
-E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Common\obj\Debug\ERP.Common.pdb

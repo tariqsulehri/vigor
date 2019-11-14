@@ -11,7 +11,7 @@ namespace ERP.Core.Models.Indenting.IndentExport
     {
         public IndExportInquiryReview()
         {
-            //this.IndExportInquiry = new IndExportInquiry();
+            this.IndExportInquiry = new IndExportInquiry();
             this.IndExportInquiryReviewQuestion = new HashSet<IndExportInquiryReviewQuestion>();
 
         }

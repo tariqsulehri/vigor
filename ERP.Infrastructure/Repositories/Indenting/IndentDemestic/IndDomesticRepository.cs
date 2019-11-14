@@ -78,6 +78,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                                 DesignId =  vDetail.DesignId,
                                 DesignNo =  vDetail.DesignNo
 
+
                             };
 
                             db.IndDomesticDetail.Add(dtl);
@@ -131,14 +132,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             return ind;
         }
 
-
-        public decimal GetIndentQuantityById(int id, int commodityId)
-        {
-             decimal qty;
-             qty = db.IndDomesticDetail.Where(x => x.IndentId == id && x.CommodityId ==commodityId).Select(x => x.Quantity).SingleOrDefault();
-             return qty;
-        }
-
         public IEnumerable<IndDomestic> GetAllIndDomectic()
         {
             return db.IndDomestic.ToList();
@@ -155,7 +148,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
         }
         public string IndentKey()
         {
-             
+              
             int maxno = db.IndDomestic.Count();
             maxno = maxno + 1;
             string IndentKey = "VILC" + maxno.ToString().PadLeft(6, '0');

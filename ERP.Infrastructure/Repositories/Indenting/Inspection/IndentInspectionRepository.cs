@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ERP.Core.Models.Admin;
 
 namespace ERP.Core.Models.Indenting.Inspection
 {
@@ -73,5 +74,7 @@ namespace ERP.Core.Models.Indenting.Inspection
                 return false;
             };
         }
+
+        
     }
 }

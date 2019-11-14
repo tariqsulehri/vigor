@@ -32,27 +32,17 @@ var AddDynamicColByPartySelection = function (url) {
     });
 };
 // Abusafyan
-// Insert record for IndExportInquiryReview and Update IndExportInquiryOffer is Finalized
-function SubmitExportInquieryReview() {
-    var formData = new FormData($('#IndExportInquiryReviewForm')[0]);
-    var url = $('#IndExportInquiryReviewForm').attr('action');
-    $.ajax({
-        url: url,
-        type: "POST",
-        data: formData,
-        async: false,
-        success: function (data) {
-            if (data === null || data === undefined || data === '') {
-                $('#ExportInquieryReviewModel').modal('hide');
+// Set Party Name in Header and Append Textbox when select Party
+var Counter = 0;
+var SelectPartySetInGrid = function (ele) {
+    Counter = Counter + 1;
+    var foundPartyIdAttr = $(ele).attr('id');
+    var partyTitle = $('#' + foundPartyIdAttr).children().eq(0).text();
+    $('#FinPartyModal').modal('hide');
+    $('.ExportInquiryTable').find('tr').each(function () {
 
-            } else {
-                $('#ExportInquieryReviewModel').html(data);
-                $('#ExportInquieryReviewModel').modal('show');
-            }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+        $(this).find('th').eq(-2).after('<th>' + partyTitle + '</th>');
+        $(this).find('td').eq(-2).after('<td><input type="number" name="det[0][OfferAmount' + Counter + ']" class="form-control"><input type="hidden" name="det[0][OfferCustomerId' + Counter + ']" value="' + foundPartyIdAttr + '"></td>');
+        $('.summary').children().eq(-2).html(' ');
     });
-}
-
+};
