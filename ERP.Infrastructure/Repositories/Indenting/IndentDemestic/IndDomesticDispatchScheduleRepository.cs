@@ -30,11 +30,10 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
         public void  updateRunningBalance(int productId, int indentId)
         {
             decimal qty = indDomesticRepository.GetIndentQuantityById(productId, indentId);
-
-            if (qty > 0)
+            if(qty > 0)
             {
               List<IndDomesticDispatchSchedule> dispatches = db.IndDomesticDispatchSchedules.
-                                                             Where(x => x.IndentId == indentId && x.CommodityId == productId && x.TypeOfTransaction != "P").
+                                                             Where(x => x.IndentId == indentId && x.CommodityId == productId).
                                                              OrderBy(x=> x.Id).
                                                              ToList();  
               foreach(var disp in dispatches)
@@ -52,17 +51,24 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
                     disp.Balance = qty;
 
-                    var existingRecord = db.IndDomesticDispatchSchedules.Find(disp.Id);
-                    db.Entry(existingRecord).CurrentValues.SetValues(disp);
-                    db.SaveChanges();
+                    var existingRecord = db.IndDomesticDispatchSchedules.find(disp.);
+                    _db.Entry(existingRecord).CurrentValues.SetValues(product);
+                    _db.SaveChanges();
 
                 }
+
+                
+
+
+
+
             }
 
         }
 
         public void Edit(IndDomesticDispatchSchedule indDomesticDispatchSchedule)
         {
+            //GetIndentQuantityById(indetnId, ProductId)
             var result = db.IndDomesticDispatchSchedules.SingleOrDefault(b => b.Id == indDomesticDispatchSchedule.Id);
             if (result != null)
             {
@@ -71,9 +77,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                  // db.IndDomesticDispatchSchedules.Attach(indDomesticDispatchSchedule);
                     db.Entry(indDomesticDispatchSchedule).State = EntityState.Modified;
                     db.SaveChanges();
-
-                    updateRunningBalance(indDomesticDispatchSchedule.CommodityId, indDomesticDispatchSchedule.IndentId);
-                    
                 }
                 catch (Exception ex)
                 {
