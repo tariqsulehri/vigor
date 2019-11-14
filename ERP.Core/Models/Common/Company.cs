@@ -23,6 +23,9 @@ namespace ERP.Core.Models.Common
 
         [StringLength(1)]
         public string Status { get; set; }
+        public int LocalCurrencyId { get; set; }
+        public int ForeignCurrencyId { get; set; }
+        public int domesticAgentID { get; set; }
 
         [MaxLength(100)]
         public string MailAddress { get; set; }

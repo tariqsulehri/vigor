@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ERP.Core.Models.Indenting.Inspection;
+using ERP.Core.Models.Admin;
 
 namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 {
@@ -52,6 +53,13 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
         public bool Remove(YarnInspection yarnInspection)
         {
             throw new NotImplementedException();
+        }
+        public string GetInspectionSerialID()
+        {
+            int maxno = db.IndentInspections.Count();
+            maxno = maxno + 1;
+            string SerialID = LoggedinUser.Company.Id.ToString().PadLeft(3, '0') + "L"/*+LoggedinUser.CurrentFiscalYear.YearKey*/ + maxno.ToString().PadLeft(5, '0');
+            return SerialID;
         }
     }
 }

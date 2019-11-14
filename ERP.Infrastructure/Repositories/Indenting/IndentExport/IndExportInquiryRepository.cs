@@ -53,8 +53,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
                         _db.Entry(existingRecord).State = System.Data.Entity.EntityState.Modified;
 
-
-
                         var cmd = ("DELETE FROM IndExportInquiryDetails WHERE InquiryKey = '" + indExportInquiry.InquiryKey + "'");
                         _db.Database.ExecuteSqlCommand(cmd);
                         _db.SaveChanges();
@@ -105,6 +103,33 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                         _db.Database.ExecuteSqlCommand(cmd);
                         _db.SaveChanges();
                         context.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        context.Rollback();
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
+
+            }
+        }
+
+        public void UpdateInquieryStatus(IndExportInquiry indExportInquiry)
+        {
+            IndExportInquiry existingRecord = _db.IndExportInquiries.Find(indExportInquiry.Id);
+            if (existingRecord != null)
+            {
+                using (var context = _db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        existingRecord.InquieryStatus = indExportInquiry.InquieryStatus;
+                        existingRecord.IsClosed = indExportInquiry.IsClosed;
+                        existingRecord.InquiryClosedDate = indExportInquiry.InquiryClosedDate;
+                        _db.SaveChanges();
+                        context.Commit();
+
                     }
                     catch (Exception e)
                     {

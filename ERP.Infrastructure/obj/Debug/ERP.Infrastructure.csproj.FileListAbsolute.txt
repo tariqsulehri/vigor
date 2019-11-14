@@ -585,7 +585,6 @@ E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.AddP
 E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.HRTableUpdate.resources
 E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.HRUpdatesFromSirNusrat.resources
 E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.efilingRepositories.resources
-E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.201910021322550_testfromShamraiz.resources
 E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.CommInvoiceCommAgentRelation.resources
 E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.AddDepartmentFields.resources
 E:\vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.CommTablesUpdation.resources
@@ -921,3 +920,34 @@ E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastr
 E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.dll
 E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.pdb
 E:\Own Projects\NWS\Vigour\vigorLatest\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndDomesticAndHrUpdates.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.initdatabase1.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.ledgertable.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.commonTablesAndEdits.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.CustomerTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.AdminTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.FinLedgerrelation.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.adminrelupdate.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.uniqueCkecks.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.PaymenTermsTable.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.indexFurtherChanges.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.indentLocalInquiryTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.DomesticIndentTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndentTablesDomestic.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.VMFinLedgerAndUpdates.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.VMFinLedgerAndUpdates1.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.LedgerView.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndentCommissionAndSchedule.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.indentsInspectionTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.LeadTimeTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.CommissionInvoiceTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.CommissionInvoiceDetailTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.DelayShipmentTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.createfirstMiggration.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.initialmigrationforwaqar.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.contacttypeandcomodityRelations.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.YarninspectionTables.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.FabricSampleAndRelations.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.abc.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.ImplementSecurity.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndDomesticAndHrUpdates.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.ComanyAndDecimalPointUnitOfSale.resources

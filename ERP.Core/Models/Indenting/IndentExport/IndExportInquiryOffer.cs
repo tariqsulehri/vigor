@@ -23,7 +23,7 @@ namespace ERP.Core.Models.Indenting.IndentExport
         public string InquiryKey { get; set; }
 
         public DateTime OfferMadeOn { get; set; }
-        
+
         [ForeignKey("FinParty")]
         public int CustomerId { get; set; }
         public virtual FinParty FinParty { get; set; }

@@ -109,7 +109,6 @@ E:\vigour\Vigour\ERP.Core\bin\Debug\ERP.Core.pdb
 E:\vigour\Vigour\ERP.Core\bin\Debug\AutoMapper.dll
 E:\vigour\Vigour\ERP.Core\bin\Debug\AutoMapper.pdb
 E:\vigour\Vigour\ERP.Core\bin\Debug\AutoMapper.xml
-E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.csprojAssemblyReference.cache
 E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.csproj.CoreCompileInputs.cache
 E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.csproj.CopyComplete
 E:\vigour\Vigour\ERP.Core\obj\Debug\ERP.Core.dll

@@ -51,9 +51,9 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
                     disp.Balance = qty;
 
-                    var existingRecord = db.IndDomesticDispatchSchedules.find(disp.);
-                    _db.Entry(existingRecord).CurrentValues.SetValues(product);
-                    _db.SaveChanges();
+                    var existingRecord = db.IndDomesticDispatchSchedules.Find(disp.Id);
+                    db.Entry(existingRecord).CurrentValues.SetValues(disp);
+                    db.SaveChanges();
 
                 }
 
