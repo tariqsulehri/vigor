@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using ERP.Core.IRepositories.Indenting.InspExport;
+using ERP.Core.Models.Admin;
 using ERP.Core.Models.Indenting.InspExport;
 
 namespace ERP.Infrastructure.Repositories.Indenting.InspExport
 {
     public class FabricInspReportExportRepository : IFabricInspReportExportRepository
     {
-        private ErpDbContext db;
+        private ErpDbContext db = new ErpDbContext();
+
         public FabricInspReportExportRepository()
         {
-            ErpDbContext db = new ErpDbContext();
+            //ErpDbContext db = new ErpDbContext();
         }
 
         public void Add(FabricInspReportExport FabricInspReportExport)
@@ -34,6 +36,14 @@ namespace ERP.Infrastructure.Repositories.Indenting.InspExport
                 //Console.WriteLine(ex.Message);  
                 throw ex;
             }
+        }
+
+        public string GetInspectionSerialNoID(char v)
+        {
+            int maxno = db.FabricInspReportExport.Count(); //db.FabricInspReportExport.Count();
+            maxno = maxno + 1;
+            string SerialID = DateTime.Now.ToString("yy") + v + maxno.ToString().PadLeft(5, '0');
+            return SerialID;
         }
 
         public FabricInspReportExport FindById(string id)

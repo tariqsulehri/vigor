@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Common", "ERP.Common\ER
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Infrastructure", "ERP.Infrastructure\ERP.Infrastructure.csproj", "{32503CDF-EBD1-486C-BEBE-E2B34752AA25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.WebUI", "VIGOR\ERP.WebUI.csproj", "{B47F1825-9486-4FEA-8E6B-A548378B45D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{32503CDF-EBD1-486C-BEBE-E2B34752AA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32503CDF-EBD1-486C-BEBE-E2B34752AA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32503CDF-EBD1-486C-BEBE-E2B34752AA25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B47F1825-9486-4FEA-8E6B-A548378B45D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B47F1825-9486-4FEA-8E6B-A548378B45D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B47F1825-9486-4FEA-8E6B-A548378B45D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B47F1825-9486-4FEA-8E6B-A548378B45D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

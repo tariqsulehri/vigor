@@ -22,9 +22,9 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public string CommissionInvoiceNoKey { get; set; }
         [Required(ErrorMessage = "This is required field...")]
 
-        [ForeignKey("IndentDomestic")]
+        //[ForeignKey("IndentDomestic")]
         public int IndentId { get; set; }
-        public virtual IndDomestic IndentDomestic { get; set; }
+        //public virtual IndDomestic IndentDomestic { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(10)]

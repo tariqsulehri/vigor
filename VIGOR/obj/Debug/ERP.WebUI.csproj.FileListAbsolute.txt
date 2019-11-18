@@ -211,43 +211,6 @@ E:\VigourImpex 29\Vigour 9 Oct\VIGOR\bin\roslyn\System.Xml.XPath.dll
 E:\VigourImpex 29\Vigour 9 Oct\VIGOR\bin\roslyn\System.Xml.XPath.XDocument.dll
 E:\VigourImpex 29\Vigour 9 Oct\VIGOR\bin\roslyn\vbc.exe
 E:\VigourImpex 29\Vigour 9 Oct\VIGOR\bin\roslyn\VBCSCompiler.exe
-E:\vigour\Vigour\VIGOR\obj\Debug\ERP.WebUI.csprojAssemblyReference.cache
-E:\vigour\Vigour\VIGOR\obj\Debug\ERP.WebUI.csproj.CoreCompileInputs.cache
-E:\vigour\Vigour\VIGOR\bin\Migrations\VMFinLedger.sql
-E:\vigour\Vigour\VIGOR\bin\VIGOR.dll.config
-E:\vigour\Vigour\VIGOR\bin\VIGOR.dll
-E:\vigour\Vigour\VIGOR\bin\VIGOR.pdb
-E:\vigour\Vigour\VIGOR\bin\roslyn\csc.exe.config
-E:\vigour\Vigour\VIGOR\bin\roslyn\csc.rsp
-E:\vigour\Vigour\VIGOR\bin\roslyn\csi.exe.config
-E:\vigour\Vigour\VIGOR\bin\roslyn\csi.rsp
-E:\vigour\Vigour\VIGOR\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\vigour\Vigour\VIGOR\bin\roslyn\Microsoft.Managed.Core.targets
-E:\vigour\Vigour\VIGOR\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\vigour\Vigour\VIGOR\bin\roslyn\vbc.exe.config
-E:\vigour\Vigour\VIGOR\bin\roslyn\vbc.rsp
-E:\vigour\Vigour\VIGOR\bin\roslyn\VBCSCompiler.exe.config
-E:\vigour\Vigour\VIGOR\bin\AjaxControlToolkit.dll
-E:\vigour\Vigour\VIGOR\bin\ERP.Common.dll
-E:\vigour\Vigour\VIGOR\bin\ERP.Core.dll
-E:\vigour\Vigour\VIGOR\bin\ERP.Infrastructure.dll
-E:\vigour\Vigour\VIGOR\bin\Microsoft.ReportViewer.Common.dll
-E:\vigour\Vigour\VIGOR\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
-E:\vigour\Vigour\VIGOR\bin\Microsoft.ReportViewer.WebForms.DLL
-E:\vigour\Vigour\VIGOR\bin\Microsoft.Web.Infrastructure.dll
-E:\vigour\Vigour\VIGOR\bin\PagedList.dll
-E:\vigour\Vigour\VIGOR\bin\PagedList.Mvc.dll
-E:\vigour\Vigour\VIGOR\bin\ERP.Common.pdb
-E:\vigour\Vigour\VIGOR\bin\ERP.Common.dll.config
-E:\vigour\Vigour\VIGOR\bin\ERP.Core.pdb
-E:\vigour\Vigour\VIGOR\bin\ERP.Core.dll.config
-E:\vigour\Vigour\VIGOR\bin\ERP.Infrastructure.pdb
-E:\vigour\Vigour\VIGOR\bin\ERP.Infrastructure.dll.config
-E:\vigour\Vigour\VIGOR\bin\PagedList.xml
-E:\vigour\Vigour\VIGOR\bin\PagedList.Mvc.xml
-E:\vigour\Vigour\VIGOR\obj\Debug\ERP.WebUI.csproj.CopyComplete
-E:\vigour\Vigour\VIGOR\obj\Debug\VIGOR.dll
-E:\vigour\Vigour\VIGOR\obj\Debug\VIGOR.pdb
 E:\VigourImpex 29\Vigour 11 04\Vigour\VIGOR\bin\Migrations\VMFinLedger.sql
 E:\VigourImpex 29\Vigour 11 04\Vigour\VIGOR\bin\VIGOR.dll.config
 E:\VigourImpex 29\Vigour 11 04\Vigour\VIGOR\bin\VIGOR.dll
@@ -461,5 +424,5 @@ E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XPath.dll
 E:\vigour\vigor\VIGOR\bin\roslyn\System.Xml.XPath.XDocument.dll
 E:\vigour\vigor\VIGOR\bin\roslyn\vbc.exe
 E:\vigour\vigor\VIGOR\bin\roslyn\VBCSCompiler.exe
-E:\Vigour\Vigour\VIGOR\bin\Microsoft.SqlServer.Types.dll
-E:\Vigour\Vigour\VIGOR\bin\Microsoft.Web.Infrastructure.xml
+E:\Vigour\Vigour\VIGOR\obj\Debug\ERP.WebUI.csprojAssemblyReference.cache
+E:\Vigour\Vigour\VIGOR\obj\Debug\ERP.WebUI.csproj.CoreCompileInputs.cache

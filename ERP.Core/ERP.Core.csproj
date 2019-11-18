@@ -285,6 +285,7 @@
     <Compile Include="Models\Indenting\DeptDealsInCommodityType.cs" />
     <Compile Include="Models\Indenting\DeptDealsInMarkeet.cs" />
     <Compile Include="Models\Indenting\ExchangeRates.cs" />
+    <Compile Include="Models\Indenting\IndAccessories.cs" />
     <Compile Include="Models\Indenting\IndDelayShipmentCategory.cs" />
     <Compile Include="Models\Indenting\IndDelayShipmentReason.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\CommInvoiceAgentComm.cs" />
@@ -300,6 +301,8 @@
     <Compile Include="Models\Indenting\IndentDomestic\IndDomesticEFiling.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\IndDomesticPaymentAddOn.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\IndDomesticPaymentsAddOnList.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndentAgent.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\IndentInfo.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\IndentRevisionLog.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\IndInquiryReviewQuestion.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiry.cs" />

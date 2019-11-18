@@ -18,7 +18,18 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
         }
         public void Add(IndDomestic indDomestic)
         {
-            //indDomestic.IndentKey = IndentKey();
+            IndentInfo indentInfo = new IndentInfo
+            {
+                IndentId = indDomestic.Id,
+                SalesContractNo = indDomestic.IndentKey,
+                SellerContractNo = indDomestic.SuppContract,
+                PurchaseOrderNo = indDomestic.PONumber,
+                CompanyID = indDomestic.CompanyId
+            };
+
+            db.IndentInfos.Add(indentInfo);
+            db.SaveChanges();
+            indDomestic.IndentKey = IndentKey();
             db.IndDomestic.Add(indDomestic);
             db.SaveChanges();
         }
@@ -37,7 +48,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                         db.Entry(existingRecord).CurrentValues.SetValues(indDomestic);
                         //db.Entry(existingRecord).State = System.Data.Entity.EntityState.Modified;
                         //db.SaveChanges();
-                        var cmd = ("DELETE FROM IndDomesticDetails WHERE IndentKey = '" + indDomestic.IndentKey+"'");
+                        var cmd = ("DELETE FROM IndDomesticDetails WHERE IndentKey = '" + indDomestic.IndentKey + "'");
                         db.Database.ExecuteSqlCommand(cmd);
                         //db.SaveChanges();
                         foreach (var vDetail in indDomestic.IndDomesticDetails)
@@ -48,35 +59,35 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                                 IndentId = indDomestic.Id,
                                 IndentKey = vDetail.IndentKey,
                                 CommodityId = vDetail.CommodityId,
-                                CommoditySpecification =  vDetail.CommoditySpecification,
+                                CommoditySpecification = vDetail.CommoditySpecification,
                                 UosID = vDetail.UosID,
-                                Quantity =  vDetail.Quantity,
-                                Rate =  vDetail.Rate,
-                                CommRate =  vDetail.CommRate,
-                                Stuffing =  vDetail.Stuffing,
-                                SizeCode =  vDetail.SizeCode,
+                                Quantity = vDetail.Quantity,
+                                Rate = vDetail.Rate,
+                                CommRate = vDetail.CommRate,
+                                Stuffing = vDetail.Stuffing,
+                                SizeCode = vDetail.SizeCode,
                                 SizeSpecifications = vDetail.SizeSpecifications,
-                                GSM =  vDetail.GSM,
-                                PerPieceWeight =  vDetail.PerPieceWeight,
-                                PerPieceUnitWeight =vDetail.PerPieceUnitWeight,
-                                LabDip =  vDetail.LabDip,
-                                LabDipDate =  vDetail.LabDipDate,
-                                LabDipOption =  vDetail.LabDipOption,
+                                GSM = vDetail.GSM,
+                                PerPieceWeight = vDetail.PerPieceWeight,
+                                PerPieceUnitWeight = vDetail.PerPieceUnitWeight,
+                                LabDip = vDetail.LabDip,
+                                LabDipDate = vDetail.LabDipDate,
+                                LabDipOption = vDetail.LabDipOption,
                                 WeightDispatched = vDetail.WeightDispatched,
                                 TypeColor = vDetail.TypeColor,
-                                FabricWidth =  vDetail.FabricWidth,
-                                QuantityReq =  vDetail.QuantityReq,
-                                UnitQuantityReq =  vDetail.UnitQuantityReq,
-                                BarCode =  vDetail.BarCode,
-                                TotalValue =  vDetail.TotalValue,
+                                FabricWidth = vDetail.FabricWidth,
+                                QuantityReq = vDetail.QuantityReq,
+                                UnitQuantityReq = vDetail.UnitQuantityReq,
+                                BarCode = vDetail.BarCode,
+                                TotalValue = vDetail.TotalValue,
                                 TotalValueOnCommRate = vDetail.TotalValueOnCommRate,
-                                ExecutedQuantity =  vDetail.ExecutedQuantity,
-                                ExecutedValue =  vDetail.ExecutedValue,
-                                QuantityPerFCL =  vDetail.QuantityPerFCL,
-                                ColourId =  vDetail.ColourId,
-                                SuppliorCode =  vDetail.SuppliorCode,
-                                DesignId =  vDetail.DesignId,
-                                DesignNo =  vDetail.DesignNo
+                                ExecutedQuantity = vDetail.ExecutedQuantity,
+                                ExecutedValue = vDetail.ExecutedValue,
+                                QuantityPerFCL = vDetail.QuantityPerFCL,
+                                ColourId = vDetail.ColourId,
+                                SuppliorCode = vDetail.SuppliorCode,
+                                DesignId = vDetail.DesignId,
+                                DesignNo = vDetail.DesignNo
 
 
                             };
@@ -85,8 +96,8 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
                         }
 
-                         db.SaveChanges();
-                         context.Commit();
+                        db.SaveChanges();
+                        context.Commit();
                     }
                     catch (Exception e)
                     {
@@ -112,7 +123,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                         existingRecord.LastApprovedOn = indDomestic.LastApprovedOn;
                         existingRecord.IsApproved = indDomestic.IsApproved;
                         existingRecord.ApprovedBy = indDomestic.ApprovedBy;
-                     
+
                         db.SaveChanges();
                         context.Commit();
                     }
@@ -148,13 +159,12 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
         }
         public string IndentKey()
         {
-              
+
             int maxno = db.IndDomestic.Count();
             maxno = maxno + 1;
             string IndentKey = "VILC" + maxno.ToString().PadLeft(6, '0');
             return IndentKey;
         }
-
         public string IndentExportKey()
         {
 
@@ -162,6 +172,30 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             maxno = maxno + 1;
             string IndentKey = "VIEC" + maxno.ToString().PadLeft(6, '0');
             return IndentKey;
+        }
+
+        public void Add(IndDomestic indDomestic, ICollection<IndentAgent> indentAgent)
+        {
+            foreach (var agent in indentAgent)
+            {
+                db.IndentAgents.Add(agent);
+            }
+            db.SaveChanges();
+
+            IndentInfo indentInfo = new IndentInfo
+            {
+                IndentId = indDomestic.Id,
+                SalesContractNo = indDomestic.IndentKey,
+                SellerContractNo = indDomestic.SuppContract,
+                PurchaseOrderNo = indDomestic.PONumber,
+                CompanyID = indDomestic.CompanyId
+            };
+
+            db.IndentInfos.Add(indentInfo);
+            db.SaveChanges();
+            indDomestic.IndentKey = IndentKey();
+            db.IndDomestic.Add(indDomestic);
+            db.SaveChanges();
         }
     }
 }

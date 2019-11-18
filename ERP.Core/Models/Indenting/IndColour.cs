@@ -18,18 +18,20 @@ namespace ERP.Core.Models.Indenting
         [Required(ErrorMessage = "This is Required Field")]
         public double CodeId { get; set; }
 
-        [Required(ErrorMessage = "This is Required Field")]
-        public double ColourId { get; set; }
+        public decimal? ColourID { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        public string ColorCode { get; set; }
 
         [MaxLength(50)]
         [Required(ErrorMessage = "This is Required Field")]
         public string ColourDescription { get; set; }
 
-        [MaxLength(50)]
+        [StringLength(50)]
         public string Description { get; set; }
 
         //public ICollection<IndDomesticDetail> IndDemosticDetail { get; set;}
-
         public int CreatedBy { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]

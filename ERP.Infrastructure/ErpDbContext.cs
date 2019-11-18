@@ -176,8 +176,9 @@ namespace ERP.Infrastructure
         public virtual DbSet<ExchangeRates> ExchangeRates { get; set; }
         public virtual DbSet<IndCommissionInvoice> IndCommissionInvoice { get; set; }
         public virtual DbSet<IndCommissionInvoiceDetail> IndCommissionInvoiceDetail { get; set; }
+        public virtual DbSet<IndentInfo> IndentInfos { get; set; }
+        public virtual DbSet<IndentAgent> IndentAgents { get; set; }
         public virtual DbSet<CommInvoiceAgentComm> CommInvoiceAgentComm { get; set; }
-
         public virtual DbSet<FabricSample> FabricSample { get; set;}
 
         //Export Indent
@@ -186,6 +187,7 @@ namespace ERP.Infrastructure
         public virtual DbSet<IndExportInquiryOffer> IndExportInquiryOffers { get; set; }
         public virtual DbSet<IndExportInquiryReview> IndExportInquiryReviews { get; set; }
         public virtual DbSet<IndExportInquiryReviewQuestion> IndExportInquiryReviewQuestions { get; set; }
+        public virtual DbSet<IndAccessories> IndAccessories { get; set; }
 
         public virtual DbSet<FNL_CommissionPaymentDetail> FNL_CommissionPaymentDetails { get; set;}
 
