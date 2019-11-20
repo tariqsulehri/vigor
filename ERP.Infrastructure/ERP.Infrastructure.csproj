@@ -336,6 +336,10 @@
     <Compile Include="Migrations\201911151642077_AccessoriesTableCreated.Designer.cs">
       <DependentUpon>201911151642077_AccessoriesTableCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911191625176_IndInquiryTableUpdate.cs" />
+    <Compile Include="Migrations\201911191625176_IndInquiryTableUpdate.Designer.cs">
+      <DependentUpon>201911191625176_IndInquiryTableUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -705,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911151642077_AccessoriesTableCreated.resx">
       <DependentUpon>201911151642077_AccessoriesTableCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911191625176_IndInquiryTableUpdate.resx">
+      <DependentUpon>201911191625176_IndInquiryTableUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

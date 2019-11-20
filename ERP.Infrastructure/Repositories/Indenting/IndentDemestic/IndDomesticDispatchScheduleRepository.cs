@@ -22,9 +22,40 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
         {
             db.IndDomesticDispatchSchedules.Add(indDomesticDispatchSchedule);
             db.SaveChanges();
+            updateRunningBalance(indDomesticDispatchSchedule.IndentId, indDomesticDispatchSchedule.CommodityId);
+        }
+        IndDomesticRepository indDomesticRepository=new IndDomesticRepository();
+        public void updateRunningBalance(int indentId,int productId)
+        {
+            decimal qty = indDomesticRepository.GetIndentQuantityById(indentId, productId);
+            if (qty > 0)
+            {
+                List<IndDomesticDispatchSchedule> dispatches = db.IndDomesticDispatchSchedules.
+                    Where(x => x.IndentId == indentId && x.CommodityId == productId).
+                    OrderBy(x => x.Id).
+                    ToList();
+                foreach (var disp in dispatches)
+                {
+                    if (disp.TypeOfTransaction == "D")
+                    {
+                        qty = qty - disp.Quantity;
+                    }
+
+                    if (disp.TypeOfTransaction == "R")
+                    {
+                        qty = qty + disp.Quantity;
+                    }
+
+                    disp.Balance = qty;
+
+                    var existingRecord = db.IndDomesticDispatchSchedules.Find(disp.Id);
+                    db.Entry(existingRecord).CurrentValues.SetValues(disp);
+                    db.SaveChanges();
+
+                }
+            }
 
         }
-
         public void Edit(IndDomesticDispatchSchedule indDomesticDispatchSchedule)
         {
             var result = db.IndDomesticDispatchSchedules.SingleOrDefault(b => b.Id == indDomesticDispatchSchedule.Id);
@@ -35,6 +66,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                  //   db.IndDomesticDispatchSchedules.Attach(indDomesticDispatchSchedule);
                     db.Entry(indDomesticDispatchSchedule).State = EntityState.Modified;
                     db.SaveChanges();
+                    updateRunningBalance(indDomesticDispatchSchedule.IndentId, indDomesticDispatchSchedule.CommodityId);
                 }
                 catch (Exception ex)
                 {
@@ -71,6 +103,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
             if (db.SaveChanges() == 1)
             {
+            updateRunningBalance(existingRecord.IndentId, existingRecord.CommodityId);
                 return true;
 
             }

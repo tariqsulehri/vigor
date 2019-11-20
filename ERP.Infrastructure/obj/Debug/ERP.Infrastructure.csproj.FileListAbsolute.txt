@@ -778,3 +778,4 @@ E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.Inde
 E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.AgentCommRelationRemoved.resources
 E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.ColoursFieldsUpdated.resources
 E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.AccessoriesTableCreated.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.IndInquiryTableUpdate.resources

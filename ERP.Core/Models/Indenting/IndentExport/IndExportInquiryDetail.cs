@@ -38,12 +38,18 @@ namespace ERP.Core.Models.Indenting.IndentExport
         public int UosId { get; set; }
         public virtual UnitOfSale UnitOfSale { get; set; }
 
+        [StringLength(20)]
+        public string CostingSheetRef { get; set; }
+        public decimal? CostingPrice { get; set; }
+
         [MaxLength(150)]
         public string InquiryLineItemRemarks { get; set; }
 
         [StringLength(10)]
         public string SaleContractIssued{ get; set; }
-        public char status { get; set; }
+
+        [StringLength(1)]
+        public string Status { get; set; }
 
         [MaxLength(200)]
         public string SizeAndSpecification { get; set; }
