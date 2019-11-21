@@ -11,6 +11,23 @@ namespace ERP.Core.Models.HR
 {
     public class HrEmployee
     {
+        public HrEmployee()
+        {
+            this.HR_AttendanceTimings = new HashSet<HR_AttendanceTimings>();
+            this.HR_CINCR = new HashSet<HR_CINCR>();
+            this.HR_EmployeeAllowances = new HashSet<HR_EmployeeAllowances>();
+            this.HR_EmployeeExperience = new HashSet<HR_EmployeeExperience>();
+            this.HR_EmployeeLeaveBalance = new HashSet<HR_EmployeeLeaveBalance>();
+            this.HR_EmployeeLoanAdvanceBalance = new HashSet<HR_EmployeeLoanAdvanceBalance>();
+            this.HR_EmployeeQualification = new HashSet<HR_EmployeeQualification>();
+            this.HR_History = new HashSet<HR_History>();
+            this.HR_HistoryDetails = new HashSet<HR_HistoryDetails>();
+            this.HR_LoanAdvance = new HashSet<HR_LoanAdvance>();
+            this.HR_LeaveRequest = new HashSet<HR_LeaveRequest>();
+            this.HR_Photo = new HashSet<HR_Photo>();
+            this.HR_SalaryMaster = new HashSet<HR_SalaryMaster>();
+            this.HR_ShortLeaves = new HashSet<HR_ShortLeaves>();
+        }
         public int Id { get; set; }   //Old Field
          
         [StringLength(5)]

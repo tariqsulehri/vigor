@@ -18,6 +18,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
 
         [MaxLength(13)]
         public string SalesContractDetailID { get; set; }
+        public int srno { get; set; }
 
         [ForeignKey("IndentDomestic")]
         public int IndentId { get; set; }  

@@ -20,6 +20,14 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
         public void Add(IndDomesticDispatchSchedule indDomesticDispatchSchedule)
         {
+            int srno = db.IndDomesticDispatchSchedules.Where(x => x.IndentId == indDomesticDispatchSchedule.IndentId)
+                        .Select(m => m.srno)
+                        .DefaultIfEmpty(0)
+                        .Max();
+
+            
+            indDomesticDispatchSchedule.srno = srno + 1 ;
+
             db.IndDomesticDispatchSchedules.Add(indDomesticDispatchSchedule);
             db.SaveChanges();
             updateRunningBalance(indDomesticDispatchSchedule.IndentId, indDomesticDispatchSchedule.CommodityId);
@@ -59,13 +67,15 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
         public void Edit(IndDomesticDispatchSchedule indDomesticDispatchSchedule)
         {
             var result = db.IndDomesticDispatchSchedules.SingleOrDefault(b => b.Id == indDomesticDispatchSchedule.Id);
+
             if (result != null)
             {
                 try
                 {
-                 //   db.IndDomesticDispatchSchedules.Attach(indDomesticDispatchSchedule);
-                    db.Entry(indDomesticDispatchSchedule).State = EntityState.Modified;
+                    var existingRecord = db.IndDomesticDispatchSchedules.Find(indDomesticDispatchSchedule.Id);
+                    db.Entry(existingRecord).CurrentValues.SetValues(indDomesticDispatchSchedule);
                     db.SaveChanges();
+
                     updateRunningBalance(indDomesticDispatchSchedule.IndentId, indDomesticDispatchSchedule.CommodityId);
                 }
                 catch (Exception ex)

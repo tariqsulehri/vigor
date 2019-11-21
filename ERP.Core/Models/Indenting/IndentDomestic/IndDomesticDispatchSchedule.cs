@@ -20,6 +20,8 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         [MaxLength(13)]
         public string LocalDispatchNo { get; set; }
 
+        public int srno { get; set; }
+
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(20)]
         public string BiltyNo { get; set;}

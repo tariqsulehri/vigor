@@ -340,6 +340,14 @@
     <Compile Include="Migrations\201911191625176_IndInquiryTableUpdate.Designer.cs">
       <DependentUpon>201911191625176_IndInquiryTableUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911211538340_SrNoFieldAddToDispatch.cs" />
+    <Compile Include="Migrations\201911211538340_SrNoFieldAddToDispatch.Designer.cs">
+      <DependentUpon>201911211538340_SrNoFieldAddToDispatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911211624204_SrNoFieldAddToIndDomesticDetail.cs" />
+    <Compile Include="Migrations\201911211624204_SrNoFieldAddToIndDomesticDetail.Designer.cs">
+      <DependentUpon>201911211624204_SrNoFieldAddToIndDomesticDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -712,6 +720,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911191625176_IndInquiryTableUpdate.resx">
       <DependentUpon>201911191625176_IndInquiryTableUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211538340_SrNoFieldAddToDispatch.resx">
+      <DependentUpon>201911211538340_SrNoFieldAddToDispatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911211624204_SrNoFieldAddToIndDomesticDetail.resx">
+      <DependentUpon>201911211624204_SrNoFieldAddToIndDomesticDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
