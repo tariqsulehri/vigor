@@ -62,8 +62,8 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public string VehicleNo { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]
-        [MaxLength(2)]
-        public string IsReceivedStinv { get; set; }
+        public bool IsReceivedStinv { get; set; }
+
         [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than 0")]
         public decimal Quantity { get; set; }
         public decimal Balance { get; set; }
@@ -79,7 +79,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public string SalestaxInvoiceNo { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime SalestaxInvoiceDate { get; set; }
+        public DateTime? SalestaxInvoiceDate { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(2)]
@@ -88,8 +88,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(2)]
         public string DelayShipmentReason { get; set; }
-
-        
+                
         [MaxLength(250)]
         public string DelayShipmentReasonDescription { get; set; }
 

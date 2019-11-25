@@ -11,10 +11,11 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
     public class IndentInfo
     {
         public int Id { get; set; }
-        
-        public int IndentId { get; set; }
-        //public virtual IndDomestic IndentDomestic { get; set; }
 
+        [ForeignKey("IndentDomestic")]
+        public int IndentId { get; set; }
+        public virtual IndDomestic IndentDomestic { get; set; }
+        
         [StringLength(10)]
         public string SalesContractNo { get; set; }
 

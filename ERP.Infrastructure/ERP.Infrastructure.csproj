@@ -348,6 +348,18 @@
     <Compile Include="Migrations\201911211624204_SrNoFieldAddToIndDomesticDetail.Designer.cs">
       <DependentUpon>201911211624204_SrNoFieldAddToIndDomesticDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911251333183_CreatedForeignLedgertables.cs" />
+    <Compile Include="Migrations\201911251333183_CreatedForeignLedgertables.Designer.cs">
+      <DependentUpon>201911251333183_CreatedForeignLedgertables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911251444460_DispatchScheduleIsReceviedBoolean.cs" />
+    <Compile Include="Migrations\201911251444460_DispatchScheduleIsReceviedBoolean.Designer.cs">
+      <DependentUpon>201911251444460_DispatchScheduleIsReceviedBoolean.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911251528593_DispatchScheduleIsReceviedDate.cs" />
+    <Compile Include="Migrations\201911251528593_DispatchScheduleIsReceviedDate.Designer.cs">
+      <DependentUpon>201911251528593_DispatchScheduleIsReceviedDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -728,6 +740,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911211624204_SrNoFieldAddToIndDomesticDetail.resx">
       <DependentUpon>201911211624204_SrNoFieldAddToIndDomesticDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911251333183_CreatedForeignLedgertables.resx">
+      <DependentUpon>201911251333183_CreatedForeignLedgertables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911251444460_DispatchScheduleIsReceviedBoolean.resx">
+      <DependentUpon>201911251444460_DispatchScheduleIsReceviedBoolean.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911251528593_DispatchScheduleIsReceviedDate.resx">
+      <DependentUpon>201911251528593_DispatchScheduleIsReceviedDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
