@@ -194,7 +194,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             {
                 int maxno = db.IndDomestic.Count();
                 maxno = maxno + 1;
-                IndentKey = "VILC" + maxno.ToString().PadLeft(6, '0');
+                IndentKey = "VIEC" + maxno.ToString().PadLeft(6, '0');
             }
 
             return IndentKey;

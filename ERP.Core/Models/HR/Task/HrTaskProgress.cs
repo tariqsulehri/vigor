@@ -25,7 +25,7 @@ namespace ERP.Core.Models.HR.Task
         [MaxLength(9)]
         public string TaskKey { get; set; }
 
-        [Required(ErrorMessage = "Field is required....")]
+        //[Required(ErrorMessage = "Field is required....")]
         [MaxLength(2500)]
         public string Comments { get; set; }
 

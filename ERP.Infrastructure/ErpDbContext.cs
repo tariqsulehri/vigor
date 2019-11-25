@@ -135,6 +135,18 @@ namespace ERP.Infrastructure
         public virtual DbSet<FabricInspReportExport> FabricInspReportExport { get; set;}
 
         #endregion
+
+        #region ExportIndent  
+
+        public virtual DbSet<IndExportShipmentScheduleMaster> IndExportShipmentScheduleMaster { get; set; }
+        public virtual DbSet<IndExportShipmentScheduleDetail> IndExportShipmentScheduleDetail { get; set;}
+
+        public virtual DbSet<FNLCommissionBill> FNLCommissionBills { get; set; }
+        public virtual DbSet<FNL_CommissionPaymentDetail> FNL_CommissionPaymentDetails { get; set; }
+        
+        #endregion
+
+
         #region Indents Common (Brand, GeneralDescriptions, GoodsForwarders, ShipingLines)
         public virtual DbSet<DeptDealsInCommodityType> DeptDealsInCommodityType{ get; set;}
         public virtual DbSet<DeptDealsInMarkeet> DeptDealsInMarkeet { get; set; }
@@ -189,7 +201,7 @@ namespace ERP.Infrastructure
         public virtual DbSet<IndExportInquiryReviewQuestion> IndExportInquiryReviewQuestions { get; set; }
         public virtual DbSet<IndAccessories> IndAccessories { get; set; }
 
-        public virtual DbSet<FNL_CommissionPaymentDetail> FNL_CommissionPaymentDetails { get; set;}
+        
 
         public virtual DbSet<DocumentEFilingType> DocumentEFilingTypes { get; set;}
         public virtual DbSet<EFilingSystem> EFilingSystems { get; set; }
@@ -207,6 +219,9 @@ namespace ERP.Infrastructure
 
         #endregion
 
+        #region Company
+        
+
         public DbSet<BusinessTypes> BusinessTypes { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         
@@ -216,6 +231,8 @@ namespace ERP.Infrastructure
         public virtual DbSet<ContactType> ContactTypes { get; set;}
         public virtual DbSet<SpecialInstruction> SpecialInstruction{ get; set; }
         public virtual DbSet<Social> Social { get; set; }
+
+        #endregion
 
 
         #region General

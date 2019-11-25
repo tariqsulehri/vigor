@@ -89,7 +89,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         [MaxLength(2)]
         public string DelayShipmentReason { get; set; }
 
-        [Required(ErrorMessage = "Field is required....")]
+        
         [MaxLength(250)]
         public string DelayShipmentReasonDescription { get; set; }
 

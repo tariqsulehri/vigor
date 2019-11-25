@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ERP.Core.Models.Indenting.IndentExport;
 
 namespace ERP.Core.Models.Indenting.IndentDomestic
 {
@@ -194,7 +195,9 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public virtual ICollection<YarnInspection> YarnInspections { get; set; }
         public virtual ICollection<FabricSample> FabricSample { get; set; }
         public virtual ICollection<KnittedFabricInspection> KnittedFabricInspections { get; set; }
-        
+
+        public virtual ICollection<IndExportShipmentScheduleMaster> IndExportShipmentScheduleMaster { get; set; }
+
         //============================================
         public bool IsSubmitForApproval { get; set; }
         [MaxLength(50)]

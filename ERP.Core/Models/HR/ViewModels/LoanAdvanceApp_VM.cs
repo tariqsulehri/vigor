@@ -92,5 +92,6 @@ namespace ERP.Core.Models.HR.ViewModels
         public string DeptName { get; set; }
         public string Designation { get; set; }
         public string Emp_Name { get; set; }
+        public string Status { get; set; }
     }
 }

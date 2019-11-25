@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +10,17 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
 {
     public class FNL_CommissionPaymentDetail
     {
+        public int Id { get; set; }
+        
+        [ForeignKey("FNLCommissionBill")]
+        public int FNLCommissionBill_ID { get; set;}
+        public virtual FNLCommissionBill FNLCommissionBill { get; set; }
+        
         [StringLength(12)]
-        public string FNLCommissionBillID { get; set; }
+        public string FNLCommissionBillKey { get; set; }
 
-        [Key]
         [StringLength(12)]
-        public string FNLCommission_invoice { get; set; }
+        public string FNLCommission_invoiceKey { get; set; }
 
         public decimal AmountReceived { get; set; }
 

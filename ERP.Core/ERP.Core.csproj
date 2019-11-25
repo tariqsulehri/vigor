@@ -151,10 +151,12 @@
     <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentDomestic\IIndentRevisionLogRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentDomestic\IIndInquiryReviewQuestionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IFNLCommissionBillRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryOfferRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryReviewQuestionRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryReviewRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IIndExportShipmentScheduleMaster.cs" />
     <Compile Include="IRepositories\Indenting\Inspection\IFabInspReportLocalSum.cs" />
     <Compile Include="IRepositories\Indenting\Inspection\IFabInspReportLocalSumRepository.cs" />
     <Compile Include="IRepositories\Indenting\Inspection\IFabInspTypePerformedRepository.cs" />
@@ -309,6 +311,8 @@
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiryDetail.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiryOffer.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiryReview.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportShipmentScheduleDetail.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportShipmentScheduleMaster.cs" />
     <Compile Include="Models\Indenting\Inspection\FabInspReportLocalSum.cs" />
     <Compile Include="Models\Indenting\Inspection\FabInspTypePerformed.cs" />
     <Compile Include="Models\Indenting\Inspection\FabricInspReportLocalDetail.cs" />

@@ -443,10 +443,12 @@
     <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentDemestic\IndentRevisionLogRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentDemestic\IndInquiryReviewQuestionRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\FNLCommissionBillRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryOfferRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryReviewQuestionRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryReviewRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\IndExportShipmentScheduleRepository.cs" />
     <Compile Include="Repositories\Indenting\IndGeneralDescriptionsRepository.cs" />
     <Compile Include="Repositories\Indenting\IndLeadTimeRepository.cs" />
     <Compile Include="Repositories\Indenting\IndPaymentTermsRepository.cs" />

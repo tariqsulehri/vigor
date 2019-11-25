@@ -29,10 +29,10 @@ namespace ERP.Core.Models.HR.Task
         [MaxLength(2000)]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Field is required....")]
+        //[Required(ErrorMessage = "Field is required....")]
         public int AssignedTo { get; set; }
 
-        [Required(ErrorMessage = "Field is required....")]
+        //[Required(ErrorMessage = "Field is required....")]
         public int AssignedBy { get; set; }
 
         [ForeignKey("HrDepartment")]
@@ -40,7 +40,7 @@ namespace ERP.Core.Models.HR.Task
         public virtual HrDepartment HrDepartment { get; set; }
 
 
-        [Required(ErrorMessage = "Field is required....")]
+        //[Required(ErrorMessage = "Field is required....")]
         [MaxLength(2)]
         public string Status { get; set; }
 

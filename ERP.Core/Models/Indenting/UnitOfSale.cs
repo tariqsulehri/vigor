@@ -59,9 +59,10 @@ namespace ERP.Core.Models.Indenting
         [DataType(DataType.Date)]
         public DateTime ModifiedOn { get; set; }
 
-        public ICollection<IndDomesticInquiryDetail> IndDomesticInquiryDetail { get; set; }
-        public ICollection<IndExportInquiryDetail> IndExportInquiryDetail { get; set; }
-        public ICollection<IndCommissionInvoiceDetail> IndCommissionInvoiceDetail { get; set; }
+        public virtual ICollection<IndDomesticInquiryDetail> IndDomesticInquiryDetail { get; set; }
+        public virtual ICollection<IndExportInquiryDetail> IndExportInquiryDetail { get; set; }
+        public virtual ICollection<IndCommissionInvoiceDetail> IndCommissionInvoiceDetail { get; set; }
+        public virtual ICollection<IndExportShipmentScheduleDetail> IndExportShipmentScheduleDetail { get; set;}
 
 
     }

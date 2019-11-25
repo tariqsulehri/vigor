@@ -9,19 +9,21 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
 {
     public class FNLCommissionBill
     {
+        public int Id { get; set; }
+        
+        [Required]
         [StringLength(12)]
-        public string FNLCommissionBillID { get; set; }
+        public string FNLCommissionBillKey { get; set; }
 
         public DateTime BillDate { get; set; }
-
+        
         [StringLength(18, MinimumLength = 18)]
-        public string FNLAccount { get; set; }
+        public string FNLAccount { get; set; }  // this will Gl Account
 
         public bool? IsPostedBySystem { get; set; }
 
         public bool? IsOpeningBalance { get; set; }
-
-
+        
         [Required]
         public int CompanyId { get; set; }
         
@@ -73,8 +75,6 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
 
         [StringLength(250)]
         public string Narration { get; set; }
-
-        
         public decimal? ReturnableCurrencyRate { get; set; }
         
         public int ReturnableCurrencyId { get; set; }
@@ -108,8 +108,8 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime ModifiedOn { get; set; }
-
-
-
+        
+        public virtual ICollection<FNL_CommissionPaymentDetail> FNL_CommissionPaymentDetails { get; set;}
+        
     }
 }
