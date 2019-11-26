@@ -129,9 +129,10 @@ namespace VIGOR.Areas.Indent.Controllers
         public ActionResult Create()
         {
             YarnInspection modeInspection = new YarnInspection();
-            modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID();
+            modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID('L');
             modeInspection.RegisterNo = modeInspection.InspectionSerialID;
             modeInspection.InspectionDate = DateTime.Now;
+            modeInspection.InspectionForMarket = 'L';
             return View(modeInspection);
         }
 
@@ -142,7 +143,7 @@ namespace VIGOR.Areas.Indent.Controllers
             try
             {
                 ModelState.Remove("IndentKey");
-                modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID();
+                modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID('L');
                 modeInspection.RegisterNo = modeInspection.InspectionSerialID;
                 if (ModelState.IsValid)
                 {

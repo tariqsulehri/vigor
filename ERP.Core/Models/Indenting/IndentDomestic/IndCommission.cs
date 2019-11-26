@@ -33,6 +33,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public int CustomerIdCommPaidFrom { get; set; }
 
 
+
         public decimal CommissionRate { get; set; }
 
         [Required(ErrorMessage = "This is required field...")]

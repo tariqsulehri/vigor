@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ERP.Core.Models.HR.ViewModels;
+using ERP.Infrastructure;
 
 namespace VIGOR.Areas.HR.Controllers
 {
@@ -13,8 +14,10 @@ namespace VIGOR.Areas.HR.Controllers
     {
         private HR_CINCRRepository _HR_CINCRRepository;
         HrEmployeeRepository _hrEmployeeRepository;
+        private ErpDbContext _dbContext;
         public EmpNonConfirmityController()
         {
+            _dbContext=new  ErpDbContext();
             _hrEmployeeRepository = new HrEmployeeRepository();
             _HR_CINCRRepository = new HR_CINCRRepository();
         }
@@ -61,7 +64,7 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 HR_CINCR obj = new HR_CINCR()
                 {
-                    id = model.id,
+                    id = GetCINCRID(),
                     EmployeeId = model.EmployeeId,
                     EmployeeNo = model.EmployeeNo,
                     EmpDept = model.EmpDept,
@@ -76,7 +79,7 @@ namespace VIGOR.Areas.HR.Controllers
 
                 };
 
-
+                ModelState.Remove("id");
                 if (_HR_CINCRRepository.IsDuplicate(obj))
                 {
                     ModelState.AddModelError(String.Empty, "Duplicated data Is Not allowed");
@@ -209,6 +212,13 @@ namespace VIGOR.Areas.HR.Controllers
 
             }).ToList();
             return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
+        }
+        public string GetCINCRID()
+        {
+            int maxno = _dbContext.HR_CINCR.Count();
+            maxno = maxno + 1;
+            string SerialID = DateTime.Today.Year + maxno.ToString().PadLeft(4, '0');
+            return SerialID;
         }
     }
 }

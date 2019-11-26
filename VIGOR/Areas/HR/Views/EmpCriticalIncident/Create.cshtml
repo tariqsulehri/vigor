@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-lg-3">
                         <label>ID:</label>
-                        @Html.TextBoxFor(a => a.id, new { @type = "number", @class = "form-control", @id = "CriticalIncidentID", @name = "CriticalIncidentID" })
+                        @Html.TextBoxFor(a => a.id, new { @type = "number", @class = "form-control", @id = "CriticalIncidentID", @name = "CriticalIncidentID" ,@readonly="readonly"})
                         @Html.ValidationMessageFor(a => a.id, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">

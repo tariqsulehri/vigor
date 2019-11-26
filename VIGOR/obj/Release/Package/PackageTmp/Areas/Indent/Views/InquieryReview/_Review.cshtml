@@ -33,7 +33,7 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(a => a.InquiryId)
-                @Model.InquiryId
+                
                 <div class="m-portlet">
 
                     <div class="m-portlet__head">
@@ -95,16 +95,17 @@
                                     <div class="col-lg-6">
 
                                         <label>Customer:</label>
-                                        @Html.DropDownListFor(a => a.SellerId, new SelectList(new FinPartyRepository().GetAllParties().Where(a=>a.Id>1), "Id", "Title"), "", new { @class = "form-control", })
-                                        @Html.ValidationMessageFor(model => model.SellerId, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(a => a.BuyerId, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1 && a.IsBuyer), "Id", "Title"), "", new { @class = "form-control", @disabled = "disabled" })
+                                        @Html.HiddenFor(a => a.BuyerId)
+                                        @Html.ValidationMessageFor(model => model.BuyerId, "", new { @class = "text-danger" })
 
 
                                     </div>
 
                                     <div class="col-lg-12">
                                         <label>Vendor:</label>
-                                        @Html.DropDownListFor(a => a.BuyerId, (SelectList)ViewBag.BuyerId, new { @class = "form-control", })
-                                        @Html.ValidationMessageFor(model => model.BuyerId, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(a => a.SellerId, (SelectList)ViewBag.SellerId, new { @class = "form-control", })
+                                        @Html.ValidationMessageFor(model => model.SellerId, "", new { @class = "text-danger" })
 
 
 

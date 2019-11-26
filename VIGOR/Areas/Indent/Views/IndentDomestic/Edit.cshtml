@@ -47,8 +47,6 @@
 
         <div class="row">
             <div class="col-lg-12">
-                
-
                     <div class="m-portlet">
                         @using (Html.BeginForm("Edit", "IndentDomestic", FormMethod.Post))
                         {
@@ -79,7 +77,7 @@
 
                                 <div class="m-portlet__head-tools">
                                     <ul class="m-portlet__nav">
-                                        @if (Model.IndentStatus)
+                                        @if (Model.IndentStatus && !Model.isClosed && !Model.isCancelled && !Model.IsApproved)
                                         {
                                             <li class="m-portlet__nav-item">
                                                 <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air hidden" @*Sec-menuId="@SecurityConstants.IndDomesticbtnFabricEditUpdate"*@ type="submit">
@@ -181,12 +179,14 @@
                                             <div class="col-lg-12">
                                                 <label>Department:</label>
                                                 @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control m-input m-select2 search", @disabled = "disabled" })
+                                                @Html.HiddenFor(a => a.DepartmentID)
                                                 @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
 
                                             </div>
                                             <div class="col-lg-12">
                                                 <label>Commodity Type:</label>
                                                 @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control m-select2 search", @disabled = "disabled" })
+                                                @Html.HiddenFor(a => a.CommodityTypeId)
                                                 @Html.ValidationMessageFor(model => model.CommodityTypeId, "", new { @class = "text-danger" })
 
                                             </div>
@@ -249,13 +249,18 @@
                                         <div class="form-group row">
                                             <div class="col-lg-12">
                                                 <label>Local Agent:</label>
-                                                @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search" })
+                                                @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsAgent== true&& a.Id>1), "Id", "Title"), new { @class = "form-control m-select2 search",id= "LocalAgentID", @disabled = "disabled" })
+                                                @Html.HiddenFor(a => a.CustomerIDasLocalAgent)
                                                 @Html.ValidationMessageFor(model => model.CustomerIDasLocalAgent, "", new { @class = "text-danger" })
+                                    
+                                                @*@Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search" })
+                                                @Html.ValidationMessageFor(model => model.CustomerIDasLocalAgent, "", new { @class = "text-danger" })*@
 
                                             </div>
                                             <div class="col-lg-12">
                                                 <label>Currency:</label>
-                                                @Html.DropDownListFor(a => a.CurrencyId, new SelectList(new CurrencyRepository().GetAllCurrencys(), "Id", "Description"), "", new { @class = "form-control " })
+                                                @Html.DropDownListFor(a => a.CurrencyId, new SelectList(new CurrencyRepository().GetAllCurrencys(), "Id", "Description"), "", new { @class = "form-control", @disabled = "disabled" })
+                                                @Html.HiddenFor(a => a.CurrencyId)
                                                 @Html.ValidationMessageFor(model => model.CurrencyId, "", new { @class = "text-danger" })
 
                                             </div>
@@ -342,8 +347,9 @@
                                                                     <th width="80">Rate</th>
                                                                     <th>Specification</th>
                                                                     <th>Selvage Weave</th>
-                                                                    <th width="60" col="TotalValue" summary="sum">Total</th>
-                                                                    <th width="20"></th>
+                                                                    <th width="60">Total</th>@*col="TotalValue" summary="sum"*@
+                                                                    @*<th width="60" col="TotalValue" summary="sum">Total</th>
+                    <th width="20"></th>*@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -355,7 +361,7 @@
                                                                         <tr role="row" class="odd">
 
                                                                             <td>
-                                                                                @Html.DropDownList("det[" + j + "][CommodityId]", new SelectList(new ProductRepository().GetAllProduct().Where(a=>a.Id>1), "Id", "Description", item.CommodityId), "", new { @class = "form-control " })
+                                                                                @Html.DropDownList("det[" + j + "][CommodityId]", new SelectList(new ProductRepository().GetAllProduct().Where(a => a.Id > 1), "Id", "Description", item.CommodityId), "", new { @class = "form-control " })
 
                                                                             </td>
                                                                             <td>
@@ -376,7 +382,7 @@
                                                                                 @Html.TextBox("det[" + j + "][CommoditySpecification]", null, new { @class = "form-control", @Value = item.CommoditySpecification, @onclick = "IndGeneralDescriptionsList(this.name)" })
                                                                             </td>
                                                                             <td>   @Html.TextBox("det[" + j + "][SizeSpecifications]", null, new { @class = "form-control", @Value = item.SizeSpecifications })</td>
-                                                                            <td>   @Html.TextBox("det[" + j + "][TotalValue]", null, new { @class = "form-control", @Value = item.TotalValue, @readonly = "readonly" })</td>
+                                                                            <td>   @Html.TextBox("det[" + j + "][TotalValue]", null, new { @class = "form-control totalDetailVal", @Value = item.TotalValue, @readonly = "readonly" })</td>
 
                                                                         </tr>
                                                                         j++;
@@ -387,7 +393,7 @@
                                                                     <tr role="row" class="odd">
 
                                                                         <td>
-                                                                            @Html.DropDownList("det[0][CommodityId]", new SelectList(new ProductRepository().GetAllProduct().Where(a=>a.Id>1), "Id", "Description"), "", new { @class = "form-control " })
+                                                                            @Html.DropDownList("det[0][CommodityId]", new SelectList(new ProductRepository().GetAllProduct().Where(a => a.Id > 1), "Id", "Description"), "", new { @class = "form-control " })
 
                                                                         </td>
                                                                         <td>
@@ -408,7 +414,7 @@
                                                                             @Html.TextBox("det[0][CommoditySpecification]", null, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList(this.name)" })
                                                                         </td>
                                                                         <td>   @Html.TextBox("det[0][SizeSpecifications]", null, new { @class = "form-control" })</td>
-                                                                        <td>   @Html.TextBox("det[0][TotalValue]", null, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                                        <td>   @Html.TextBox("det[0][TotalValue]", null, new { @class = "form-control totalDetailVal", @readonly = "readonly" })</td>
 
                                                                     </tr>
                                                                 }
@@ -416,6 +422,7 @@
                                                             </tbody>
 
                                                         </table>
+                                                        <input name="TotalDetail" type="number" value="0" id="TotalDetail" hidden />
                                                     </div>
                                                 </div>
 
@@ -434,7 +441,8 @@
                                                                     <th width="">Comission Paid From</th>
                                                                     <th width="80">Rate</th>
                                                                     <th width="60">%/QTY</th>
-                                                                    <th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>
+                                                                    <th width="80">Comission</th> @*  col="CalculatedCommissionValue" summary="sum"*@
+                                                                    @*<th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>*@
                                                                     <th></th>
 
                                                                 </tr>
@@ -458,10 +466,10 @@
 
                                                                             </td>
 
-                                                                            <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control", @Value = item.CommissionRate, type = "number", onchange = "calculateComission(this.name)" })</td>
+                                                                            <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control comRate", @Value = item.CommissionRate, type = "decimal", onchange = "calculateComission(this.name)" })</td>
 
                                                                             <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
-                                                                            <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
+                                                                            <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control CalculatedCommission", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
 
                                                                         </tr>
                                                                     }
@@ -480,12 +488,12 @@
 
                                                                         </td>
 
-                                                                        <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate", type = "number", onchange = "calculateComission(this.name)" })</td>
+                                                                        <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate", type = "decimal", onchange = "calculateComission(this.name)" })</td>
 
                                                                         <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
 
 
-                                                                        <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                                        <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control CalculatedCommission", @readonly = "readonly" })</td>
 
                                                                     </tr>
                                                                 }
@@ -518,7 +526,7 @@
                                                                     {
                                                                         <tr role="row">
                                                                             <td>
-                                                                                @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a=>a.Id>1), "Id", "Title", @item.CompanyId), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
+                                                                                @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a=>a.Id> 1 && a.IsAgent && a.IsDomestic), "Id", "Title", @item.CompanyId), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
                                                                             </td>
                                                                         </tr>
                                                                     }
@@ -528,7 +536,7 @@
                                                                 {
                                                                     <tr role="row" class="odd">
                                                                         <td>
-                                                                            @Html.DropDownList("det[0][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a=>a.Id>1), "Id", "Title"), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
+                                                                            @Html.DropDownList("det[0][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a=>a.Id> 1 && a.IsAgent && a.IsDomestic), "Id", "Title"), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
                                                                         </td>
                                                                     </tr>
                                                                 }
@@ -654,82 +662,94 @@
         function() {
             GetSelectedAgent();
         });
-    function GetSelectedAgent() {
-        var DataArray = [];
-        DataArray.length = 0;
-        $('#AgentTable tbody tr').each(function () {
-            var mapedData = {
-                ID: $('select.selectedAgent', this).val(),
-                Name: $('.selectedAgent option:selected',this).text()
-            }
-            DataArray.push(mapedData);
+    //function GetSelectedAgent() {
+    //    var DataArray = [];
+    //    DataArray.length = 0;
+    //    $('#AgentTable tbody tr').each(function () {
+    //        var mapedData = {
+    //            ID: $('select.selectedAgent', this).val(),
+    //            Name: $('.selectedAgent option:selected',this).text()
+    //        }
+    //        DataArray.push(mapedData);
 
-        });
+    //    });
 
-        const result = [];
-        const map = new Map();
-        for (const item of DataArray) {
-            if (!map.has(item.ID)) {
-                map.set(item.ID, true);    // set any value to Map
-                result.push({
-                    ID: item.ID,
-                    Name: item.Name
-                });
-            }
-        }
-
-
-        var sellerID = document.getElementById("CommPaidAgent1");
-        var buyerID = document.getElementById("CommPaidAgent");
-        var sellerIndex;
-        var buyerIndex;
-        try {
-            sellerIndex = sellerID.value;
-            buyerIndex = buyerID.value;
-        } catch (e) {
-            sellerIndex = 0;
-            buyerIndex = 0;
-        } 
+    //    const result = [];
+    //    const map = new Map();
+    //    for (const item of DataArray) {
+    //        if (!map.has(item.ID)) {
+    //            map.set(item.ID, true);    // set any value to Map
+    //            result.push({
+    //                ID: item.ID,
+    //                Name: item.Name
+    //            });
+    //        }
+    //    }
 
 
-        var SallerID = $("#seller").val();
-        var SallerName = $("#seller option:selected").text();
-        var BuyerID = $("#Buyer").val();
-        var BuyerName = $("#Buyer option:selected").text();
+    //    var sellerID = document.getElementById("CommPaidAgent1");
+    //    var buyerID = document.getElementById("CommPaidAgent");
+    //    var sellerIndex;
+    //    var buyerIndex;
+    //    try {
+    //        sellerIndex = sellerID.value;
+    //        buyerIndex = buyerID.value;
+    //    } catch (e) {
+    //        sellerIndex = 0;
+    //        buyerIndex = 0;
+    //    } 
 
-        var Seller = {
-            ID: SallerID,
-            Name: SallerName
-        }
-        var Buyer = {
-            ID: BuyerID,
-            Name: BuyerName
-        }
-        if (SallerID != '') {
-            result.push(Seller);
-        }
-        if (BuyerID != '') {
-            result.push(Buyer);
-        }
-        $(".CommPaidAgent").empty();
-        $.each(result, function (key, value) {
-            if (value.ID != '' && value.Name != '') {
-                $(".CommPaidAgent").append($("<option     />").val(value.ID).text(value.Name));}
-        });  
-        $(".CommPaidAgent1").empty();
-        $.each(result, function (key, value) {
-            if (value.ID != '' && value.Name != '') {
-                $(".CommPaidAgent1").append($("<option     />").val(value.ID).text(value.Name));
-            }
-        });
-        try {
-            sellerID.value = sellerIndex;
-            buyerID.value = buyerIndex;
-        } catch (e) {
-        } 
+
+    //    var SallerID = $("#seller").val();
+    //    var SallerName = $("#seller option:selected").text();
+    //    var BuyerID = $("#Buyer").val();
+    //    var BuyerName = $("#Buyer option:selected").text();
+    //    var LocalAgentID = $("#LocalAgentID").val();
+    //    var LocalAgentName = $("#LocalAgentID option:selected").text();
+
+
+    //    var Seller = {
+    //        ID: SallerID,
+    //        Name: SallerName
+    //    }
+    //    var Buyer = {
+    //        ID: BuyerID,
+    //        Name: BuyerName
+    //    }
+    //    var LocalAgent = {
+    //        ID: LocalAgentID,
+    //        Name: LocalAgentName
+    //    }
+
+    //    if (SallerID != '') {
+    //        result.push(Seller);
+    //    }
+    //    if (BuyerID != '') {
+    //        result.push(Buyer);
+    //    }
+    //    if (LocalAgentID != '') {
+    //        result.push(LocalAgent);
+    //    }
+
+    //    $(".CommPaidAgent").empty();
+    //    $.each(result, function (key, value) {
+    //        if (value.ID != '' && value.Name != '') {
+    //            $(".CommPaidAgent").append($("<option     />").val(value.ID).text(value.Name));}
+    //    });  
+    //    $(".CommPaidAgent1").empty();
+    //    $.each(result, function (key, value) {
+    //        if (value.ID != '' && value.Name != '') {
+    //            $(".CommPaidAgent1").append($("<option     />").val(value.ID).text(value.Name));
+    //        }
+    //    });
+    //    try {
+    //        sellerID.value = sellerIndex;
+    //        buyerID.value = buyerIndex;
+    //    } catch (e) {
+    //    } 
 
        
-    }
+    //}
 
 
 </script>

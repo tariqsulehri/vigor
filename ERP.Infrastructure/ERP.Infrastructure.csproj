@@ -360,6 +360,14 @@
     <Compile Include="Migrations\201911251528593_DispatchScheduleIsReceviedDate.Designer.cs">
       <DependentUpon>201911251528593_DispatchScheduleIsReceviedDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911261446380_DecimalPointsForComm.cs" />
+    <Compile Include="Migrations\201911261446380_DecimalPointsForComm.Designer.cs">
+      <DependentUpon>201911261446380_DecimalPointsForComm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911261513393_DecimalPointsForCommChange.cs" />
+    <Compile Include="Migrations\201911261513393_DecimalPointsForCommChange.Designer.cs">
+      <DependentUpon>201911261513393_DecimalPointsForCommChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -749,6 +757,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911251528593_DispatchScheduleIsReceviedDate.resx">
       <DependentUpon>201911251528593_DispatchScheduleIsReceviedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261446380_DecimalPointsForComm.resx">
+      <DependentUpon>201911261446380_DecimalPointsForComm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911261513393_DecimalPointsForCommChange.resx">
+      <DependentUpon>201911261513393_DecimalPointsForCommChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

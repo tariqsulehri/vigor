@@ -784,3 +784,5 @@ E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.SrNo
 E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.CreatedForeignLedgertables.resources
 E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.DispatchScheduleIsReceviedBoolean.resources
 E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.DispatchScheduleIsReceviedDate.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.DecimalPointsForComm.resources
+E:\Vigour\Vigour\ERP.Infrastructure\obj\Debug\ERP.Infrastructure.Migrations.DecimalPointsForCommChange.resources

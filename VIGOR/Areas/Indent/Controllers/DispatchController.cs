@@ -85,9 +85,9 @@ namespace VIGOR.Areas.Indent.Controllers
         public ActionResult Details(int id)
         {
             var data = _indDomestic.FindById(id);
-            if (data.isCancelled || data.isClosed || !(data.IndentStatus))
+            if (data.isCancelled || data.isClosed || !(data.IndentStatus) || !data.IsApproved)
             {
-                ModelState.AddModelError("", "You cant not perform operations of closed or cancel Contract");
+                ModelState.AddModelError("", "You cant not perform operations of UnApproved, closed or Canceled Contract");
             }
             return View(data);
         }
@@ -97,9 +97,11 @@ namespace VIGOR.Areas.Indent.Controllers
         {
             IndDomesticDispatchSchedule model = new IndDomesticDispatchSchedule();
             var indent = _indDomestic.FindById(id);
+
             model.ContractedDeliveryDate = indent.DelDateValidUpto;
             model.TransDate = DateTime.Now;
             model.TypeOfTransaction = "D";
+            ViewBag.UOS = "abc";
             ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
                         Prodect => Prodect.Id,
                         IndentDetail => IndentDetail.CommodityId,
@@ -120,6 +122,7 @@ namespace VIGOR.Areas.Indent.Controllers
         [HttpPost]
         public ActionResult Create(IndDomesticDispatchSchedule model, string IndentKey)
         {
+            int SrNo = _indDomesticDispatchScheduleRepository.GetSrNo(model.IndentId);
             var data = _indDomestic.FindById(model.Id).IndDomesticDetails;
             decimal dispatchedQuantity = 0;
             dispatchedQuantity = _indDomesticDispatchScheduleRepository.GetAllIndDomesticDispatchSchedule()
@@ -135,6 +138,7 @@ namespace VIGOR.Areas.Indent.Controllers
                     model.DelayShipmentReason = "_";
                     model.DelayShipmentReasonDescription = "_";
                 }
+                
                 ModelState.Remove("DelayShipmentReason");
                 ModelState.Remove("SalesContractDetail");
                 ModelState.Remove("LocalDispatchNo");
@@ -162,13 +166,14 @@ namespace VIGOR.Areas.Indent.Controllers
                     else
                         model.Balance = Quantity - dispatchedQuantity - model.Quantity;// * Rate * UOS.Factor;
                     model.CompanyId = LoggedinUser.Company.Id;
-                    model.LocalDispatchNo = LoggedinUser.Company.Id.ToString() + IndentKey;
+                    model.LocalDispatchNo = SrNo.ToString().PadLeft(3, '0') + IndentKey;
+                    model.srno = SrNo;
                     model.SalesContractDetail = model.LocalDispatchNo;
                     model.CreatedOn = DateTime.Now;
                     model.ModifiedOn = DateTime.Now;
-                    model.SalestaxInvoiceDate = DateTime.Now;
-                    model.IsReceivedStinv = "N";
-                    model.SalestaxInvoiceNo = "1";
+                    //model.SalestaxInvoiceDate = DateTime.Now;
+                    model.IsReceivedStinv = false;
+                    model.SalestaxInvoiceNo = "0";
                     model.IsComplaint = "N";
                     model.isFirstDispatch = "1";
                     _indDomesticDispatchScheduleRepository.Add(model);
@@ -201,14 +206,14 @@ namespace VIGOR.Areas.Indent.Controllers
             IndDomesticDispatchSchedule model = new IndDomesticDispatchSchedule();
             model = _indDomesticDispatchScheduleRepository.FindById(id);
 
-            var data = _indDomestic.FindById(model.IndentId);
-            if (data.isCancelled || data.isClosed || !(data.IndentStatus))
+            var indent = _indDomestic.FindById(model.IndentId);
+            if (indent.isCancelled || indent.isClosed || !(indent.IndentStatus) || !indent.IsApproved)
             {
-                ModelState.AddModelError("", "You cant not perform operations of closed or cancel Contract");
+                ModelState.AddModelError("", "You cant not perform operations of UnApproved, closed or Canceled Contract");
                 return null;
             }
 
-            var indent = _indDomestic.FindById(model.IndentId);
+            ViewBag.IndentKey = indent.IndentKey;
             ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
                 Prodect => Prodect.Id,
                 IndentDetail => IndentDetail.CommodityId,
@@ -216,7 +221,7 @@ namespace VIGOR.Areas.Indent.Controllers
                 {
                     Id = Prodect.Id,
                     Description = Prodect.Description
-                }), "Id", "Description");
+                }), "Id", "Description",model.CommodityId);
             return View(model);
         }
 
@@ -226,7 +231,10 @@ namespace VIGOR.Areas.Indent.Controllers
         {
             try
             {
-                var data = _indDomestic.FindById(model.Id).IndDomesticDetails;
+                var indent = _indDomestic.FindById(model.IndentId);
+                ViewBag.IndentKey = indent.IndentKey;
+                ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,Prodect => Prodect.Id,IndentDetail => IndentDetail.CommodityId,(Prodect, IndentDetail) => new{Id = Prodect.Id,Description = Prodect.Description}), "Id", "Description");
+                var data = indent.IndDomesticDetails;
                 decimal dispatchedQuantity = 0;
                 dispatchedQuantity = _indDomesticDispatchScheduleRepository.GetAllIndDomesticDispatchSchedule()
                     .Where(a => a.IndentId == model.Id && a.TypeOfTransaction == "D").Sum(a => a.Quantity);
@@ -237,9 +245,16 @@ namespace VIGOR.Areas.Indent.Controllers
                 ModelState.Remove("SalesContractDetail");
                 ModelState.Remove("LocalDispatchNo");
                 ModelState.Remove("isFirstDispatch");
-                ModelState.Remove("IsReceivedStinv");
                 ModelState.Remove("IsComplaint");
                 ModelState.Remove("SalestaxInvoiceNo");
+                if (model.TypeOfTransaction == "R")
+                {
+                ModelState.Remove("DelayShipmentReason");
+                ModelState.Remove("DelayShipmentReasonDescription");
+                    model.DelayShipmentReason = "-";
+                    model.DelayShipmentReasonDescription = "-";
+                    model.SalestaxInvoiceNo = "0";
+                }
                 if (ModelState.IsValid)
                 {
                     if (model.IsDelayed == "N")
@@ -248,19 +263,19 @@ namespace VIGOR.Areas.Indent.Controllers
                         model.DelayShipmentReasonDescription = "_";
                     }
 
-                    var domesticIndent = _indDomestic.FindById(model.IndentId);
-                    model.Balance = model.Quantity * (domesticIndent.IndDomesticDetails
+                    
+                    model.Balance = model.Quantity * (indent.IndDomesticDetails
                                         .Where(a => a.IndentId == model.IndentId && a.CommodityId == model.CommodityId)
                                         .FirstOrDefault().Rate);
 
                     model.CreatedOn = DateTime.Now;
                     model.ModifiedOn = DateTime.Now;
-                    model.SalestaxInvoiceDate = DateTime.Now;
+                    //model.SalestaxInvoiceDate = DateTime.Now;
                     model.LocalDispatchNo = "--";
-                    model.IsReceivedStinv = "-";
+                    //model.IsReceivedStinv = "-";
                     //model.TypeOfTransaction = "1";
                     model.SalesContractDetail = "1";
-                    model.SalestaxInvoiceNo = "1";
+                    //model.SalestaxInvoiceNo = "1";
                     model.IsComplaint = "N";
                     model.isFirstDispatch = "1";
                     _indDomesticDispatchScheduleRepository.Edit(model);
@@ -268,21 +283,22 @@ namespace VIGOR.Areas.Indent.Controllers
                 }
                 else
                 {
-                    var indent = _indDomestic.FindById(model.IndentId);
-                    ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
-                        Prodect => Prodect.Id,
-                        IndentDetail => IndentDetail.CommodityId,
-                        (Prodect, IndentDetail) => new
-                        {
-                            Id = Prodect.Id,
-                            Description = Prodect.Description
-                        }), "Id", "Description");
+                    
+                    //ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
+                    //    Prodect => Prodect.Id,
+                    //    IndentDetail => IndentDetail.CommodityId,
+                    //    (Prodect, IndentDetail) => new
+                    //    {
+                    //        Id = Prodect.Id,
+                    //        Description = Prodect.Description
+                    //    }), "Id", "Description");
                     return View(model);
                 }
             }
             catch (Exception e)
             {
-                return View();
+                
+                return View(model);
             }
         }
 

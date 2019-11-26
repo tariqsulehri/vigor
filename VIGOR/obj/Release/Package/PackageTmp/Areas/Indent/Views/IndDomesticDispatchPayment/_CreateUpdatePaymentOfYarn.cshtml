@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Amount:</label>
-                                        @Html.TextBoxFor(a => a.GrossAmount, new { @class = "form-control", disabled = "disabled", @id = "Amount", @type = "text", onchange = "AmountChanged()" })
+                                        @Html.TextBoxFor(a => a.GrossAmount, new { @class = "form-control", @readonly = "readonly", @id = "Amount", @type = "text", onchange = "AmountChanged()" })
                                         @Html.ValidationMessageFor(model => model.GrossAmount, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6">
@@ -228,7 +228,5 @@
 <script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>
 <script src="~/Content/VigorJs/Vouchers.js"></script>
 <script src="~/Content/VigorJs/Dispatch/_CreateOrUpdate.js"></script>
-
-
 <script src="~/Scripts/grid.js"></script>
 <script src="~/Scripts/GL/VoucherDetails.js"></script>

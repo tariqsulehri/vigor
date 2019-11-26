@@ -53,6 +53,11 @@
                         @Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
+                        <label class="">Loan:</label>
+                        @Html.TextBoxFor(a => a.ApprovedAmount, new { @type = "number", @class = "form-control", @id = "RequiredAmount", @name = "RequiredAmount", @value="0", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.RequiredAmount, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
                         <label class="">Name:</label>
                         @Html.TextBoxFor(a => a.Emp_Name, new { @type = "text", @class = "form-control", @id = "EmpName", @name = "EmpName", @readonly = "readonly" })
                         @Html.ValidationMessageFor(a => a.Emp_Name, "", new { @class = "text-danger" })
@@ -68,18 +73,9 @@
                         @Html.ValidationMessageFor(a => a.Designation, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
-                        <label class="">Loan:</label>
-                        @Html.TextBoxFor(a => a.RequiredAmount, new { @type = "number", @class = "form-control", @id = "RequiredAmount", @name = "RequiredAmount" })
-                        @Html.ValidationMessageFor(a => a.RequiredAmount, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-lg-3">
                         <label class="">Loan Inst.:</label>
-                        @Html.TextBoxFor(a => a.LoanInstalment, new { @type = "number", @class = "form-control", @id = "LoanInstalment", @name = "LoanInstalment" })
+                        @Html.TextBoxFor(a => a.ApprovedLoanInstalment, new { @type = "number", @class = "form-control", @id = "LoanInstalment", @name = "LoanInstalment", @value = "0", @readonly = "readonly" })
                         @Html.ValidationMessageFor(a => a.LoanInstalment, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-lg-3">
-                        <label class="">Advance:</label>
-                        <input type="number" class="form-control m-input" placeholder="" disabled>
                     </div>
                     <div class="col-lg-3">
                         <label class="">Dated:</label>
@@ -88,13 +84,17 @@
                     </div>
                     <div class="col-lg-3">
                         <label class="">Amount:</label>
-                        @Html.TextBoxFor(a => a.ApprovedAmount, new { @type = "number", @class = "form-control", @id = "ApprovedAmount", @name = "ApprovedAmount" })
+                        @Html.TextBoxFor(a => a.RequiredAmount, new { @type = "number", @class = "form-control", @id = "ApprovedAmount", @name = "ApprovedAmount", @value = "0"  })
                         @Html.ValidationMessageFor(a => a.ApprovedAmount, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">
                         <label class="">Installment:</label>
-                        @Html.TextBoxFor(a => a.ApprovedLoanInstalment, new { @type = "number", @class = "form-control", @id = "ApprovedLoanInstalment", @name = "ApprovedLoanInstalment" })
+                        @Html.TextBoxFor(a => a.LoanInstalment, new { @type = "number", @class = "form-control", @id = "ApprovedLoanInstalment", @name = "ApprovedLoanInstalment", @value = "0" })
                         @Html.ValidationMessageFor(a => a.ApprovedLoanInstalment, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Advance:</label>
+                        <input type="number" class="form-control m-input"value="0" placeholder="" readonly>
                     </div>
                     <div class="col-lg-6">
                         <label class="">Reason:</label>

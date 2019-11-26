@@ -35,7 +35,7 @@ namespace VIGOR.Areas.Indent.Controllers
         }
         [HttpPost]
         public ActionResult Index(DateTime FromDate, DateTime Todate, Int32? DepartmentID, Int32? CommodityTypeId, string IndentKey,
-            Int32? CustomerIDasSeller, Int32? CustomerIDasBuyer, string PONO,string InquiryStatus)
+            Int32? CustomerIDasSeller, Int32? CustomerIDasBuyer, string PONO, string IndentStatus)
         {
             ViewBag.FromDate = FromDate;
             ViewBag.Todate = Todate;
@@ -50,10 +50,7 @@ namespace VIGOR.Areas.Indent.Controllers
                 return View();
             }
             dbContext = new Entities();
-
-
-            
-            if (!InquiryStatus.Trim().Equals("A"))
+            if (IndentStatus.Trim().Equals("Y"))
             {
                 ViewBag.Contracts = dbContext.view_IndDomestic_detail.ToList()
                     .Where(a => a.DepartmentID.Equals(DepartmentID) || DepartmentID.Equals(0))
@@ -61,7 +58,49 @@ namespace VIGOR.Areas.Indent.Controllers
                     .Where(a => a.LocalContractNo.Trim().Equals(IndentKey) || IndentKey.Equals(string.Empty))
                     .Where(a => a.SellectId.Equals(CustomerIDasSeller) || CustomerIDasSeller.Equals(0))
                     .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0))
-                    .Where(a => a.InquiryStatus.Trim().Equals(InquiryStatus.Trim()))
+                    .Where(a=>a.IndentStatus)
+                    .Where(a => a.IndentDate >= FromDate && a.IndentDate <= Todate);
+            }
+            else if(IndentStatus.Trim().Equals("P"))
+            {
+                ViewBag.Contracts = dbContext.view_IndDomestic_detail.ToList()
+                    .Where(a => a.DepartmentID.Equals(DepartmentID) || DepartmentID.Equals(0))
+                    .Where(a => a.CommodityId.Equals(CommodityTypeId) || CommodityTypeId.Equals(0))
+                    .Where(a => a.LocalContractNo.Trim().Equals(IndentKey) || IndentKey.Equals(string.Empty))
+                    .Where(a => a.SellectId.Equals(CustomerIDasSeller) || CustomerIDasSeller.Equals(0))
+                    .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0));
+            }
+            else if(IndentStatus.Trim().Equals("C"))
+            {
+                ViewBag.Contracts = dbContext.view_IndDomestic_detail.ToList()
+                    .Where(a => a.DepartmentID.Equals(DepartmentID) || DepartmentID.Equals(0))
+                    .Where(a => a.CommodityId.Equals(CommodityTypeId) || CommodityTypeId.Equals(0))
+                    .Where(a => a.LocalContractNo.Trim().Equals(IndentKey) || IndentKey.Equals(string.Empty))
+                    .Where(a => a.SellectId.Equals(CustomerIDasSeller) || CustomerIDasSeller.Equals(0))
+                    .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0))
+                    .Where(a => a.indentClosed)
+                    .Where(a => a.IndentDate >= FromDate && a.IndentDate <= Todate);
+            }
+            else if(IndentStatus.Trim().Equals("D"))
+            {
+                ViewBag.Contracts = dbContext.view_IndDomestic_detail.ToList()
+                    .Where(a => a.DepartmentID.Equals(DepartmentID) || DepartmentID.Equals(0))
+                    .Where(a => a.CommodityId.Equals(CommodityTypeId) || CommodityTypeId.Equals(0))
+                    .Where(a => a.LocalContractNo.Trim().Equals(IndentKey) || IndentKey.Equals(string.Empty))
+                    .Where(a => a.SellectId.Equals(CustomerIDasSeller) || CustomerIDasSeller.Equals(0))
+                    .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0))
+                    .Where(a => a.isCancelled)
+                    .Where(a => a.IndentDate >= FromDate && a.IndentDate <= Todate);
+            }
+            else if (IndentStatus.Trim().Equals("U"))
+            {
+                ViewBag.Contracts = dbContext.view_IndDomestic_detail.ToList()
+                    .Where(a => a.DepartmentID.Equals(DepartmentID) || DepartmentID.Equals(0))
+                    .Where(a => a.CommodityId.Equals(CommodityTypeId) || CommodityTypeId.Equals(0))
+                    .Where(a => a.LocalContractNo.Trim().Equals(IndentKey) || IndentKey.Equals(string.Empty))
+                    .Where(a => a.SellectId.Equals(CustomerIDasSeller) || CustomerIDasSeller.Equals(0))
+                    .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0))
+                    .Where(a => a.IsApproved!=true)
                     .Where(a => a.IndentDate >= FromDate && a.IndentDate <= Todate);
             }
             else
@@ -74,13 +113,18 @@ namespace VIGOR.Areas.Indent.Controllers
                     .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0))
                     .Where(a => a.IndentDate >= FromDate && a.IndentDate <= Todate);
             }
-
             return View();
 
 
         }
 
 
+        public ActionResult ViewIndent(int IndentID)
+        {
+            IndDomestic model = new IndDomestic();
+            model = _indDomestic.FindById(IndentID);
+            return View(model);
+        }
         [HttpGet]
         public ActionResult CloseIndent(int IndentID)
         {
@@ -92,7 +136,8 @@ namespace VIGOR.Areas.Indent.Controllers
                 var indent = _indDomestic.FindById(IndentID);
                 if (indent != null)
                 {
-                    if (indent.isClosed) { ViewBag.AlreadyClosed = indent.IndentKey + " is already closed"; }
+                    if (!indent.IsApproved) { ViewBag.AlreadyClosed = indent.IndentKey + " is not approved yet"; }
+                    else if (indent.isClosed) { ViewBag.AlreadyClosed = indent.IndentKey + " is already closed"; }
                     else
                     {
                         indent.isClosed = true;
@@ -282,9 +327,9 @@ namespace VIGOR.Areas.Indent.Controllers
         }
 
 
-        
+
         // GET: Indent/FollowUpSheet/Details/5
-        public ActionResult SheduleReportExel( int CommodityTypeId, int DepartmentID)
+        public ActionResult SheduleReportExel(int CommodityTypeId, int DepartmentID)
         {
             string file = "ScheduleDomesticSaleFabrics-A.xlt";
             string fullPath = Path.Combine(Server.MapPath("~/Reports/IndentDomestic"), file);
@@ -400,7 +445,7 @@ namespace VIGOR.Areas.Indent.Controllers
             //    saveFileDialog1.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments);
             //    saveFileDialog1.FilterIndex = 1;
 
-        
+
 
             //    Workbook.Close();
             //    Workbook = null;
@@ -410,7 +455,7 @@ namespace VIGOR.Areas.Indent.Controllers
             //}
             //catch (Exception ex) { }
 
-        
+
 
 
 

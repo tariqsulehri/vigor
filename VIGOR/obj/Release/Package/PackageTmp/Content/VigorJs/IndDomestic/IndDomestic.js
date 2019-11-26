@@ -16,39 +16,147 @@
     //}
 
 });
-
 function calculateComission(name) {
-
     var uniqueName = parseInt(name.match(/[0-9]+/)[0], 10);
-    var comissionRate = $('input[name="det[' + uniqueName + '][CommissionRate]"]').val();
-    var comtypeValue = $('select[name="det[' + uniqueName + '][CommissionType]"]').find(':selected').val();
-    var UOS = $('select[name="det[' + uniqueName + '][UosID]"]').find(':selected').val();
-    var Qty = $('input[name="det[' + uniqueName + '][Quantity]"]').val();
-    var Rate = $('input[name="det[' + uniqueName + '][Rate]"]').val();
 
+    var UOS = $('select[name="det[' + uniqueName + '][UosID]"]').find(':selected').val();
+    var Qty = Number($('input[name="det[' + uniqueName + '][Quantity]"]').val());
+    var Rate = Number($('input[name="det[' + uniqueName + '][Rate]"]').val());
+    var TotaDetail = 0;
     $.ajax({
         type: "Get",
         url: '/Indent/CommonIndent/GetFactorUnitOfSale?unitID=' + UOS + '',
         success: function (data) {
             $.each(data, function (k, v) {
                 $('input[name="det[' + uniqueName + '][TotalValue]"]').val(Number(v * Qty * Rate).toFixed(2));
-            })
+            });
+        },
+        complete: function (data) {
+            SumOfTotalValues(Qty);
+        }
+
+    });
+}
+function GetSelectedAgent() {
+    var DataArray = [];
+    DataArray.length = 0;
+    $('#AgentTable tbody tr').each(function () {
+        var mapedData = {
+            ID: $('select.selectedAgent', this).val(),
+            Name: $('.selectedAgent option:selected', this).text()
+        }
+        DataArray.push(mapedData);
+
+    });
+
+    const result = [];
+    const map = new Map();
+    for (const item of DataArray) {
+        if (!map.has(item.ID)) {
+            map.set(item.ID, true);    // set any value to Map
+            result.push({
+                ID: item.ID,
+                Name: item.Name
+            });
+        }
+    }
+    var sellerID = document.getElementById("CommPaidAgent1");
+    var buyerID = document.getElementById("CommPaidAgent");
+    var sellerIndex;
+    var buyerIndex;
+    try {
+        sellerIndex = sellerID.value;
+        buyerIndex = buyerID.value;
+    } catch (e) {
+        sellerIndex = 0;
+        buyerIndex = 0;
+    }
+
+
+    var SallerID = $("#seller").val();
+    var SallerName = $("#seller option:selected").text();
+    var BuyerID = $("#Buyer").val();
+    var BuyerName = $("#Buyer option:selected").text();
+    var LocalAgentID = $("#LocalAgentID").val();
+    var LocalAgentName = $("#LocalAgentID option:selected").text();
+
+
+    var Seller = {
+        ID: SallerID,
+        Name: SallerName
+    }
+    var Buyer = {
+        ID: BuyerID,
+        Name: BuyerName
+    }
+    var LocalAgent = {
+        ID: LocalAgentID,
+        Name: LocalAgentName
+    }
+
+
+    if (SallerID != '') {
+        result.push(Seller);
+    }
+    if (BuyerID != '') {
+        result.push(Buyer);
+    }
+    if (LocalAgentID != '') {
+        result.push(LocalAgent);
+    }
+
+    $(".CommPaidAgent").empty();
+    $.each(result, function (key, value) {
+        if (value.ID != '' && value.Name != '') {
+            $(".CommPaidAgent").append($("<option     />").val(value.ID).text(value.Name));
+        }
+    });
+    $(".CommPaidAgent1").empty();
+    $.each(result, function (key, value) {
+        if (value.ID != '' && value.Name != '') {
+            $(".CommPaidAgent1").append($("<option     />").val(value.ID).text(value.Name));
+        }
+    });
+    try {
+        sellerID.value = sellerIndex;
+        buyerID.value = buyerIndex;
+    } catch (e) {
+    }
+
+}
+
+function SumOfTotalValues(Qty) {
+    var TotaDetail = 0;
+    $('#detailTable tbody tr').each(function () {
+        var TotalValue = Number($('.totalDetailVal', this).val());
+        if (TotalValue > 0 && TotalValue != 'NaN') {
+            TotaDetail = TotaDetail + TotalValue;
+        }
+    });
+    $("#TotalDetail").val(TotaDetail);
+
+
+    var totalcomission = 0;
+
+    ///$("#CommBalance").val(Number(totalcomission).toFixed(2));
+
+    $('#CommesionDetaiTable tbody tr').each(function () {
+        var name = $('.comRate', this).attr("name");
+        name = parseInt(name.match(/[0-9]+/)[0], 10);
+        var comissionRate = Number($('input[name="det[' + name + '][CommissionRate]"]').val());
+        var comtypeValue = $('select[name="det[' + name + '][CommissionType]"]').find(':selected').val();
+        if (comtypeValue === "0") {
+            totalcomission = Qty * comissionRate;
+            $('input[name="det[' + name + '][CalculatedCommissionValue]"]').val(Number(totalcomission).toFixed(2));
+        } else {
+            totalcomission = (comissionRate * Number(TotaDetail)) / 100;
+            $('input[name="det[' + name + '][CalculatedCommissionValue]"]').val(Number(totalcomission).toFixed(2));
         }
     });
 
 
-    var totalcomission = 0;
-    if (comtypeValue === "0") {
-        totalcomission = Qty * comissionRate;
-        $('input[name="det[' + uniqueName + '][CalculatedCommissionValue]"]').val(Number(totalcomission).toFixed(2));
-    } else {
-        totalcomission = (comissionRate * Qty * Rate) / 100;
-        $('input[name="det[' + uniqueName + '][CalculatedCommissionValue]"]').val(Number(totalcomission).toFixed(2));
-    }
-    $("#CommBalance").val(Number(totalcomission).toFixed(2));
-};
 
-
+}
 function Dispatch(parameters) {
     var SalerID = $("#seller").val();
     var url = '/Customer/CustomerDispatch';

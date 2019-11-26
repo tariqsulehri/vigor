@@ -62,5 +62,12 @@ namespace VIGOR.ViewsModel
         public string FinancialRemarks { get; set; }
         public string Specificatiions { get; set; }
         public string PriceTerms { get; set; }
+        public System.DateTime closedDate { get; set; }
+        public bool IsScheduleGenerated { get; set; }
+        public bool IsUpdated { get; set; }
+        public bool isCancelled { get; set; }
+        public bool isShipments { get; set; }
+        public bool isInvoiced { get; set; }
+        public bool IsSample { get; set; }
     }
 }

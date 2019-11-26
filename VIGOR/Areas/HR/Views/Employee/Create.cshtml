@@ -99,8 +99,9 @@
                         @Html.HiddenFor(z => z.Title)
                         @Html.HiddenFor(a => a.PermanentCityIdKey)
                         @Html.HiddenFor(a => a.TemporaryCityKey)
-                        @Html.HiddenFor(a=>a.CompanyKey)
-                        @Html.HiddenFor(a=>a.Department)
+                        @Html.HiddenFor(a => a.CompanyKey)
+                        @Html.HiddenFor(a => a.Department)
+                        @Html.HiddenFor(x => x.companyID)
 
                         <div class="m-portlet__head">
                             <div class="m-portlet__head-caption">
@@ -200,7 +201,7 @@
                                                         </div>
                                                         <div class="col-lg-2">
                                                             <div class="input-group-append">
-                                                                <a href="#" type="button" name="" class="btn btn-info" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpPosition")')" style="padding: 4px; width: 20px;" value="+">+</a>
+                                                                <a href="#" type="button" name="" class="btn btn-info" onclick="OpenEmployeeDegreeModal('@Url.Action("Create", "EmpPosition")')" style="padding: 4px; width: 20px;" value="+">+</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -643,7 +644,7 @@
                                                                                             </div>
                                                                                             <div class="col-lg-2">
                                                                                                 <div class="input-group-append">
-                                                                                                    <a href="#" type="button" name="" class="btn btn-info" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "Allowance")')" style="padding: 4px; width: 20px;" value="+">+</a>
+                                                                                                    <a href="#" type="button" name="" class="btn btn-info" onclick="OpenEmployeeAllowanceModal('@Url.Action("Create", "Allowance")')" style="padding: 4px; width: 20px;" value="+">+</a>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -674,7 +675,7 @@
                                                                                         </div>
                                                                                         <div class="col-lg-2">
                                                                                             <div class="input-group-append">
-                                                                                                <a href="#" type="button" name="" class="btn btn-info" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "Allowance")')" style="padding: 4px; width: 60px;" value="+">+</a>
+                                                                                                <a href="#" type="button" name="" class="btn btn-info" onclick="OpenEmployeeAllowanceModal('@Url.Action("Create", "Allowance")')" style="padding: 4px; width: 60px;" value="+">+</a>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -832,7 +833,7 @@
                                             </div>
                                         </div>
                                     </div>
-                            </div> 
+                                </div>
                             </div>
                         </div>
                     }
@@ -843,6 +844,12 @@
 </div>
 <div class="modal fade" id="EmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
+
+<div class="modal fade" id="EmployeeDegreeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="EmployeeAllowanceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<script src="~/Content/VigorJs/HR/Position/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/Employee/_CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/Allowance/CreateOrUpdate.js"></script>
 <script>

@@ -16,7 +16,6 @@
     }
 </style>
 <div class="m-demo__preview">
-    <div class="row">
         <div class="col-lg-12">
 
             <div class="m-portlet">
@@ -144,7 +143,7 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <label>Status:</label>
-                                        @Html.DropDownList("InquiryStatus", Enum.GetValues(typeof(ERP.Common.InquieryStatus)).Cast<ERP.Common.InquieryStatus>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control" })
+                                        @Html.DropDownList("IndentStatus", Enum.GetValues(typeof(ERP.Common.ContractStatus)).Cast<ERP.Common.ContractStatus>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control" })
 
                                     </div>
                                     <div class="col-lg-2">
@@ -284,7 +283,6 @@
                 }
             </div>
         </div>
-    </div>
 </div>
 <div class="modal fade" id="FollowUpSheetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
@@ -313,7 +311,8 @@
                         window.open(url, '_blank');
                     }
                     else if (btnID == "btnIndentClose") {
-                        var url = '@Url.Action("CloseIndent", "FollowUpSheet", new { IndentID = "_id", Area = "Indent"})';
+                        @*var url = '@Url.Action("CloseIndent", "FollowUpSheet", new { IndentID = "_id", Area = "Indent"})';*@
+                        var url = '@Url.Action("ViewIndent", "FollowUpSheet", new { IndentID = "_id", Area = "Indent"})';
                         url = url.replace('_id', IndentID);
                         url = url.replace(/\amp;/g, '');
                         OpenFollowUpSheetModal(url);
@@ -338,12 +337,12 @@
                         url = url.replace(/\amp;/g, '');
                         OpenFollowUpSheetModal(url);
                     }
-                    else if (btnID == "btnFollowUpSheetDetail") {
+                    @*else if (btnID == "btnFollowUpSheetDetail") {
                         var url = '@Url.Action("PrintFollowUpSheetDetail", "FollowUpSheet", new { IndentID = "_id" , Area = "Indent"})';
                         url = url.replace('_id', IndentID);
                         url = url.replace(/\amp;/g, '');
                         OpenFollowUpSheetModal(url);
-                    }
+                    }*@
                     else if (btnID == "btnInspectionView") {
 
                         var url = '@Url.Action("PrintDSS", "FollowUpSheet", new { IndentID = "_id", type = "_rptType" , Area = "Indent"})';
@@ -385,7 +384,13 @@
         url = url.replace(/\amp;/g, '');
         location.href = url;
     }
-
+    function CloseIndent(IndentID) {
+       
+        var url = '@Url.Action("CloseIndent", "FollowUpSheet", new { IndentID = "_id", Area = "Indent"})';
+        url = url.replace('_id', IndentID);
+        url = url.replace(/\amp;/g, '');
+        OpenFollowUpSheetModal(url);
+    }
      function InspectionView(url) {
          var url = url
          url = url.replace(/\amp;/g, '');

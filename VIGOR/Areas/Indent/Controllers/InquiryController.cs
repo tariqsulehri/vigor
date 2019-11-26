@@ -54,7 +54,16 @@ namespace VIGOR.Areas.Indent.Controllers
                 return View();
             }
             string strDDLValue = Request.Form["InquiryStatus"].ToString();
-            if (!strDDLValue.Equals("A"))
+
+            if (strDDLValue.Equals("P"))
+            {
+                return View(_indDomesticInquiryRepository.GetAllDomecticInquires()
+                    .Where(a => a.DepartmentID.Equals(inquiry.DepartmentID) || inquiry.DepartmentID.Equals(0))
+                    .Where(a => a.CommodityTypeId.Equals(inquiry.CommodityTypeId) || inquiry.CommodityTypeId.Equals(0))
+                    .Where(a => a.CustomerId.Equals(inquiry.CustomerId) || inquiry.CustomerId.Equals(0))
+                    .Where(a => a.InquiryStatus.Trim().Equals(strDDLValue.Trim())));
+            }
+            else if (!strDDLValue.Equals("A"))
             {
                 return View(_indDomesticInquiryRepository.GetAllDomecticInquires()
                     .Where(a => a.DepartmentID.Equals(inquiry.DepartmentID) || inquiry.DepartmentID.Equals(0))
@@ -193,6 +202,16 @@ namespace VIGOR.Areas.Indent.Controllers
                 }
                 ViewBag.NewCommodity = Request.Form["NewCommodity"].ToString();
                 model = GetIquiryOffers(model);
+                if (model.IndDomesticInquiryOffers.Count() == 0)
+                {
+                    ModelState.AddModelError("", "Inquiry Offers must be selected ");
+                    return View(model);
+                }
+                if (model.Quantity<=0)
+                {
+                    ModelState.AddModelError("", "Inquiry Quantity must be greater then 0 ");
+                    return View(model);
+                }
                 if (ModelState.IsValid)
                 {
                     model.CreatedOn = DateTime.Now;
@@ -352,42 +371,42 @@ namespace VIGOR.Areas.Indent.Controllers
             int? dept = Convert.ToInt32(TempData["InquiryID"]);
             ReportDocument reportDocument = new ReportDocument();
             string reportPath = Path.Combine(Server.MapPath("~/Reports/IndentDomestic"), "InquierySheet.rpt");
-            reportDocument = SetUsersInfo(reportPath);
+            reportDocument = CustomeReportAction.SetUsersInfo(reportPath);
             reportDocument.SetParameterValue("@inquiryid", dept);
             //reportDocument.Load(reportPath);
             return new CustomeReportAction(reportDocument);
         }
 
-        public ReportDocument SetUsersInfo(String source)
-        {
-            ConnectionInfo crconnectioninfo = new ConnectionInfo();
-            ReportDocument cryrpt = new ReportDocument();
-            TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
-            Tables CrTables;
-            //String ServerName = @"sql6007.site4now.net";
-            //String Database = "DB_A291AD_VigourDevelopment";
-            //String UserID = "DB_A291AD_VigourDevelopment_admin";
-            //String Password = "222Cgarden";
+        //public ReportDocument SetUsersInfo(String source)
+        //{
+        //    ConnectionInfo crconnectioninfo = new ConnectionInfo();
+        //    ReportDocument cryrpt = new ReportDocument();
+        //    TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
+        //    Tables CrTables;
+        //    //String ServerName = @"sql6007.site4now.net";
+        //    //String Database = "DB_A291AD_VigourDevelopment";
+        //    //String UserID = "DB_A291AD_VigourDevelopment_admin";
+        //    //String Password = "222Cgarden";
 
-            String ServerName = @".";
-            String Database = "DB_A291AD_VigourDevelopment";
-            String UserID = "W";
-            String Password = "12345678";
-            crconnectioninfo.ServerName = ServerName;
-            crconnectioninfo.DatabaseName = Database;
-            crconnectioninfo.UserID = UserID;
-            crconnectioninfo.Password = Password;
-            cryrpt.Load(source.ToString());
-            CrTables = cryrpt.Database.Tables;
-            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
-            {
-                crtablelogoninfo = CrTable.LogOnInfo;
-                crtablelogoninfo.ConnectionInfo = crconnectioninfo;
-                CrTable.ApplyLogOnInfo(crtablelogoninfo);
-            }
+        //    String ServerName = @".";
+        //    String Database = "DB_A291AD_VigourDevelopment";
+        //    String UserID = "W";
+        //    String Password = "12345678";
+        //    crconnectioninfo.ServerName = ServerName;
+        //    crconnectioninfo.DatabaseName = Database;
+        //    crconnectioninfo.UserID = UserID;
+        //    crconnectioninfo.Password = Password;
+        //    cryrpt.Load(source.ToString());
+        //    CrTables = cryrpt.Database.Tables;
+        //    foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+        //    {
+        //        crtablelogoninfo = CrTable.LogOnInfo;
+        //        crtablelogoninfo.ConnectionInfo = crconnectioninfo;
+        //        CrTable.ApplyLogOnInfo(crtablelogoninfo);
+        //    }
 
-            cryrpt.Refresh();
-            return cryrpt;
-        }
+        //    cryrpt.Refresh();
+        //    return cryrpt;
+        //}
     }
 }

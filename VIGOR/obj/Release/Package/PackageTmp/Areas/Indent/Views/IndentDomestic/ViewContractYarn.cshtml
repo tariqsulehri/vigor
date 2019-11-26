@@ -106,15 +106,26 @@
                                 </a>
                             </li>
                             <li class="m-portlet__nav-item">
-
-                                <a href="@Url.Action("EditYarn", "IndentDomestic", new {id = Model.Id, Area = "Indent"})" class="btn btn-dark m-btn m-btn--custom m-btn--icon m-btn--air hidden">
-                                    <span style="color: #ffffff">
-                                        <i class="flaticon-add"></i>
-                                        <span>Edit</span>
-                                    </span>
-                                </a>
-
+                                @if (Model.isClosed || Model.isCancelled)
+                                {
+                                    <a href="javascript:" class="btn btn-dark m-btn m-btn--custom m-btn--icon m-btn--air hidden disabled">
+                                        <span style="color: #ffffff">
+                                            <i class="flaticon-add"></i>
+                                            <span>Edit</span>
+                                        </span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("EditYarn", "IndentDomestic", new { id = Model.Id, Area = "Indent" })" class="btn btn-dark m-btn m-btn--custom m-btn--icon m-btn--air hidden">
+                                        <span style="color: #ffffff">
+                                            <i class="flaticon-add"></i>
+                                            <span>Edit</span>
+                                        </span>
+                                    </a>
+                                }
                             </li>
+                                
                             @*<li class="m-portlet__nav-item">
              <a href="javascript:" class="btn m-btn m-btn--gradient-from-brand m-btn--gradient-to-info" Sec-menuId="@SecurityConstants.CPVbtnUnpost">
                  <span>
@@ -239,9 +250,8 @@
                             <div class="form-group row">
                                 <div class="col-lg-12">
                                     <label>Local Agent:</label>
-                                    @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search" })
+                                    @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsAgent == true && a.Id > 1), "Id", "Title"), new { @class = "form-control m-select2 search", id = "LocalAgentID", @disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.CustomerIDasLocalAgent, "", new { @class = "text-danger" })
-
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Currency:</label>
@@ -497,14 +507,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @if (Model.CommInvoiceAgentComm.Count > 0)
+                                                    @if (ViewBag.Agents.Count > 0)
                                                     {
                                                         Int32 j = 0;
-                                                        foreach (var item in Model.CommInvoiceAgentComm)
+                                                        foreach (var item in ViewBag.Agents)
                                                         {
                                                             <tr role="row">
                                                                 <td>
-                                                                    @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", @item.CompanyId), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
+                                                                    @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", @item.CustomerIDasAgentID), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
                                                                 </td>
                                                             </tr>
                                                         }
@@ -621,7 +631,8 @@
 <script src="~/Content/VigorJs/IndDomestic/IndDomestic.js"></script>
 
 <script>
-    $( document ).ready(function() {
+    $(document).ready(function () {
+        $('input,select,textarea').attr('disabled', true);
         BindCommetionAgent();
     });
     Valid();
@@ -642,79 +653,4 @@
         function() {
             GetSelectedAgent();
         });
-    function GetSelectedAgent() {
-        var DataArray = [];
-        DataArray.length = 0;
-        $('#AgentTable tbody tr').each(function () {
-            var mapedData = {
-                ID: $('select.selectedAgent', this).val(),
-                Name: $('.selectedAgent option:selected',this).text()
-            }
-            DataArray.push(mapedData);
-
-        });
-
-        const result = [];
-        const map = new Map();
-        for (const item of DataArray) {
-            if (!map.has(item.ID)) {
-                map.set(item.ID, true);    // set any value to Map
-                result.push({
-                    ID: item.ID,
-                    Name: item.Name
-                });
-            }
-        }
-
-        var sellerID = document.getElementById("CommPaidAgent1");
-        var buyerID = document.getElementById("CommPaidAgent");
-        var sellerIndex;
-        var buyerIndex;
-        try {
-            sellerIndex = sellerID.value;
-            buyerIndex = buyerID.value;
-        } catch (e) {
-            sellerIndex = 0;
-            buyerIndex = 0;
-        } 
-
-        var SallerID = $("#seller").val();
-        var SallerName = $("#seller option:selected").text();
-        var BuyerID = $("#Buyer").val();
-        var BuyerName = $("#Buyer option:selected").text();
-
-        var Seller = {
-            ID: SallerID,
-            Name: SallerName
-        }
-        var Buyer = {
-            ID: BuyerID,
-            Name: BuyerName
-        }
-        if (SallerID != '') {
-            result.push(Seller);
-        }
-        if (BuyerID != '') {
-            result.push(Buyer);
-        }
-        $(".CommPaidAgent").empty();
-        $.each(result, function (key, value) {
-            if (value.ID != '' && value.Name != '') {
-                $(".CommPaidAgent").append($("<option     />").val(value.ID).text(value.Name));}
-        });
-        $(".CommPaidAgent1").empty();
-        $.each(result, function (key, value) {
-            if (value.ID != '' && value.Name != '') {
-                $(".CommPaidAgent1").append($("<option     />").val(value.ID).text(value.Name));
-            }
-        });
-        try {
-            sellerID.value = sellerIndex;
-            buyerID.value = buyerIndex;
-        } catch (e) {
-        } 
-
-    }
-
-
 </script>

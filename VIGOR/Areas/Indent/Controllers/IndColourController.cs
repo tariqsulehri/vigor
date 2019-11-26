@@ -116,7 +116,7 @@ namespace VIGOR.Areas.Indent.Controllers
             var collection = Year.Select(x => new
             {
                 Id = x.Id,
-                ColourID=x.ColourId,
+                ColourID=x.ColourID,
                 ColourCode=x.CodeId,
                 Title = x.ColourDescription,
                 Description=x.Description

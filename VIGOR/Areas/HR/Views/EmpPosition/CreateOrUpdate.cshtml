@@ -16,7 +16,7 @@
                 <div class="form-group row" id="productform">
                     <div class="col-lg-6">
                         <label>ID:</label>
-                        @Html.TextBoxFor(a => a.DesignationId, new { @class = "form-control", @id = "DesignationId", @name = "DesignationId" })
+                        @Html.TextBoxFor(a => a.DesignationId, new { @class = "form-control", @id = "DesignationId", @name = "DesignationId",@readonly="readonly" })
                         @Html.ValidationMessageFor(a => a.DesignationId, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">

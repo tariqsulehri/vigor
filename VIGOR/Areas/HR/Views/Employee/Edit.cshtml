@@ -92,7 +92,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="m-portlet">
-                    @using (Html.BeginForm("Create", "Employee", FormMethod.Post))
+                    @using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
@@ -149,7 +149,7 @@
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-attachment"></i></span>
                                                     <span class="m-list-search__result-item-text">Efile</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Detail", "EmpHistory")')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeHistoryModal('@Url.Action("Details", "EmpHistory", new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-calendar-with-a-clock-time-tools"></i></span>
                                                     <span class="m-list-search__result-item-text">History</span>
                                                 </a>
@@ -195,18 +195,19 @@
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-add"></i></span>
                                                     <span class="m-list-search__result-item-text">Increment</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpResign",new {EmplId = Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenRevisionModal('@Url.Action("Create", "EmpRevision",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-refresh"></i></span>
                                                     <span class="m-list-search__result-item-text">Revision</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpTransfer",new {EmplId = Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenTransferModal('@Url.Action("Create", "EmpTransfer",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-network"></i></span>
                                                     <span class="m-list-search__result-item-text">Transfer</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpPromotion",new {EmplId = Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenPromotionModal('@Url.Action("Create", "EmpPromotion",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-presentation"></i></span>
                                                     <span class="m-list-search__result-item-text">Promotions</span>
                                                 </a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -845,11 +846,23 @@
 </div>
 <div class="modal fade" id="EmployeeNCRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
+<div class="modal fade" id="IncreamentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="EmployeeHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+
+<script src="~/Content/VigorJs/HR/Revision/Revision.js"></script>
+<script src="~/Content/VigorJs/HR/Transfer/Transfor.js"></script>
+<script src="~/Content/VigorJs/HR/History/CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/Promotion/Promotion.js"></script>
+<script src="~/Content/VigorJs/HR/Increment/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/Non_Confirmity/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/LoanAdvanceApplication/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/CINCR/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/Intimation/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/Employee/_CreateOrUpdate.js"></script>
+
+
 <script>
     $(document).ready(function () {
         $(".history").click(function () {

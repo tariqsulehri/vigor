@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ERP.Core.Models.Admin;
+using ERP.Core.Models.Common;
 using ERP.Core.Models.HR;
 using ERP.Infrastructure;
 using ERP.Infrastructure.Repositories.Common;
@@ -41,6 +43,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
             model.TemporaryCityKey = "-";
             model.CompanyKey = "-";
             model.Department = "-";
+            model.companyID = LoggedinUser.Company.Id;
             return View(model);
         }
         // POST: HR/Employee/Create
@@ -86,15 +89,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
         // GET: HR/Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            var list = _hrEmployeeRepository.FindById(id);
-            HR_History model=new HR_History();
-            model.psBasic = Convert.ToDouble(list.CurrentBasicSalary);
-            model.psAllowance = Convert.ToDouble(list.CurrentAllowances);
-            model.psCurrent = Convert.ToDouble(list.CurrentGrossSalary);
-            model.PreviousDepartment = list.HrDepartment.Title;
-            model.PreviousDesignation = list.HrDesignation.DesignationId;
-            
-            return View(model);
+            return View(_hrEmployeeRepository.FindById(id));
         }
 
         // POST: HR/Employee/Edit/5
@@ -154,8 +149,7 @@ namespace VIGOR.Areas.HR.Controllers.Settings
             var collection = Year.Select(x => new
             {
                 Id = x.Id,
-                FirstName = x.FirstName,
-                FatherHusbandName = x.FatherHusbandName
+                Title = x.FirstName
             }).ToList();
             return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
         }

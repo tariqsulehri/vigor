@@ -3,7 +3,9 @@
     Layout = null;
 }
 @if (ViewBag.CommodityType.Equals(1))
-{@Html.Partial("_CreateUpdatePayment")}
+{
+    @Html.Partial("_CreateUpdatePayment")
+}
 else
 {
 @Html.Partial("_CreateUpdatePaymentOfYarn")

@@ -38,3 +38,14 @@ E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.csproj.CoreCompileInputs.cach
 E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.csproj.CopyComplete
 E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.dll
 E:\vigour\Vigour\ERP.Common\obj\Release\ERP.Common.pdb
+E:\vigour\vigor\ERP.Common\bin\Release\ERP.Common.dll.config
+E:\vigour\vigor\ERP.Common\bin\Release\ERP.Common.dll
+E:\vigour\vigor\ERP.Common\bin\Release\ERP.Common.pdb
+E:\vigour\vigor\ERP.Common\bin\Release\ERP.Core.dll
+E:\vigour\vigor\ERP.Common\bin\Release\ERP.Core.pdb
+E:\vigour\vigor\ERP.Common\bin\Release\ERP.Core.dll.config
+E:\vigour\vigor\ERP.Common\obj\Release\ERP.Common.csprojAssemblyReference.cache
+E:\vigour\vigor\ERP.Common\obj\Release\ERP.Common.csproj.CoreCompileInputs.cache
+E:\vigour\vigor\ERP.Common\obj\Release\ERP.Common.csproj.CopyComplete
+E:\vigour\vigor\ERP.Common\obj\Release\ERP.Common.dll
+E:\vigour\vigor\ERP.Common\obj\Release\ERP.Common.pdb

@@ -18,5 +18,6 @@ namespace VIGOR.ViewsModel
         public int CommodityId { get; set; }
         public Nullable<decimal> DispQuantity { get; set; }
         public Nullable<decimal> ReturnQuantity { get; set; }
+        public Nullable<decimal> PaymentQuantity { get; set; }
     }
 }

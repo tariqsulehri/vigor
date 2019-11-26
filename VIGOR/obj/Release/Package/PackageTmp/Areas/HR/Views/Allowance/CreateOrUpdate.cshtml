@@ -11,68 +11,45 @@
             </button>
         </div>
 
-        @using (Html.BeginForm("CreateOrUpdate", "Allowance", FormMethod.Post , new{id= "AllowanceForm" }))
+        @using (Html.BeginForm("CreateOrUpdate", "Allowance", FormMethod.Post, new { id = "AllowanceForm" }))
         {
+            
             <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-lg-6">
                         <label>Allowance ID:</label>
-                        @Html.TextBoxFor(a => a.AllowanceID, new { @class = "form-control", @id = "allowanceId" })
+                        @Html.TextBoxFor(a => a.AllowanceID, new { @class = "form-control", @id = "allowanceId" ,@readonly="readonly"})
                         @Html.ValidationMessageFor(a => a.AllowanceID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
-                        <label>Description:</label>
-                        @Html.TextBoxFor(a => a.Description, new { @class = "form-control", @id = "Description" })
-                        @Html.ValidationMessageFor(a => a.Description, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-lg-6">
                         <label>Type:</label>
-                        @Html.DropDownListFor(a => a.Type,
-                            new List<SelectListItem>
-                            {
-                                new SelectListItem() {Text = "Active", Value="A"},
-                                new SelectListItem() {Text = "InActive", Value="I"}
-                            }, "-- Select Type --", new { @type = "text", @class = "form-control", @placeholder = "--Select Type--" })
+                        @Html.TextBoxFor(a => a.Type, new { @class = "form-control", @id = "allowanceType" })
                         @Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label>Sub-Type:</label>
-                        @Html.DropDownListFor(a => a.SubType,
-                            new List<SelectListItem>
-                            {
-                                new SelectListItem() {Text = "Occurring", Value="O"},
-                                new SelectListItem() {Text = "ReOccurring", Value="R"}
-                            }, "-- Select Sub Type --", new { @type = "text", @class = "form-control", @placeholder = "--Select Sub Type--" })
+                        @Html.TextBoxFor(a => a.SubType, new { @class = "form-control", @id = "allowanceSubtype" })
                         @Html.ValidationMessageFor(a => a.SubType, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <label>Tax Status:</label>
-                        @Html.DropDownListFor(a => a.TaxStatus,
-                            new List<SelectListItem>
-                            {
-                                new SelectListItem() {Text = "Exempted", Value="E"},
-                                new SelectListItem() {Text = "NonExempted", Value="N"}
-                            }, "-- Select Sub Type --", new { @type = "text", @class = "form-control", @placeholder = "--Select Sub Type--" })
+                        @Html.TextBoxFor(a => a.TaxStatus, new { @class = "form-control", @id = "allowanceTaxtstatus" })
                         @Html.ValidationMessageFor(a => a.TaxStatus, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-12">
                         <label>Apply On:</label>
-                        @Html.DropDownListFor(a => a.ApplyOn,
-                            new List<SelectListItem>
-                            {
-                                new SelectListItem() {Text = "1", Value="1"},
-                                new SelectListItem() {Text = "2", Value="2"},
-                                new SelectListItem() {Text = "3", Value="3"},
-                                new SelectListItem() {Text = "4", Value="4"},
-                                new SelectListItem() {Text = "5", Value="5"}
-                            }, "-- Select Sub Type --", new { @type = "text", @class = "form-control", @placeholder = "--Select Sub Type--" })
+                        @Html.TextBoxFor(a => a.ApplyOn, new { @class = "form-control", @id = "allowanceTaxtstatus" })
                         @Html.ValidationMessageFor(a => a.ApplyOn, "", new { @class = "text-danger" })
                     </div>
-
+                    <div class="col-lg-12">
+                        <label>Description:</label>
+                        @Html.TextBoxFor(a => a.Description, new { @class = "form-control", @id = "Description" })
+                        @Html.ValidationMessageFor(a => a.Description, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="SubmitAllowanceForm()" id="btnSave">
+                <button type="button" class="btn btn-success" onclick="SubmitAllowanceForm()">
                     <span>
                         <i class="fa fa-save"></i>
                         <span>Save</span>
@@ -89,3 +66,4 @@
 
     </div>
 </div>
+<script src="~/Content/VigorJs/HR/Allowance/CreateOrUpdate.js"></script>

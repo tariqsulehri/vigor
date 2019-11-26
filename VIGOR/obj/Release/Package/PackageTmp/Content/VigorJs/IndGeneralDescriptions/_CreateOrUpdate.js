@@ -78,7 +78,7 @@ function IndGeneralDescriptionsList(tabename) {
     if (clickCount >= 2) {
         clickCount = 0;
         clearTimeout(timeoutID);
-        var url = '/Indent/IndGeneralDescriptions/LookUpIndGeneralDescriptions';
+        var url = '/Indent/IndGeneralDescriptions/LookUpIndGeneralDescriptions?type=' + tabename;
         $.ajax({
             type: "Get",
             url: url,

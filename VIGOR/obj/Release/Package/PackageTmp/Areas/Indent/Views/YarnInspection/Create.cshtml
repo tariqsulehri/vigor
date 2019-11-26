@@ -43,6 +43,9 @@
                 if (ViewBag.Title != "Create")
                 {
                     @Html.HiddenFor(a => a.IndentKey)
+                    @Html.HiddenFor(a => a.InspectionSerialID)
+                    @Html.HiddenFor(a => a.RegisterNo)
+                    @Html.HiddenFor(a => a.InspectionForMarket)
                 }
                 <div class="m-portlet">
 
@@ -83,18 +86,18 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Serial No:</label>
-                                        @Html.TextBoxFor(a => a.InspectionSerialID, new { @class = "form-control " })
+                                        @Html.TextBoxFor(a => a.InspectionSerialID, new { @class = "form-control ",@readonly= "readonly" })
                                         @Html.ValidationMessageFor(model => model.InspectionSerialID, "", new { @class = "text-danger" })
 
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Register No:</label>
-                                        @Html.TextBoxFor(a => a.RegisterNo, new { @class = "form-control " })
+                                        @Html.TextBoxFor(a => a.RegisterNo, new { @class = "form-control ", @readonly = "readonly" })
                                         @Html.ValidationMessageFor(model => model.RegisterNo, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6">
                                         <label>Date:</label>
-                                        @Html.TextBoxFor(a => a.InspectionDate, new { @class = "form-control ", type = "Date" })
+                                        @Html.TextBoxFor(a => a.InspectionDate, new { @class = "form-control ", type = "Date", Value = Model.InspectionDate.ToString("yyyy-MM-dd") })
                                         @Html.ValidationMessageFor(model => model.InspectionDate, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6">
@@ -104,7 +107,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Type:</label>
-                                        @Html.DropDownListFor(a => a.InspReportTypeId, new SelectList(new YarnInspectionReportTypeRepository().GetAllYarnInspectionReportTypes(), "Id", "Description"), "", new { @class = "form-control " })
+                                        @Html.DropDownListFor(a => a.InspReportTypeId, new SelectList(new YarnInspectionReportTypeRepository().GetAllYarnInspectionReportTypes(), "Id", "Description"), new { @class = "form-control " })
                                         @Html.ValidationMessageFor(model => model.InspReportTypeId, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-12">
@@ -322,12 +325,14 @@
                                                                     <td width="70">Prod Start:</td>
                                                                     <td>
                                                                         @Html.TextBoxFor(a => a.ProductionStartDate, new { @class = "form-control ", type = "date" })
+                                                                        @Html.ValidationMessageFor(model => model.ProductionStartDate, "", new { @class = "text-danger" })
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td width="70">Prod End:</td>
                                                                     <td>
                                                                         @Html.TextBoxFor(a => a.ProductionDate, new { @class = "form-control ", type = "date" })
+                                                                        @Html.ValidationMessageFor(model => model.ProductionDate, "", new { @class = "text-danger" })
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

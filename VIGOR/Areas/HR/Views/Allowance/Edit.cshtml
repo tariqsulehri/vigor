@@ -11,12 +11,15 @@
             </button>
         </div>
 
-        @using (Html.BeginForm("null", "null", FormMethod.Post, new { id = "AllowanceForm" }))
-        {<div class="modal-body">
+        @using (Html.BeginForm("Edit", "Allowance", FormMethod.Post, new { id = "AllowanceForm" }))
+        {
+            @Html.HiddenFor(model => model.CreatedOn);
+            @Html.HiddenFor(model => model.CreatedBy);
+            <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-lg-6">
                         <label>Allowance ID:</label>
-                        @Html.TextBoxFor(a => a.AllowanceID, new { @class = "form-control", @id = "allowanceId" })
+                        @Html.TextBoxFor(a => a.AllowanceID, new { @class = "form-control", @id = "allowanceId", @readonly = "readonly" })
                         @Html.ValidationMessageFor(a => a.AllowanceID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
@@ -47,7 +50,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick="" id="btnSave">
+                <button type="button" class="btn btn-success" onclick="SubmitAllowanceForm()">
                     <span>
                         <i class="fa fa-save"></i>
                         <span>Save</span>

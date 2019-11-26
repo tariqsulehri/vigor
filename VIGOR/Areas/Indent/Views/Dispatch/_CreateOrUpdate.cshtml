@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Commodity:</label>
-                                    @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId, "", new { @class = "form-control ", @id = "drop", onchange = "CommSelectionChanged()" })
+                                    @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId, new { @class = "form-control ", @id = "drop", onchange = "CommSelectionChanged()" })
                                     @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
 
                                 </div>
@@ -74,14 +74,14 @@
                                 </div>
                                 <div class="col-lg-8">
                                     <label>UOS:</label>
-                                    <input type="text" class="form-control" id="UoS" disabled="disabled" />
+                                    <input type="text" class="form-control" id="UoS" disabled="disabled" value="@ViewBag.UOS" />
                                     @Html.Hidden("UnitOsSaleID",new{id= "UnitOsSaleID" })
                                     @Html.Hidden("Rate",new{id= "Rate" })
 
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Transporter:</label>
-                                    @Html.DropDownListFor(a => a.GoodsFarwarderID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.GoodsForwarderRepository().GetAllGoodsForwarder(), "Id", "Name"), new { @class = "form-control " })
+                                    @Html.DropDownListFor(a => a.GoodsFarwarderID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.GoodsForwarderRepository().GetAllGoodsForwarder(), "Id", "Name"),"", new { @class = "form-control " })
                                     @Html.ValidationMessageFor(model => model.GoodsFarwarderID, "", new { @class = "text-danger" })
 
                                 </div>
@@ -114,29 +114,34 @@
                                 </div>
                                 <div class="col-lg-4" style="padding-top:15px;">
                                     <div class="m-checkbox-list">
-                                        <label class="m-checkbox m-checkbox--state-primary">
-                                            @if (Model.Id > 0)
-                                            {
-                                                <input type="checkbox">
-                                            }
-                                            else
-                                            { <input type="checkbox" disabled="disabled">}
-                                            Salestax Invoice
-                                            Received
-
-                                            <span></span>
-                                        </label>
+                                        @if (Model.Id > 0)
+                                        {
+                                            <label class="m-checkbox" id="isRecInv">
+                                                @Html.CheckBoxFor(a => a.IsReceivedStinv)Salestax Invoice
+                                                Received
+                                                <span></span>
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label class="m-checkbox" id="isRecInv">
+                                                @Html.CheckBoxFor(a => a.IsReceivedStinv, new { @class = "form-control", @disabled = "disabled" })Salestax Invoice
+                                                Received
+                                                <span></span>
+                                            </label>
+                                            @Html.HiddenFor(a => a.IsReceivedStinv)
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <label>Dated:</label>
-                                    @Html.TextBoxFor(a => a.SalestaxInvoiceDate, null, Model.Id > 0 ? (object)new { @class = "form-control ", required = "required", type = "date" } : new { @class = "form-control ", @disabled = "disabled" })
+                                    @Html.TextBoxFor(a => a.SalestaxInvoiceDate, null, Model.Id > 0 ? (object)new { @class = "form-control ",@id="isRecInvDate", required = "required", type = "date", Value = Model.SalestaxInvoiceDate } : new { @class = "form-control ", @id = "isRecInvDate", @disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.SalestaxInvoiceDate, "", new { @class = "text-danger" })
 
                                 </div>
                                 <div class="col-lg-3">
                                     <label>Invoice No:</label>
-                                    @Html.TextBoxFor(a => a.SalestaxInvoiceNo, null, Model.Id > 0 ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
+                                    @Html.TextBoxFor(a => a.SalestaxInvoiceNo,  Model.Id > 0 ? (object)new { @class = "form-control ", @id = "isRecInvNo", required = "required" } : new { @class = "form-control ", @id = "isRecInvNo", @disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.SalestaxInvoiceNo, "", new { @class = "text-danger" })
 
                                 </div>
@@ -145,7 +150,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Delay Category:</label>
-                                    @Html.DropDownListFor(a => a.DelayShipmentReason, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndDelayShipmentReasonRepository().GetAllIndDelayShipmentReasons(), "Id", "Description"), "", Model.IsDelayed == "Y" ? (object)new { @class = "form-control ",@id="DelayCat", required = "required" } : new { @class = "form-control ", @id = "DelayCat", @disabled = "disabled" })
+                                    @Html.DropDownListFor(a => a.DelayShipmentReason, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndDelayShipmentReasonRepository().GetAllIndDelayShipmentReasons(), "Id", "Description"), Model.IsDelayed == "Y" ? (object)new { @class = "form-control ",@id="DelayCat", required = "required" } : new { @class = "form-control ", @id = "DelayCat", @disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.DelayShipmentReason, "", new { @class = "text-danger" })
 
                                 </div>

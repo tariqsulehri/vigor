@@ -81,7 +81,7 @@ var LoadIndDomesticDispatchPaymentTable = function () {
                 "orderable": true,
                 "render": function (data, type, full, meta) {
                     var attachurl = '/Indent/Dispatch/Attachment/';
-                    var formateurl = '/Indent/Dispatch/Edit/';
+                    var formateurl = '/Indent/IndDomesticDispatchPayment/Edit/';
                     var editurl = ' \n <span class="dropdown">\n <a href="#" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="true"  >\n                              Action\n                            </a>\n                            <div class="dropdown-menu dropdown-menu-right">\n  <a class="dropdown-item" href="#"onclick="OpenIndDomesticDispatchAttechmentModal(' + "'" + attachurl + full.Id + "'" + ')"><i class="flaticon-attachment"></i> E-file</a>\n<a class="dropdown-item" href="#"onclick="OpenIndDomesticDispatchScheduleModal(' + "'" + formateurl + full.Id + "'" + ')"><i class="la la-edit"></i> Edit</a>\n<a class="dropdown-item" href="#" onclick="DeleteIndDomesticDispatchPayment(' + full.Id + ')"  ><i class="la la-trash"></i> Delete</a>\n</div>\n</span>\n';
                     return editurl;
                 }

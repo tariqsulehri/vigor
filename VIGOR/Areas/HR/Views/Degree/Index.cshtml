@@ -21,7 +21,7 @@
                             <input data-switch="true" type="checkbox" checked="checked" data-on-text="Active" data-handle-width="10" data-off-text="InActive" data-on-color="success">
                         </li>
                         <li class="m-portlet__nav-item">
-                            <a href="@Url.Action("PrintEmployee","Employee",new {Area="HR" })" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.EmployeebtnPrint">
+                            <a href="@Url.Action("PrintDegree","Degree",new {Area="HR" })" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air hidden" Sec-menuId="@SecurityConstants.EmployeebtnPrint">
                                 <span style=" color:#ffffff">
                                     <i class="la la-print"></i>
                                     <span>Print</span>
@@ -54,11 +54,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="EmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="OpenDegreeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
-<script src="~/Content/VigorJs/Employee/_CreateOrUpdate.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Content/VigorJs/Employee/Index.js"></script>
+<script src="~/Content/VigorJs/HR/Degree/CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/Degree/Index.js"></script>
 <script src="~/Content/VigorJs/General Grid/GeneralGrid.js"></script>
 
 

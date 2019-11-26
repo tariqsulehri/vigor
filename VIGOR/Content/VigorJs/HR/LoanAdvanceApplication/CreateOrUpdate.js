@@ -30,10 +30,12 @@ function SubmitLAdvApplicationForm() {
         success: function (data) {
             if (data === null || data === undefined || data === '') {
                 $('#LAdvApplicationCreateModal').modal('hide');
+                LoadLoanApprovalTable();
                 LoadLoanAppTable();
             } else {
                 $('#LAdvApplicationCreateModal').html(data);
                 $('#LAdvApplicationCreateModal').modal('show');
+                LoadLoanApprovalTable();
                 LoadLoanAppTable();
             }
         },
@@ -42,3 +44,5 @@ function SubmitLAdvApplicationForm() {
         processData: false
     });
 }
+
+

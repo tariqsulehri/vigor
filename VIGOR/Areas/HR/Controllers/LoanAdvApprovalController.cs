@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ERP.Infrastructure;
+using ERP.Infrastructure.Repositories.HR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,15 @@ namespace VIGOR.Areas.HR.Controllers
 {
     public class LoanAdvApprovalController : Controller
     {
+        private HR_LoanAdvanceApplicationRepository _HR_LoanAdvanceApplicationRepository;
+        HrEmployeeRepository _hrEmployeeRepository;
+        ErpDbContext _db;
+        public LoanAdvApprovalController()
+        {
+            _hrEmployeeRepository = new HrEmployeeRepository();
+            _HR_LoanAdvanceApplicationRepository = new HR_LoanAdvanceApplicationRepository();
+            _db = new ErpDbContext();
+        }
         // GET: HR/LoanAdvApproval
         public ActionResult Index()
         {
@@ -84,6 +95,24 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult GetLoanApprovals()
+        {
+
+            var LoanAppData = _HR_LoanAdvanceApplicationRepository.GetAllHR_LoanAdvanceApplication().Where(x => x.IsPending == "t").ToList();
+            //var IntimationData = _db.HR_LeaveRequests.Where(x => x.EmployeeId == id);
+            var collection = LoanAppData.Select(x => new
+            {
+                Id = x.LoanAdvanceID,
+                Date = x.ApplicationDate.ToString(),
+                Name=x.HrEmployee.FirstName,
+                ReqAmount = x.RequiredAmount,
+                ReqInstallment = x.LoanInstalment,
+                ApproveAmount = x.ApprovedAmount,
+                ApproveLoan=x.ApprovedLoanInstalment
+
+            }).ToList();
+            return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
         }
     }
 }

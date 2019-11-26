@@ -249,8 +249,11 @@
                             <div class="form-group row">
                                 <div class="col-lg-12">
                                     <label>Local Agent:</label>
-                                    @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search" })
+                                    @Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsAgent== true&& a.Id>1), "Id", "Title"), new { @class = "form-control m-select2 search",id= "LocalAgentID", @disabled = "disabled" })
+                                    @Html.HiddenFor(a => a.CustomerIDasLocalAgent)
                                     @Html.ValidationMessageFor(model => model.CustomerIDasLocalAgent, "", new { @class = "text-danger" })
+                                    @*@Html.DropDownListFor(a => a.CustomerIDasLocalAgent, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control m-select2 search" })
+                                    @Html.ValidationMessageFor(model => model.CustomerIDasLocalAgent, "", new { @class = "text-danger" })*@
 
                                 </div>
                                 <div class="col-lg-12">
@@ -331,7 +334,7 @@
                                 <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="detailTable" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
                                                 <thead style="background-color: #28469c; color: #ffffff">
                                                     <tr>
 
@@ -341,8 +344,8 @@
                                                         <th width="80">Rate</th>
                                                         <th>Specification</th>
                                                         <th>Selvage Weave</th>
-                                                        <th width="60" col="TotalValue" summary="sum">Total</th>
-                                                        <th width="20"></th>
+                                                        <th width="60">Total</th>@*col="TotalValue" summary="sum"*@
+                                                        @*<th width="20"></th>*@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -372,10 +375,10 @@
 
                                                                 </td>
                                                                 <td>
-                                                                    @Html.TextBox("det[" + j + "][CommoditySpecification]", null, new { @class = "form-control",@Value = item.CommoditySpecification, @onclick = "IndGeneralDescriptionsList(this.name)" })
+                                                                    @Html.TextBox("det[" + j + "][CommoditySpecification]", null, new { @class = "form-control", @Value = item.CommoditySpecification, @onclick = "IndGeneralDescriptionsList(this.name)" })
                                                                 </td>
                                                                 <td>   @Html.TextBox("det[" + j + "][SizeSpecifications]", null, new { @class = "form-control", @Value = item.SizeSpecifications })</td>
-                                                                <td>   @Html.TextBox("det[" + j + "][TotalValue]", null, new { @class = "form-control", @Value = item.TotalValue, @readonly = "readonly" })</td>
+                                                                <td>   @Html.TextBox("det[" + j + "][TotalValue]", null, new { @class = "form-control totalDetailVal", @Value = item.TotalValue, @readonly = "readonly" })</td>
 
                                                             </tr>
                                                             j++;
@@ -400,14 +403,14 @@
 
                                                             </td>
                                                             <td>
-                                                                @Html.TextBox("det[0][Rate]", null, new { @class = "form-control", type = "number", onchange = "calculateComission(this.name)" })
+                                                                @Html.TextBox("det[0][Rate]", null, new { @class = "form-control", type = "number", onchange = "calculateComission(this.name),SumOfTotalValues()" })
 
                                                             </td>
                                                             <td>
                                                                 @Html.TextBox("det[0][CommoditySpecification]", null, new { @class = "form-control", @onclick = "IndGeneralDescriptionsList(this.name)" })
                                                             </td>
                                                             <td>   @Html.TextBox("det[0][SizeSpecifications]", null, new { @class = "form-control" })</td>
-                                                            <td>   @Html.TextBox("det[0][TotalValue]", null, new { @class = "form-control", @readonly = "readonly" })</td>
+                                                            <td>   @Html.TextBox("det[0][TotalValue]", null, new { @class = "form-control totalDetailVal ", @readonly = "readonly" })</td>
 
                                                         </tr>
                                                     }
@@ -415,6 +418,7 @@
                                                 </tbody>
 
                                             </table>
+                                            <input name="TotalDetail" type="number" value="0" id="TotalDetail" hidden />
                                         </div>
                                     </div>
 
@@ -424,7 +428,7 @@
                                 <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="CommesionDetaiTable" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
                                                 <thead style="background-color: #28469c; color: #ffffff">
 
                                                     <tr>
@@ -433,8 +437,8 @@
                                                         <th width="">Comission Paid From</th>
                                                         <th width="80">Rate</th>
                                                         <th width="60">%/QTY</th>
-                                                        <th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>
-
+                                                        <th width="80">Comission</th> @*  col="CalculatedCommissionValue" summary="sum"*@
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
 
@@ -445,21 +449,18 @@
                                                         foreach (var item in Model.IndCommission)
                                                         {
                                                             <tr role="row" class="odd">
-
-
                                                                 <td>
-                                                                    @Html.DropDownList("det[" + j + "][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidFrom), "", new { @class = "form-control CommPaidAgent1",@id= "CommPaidAgent1" })
-
+                                                                    @Html.DropDownList("det[" + j + "][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidFrom), "", new { @class = "form-control CommPaidAgent1", @id = "CommPaidAgent1" })
                                                                 </td>
                                                                 <td>
                                                                     @Html.DropDownList("det[" + j + "][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidTo), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
 
                                                                 </td>
 
-                                                                <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control",  @Value = item.CommissionRate, type = "number", onchange = "calculateComission(this.name)" })</td>
+                                                                <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control comRate", @Value = item.CommissionRate, type = "decimal", onchange = "calculateComission(this.name)" })</td>
 
                                                                 <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
-                                                                <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
+                                                                <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control CalculatedCommission", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
 
                                                             </tr>
                                                         }
@@ -467,34 +468,21 @@
                                                     else
                                                     {
                                                         <tr role="row" class="odd">
-
-
                                                             <td>
                                                                 @Html.DropDownList("det[0][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent1", @id = "CommPaidAgent1" })
-
                                                             </td>
                                                             <td>
                                                                 @Html.DropDownList("det[0][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
-
                                                             </td>
-
-                                                            <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate", type = "number", onchange = "calculateComission(this.name)" })</td>
-
+                                                            <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate", type = "decimal", onchange = "calculateComission(this.name)" })</td>
                                                             <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
-
-
-                                                            <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control", @readonly = "readonly" })</td>
-
+                                                            <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control CalculatedCommission", @readonly = "readonly" })</td>
                                                         </tr>
                                                     }
                                                 </tbody>
-                                                <tfoot>
-                                                    <tr><td colspan="4" style=" text-align: right">Total &nbsp;&nbsp;</td><td>@Html.TextBoxFor(a => a.TotalValueOnCommRate, new { type = "number", id = "CommBalance", @readonly = "readonly" })</td></tr>
-                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="tab-pane " id="m_tabs_1_3" role="tabpanel">
@@ -509,16 +497,19 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @if (Model.CommInvoiceAgentComm.Count > 0)
+                                                    @*@if (Model.CommInvoiceAgentComm.Count > 0)*@
+                                                    @if (ViewBag.Agents.Count > 0)
                                                     {
                                                         Int32 j = 0;
-                                                        foreach (var item in Model.CommInvoiceAgentComm)
+                                                        //foreach (var item in Model.CommInvoiceAgentComm)
+                                                        foreach (var item in ViewBag.Agents)
                                                         {
                                                             <tr role="row">
                                                                 <td>
-                                                                    @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", @item.CompanyId), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
+                                                                    @Html.DropDownList("det[" + j + "][agent]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", @item.CustomerIDasAgentID), "Select", new { @class = "form-control selectedAgent", @onchange = "GetSelectedAgent()" })
                                                                 </td>
                                                             </tr>
+                                                            j++;
                                                         }
 
                                                     }
@@ -530,8 +521,6 @@
                                                             </td>
                                                         </tr>
                                                     }
-
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -620,10 +609,8 @@
                 </div>
             }
         </div>
-
     </div>
 </div>
-
 <div class="modal fade" id="IndGeneralDescriptionsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 <script src="~/Content/VigorJs/IndGeneralDescriptions/_CreateOrUpdate.js"></script>
@@ -652,72 +639,82 @@
         function () {
             GetSelectedAgent();
         });
-    function GetSelectedAgent() {
-        var DataArray = [];
-        DataArray.length = 0;
-        $('#AgentTable tbody tr').each(function () {
-            var mapedData = {
-                ID: $('select.selectedAgent', this).val(),
-                Name: $('.selectedAgent option:selected', this).text()
-            }
-            DataArray.push(mapedData);
+    //function GetSelectedAgent() {
+    //    var DataArray = [];
+    //    DataArray.length = 0;
+    //    $('#AgentTable tbody tr').each(function () {
+    //        var mapedData = {
+    //            ID: $('select.selectedAgent', this).val(),
+    //            Name: $('.selectedAgent option:selected', this).text()
+    //        }
+    //        DataArray.push(mapedData);
 
-        });
+    //    });
 
-        const result = [];
-        const map = new Map();
-        for (const item of DataArray) {
-            if (!map.has(item.ID)) {
-                map.set(item.ID, true);    // set any value to Map
-                result.push({
-                    ID: item.ID,
-                    Name: item.Name
-                });
-            }
-        }
-
-
-        var sellerID = document.getElementById("CommPaidAgent1");
-        var sellerIndex = sellerID.value;
-        var buyerID = document.getElementById("CommPaidAgent");
-        var buyerIndex = buyerID.value;
+    //    const result = [];
+    //    const map = new Map();
+    //    for (const item of DataArray) {
+    //        if (!map.has(item.ID)) {
+    //            map.set(item.ID, true);    // set any value to Map
+    //            result.push({
+    //                ID: item.ID,
+    //                Name: item.Name
+    //            });
+    //        }
+    //    }
 
 
-        var SallerID = $("#seller").val();
-        var SallerName = $("#seller option:selected").text();
-        var BuyerID = $("#Buyer").val();
-        var BuyerName = $("#Buyer option:selected").text();
+    //    var sellerID = document.getElementById("CommPaidAgent1");
+    //    var sellerIndex = sellerID.value;
+    //    var buyerID = document.getElementById("CommPaidAgent");
+    //    var buyerIndex = buyerID.value;
 
-        var Seller = {
-            ID: SallerID,
-            Name: SallerName
-        }
-        var Buyer = {
-            ID: BuyerID,
-            Name: BuyerName
-        }
-        if (SallerID != '') {
-            result.push(Seller);
-        }
-        if (BuyerID != '') {
-            result.push(Buyer);
-        }
-        var resultLength = result.length;
-        $(".CommPaidAgent").empty();
-        $.each(result, function (key, value) {
-            if (value.ID != '' && value.Name != '') {
-                $(".CommPaidAgent").append($("<option     />").val(value.ID).text(value.Name));
-            }
-        });
-        $(".CommPaidAgent1").empty();
-        $.each(result, function (key, value) {
-            if (value.ID != '' && value.Name != '') {
-                $(".CommPaidAgent1").append($("<option     />").val(value.ID).text(value.Name));
-            }
-        });
-            sellerID.value = sellerIndex;
-            buyerID.value = buyerIndex;
-    }
+
+    //    var SallerID = $("#seller").val();
+    //    var SallerName = $("#seller option:selected").text();
+    //    var BuyerID = $("#Buyer").val();
+    //    var BuyerName = $("#Buyer option:selected").text();
+    //    var LocalAgentID = $("#LocalAgentID").val();
+    //    var LocalAgentName = $("#LocalAgentID option:selected").text();
+
+    //    var Seller = {
+    //        ID: SallerID,
+    //        Name: SallerName
+    //    }
+    //    var Buyer = {
+    //        ID: BuyerID,
+    //        Name: BuyerName
+    //    }
+    //    var LocalAgent = {
+    //        ID: LocalAgentID,
+    //        Name: LocalAgentName
+    //    }
+
+    //    if (SallerID != '') {
+    //        result.push(Seller);
+    //    }
+    //    if (BuyerID != '') {
+    //        result.push(Buyer);
+    //    }
+    //    if (LocalAgentID != '') {
+    //        result.push(LocalAgent);
+    //    }
+        
+    //    $(".CommPaidAgent").empty();
+    //    $.each(result, function (key, value) {
+    //        if (value.ID != '' && value.Name != '') {
+    //            $(".CommPaidAgent").append($("<option     />").val(value.ID).text(value.Name));
+    //        }
+    //    });
+    //    $(".CommPaidAgent1").empty();
+    //    $.each(result, function (key, value) {
+    //        if (value.ID != '' && value.Name != '') {
+    //            $(".CommPaidAgent1").append($("<option     />").val(value.ID).text(value.Name));
+    //        }
+    //    });
+    //        sellerID.value = sellerIndex;
+    //        buyerID.value = buyerIndex;
+    //}
 
 
 </script>

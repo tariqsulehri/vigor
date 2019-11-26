@@ -40,7 +40,6 @@
                 @using (Html.BeginForm("Edit", "Inquiry", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
                     @Html.HiddenFor(a => a.InquiryStatus)
                     <div class="m-portlet">
                         <div class="m-portlet__head">
@@ -53,7 +52,11 @@
                             </div>
                             <div class="m-portlet__head-tools">
                                 <ul class="m-portlet__nav">
-                                    @if (Model.IsClosed == "N" && Model.InquiryStatus != Convert.ToString((char)InquieryStatus.Cancel))
+                                    <li class="m-portlet__nav-item">
+                                        @Html.ValidationSummary(true,"", new { @class = "text-danger" })
+
+                                    </li>
+                                    @if (Model.IsClosed != "Y" && Model.IsClosed != "C" && Model.InquiryStatus != Convert.ToString((char) InquieryStatus.Cancel))
                                     {
                                         <li class="m-portlet__nav-item">
                                             <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
@@ -78,7 +81,7 @@
                                         </li>
                                     }
                                     <li class="m-portlet__nav-item">
-                                        <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <a href="@Url.Action("Index", "Inquiry", new {Area = "Indent"})" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
                                             <span style="color: #ffffff">
                                                 <i class="flaticon-cancel"></i>
                                                 <span>Cancel</span>
@@ -99,17 +102,20 @@
                                     <div class="form-group row">
                                         <div class="col-lg-6">
                                             <label>Date:</label>
-                                            @Html.TextBoxFor(a => a.InquiryDate, new { @class = "form-control ", type = "Date", Value = Model.InquiryDate.ToString("yyyy-MM-dd") })
+                                            @Html.TextBoxFor(a => a.InquiryDate, new { @class = "form-control ", type = "Date", Value = Model.InquiryDate.ToString("yyyy-MM-dd"), disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.InquiryDate)
                                             @Html.ValidationMessageFor(model => model.InquiryDate, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6">
                                             <label>Commodity:</label>
-                                            @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control " })
+                                            @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control ", disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.CommodityTypeId)
                                             @Html.ValidationMessageFor(model => model.CommodityTypeId, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-12">
                                             <label>Department:</label>
-                                            @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control " })
+                                            @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control ", disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.DepartmentID)
                                             @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
 
                                         </div>
@@ -167,7 +173,8 @@
                                     <div class="form-group row">
                                         <div class="col-lg-6">
                                             <label>Inquiry NO:</label>
-                                            @Html.TextBoxFor(a => a.InquiryKey, new { @class = "form-control" })
+                                            @Html.TextBoxFor(a => a.InquiryKey, new { @class = "form-control", disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.InquiryKey)
                                             @Html.ValidationMessageFor(model => model.InquiryKey, "", new { @class = "text-danger" })
 
                                         </div>
@@ -186,7 +193,7 @@
                                         <div class="col-lg-6">
                                             <label>Closed On:</label>
                                             @Html.HiddenFor(a => a.IsClosed)
-                                            @Html.TextBoxFor(a => a.InquiryClosedDate, new { @class = "form-control", type = "date" })
+                                            @Html.TextBoxFor(a => a.InquiryClosedDate, new { @class = "form-control", type = "date", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.InquiryClosedDate, "", new { @class = "text-danger" })
 
                                             <div class="clearfix"></div>

@@ -1,98 +1,119 @@
-﻿@model ERP.Core.Models.HR.HR_LoanAdvanceApplication
+﻿@model ERP.Core.Models.HR.ViewModels.LoanAdvanceApp_VM
 @{
     Layout = null;
 }
 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content ">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Loan/Advance Application</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="form-group row">
-                <div class="col-lg-3">
-                    <label>Application No:</label>
-                    <input type="text" class="form-control" placeholder="">
-                </div>
-                <div class="col-lg-3">
-                    <label>ID:</label>
-                    @Html.TextBoxFor(a => a.LoanAdvanceID, new { @type = "number", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID" })
-                    @Html.ValidationMessageFor(a => a.LoanAdvanceID, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-3">
-                    <label>Type:</label>
-                    @Html.DropDownListFor(a => a.Type,
-                                                        new List<SelectListItem>
-                                                        {
-                                                            new SelectListItem() {Text = "Mr", Value="Advance"},
-                                                            new SelectListItem() {Text = "Mrs", Value="Loan"}
-                                                        }, "-- Select Type --", new { @type = "text", @class = "form-control", @placeholder = "--Select Type--", @id = "LoanAdvanceType", @name = "LoanAdvanceType" })
-                    @Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Name:</label>
-                    <input type="text" class="form-control m-input" placeholder="" disabled>
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Department:</label>
-                    <input type="text" class="form-control m-input" placeholder="" disabled>
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Designation:</label>
-                    <input type="text" class="form-control m-input" placeholder="" disabled>
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Loan:</label>
-                    @Html.TextBoxFor(a => a.RequiredAmount, new { @type = "number", @class = "form-control", @id = "RequiredAmount", @name = "RequiredAmount" })
-                    @Html.ValidationMessageFor(a => a.RequiredAmount, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Loan Inst.:</label>
-                    @Html.TextBoxFor(a => a.LoanInstalment, new { @type = "number", @class = "form-control", @id = "LoanInstalment", @name = "LoanInstalment" })
-                    @Html.ValidationMessageFor(a => a.LoanInstalment, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Advance:</label>
-                    <input type="number" class="form-control m-input" placeholder="" disabled>
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Dated:</label>
-                    @Html.TextBoxFor(a => a.ApplicationDate, new { @type = "number", @class = "form-control", @id = "ApplicationDate", @name = "ApplicationDate" })
-                    @Html.ValidationMessageFor(a => a.ApplicationDate, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Amount:</label>
-                    @Html.TextBoxFor(a => a.ApprovedAmount, new { @type = "number", @class = "form-control", @id = "ApprovedAmount", @name = "ApprovedAmount" })
-                    @Html.ValidationMessageFor(a => a.ApprovedAmount, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-3">
-                    <label class="">Installment:</label>
-                    @Html.TextBoxFor(a => a.ApprovedLoanInstalment, new { @type = "number", @class = "form-control", @id = "ApprovedLoanInstalment", @name = "ApprovedLoanInstalment" })
-                    @Html.ValidationMessageFor(a => a.ApprovedLoanInstalment, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-lg-6">
-                    <label class="">Reason:</label>
-                    @Html.TextAreaFor(a => a.Reason, new { @type = "text", @class = "form-control", @cols = "20", @rows = "2", @id = "LoanReason", @name = "LoanReason" })
-                    @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
-                </div>
+        @using (Html.BeginForm("Create", "EmpLoanAdvApplication", FormMethod.Post, new { id = "LAdvApplicationform" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(a => a.EmployeeId)
+            @Html.HiddenFor(a => a.companyID)
+            @Html.HiddenFor(a => a.CompanyKey)
+            
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Loan/Advance Application</h5>
+                <button type="button" class="close" id="btnClose" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-lg-3">
+                        <label>Application No:</label>
+                        @Html.TextBoxFor(a => a.LoanAdvanceID, new { @type = "text", @class = "form-control"})
+                        @Html.ValidationMessageFor(a => a.LoanAdvanceID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label>ID:</label>
+                        @Html.TextBoxFor(a => a.EmployeeNo, new { @type = "text", @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.EmployeeNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label>Type:</label>
+                        @Html.DropDownListFor(a => a.Type,
+                                                     new List<SelectListItem>
+                                                     {
+                                                                new SelectListItem() {Text = "Advance", Value="A"},
+                                                                new SelectListItem() {Text = "Loan", Value="L"}
+                                                     }, "-- Select Type --", new { @type = "text", @class = "form-control", @placeholder = "--Select Type--"})
+                        @Html.ValidationMessageFor(a => a.Type, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Loan:</label>
+                        @Html.TextBoxFor(a => a.ApprovedAmount, new { @type = "number", @class = "form-control", @value = "0", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.ApprovedAmount, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Name:</label>
+                        @Html.TextBoxFor(a => a.Emp_Name, new { @type = "text", @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.Emp_Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Department:</label>
+                        @Html.TextBoxFor(a => a.DeptName, new { @type = "text", @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.DeptName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Designation:</label>
+                        @Html.TextBoxFor(a => a.Designation, new { @type = "text", @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.Designation, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Loan Inst.:</label>
+                        @Html.TextBoxFor(a => a.ApprovedLoanInstalment, new { @type = "number", @class = "form-control", @value = "0", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.ApprovedLoanInstalment, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Dated:</label>
+                        @Html.TextBoxFor(a => a.ApplicationDate, new { @type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.ApplicationDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Amount:</label>
+                        @Html.TextBoxFor(a => a.RequiredAmount, new { @type = "number", @class = "form-control", @value = "0" })
+                        @Html.ValidationMessageFor(a => a.RequiredAmount, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Installment:</label>
+                        @Html.TextBoxFor(a => a.LoanInstalment, new { @type = "number", @class = "form-control", @value = "0" })
+                        @Html.ValidationMessageFor(a => a.LoanInstalment, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="">Advance:</label>
+                        <input type="number" class="form-control m-input" value="0" placeholder="" readonly>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="">Reason:</label>
+                        @Html.TextAreaFor(a => a.Reason, new { @type = "text", @class = "form-control", @cols = "20", @rows = "2", @id = "LoanReason", @name = "LoanReason" })
+                        @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-success" onclick="">
-                <span>
-                    <i class="fa fa-save"></i>
-                    <span>Save</span>
-                </span>
-            </button>
-            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                <span>
-                    <i class="flaticon-cancel"></i>
-                    <span>Cancel</span>
-                </span>
-            </button>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SubmitLAdvApplicationForm()">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" id="btnCancel">
+                    <span>
+                        <i class="flaticon-cancel"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        }
     </div>
 </div>
+<script>
+    $("#btnClose").click(function () {
+        $('#LAdvApplicationCreateModal').modal('hide');
+    });
+    $("#btnCancel").click(function () {
+        $('#LAdvApplicationCreateModal').modal('hide');
+    });
+</script>

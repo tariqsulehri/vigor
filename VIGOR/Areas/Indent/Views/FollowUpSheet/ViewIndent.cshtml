@@ -1,0 +1,229 @@
+﻿@model ERP.Core.Models.Indenting.IndentDomestic.IndDomestic
+@{
+    Layout = null;
+}
+@using ERP.Common
+@using ERP.Infrastructure.Repositories.HR
+@using ERP.Infrastructure.Repositories.Indenting
+@using ERP.Infrastructure.Repositories.Parties
+@using ERP.Core.Enums
+<style>
+    .tdpading {
+        padding-left: 10px !important;
+    }
+
+    .decimal {
+        text-align: right
+    }
+
+    .my-custom-scrollbar {
+        /*position: relative;s
+        height: 200px;
+        overflow: auto;*/
+    }
+
+    td {
+        padding: 0px !important;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+<div class="modal-dialog modal-dialog-centered" style="width:75% !important;max-width: 10000px !important;" role="dialog">
+    <div class="modal-content ">
+        <div class="m-portlet">
+
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Sales Contract Finalize
+                        </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item">
+                            <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air hidden" type="button" onclick="CloseIndent(@Model.Id)">
+                                <span>
+                                    <i class="fa fa-save"></i>
+                                    <span>Save</span>
+                                </span>
+                            </button>
+                        </li>
+                        <li class="m-portlet__nav-item">
+                            <button href="javascript:" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air" data-dismiss="modal" >
+                                <span style=" color:#ffffff">
+                                    <i class="flaticon-cancel"></i>
+                                    <span>Cancel</span>
+                                </span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-lg-3">
+                                <label>Contract No:</label>
+                                @Html.TextBoxFor(a => a.IndentKey, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Department:</label>
+                                @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control m-input", @disabled = "disabled" })
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Contract Date:</label>
+                                @Html.TextBoxFor(a => a.IndentDate, new { @class = "form-control", type = "date", Value = Model.IndentDate.ToString("yyyy-MM-dd"), disabled = "disabled" })
+
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Seller:</label>
+                                @Html.DropDownListFor(a => a.CustomerIDasSeller, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsSeller == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control", id = "seller", @disabled = "disabled" })
+
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Buyer:</label>
+                                @Html.DropDownListFor(a => a.CustomerIDasBuyer, new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.IsBuyer == true && a.Id > 1), "Id", "Title"), "", new { @class = "form-control", id = "Buyer", @disabled = "disabled" })
+
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Commodity Type:</label>
+                                @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control", @disabled = "disabled" })
+
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Remarks:</label>
+                                @Html.TextAreaFor(a=>a.ClosingRemaks,new {@class="form-control"})
+                                @*<textarea class="form-control" cols="20" rows="2"></textarea>*@
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="m-portlet__body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-toggle="tab" href="#" data-target="#m_tabs_1_1">Contract Details</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " data-toggle="tab" href="#m_tabs_1_2">Comission</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="m_tabs_1_1" role="tabpanel">
+                            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline " id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <thead style="background-color:#28469c; color:#ffffff">
+                                                <tr>
+                                                    <th width="100">Commodity</th>
+                                                    <th width="15">Quantity</th>
+                                                    <th width="80">Exec. Qty</th>
+                                                    <th width="80">UoS</th>
+                                                    <th width="80">Rate</th>
+                                                    <th>Comm. Rate</th>
+                                                    <th>Tota</th>
+                                                    <th width="100">Exwc. Value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (Model.IndDomesticDetails.Count > 0)
+                                                {
+                                                    Int32 j = 0;
+                                                    foreach (var item in Model.IndDomesticDetails)
+                                                    {
+                                                        <tr role="row" class="odd">
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][CommodityId]", new SelectList(new ProductRepository().GetAllProduct(), "Id", "Description", item.CommodityId), "", new { @class = "form-control " })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Quantity]", null, new { @class = "form-control", type = "number", @Value = item.Quantity, onchange = "calculateComission(this.name)" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Quantity]", null, new { @class = "form-control", type = "number", @Value = item.Quantity, onchange = "calculateComission(this.name)" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][UosID]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description", item.UosID), "Select", new { @class = "form-control ", onchange = "calculateComission(this.name)" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Rate]", null, new { @class = "form-control", type = "number", @Value = item.Rate, onchange = "calculateComission(this.name)" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBox("det[" + j + "][Rate]", null, new { @class = "form-control", type = "number", @Value = item.Rate, onchange = "calculateComission(this.name)" })
+                                                            </td>
+                                                            <td> @Html.TextBox("det[" + j + "][TotalValue]", null, new { @class = "form-control total totalDetailVal", @Value = item.TotalValue, @readonly = "readonly" })</td>
+                                                            <td><input type="text" class="form-control" /></td>
+                                                        </tr>
+                                                        j++;
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+                            <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline " id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                            <thead style="background-color:#28469c; color:#ffffff">
+                                                <tr>
+                                                    <th width="180">Commision Paid To</th>
+                                                    <th width="180">Commision Paid From</th>
+                                                    <th width="80">Rate</th>
+                                                    <th width="80">%/QTY</th>
+                                                    <th>Calculate</th>
+                                                    <th>Commision</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (Model.IndCommission.Count > 0)
+                                                {
+                                                    Int32 j = 0;
+                                                    foreach (var item in Model.IndCommission)
+                                                    {
+                                                        <tr role="row" class="odd">
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidFrom), "", new { @class = "form-control CommPaidAgent1", @id = "CommPaidAgent1" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("det[" + j + "][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidTo), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
+                                                            </td>
+                                                            <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control comRate", @Value = item.CommissionRate, type = "decimal", onchange = "calculateComission(this.name)" })</td>
+                                                            <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                            <td><input type="number" class="form-control" /></td>
+                                                            <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control  CalculatedCommission", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
+                                                        </tr>
+                                                        j++;
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                @*<div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="kt_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 50 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="kt_table_1_length"><label>Display <select name="kt_table_1_length" aria-controls="kt_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="kt_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="kt_table_1_previous"><a href="#" aria-controls="kt_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="kt_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_table_1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item next" id="kt_table_1_next"><a href="#" aria-controls="kt_table_1" data-dt-idx="6" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div></div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+       
+        //$('input,select,textarea').attr('disabled', true);
+       
+    });
+</script>

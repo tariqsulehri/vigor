@@ -67,7 +67,7 @@
                                     </li>
 
                                     <li class="m-portlet__nav-item">
-                                        <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                        <a href="@Url.Action("Index", "IndExportInquiry", new { Area = "Indent"})" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
                                             <span style="color: #ffffff">
                                                 <i class="flaticon-cancel"></i>
                                                 <span>Cancel</span>
@@ -105,7 +105,8 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Existing Customer:</label>
-                                        @Html.DropDownListFor(a => a.CustomerId, new SelectList(new FinPartyRepository().GetAllParties(), "Id", "Title"), "", new { @class = "form-control m-select2 search", id = "seller", @onchange = "BindCommetionAgent();Valid()" })
+                                        @*@Html.DropDownListFor(a => a.CustomerId, new SelectList(new FinPartyRepository().GetAllParties(), "Id", "Title"), "", new { @class = "form-control m-select2 search", id = "seller", @onchange = "BindCommetionAgent();Valid()" })*@
+                                        @Html.DropDownListFor(a => a.CustomerId, new SelectList(new FinPartyRepository().GetAllParties(), "Id", "Title"), "", new { @class = "form-control m-select2 search", id = "seller" })
                                         @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-3">
@@ -184,7 +185,7 @@
 
                             <div class="col-lg-12">
                                 <br />
-                                <button type="button" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air" id="btndispatch" onclick="AddDynamicColByPartySelection('@Url.Action("GetFinPartiesList", "IndExportInquiry")')"><i class="flaticon-plus"></i> &nbsp; Add Offer</button>
+                                <button type="button" disabled class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air" id="btndispatch" onclick="AddDynamicColByPartySelection('@Url.Action("GetFinPartiesList", "IndExportInquiry")')"><i class="flaticon-plus"></i> &nbsp; Add Offer</button>
                             </div>
 
                             <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer ">
@@ -194,7 +195,7 @@
                                             <thead style="background-color: #28469c; color: #ffffff">
                                                 <tr role="row">
                                                     <th width="100">Commodity</th>
-                                                    <th width="100">New Commodity</th>
+                                                    @*<th width="100">New Commodity</th>*@
                                                     <th width="60">Sale</th>
                                                     <th width="60">Quantity</th>
                                                     <th width="100">Unit of Sale</th>
@@ -210,9 +211,9 @@
                                                     <td>
                                                         @Html.DropDownList("det[0][ProductId]", new SelectList(new ProductRepository().GetAllProduct().Where(a => a.Id > 1), "Id", "Description"), "", new { @class = "form-control " })
                                                     </td>
-                                                    <td>
+                                                    @*<td>
                                                         @Html.TextBox("det[0][NewCommodity]", null, new { @class = "form-control" })
-                                                    </td>
+                                                    </td>*@
                                                     <td>
                                                         @Html.TextBox("det[0][Sale]", null, new { @class = "form-control" })
                                                     </td>
@@ -223,10 +224,10 @@
                                                         @Html.DropDownList("det[0][UosId]", new SelectList(new UnitOfSaleRepository().GetAllUnitOfSales(), "Id", "Description"), "", new { @class = "form-control " })
                                                     </td>
                                                     <td>
-                                                        @Html.TextBox("det[0][SheetRef]", null, new { @class = "form-control" })
+                                                        @Html.TextBox("det[0][CostingSheetRef]", null, new { @class = "form-control" })
                                                     </td>
                                                     <td>
-                                                        @Html.TextBox("det[0][Costing]", null, new { @class = "form-control" })
+                                                        @Html.TextBox("det[0][CostingPrice]", null, new { @class = "form-control" })
                                                     </td>
                                                     <td>   @Html.TextBox("det[0][Remarks]", null, new { @class = "form-control" })</td>
                                                     @*<td>   @Html.TextBox("det[0][TotalValue]", null, new { @class = "form-control" })</td>*@
@@ -251,3 +252,22 @@
 <div class="modal fade" id="FinPartyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 <script src="~/Content/VigorJs/IndExportInquiry/_CreateOrUpdate.js"></script>
+<script>
+    var Counter = 0;
+    var dt = -1;
+    var SelectPartySetInGrid = function (ele) {
+        Counter = Counter + 1;
+        var foundPartyIdAttr = $(ele).attr('id');
+        var partyTitle = $('#' + foundPartyIdAttr).children().eq(0).text();
+        $('#FinPartyModal').modal('hide');
+        $('.ExportInquiryTable').find('tr').each(function () {
+
+            $(this).find('th').eq(-2).after('<th>' + partyTitle + '</th>');
+            $(this).find('td').eq(-2).after('<td><input type="number" name="det[' + dt + '][OfferAmount' + Counter + ']" class="form-control"><input type="hidden" name="det[' + dt + '][OfferCustomerId' + Counter + ']" value="' + foundPartyIdAttr + '"></td>');
+            $('.summary').children().eq(-2).html(' ');
+            dt++;
+        });
+        dt = -1;
+    };
+   
+</script>

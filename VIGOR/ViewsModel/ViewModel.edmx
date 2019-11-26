@@ -26,6 +26,7 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_disp
           <Property Name="CommodityId" Type="int" Nullable="false" />
           <Property Name="DispQuantity" Type="decimal" Precision="38" Scale="2" />
           <Property Name="ReturnQuantity" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="PaymentQuantity" Type="decimal" Precision="38" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inquiry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -42,21 +43,22 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inqu
             <PropertyRef Name="PaymentTerms" />
             <PropertyRef Name="ComodityType" />
             <PropertyRef Name="UOR" />
+            
             <PropertyRef Name="CreatedOn" />
             <PropertyRef Name="ModifiedOn" />
-            <PropertyRef Name="InquiryStatus" />
-            <PropertyRef Name="IsClosed" />
             <PropertyRef Name="Title" />
             <PropertyRef Name="DepartmentID" />
             <PropertyRef Name="SellectId" />
             <PropertyRef Name="seller" />
             <PropertyRef Name="CustomerAsBuyer" />
+            <PropertyRef Name="InquiryStatus" />
+            <PropertyRef Name="IsClosed" />
           </Key>
           <Property Name="InquiryId" Type="int" Nullable="false" />
           <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="InquiryDate" Type="datetime" Nullable="false" />
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CommodityId" Type="int" Nullable="false" />
           <Property Name="Commodity" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -64,13 +66,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inqu
           <Property Name="PaymentTerms" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="ComodityType" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UOR" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="InquiryClosedDate" Type="datetime" />
+          <Property Name="InquiryClosedDate" Type="datetime" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
           <Property Name="Delivery" Type="nvarchar" MaxLength="200" />
-          <Property Name="InquiryStatus" Type="nvarchar" MaxLength="3" Nullable="false" />
-          <Property Name="IsClosed" Type="nvarchar" MaxLength="3" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InquiryStatus" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="IsClosed" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DepartmentID" Type="int" Nullable="false" />
           <Property Name="SellectId" Type="int" Nullable="false" />
           <Property Name="seller" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -253,6 +255,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_d
             <PropertyRef Name="indentClosed" />
             <PropertyRef Name="IsApproved" />
             <PropertyRef Name="IsSubmitForApproval" />
+            <PropertyRef Name="closedDate" />
+            <PropertyRef Name="IsScheduleGenerated" />
+            <PropertyRef Name="IsUpdated" />
+            <PropertyRef Name="isCancelled" />
+            <PropertyRef Name="isShipments" />
+            <PropertyRef Name="isInvoiced" />
+            <PropertyRef Name="IsSample" />
             <PropertyRef Name="InquiryStatus" />
             <PropertyRef Name="IsClosed" />
           </Key>
@@ -304,6 +313,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_d
           <Property Name="FinancialRemarks" Type="nvarchar" MaxLength="1500" />
           <Property Name="Specificatiions" Type="nvarchar" MaxLength="1500" />
           <Property Name="PriceTerms" Type="nvarchar" MaxLength="200" />
+          <Property Name="closedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsScheduleGenerated" Type="bit" Nullable="false" />
+          <Property Name="IsUpdated" Type="bit" Nullable="false" />
+          <Property Name="isCancelled" Type="bit" Nullable="false" />
+          <Property Name="isShipments" Type="bit" Nullable="false" />
+          <Property Name="isInvoiced" Type="bit" Nullable="false" />
+          <Property Name="IsSample" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_Inquiry_Offers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -593,7 +609,8 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
     [view_domestic_disp_return_Summary].[IndentId] AS [IndentId], 
     [view_domestic_disp_return_Summary].[CommodityId] AS [CommodityId], 
     [view_domestic_disp_return_Summary].[DispQuantity] AS [DispQuantity], 
-    [view_domestic_disp_return_Summary].[ReturnQuantity] AS [ReturnQuantity]
+    [view_domestic_disp_return_Summary].[ReturnQuantity] AS [ReturnQuantity], 
+    [view_domestic_disp_return_Summary].[PaymentQuantity] AS [PaymentQuantity]
     FROM [dbo].[view_domestic_disp_return_Summary] AS [view_domestic_disp_return_Summary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="view_domestic_inquiry" EntityType="Self.view_domestic_inquiry" store:Type="Views" store:Schema="dbo">
@@ -752,7 +769,14 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
     [view_IndDomestic_detail].[QualityRemarks] AS [QualityRemarks], 
     [view_IndDomestic_detail].[FinancialRemarks] AS [FinancialRemarks], 
     [view_IndDomestic_detail].[Specificatiions] AS [Specificatiions], 
-    [view_IndDomestic_detail].[PriceTerms] AS [PriceTerms]
+    [view_IndDomestic_detail].[PriceTerms] AS [PriceTerms], 
+    [view_IndDomestic_detail].[closedDate] AS [closedDate], 
+    [view_IndDomestic_detail].[IsScheduleGenerated] AS [IsScheduleGenerated], 
+    [view_IndDomestic_detail].[IsUpdated] AS [IsUpdated], 
+    [view_IndDomestic_detail].[isCancelled] AS [isCancelled], 
+    [view_IndDomestic_detail].[isShipments] AS [isShipments], 
+    [view_IndDomestic_detail].[isInvoiced] AS [isInvoiced], 
+    [view_IndDomestic_detail].[IsSample] AS [IsSample]
     FROM [dbo].[view_IndDomestic_detail] AS [view_IndDomestic_detail]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="view_IndDomestic_Inquiry_Offers" EntityType="Self.view_IndDomestic_Inquiry_Offers" store:Type="Views" store:Schema="dbo">
@@ -1164,7 +1188,7 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
           <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
           <Property Name="InquiryDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Department" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CommodityId" Type="Int32" Nullable="false" />
           <Property Name="Commodity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
@@ -1172,13 +1196,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
           <Property Name="PaymentTerms" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="ComodityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" />
+          <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Delivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DepartmentID" Type="Int32" Nullable="false" />
           <Property Name="SellectId" Type="Int32" Nullable="false" />
           <Property Name="seller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1194,6 +1218,7 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
           <Property Name="CommodityId" Type="Int32" Nullable="false" />
           <Property Name="DispQuantity" Type="Decimal" Precision="38" Scale="2" />
           <Property Name="ReturnQuantity" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="PaymentQuantity" Type="Decimal" Precision="38" Scale="2" />
         </EntityType>
         <EntityType Name="view_IndDomestic_Inquiry_Offers">
           <Key>
@@ -1473,6 +1498,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
             <PropertyRef Name="indentClosed" />
             <PropertyRef Name="IsApproved" />
             <PropertyRef Name="IsSubmitForApproval" />
+            <PropertyRef Name="closedDate" />
+            <PropertyRef Name="IsScheduleGenerated" />
+            <PropertyRef Name="IsUpdated" />
+            <PropertyRef Name="isCancelled" />
+            <PropertyRef Name="isShipments" />
+            <PropertyRef Name="isInvoiced" />
+            <PropertyRef Name="IsSample" />
           </Key>
           <Property Name="indentId" Type="Int32" Nullable="false" />
           <Property Name="LocalContractNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -1522,6 +1554,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
           <Property Name="FinancialRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
           <Property Name="Specificatiions" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
           <Property Name="PriceTerms" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="closedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsScheduleGenerated" Type="Boolean" Nullable="false" />
+          <Property Name="IsUpdated" Type="Boolean" Nullable="false" />
+          <Property Name="isCancelled" Type="Boolean" Nullable="false" />
+          <Property Name="isShipments" Type="Boolean" Nullable="false" />
+          <Property Name="isInvoiced" Type="Boolean" Nullable="false" />
+          <Property Name="IsSample" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1721,6 +1760,7 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
           <EntitySetMapping Name="view_domestic_disp_return_Summary">
             <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_domestic_disp_return_Summary">
               <MappingFragment StoreEntitySet="view_domestic_disp_return_Summary">
+                <ScalarProperty Name="PaymentQuantity" ColumnName="PaymentQuantity" />
                 <ScalarProperty Name="ReturnQuantity" ColumnName="ReturnQuantity" />
                 <ScalarProperty Name="DispQuantity" ColumnName="DispQuantity" />
                 <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
@@ -1882,6 +1922,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
           <EntitySetMapping Name="view_IndDomestic_detail">
             <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_detail">
               <MappingFragment StoreEntitySet="view_IndDomestic_detail">
+                <ScalarProperty Name="IsSample" ColumnName="IsSample" />
+                <ScalarProperty Name="isInvoiced" ColumnName="isInvoiced" />
+                <ScalarProperty Name="isShipments" ColumnName="isShipments" />
+                <ScalarProperty Name="isCancelled" ColumnName="isCancelled" />
+                <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+                <ScalarProperty Name="IsScheduleGenerated" ColumnName="IsScheduleGenerated" />
+                <ScalarProperty Name="closedDate" ColumnName="closedDate" />
                 <ScalarProperty Name="PriceTerms" ColumnName="PriceTerms" />
                 <ScalarProperty Name="Specificatiions" ColumnName="Specificatiions" />
                 <ScalarProperty Name="FinancialRemarks" ColumnName="FinancialRemarks" />

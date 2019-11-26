@@ -14,11 +14,12 @@ namespace VIGOR.Areas.HR.Controllers
     {
         private HR_CINCRRepository _HR_CINCRRepository;
         HrEmployeeRepository _hrEmployeeRepository;
-        ErpDbContext _db;
+        ErpDbContext _dbContext;
         public EmpCriticalIncidentController()
         {
             _hrEmployeeRepository = new HrEmployeeRepository();
             _HR_CINCRRepository =  new HR_CINCRRepository();
+            _dbContext=new ErpDbContext();
         }
         // GET: HR/EmpCriticalIncident
         public ActionResult Index(int EmplId)
@@ -63,7 +64,7 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 HR_CINCR obj = new HR_CINCR()
                 {
-                    id=model.id,
+                    id= GetCINCRID(),
                     EmployeeId=model.EmployeeId,
                     EmployeeNo=model.EmployeeNo,
                     EmpDept=model.EmpDept,
@@ -77,7 +78,7 @@ namespace VIGOR.Areas.HR.Controllers
                     ModifiedOn = DateTime.Now
 
                 };
-
+                ModelState.Remove("id");
 
                 if (_HR_CINCRRepository.IsDuplicate(obj))
                 {
@@ -211,6 +212,13 @@ namespace VIGOR.Areas.HR.Controllers
 
             }).ToList();
             return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
+        }
+        public string GetCINCRID()
+        {
+            int maxno = _dbContext.HR_CINCR.Count();
+            maxno = maxno + 1;
+            string SerialID = DateTime.Today.Year + maxno.ToString().PadLeft(4, '0');
+            return SerialID;
         }
     }
 }

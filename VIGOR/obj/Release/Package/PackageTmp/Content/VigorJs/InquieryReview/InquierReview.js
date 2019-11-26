@@ -2,6 +2,7 @@
 $(function () {
     var ComdID = $("#ComdID").val();
     GetDealsInDepartment(ComdID, 1);
+
 });
 function GetDealsInDepartment(comodityID, DealsInId) {
     

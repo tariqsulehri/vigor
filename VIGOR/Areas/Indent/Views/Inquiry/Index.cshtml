@@ -198,7 +198,12 @@
         }
     }
     $(document).ready(function () {
-        
+        try {
+            //var dropdown = document.getElementById('ComdID');
+            ValidNewInquery();
+        } catch (e) {
+
+        } 
 
         $('#NewInquiery').click(function () {
 
@@ -228,6 +233,7 @@
             $("#Dept").val('');
             $("#ComdID").val('');
             $("#CustID").val('');
+            $(".odd").empty();
             ValidNewInquery();
         });
         if (@dptid > 0) {

@@ -145,17 +145,17 @@
                             <div class="col-lg-7">
                                 <br />
                                 <br />
-                                @Html.DropDownListFor(a => a.IndentId, new SelectList(new IndDomesticRepository().GetAllIndDomectic(), "Id", "IndentKey"), "", new { @class = "form-control ", @*onchange = "ContractSelectionChanged()"*@ })
+                                @Html.DropDownListFor(a => a.IndentId, new SelectList(new IndDomesticRepository().GetAllIndDomectic(), "Id", "IndentKey"), "", new { @class = "form-control ", @*onchange = "ContractSelectionChanged()"*@})
                                 @Html.ValidationMessageFor(model => model.IndentId, "", new { @class = "text-danger" })
                             </div>
                             @*<div class="col-lg-6">
-                                <label>Contract No:</label>
-                                <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air" onclick="OpenLookUpContractsModal('@Url.Action("LookUpContracts", "IndentDomestic")')">
-                                    <span>
-                                        <i class="la la-plus"></i>
-                                    </span>
-                                </a>
-                            </div>*@
+                                    <label>Contract No:</label>
+                                    <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air" onclick="OpenLookUpContractsModal('@Url.Action("LookUpContracts", "IndentDomestic")')">
+                                        <span>
+                                            <i class="la la-plus"></i>
+                                        </span>
+                                    </a>
+                                </div>*@
                             <div class="col-lg-12">
                                 <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer" readonly>
                                     <div class="row">
@@ -169,8 +169,7 @@
                                                         <th width="">Cmdty</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                </tbody>
+                                                <tbody></tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -236,43 +235,92 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="text" class="form-control" />  </td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                            <td><input type="number" class="form-control" /></td>
-                                                        </tr>
+                                                        @if (Model.FabricInspReportLocalDetails.Count > 0)
+                                                        {
+                                                            Int32 j = 0;
+                                                            foreach (var item in Model.FabricInspReportLocalDetails)
+                                                            {
+                                                                <tr>
+                                                                    <td>@Html.TextBox("det[" + j + "][SrNo]", null, new { @class = "form-control", type = "number", @Value = item.InspRepoSr })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][RollNo]", null, new { @class = "form-control", type = "number", @Value = item.RollOn, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][NotedMeters]", null, new { @class = "form-control", type = "number", @Value = item.NoteMeters, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][ActualMeters]", null, new { @class = "form-control", type = "number", @Value = item.ActualMeters, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Slubknots]", null, new { @class = "form-control", type = "number", @Value = item.SlubsKnotes, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Warp1]", null, new { @class = "form-control", type = "number", @Value = item.PolyYarnBlue, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Weft1]", null, new { @class = "form-control", type = "number", @Value = item.PolyYarnRed, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Holes]", null, new { @class = "form-control", type = "number", @Value = item.Holes, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][One5]", null, new { @class = "form-control", type = "number", @Value = item.MissPack1, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Two6]", null, new { @class = "form-control", type = "number", @Value = item.MissPack2, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Three7]", null, new { @class = "form-control", type = "number", @Value = item.MissPack3, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Four8]", null, new { @class = "form-control", type = "number", @Value = item.MissPack4, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Three1]", null, new { @class = "form-control", type = "number", @Value = item.ThickDoublePick, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Ten2]", null, new { @class = "form-control", type = "number", @Value = item.ThickDoublePick2, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Eleven3]", null, new { @class = "form-control", type = "number", @Value = item.ThickDoublePick3, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Twelve4]", null, new { @class = "form-control", type = "number", @Value = item.ThickDoublePick4, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][WeftBar]", null, new { @class = "form-control", type = "number", @Value = item.WeftBar, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Fourteen1]", null, new { @class = "form-control", type = "number", @Value = item.LooseEndsThickEnds1, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Fifteen2]", null, new { @class = "form-control", type = "number", @Value = item.LooseEndsThickEnds2, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Sixteen3]", null, new { @class = "form-control", type = "number", @Value = item.LooseEndsThickEnds3, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Seventeen4]", null, new { @class = "form-control", type = "number", @Value = item.LooseEndsThickEnds4, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][EightOne]", null, new { @class = "form-control", type = "number", @Value = item.ReedMarkBrokenEndsWrap1, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Ninteen2]", null, new { @class = "form-control", type = "number", @Value = item.ReedMarkBrokenEndsWrap2, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Twenty3]", null, new { @class = "form-control", type = "number", @Value = item.ReedMarkBrokenEndsWrap3, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][TwOn4]", null, new { @class = "form-control", type = "number", @Value = item.ReedMarkBrokenEndsWrap4, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][TPointRoll]", null, new { @class = "form-control", type = "number", @Value = item.TotalPointsPerRoll, @readonly = "readonly" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][PointsSqy]", null, new { @class = "form-control", type = "decimal", @Value = item.Points100SqYards, @readonly = "readonly" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][FabricGrade]", null, new { @class = "form-control", type = "text", maxlength = "1", @Value = item.FabricGrade, @readonly = "readonly" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][ActualWidth]", null, new { @class = "form-control", type = "decimal", @Value = item.ActualWidth, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Ends]", null, new { @class = "form-control", type = "number", @Value = item.Ends, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][Pick]", null, new { @class = "form-control", type = "number", @Value = item.PolyYarnRed, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][CutFaults]", null, new { @class = "form-control", type = "decimal", @Value = item.NoOfCutFault, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][MildWeft]", null, new { @class = "form-control", type = "number", @Value = item.MildWetBar, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][SmallSlubKnits]", null, new { @class = "form-control", type = "number", @Value = item.SmallslubKnotes, onchange = "calculateValues(this.name)" })</td>
+                                                                    <td>@Html.TextBox("det[" + j + "][TotalPoints]", null, new { @class = "form-control", type = "number", @Value = item.ActualGramSqr, @readonly = "readonly" })</td>
+                                                                </tr>
+                                                                j++;
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <tr>
+                                                                <td>@Html.TextBox("det[0][SrNo]", null, new { @class = "form-control", type = "number", @Value = "0" })</td>
+                                                                <td>@Html.TextBox("det[0][RollNo]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][NotedMeters]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][ActualMeters]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Slubknots]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Warp1]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Weft1]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Holes]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][One5]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Two6]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Three7]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Four8]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Three1]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Ten2]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Eleven3]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Twelve4]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][WeftBar]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Fourteen1]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Fifteen2]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Sixteen3]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Seventeen4]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][EightOne]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Ninteen2]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Twenty3]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][TwOn4]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][TPointRoll]", null, new { @class = "form-control", type = "number", @Value = "0", @readonly = "readonly" })</td>
+                                                                <td>@Html.TextBox("det[0][PointsSqy]", null, new { @class = "form-control", type = "decimal", @Value = "0", @readonly = "readonly" })</td>
+                                                                <td>@Html.TextBox("det[0][FabricGrade]", null, new { @class = "form-control", type = "text", maxlength = "1", @readonly = "readonly" })</td>
+                                                                <td>@Html.TextBox("det[0][ActualWidth]", null, new { @class = "form-control", type = "decimal", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Ends]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][Pick]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][CutFaults]", null, new { @class = "form-control", type = "decimal", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][MildWeft]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][SmallSlubKnits]", null, new { @class = "form-control", type = "number", @Value = "0", onchange = "calculateValues(this.name)" })</td>
+                                                                <td>@Html.TextBox("det[0][TotalPoints]", null, new { @class = "form-control", type = "number", @Value = "0", @readonly = "readonly" })</td>
+                                                            </tr>
+                                                        }
+
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -380,7 +428,7 @@
                                                     </div>
                                                     <div class="m-checkbox-list" style="padding-left: 15px; padding-top: 5px;">
                                                         <label class="m-checkbox m-checkbox--state-primary">
-                                                            @Html.CheckBoxFor(a=>a.ShadeVarivation)
+                                                            @Html.CheckBoxFor(a => a.ShadeVarivation)
                                                             <label>Shade</label>
                                                             @*<input type="checkbox"> Shade*@
                                                             <span></span>
@@ -396,7 +444,7 @@
                                                 <strong>Head Bands</strong>
                                                 <div class="m-checkbox-list" style="padding-top: 15px;">
                                                     <label class="m-checkbox m-checkbox--state-primary">
-                                                        @Html.CheckBoxFor(a=>a.HeadBands)
+                                                        @Html.CheckBoxFor(a => a.HeadBands)
                                                         <label>Status</label>
                                                         <span></span>
                                                     </label>
@@ -564,7 +612,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label>Wrapping Direction:</label>
-                                        @Html.TextAreaFor(a => a.WrapDirection, new { @class = "form-control m-input"})
+                                        @Html.TextAreaFor(a => a.WrapDirection, new { @class = "form-control m-input" })
                                     </div>
                                 </div>
                             </div>
@@ -578,3 +626,4 @@
 <div class="modal fade" id="IndentLookUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 <script src="~/Content/VigorJs/IndentDomestic/_CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/FabricInspection/_CreateOrUpdate.js"></script>

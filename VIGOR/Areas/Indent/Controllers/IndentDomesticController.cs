@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using VIGOR.Reports;
 using ERP.Infrastructure.Repositories.Parties;
 
@@ -173,17 +174,19 @@ namespace VIGOR.Areas.Indent.Controllers
                 model.InquiryKey = inquiery.InquiryKey;
                 model.InquiryId = id;
                 model.OfferDate = inquiery.InquiryDate;
-                model.IndentKey = _indDomestic.IndentKey();
+                model.IndentKey = _indDomestic.IndentKey("local");
                 model.DepartmentID = inquiery.DepartmentID;
                 model.CommodityTypeId = inquiery.CommodityTypeId;
 
-                //model.CurrencyId = LoggedinUser.Company.LocalCurrencyId;
-                //model.CustomerIDasLocalAgent = LoggedinUser.Company.domesticAgentID;
+                model.CurrencyId = LoggedinUser.Company.LocalCurrencyId;
+                model.CustomerIDasLocalAgent = LoggedinUser.Company.domesticAgentID;
 
                 //model.CustomerIDasBuyer = inquiery.IndDomesticInquiryReviews.FirstOrDefault().BuyerId;
-                //model.CustomerIDasSeller = inquiery.IndDomesticInquiryReviews.FirstOrDefault().SellerId;
+                model.CustomerIDasBuyer = inquiery.CustomerId; //inquiery.IndDomesticInquiryReviews.FirstOrDefault().SellerId;
 
                 model.CustomerId = inquiery.CustomerId;
+                model.CustomerIDasSeller =Convert.ToInt32( inquiery.IndDomesticInquiryReviews.Where(a => a.InquiryId == inquiery.Id).FirstOrDefault().SellerId);
+
                 model.PaymenTermsId = inquiery.PaymenTermsId;
                 model.IndentDate = DateTime.Now;
                 model.DelDateValidUpto = DateTime.Now;
@@ -193,11 +196,11 @@ namespace VIGOR.Areas.Indent.Controllers
                     _detail.CommodityId = item.ProductId;
                     _detail.UosID = item.UosId;
                     _detail.Quantity = item.Quantity;
-                    decimal Rate = _detail.Rate = inquiery.IndDomesticInquiryOffers.Where(a => a.InquiryId == inquiery.Id && a.OfferedBy == model.CustomerIDasBuyer.ToString()).FirstOrDefault().OfferedRate;
+                    decimal Rate = _detail.Rate = inquiery.IndDomesticInquiryOffers.Where(a => a.InquiryId == inquiery.Id && a.OfferedBy == model.CustomerIDasSeller.ToString()).FirstOrDefault().OfferedRate;
                     _detail.Rate = Rate;
+
                     model.IndDomesticDetails.Add(_detail);
                 }
-
                 return View(model);
             }
             else
@@ -230,7 +233,7 @@ namespace VIGOR.Areas.Indent.Controllers
                     model.CustomerSellerName = _party.FindById(model.CustomerIDasSeller).Title;
                     model.CustomerBuyerName = _party.FindById(model.CustomerIDasBuyer).Title;
 
-                    _indDomestic.Add(model);
+                    _indDomestic.Add(model, IndentAgent);
                     IndDomesticInquiry IndDomesticInquiry = new IndDomesticInquiry();
                     IndDomesticInquiry.Id = model.InquiryId;
                     if (IndDomesticInquiry.Id > 0)
@@ -284,6 +287,7 @@ namespace VIGOR.Areas.Indent.Controllers
 
                 if (invoicedCount > 0)
                     domestic.isInvoiced = true;
+            ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
                 return View(domestic);
             }
 
@@ -304,6 +308,7 @@ namespace VIGOR.Areas.Indent.Controllers
 
                 if (invoicedCount > 0)
                     domestic.isInvoiced = true;
+            ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
                 return View(domestic);
             }
 
@@ -319,6 +324,7 @@ namespace VIGOR.Areas.Indent.Controllers
 
             if (invoicedCount > 0)
                 domestic.isInvoiced = true;
+            ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
             return View(domestic);
         }
 
@@ -334,11 +340,12 @@ namespace VIGOR.Areas.Indent.Controllers
                     model.LastApprovedOn = DateTime.Now;
                     model.CustomerId = model.CustomerIDasSeller;
                     model.CommodityGroups = 1;
-                    _indDomestic.Edit(model);
+                    _indDomestic.Edit(model, IndentAgent);
                     return RedirectToAction("Index");
                 }
                 else
                 {
+                    ViewBag.Agents = IndentAgent;
                     model = GetDomesticDetailDetail(model);
                     return View(model);
                 }
@@ -575,13 +582,14 @@ namespace VIGOR.Areas.Indent.Controllers
 
             return View();
         }
-
+        public ICollection<IndentAgent> IndentAgent = new HashSet<IndentAgent>();
         private IndDomestic GetDomesticDetailDetail(IndDomestic model)
 
         {
             IndDomesticDetail domesticDetail;
             IndCommission commission;
             CommInvoiceAgentComm commInvoiceAgent;
+            IndentAgent indAgent;
             var gridKeysList = new List<string>();
             var gridComissionList = new List<string>();
             var gridAgentsList = new List<string>();
@@ -663,6 +671,7 @@ namespace VIGOR.Areas.Indent.Controllers
                         commission.CreatedBy = 1;
                         commission.ModifiedBy = 1;
                         commission.CompanyId = 5;
+                        commission.IndentId = model.Id;
                         commission.Remarks = "asda";
                         model.IndCommission.Add(commission);
                     }
@@ -678,48 +687,58 @@ namespace VIGOR.Areas.Indent.Controllers
                 if (Request.Form.AllKeys.Any(k => k == "det[" + index + "][agent]"))
                 {
                     commInvoiceAgent = new CommInvoiceAgentComm();
+                    indAgent=new IndentAgent();
                     if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][agent]"]))
                     {
                         if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][agent]"]))
                         {
-                            var a = (Request.Form["det[" + index + "][agent]"]);
+                            indAgent.IndentId = model.Id;
+                            indAgent.SalesContractNo= model.IndentKey;
+                            indAgent.CustomerIDasAgentID =Convert.ToInt32(Request.Form["det[" + index + "][agent]"]);
 
-                            try
-                            {
-                                if (a.Contains(","))
-                                {
-                                    var companyAgent = a.Split(',');
-                                    try
-                                    {
-                                        commInvoiceAgent.CompanyId = Convert.ToInt16(companyAgent[Convert.ToInt16(index)]);
-                                    }
-                                    catch (Exception exc)
-                                    { 
+                            #region CommInvoiceAgentCommCodeCommented
 
-                                    }
-                                }
-                                else
-                                {
-                                    commInvoiceAgent.CompanyId = Convert.ToInt16(Request.Form["det[" + index + "][agent]"]);
-                                }
-                            }
-                            catch (Exception eee)
-                            {
-                            }
+                            /*
+                             var a = (Request.Form["det[" + index + "][agent]"]);
+ 
+                             try
+                             {
+                                 if (a.Contains(","))
+                                 {
+                                     var companyAgent = a.Split(',');
+                                     try
+                                     {
+                                         commInvoiceAgent.CompanyId = Convert.ToInt16(companyAgent[Convert.ToInt16(index)]);
+                                     }
+                                     catch (Exception exc)
+                                     {
+ 
+                                     }
+                                 }
+                                 else
+                                 {
+                                     commInvoiceAgent.CompanyId = Convert.ToInt16(Request.Form["det[" + index + "][agent]"]);
+                                 }
+                             }
+                             catch (Exception eee)
+                             {
+                             }
+                         }
+                         commInvoiceAgent.SaleContractCommID = "test";
+                         commInvoiceAgent.IndentId = model.Id;
+                         commInvoiceAgent.IndentKey = model.IndentKey;
+                         commInvoiceAgent.CommissionType = "a";
+                         commInvoiceAgent.CommissionDiscountRemarks = "test";
+                         commInvoiceAgent.ModifiedOn = DateTime.Now;
+                         commInvoiceAgent.ModifiedBy = 0;
+                         model.CommInvoiceAgentComm.Add(commInvoiceAgent);
+                         */
+
+                            #endregion
                         }
-                        commInvoiceAgent.SaleContractCommID = "test";
-                        commInvoiceAgent.IndentId = model.Id;
-                        commInvoiceAgent.IndentKey = model.IndentKey;
-                        commInvoiceAgent.CommissionType = "a";
-                        commInvoiceAgent.CommissionDiscountRemarks = "test";
-                        commInvoiceAgent.ModifiedOn = DateTime.Now;
-                        commInvoiceAgent.ModifiedBy = 0;
-                        model.CommInvoiceAgentComm.Add(commInvoiceAgent);
-
+                        IndentAgent.Add(indAgent);
                     }
-
                 }
-
             }
             return model;
         }

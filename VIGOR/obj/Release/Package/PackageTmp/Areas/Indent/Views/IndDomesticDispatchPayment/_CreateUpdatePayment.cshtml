@@ -104,7 +104,8 @@
                                        
                                             <tr>
                                                 <td>
-                                                    @Html.DropDownList("det[0][AddOnTemplate]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticAddOnTemplates(), "AddOnId", "AddOnDescription"), "Select", new {@class = "form-control "})
+                                                    @Html.DropDownList("det[0][AddOnTemplate]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticPaymentsAddOnLists(), "id", "AddOnDescription"), "Select", new { @class = "form-control AddOnId" })
+                                                    @*@Html.DropDownList("det[0][AddOnTemplate]", new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndentDemestic.IndDomesticPaymentAddOnRepository().GetAllIndIndDomesticAddOnTemplates(), "AddOnId", "AddOnDescription"), "Select", new { @class = "form-control " })*@
                                                 </td>
                                                 <td>
                                                     @Html.TextBox("det[0][AddOnAmmount]", null, new {@class = "form-control", @type = "number", min = "0"})

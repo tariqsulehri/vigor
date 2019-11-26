@@ -33,6 +33,7 @@ namespace ERP.Infrastructure
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<IndCommission>().Property(e => e.CommissionRate).HasPrecision(18, 4);
 
             //    modelBuilder.Entity<FinParty>()
             //        .HasOptional(x => x.CoaL5)

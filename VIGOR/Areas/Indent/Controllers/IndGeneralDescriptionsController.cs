@@ -12,8 +12,10 @@ namespace VIGOR.Areas.Indent.Controllers
     public class IndGeneralDescriptionsController : Controller
     {
         IndGeneralDescriptionsRepository _indGeneralDescriptionsRepository;
+        IndPriceTermsRepository _indPriceTermsRepository;
         public IndGeneralDescriptionsController()
         {
+            _indPriceTermsRepository = new IndPriceTermsRepository();
             _indGeneralDescriptionsRepository = new IndGeneralDescriptionsRepository();
         }
         // GET: Indent/IndGeneralDescriptions
@@ -23,8 +25,25 @@ namespace VIGOR.Areas.Indent.Controllers
         }
 
         // GET: Indent/IndGeneralDescriptions/Details/5
-        public ActionResult LookUpIndGeneralDescriptions()
+        public ActionResult LookUpIndGeneralDescriptions(string type)
         {
+
+            List<IndGeneralDescriptions> _IndGeneralDescriptions = new List<IndGeneralDescriptions>();//<IndGeneralDescriptions>();
+
+            if (type.Trim() == "PriceTerms")
+            {
+                var priceTerms = _indPriceTermsRepository.GetAllIndPriceTerms();
+                foreach (var indPriceTermse in priceTerms)
+                {
+                    var GD = new IndGeneralDescriptions()
+                    {
+                        Id = indPriceTermse.Id,
+                        Description = indPriceTermse.Description
+                    };
+                    _IndGeneralDescriptions.Add(GD);
+                }
+                return View(_IndGeneralDescriptions);
+            }
             return View(_indGeneralDescriptionsRepository.GetAllIndGeneralDescriptions());
         }
 
@@ -96,7 +115,7 @@ namespace VIGOR.Areas.Indent.Controllers
         // GET: Indent/IndGeneralDescriptions/Delete/5
         public ActionResult Delete(int id)
         {
-            IndGeneralDescriptions model=new IndGeneralDescriptions();
+            IndGeneralDescriptions model = new IndGeneralDescriptions();
             model.Id = id;
             _indGeneralDescriptionsRepository.Remove(model);
             return null;

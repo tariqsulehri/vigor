@@ -13,7 +13,7 @@ function OpenIndDomesticDispatchAttechmentModal(url) {
         type: "Get",
         url: url,
         success: function (data) {
-            if (data !== null && data!=='' && data!==undefined) {
+            if (data !== null && data !== '' && data !== undefined) {
                 $('#FollowUpSheetModal').html(data);
                 $('#FollowUpSheetModal').modal('show');
             }
@@ -27,7 +27,7 @@ function OpenIndDomesticDispatchScheduleModal(url) {
         type: "Get",
         url: url,
         success: function (data) {
-            if (data !== null && data!=='' && data!==undefined) {
+            if (data !== null && data !== '' && data !== undefined) {
                 $('#IndDomesticDispatchScheduleModal').html(data);
                 $('#IndDomesticDispatchScheduleModal').modal('show');
             }
@@ -134,6 +134,7 @@ function SubmitIndDomesticDispatchScheduleForm() {
             if (data === null || data === undefined || data === '') {
                 $('#IndDomesticDispatchScheduleModal').modal('hide');
                 LoadIndDomesticDispatchScheduleTable();
+                LoadIndDomesticDispatchPaymentTable();
             } else {
                 $('#IndDomesticDispatchScheduleModal').html(data);
                 $('#IndDomesticDispatchScheduleModal').modal('show');

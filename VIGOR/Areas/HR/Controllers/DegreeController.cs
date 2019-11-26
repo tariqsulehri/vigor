@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ERP.Core.Models.HR;
+using ERP.Infrastructure;
 using ERP.Infrastructure.Repositories.HR;
 
 namespace VIGOR.Areas.HR.Controllers
@@ -12,9 +13,11 @@ namespace VIGOR.Areas.HR.Controllers
     {
         // GET: General/Degree
         private HR_DegreeRepository _hrDegreeRepository;
+        private ErpDbContext _dbContext;
 
         public DegreeController()
         {
+            _dbContext=new ErpDbContext();
             _hrDegreeRepository =new HR_DegreeRepository();
         }
         public ActionResult Index()
@@ -45,6 +48,8 @@ namespace VIGOR.Areas.HR.Controllers
         {
             try
             {
+                model.DegreeID = GetDegreeID();
+                ModelState.Remove("DegreeID");
                 if (_hrDegreeRepository.IsDuplicate(model))
                 {
                     ModelState.AddModelError(String.Empty, "Duplicate Data is Not Allowed");
@@ -114,6 +119,13 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 return View();
             }
+        }
+        public string GetDegreeID()
+        {
+            int maxno = _dbContext.HR_Degree.Count();
+            maxno = maxno + 1;
+            string SerialID = maxno.ToString();
+            return SerialID;
         }
     }
 }

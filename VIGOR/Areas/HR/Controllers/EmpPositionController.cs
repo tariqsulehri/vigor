@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ERP.Core.Models.HR;
+using ERP.Infrastructure;
 using ERP.Infrastructure.Repositories.HR;
 
 namespace VIGOR.Areas.HR.Controllers
@@ -12,9 +13,10 @@ namespace VIGOR.Areas.HR.Controllers
     {
         // GET: HR/EmpPosition
         private HR_DesignationRepository _hrDesignationRepository;
-
+        private ErpDbContext _dbContext;
         public EmpPositionController()
         {
+            _dbContext=new ErpDbContext();
             _hrDesignationRepository=new HR_DesignationRepository();
         }
         public ActionResult Index()
@@ -37,6 +39,9 @@ namespace VIGOR.Areas.HR.Controllers
         {
             try
             {
+
+                model.DesignationId = GetDesignationID();
+                ModelState.Remove("DesignationId");
                 model.CreatedBy = 0;
                 model.CreatedOn = DateTime.Now;
                 model.ModifiedBy = 0;
@@ -81,18 +86,23 @@ namespace VIGOR.Areas.HR.Controllers
                 model.CreatedOn=DateTime.Now;
                 model.ModifiedBy = 0;
                 model.ModifiedOn=DateTime.Now;
+                model.RequiredEducation = "-";
+                model.isactive = true;
+                model.DesignationId = GetDesignationID();
+                ModelState.Remove("DesignationId");
+                ModelState.Remove("RequiredEducation");
                 if (_hrDesignationRepository.IsDuplicate(model))
                 {
                     ModelState.AddModelError(String.Empty, "Duplicated data Is Not allowed");
-                    
-                    return RedirectToActionPermanent("Index", "EmpPosition");
+
+                    return View(model);
                 }
                 else
                 {
                     if (ModelState.IsValid)
                     {
                         _hrDesignationRepository.Add(model);
-                        return RedirectToAction("Index", "EmpPosition");
+                        return null;
                     }
                     else
                     {
@@ -102,7 +112,7 @@ namespace VIGOR.Areas.HR.Controllers
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
 
@@ -118,7 +128,6 @@ namespace VIGOR.Areas.HR.Controllers
         {
             try
             {
-                
                 model.ModifiedBy = 0;
                 model.ModifiedOn = DateTime.Now;
                 if (_hrDesignationRepository.IsDuplicate(model))
@@ -177,6 +186,13 @@ namespace VIGOR.Areas.HR.Controllers
                 Title = x.Description
             }).ToList();
             return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
+        }
+        public string GetDesignationID()
+        {
+            int maxno = _dbContext.HR_Designation.Count();
+            maxno = maxno + 1;
+            string SerialID = maxno.ToString();
+            return SerialID;
         }
     }
 }

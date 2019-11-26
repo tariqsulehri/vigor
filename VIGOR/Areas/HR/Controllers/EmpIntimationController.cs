@@ -69,7 +69,7 @@ namespace VIGOR.Areas.HR.Controllers
             {
                 HR_LeaveRequest obj = new HR_LeaveRequest()
                 {
-                    LeaveRequestMasterID = model.LeaveRequestMasterID,
+                    LeaveRequestMasterID = GetLeaveReqID(),
                     LeaveRequiredFrom=model.LeaveRequiredFrom,
                     LeaveRequestedTo=model.LeaveRequestedTo,
                     EmployeeId = model.EmployeeId,
@@ -90,8 +90,8 @@ namespace VIGOR.Areas.HR.Controllers
                     IsPending=false
 
                 };
-                
-                
+
+                ModelState.Remove("LeaveRequestMasterID");
                 if (_HR_LeaveRequestRepository.IsDuplicate(obj))
                 {
                     ModelState.AddModelError(String.Empty, "Duplicated data Is Not allowed");
@@ -243,6 +243,13 @@ namespace VIGOR.Areas.HR.Controllers
                 Type=x.ApplicationType
             }).ToList();
             return Json(new { draw = 1, recordsTotal = collection.Count, recordsFiltered = 10, data = collection }, JsonRequestBehavior.AllowGet);
+        }
+        public string GetLeaveReqID()
+        {
+            int maxno = _db.HR_LeaveRequests.Count();
+            maxno = maxno + 1;
+            string SerialID = DateTime.Today.Year + maxno.ToString().PadLeft(4, '0');
+            return SerialID;
         }
     }
 }

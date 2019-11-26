@@ -3,11 +3,23 @@
 @using ERP.Infrastructure.Repositories.HR
 @using ERP.Infrastructure.Repositories.Indenting
 @using ERP.Infrastructure.Repositories.Parties
+@using ERP.Core.Models.Indenting.IndentExport;
 @model ERP.Core.Models.Indenting.IndentExport.IndExportInquiry
 @using ERP.Common;
 @{
+    var depID = 0;
+    var comID = 0;
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (TempData["DepartmentID"] != null)
+    {
+        depID = (int)TempData["DepartmentID"];
+    }
+    if (TempData["CommodityID"] != null)
+    {
+        comID = (int)TempData["CommodityID"];
+    }
+    var getIndExportInquiryList = (List<IndExportInquiry>)ViewBag.IndExportInquiryList;
 }
 
 <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
@@ -79,7 +91,7 @@
                                         </div>
                                         <div class="col-lg-2">
                                             <label>Department:</label>
-                                            @Html.DropDownList("departmentID", new SelectList("", "Id", "title"), "", new { @class = "form-control", id = "Dept", @onchange = "ValidNewInquery()" })
+                                            @Html.DropDownList("DepartmentID", new SelectList("", "Id", "title"), "", new { @class = "form-control", id = "Dept", @onchange = "ValidNewInquery()" })
                                         </div>
                                         <div class="col-lg-2">
                                             <label>Buyer:</label>
@@ -120,9 +132,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @if (ViewBag.IndExportInquiryList != null)
+                                                @if (getIndExportInquiryList != null)
                                                 {
-                                                    foreach (var item in ViewBag.IndExportInquiryList)
+                                                    foreach (var item in getIndExportInquiryList)
                                                     {
                                                         <tr role="row" class="odd">
                                                             <td>@item.InquiryKey</td>
@@ -137,9 +149,15 @@
                                                                     <a href="#" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">action</a>
                                                                     <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-196px, -30px, 0px);">
                                                                         <a class="dropdown-item" href="@Url.Action("Edit", "IndExportInquiry", new {id = item.Id, Area = "Indent"})"><i class="la la-edit"></i> Edit</a>
-                                                                        <a class="dropdown-item" href="#" id="view" onclick="ExportInquieryReview('@Url.Action("Create", "IndExportInquiryReview", new {id = item.Id, Area = "Indent"})')"><i class="la la-street-view"></i> Complete</a>
-                                                                        <a class="dropdown-item" href="@Url.Action("Delete", "IndExportInquiry", new {id = item.Id, Area = "Indent"})"><i class="la la-trash"></i> Drop</a>
 
+                                                                        @if (item.InquieryStatus != Convert.ToString((char)InquieryStatus.Close) && item.InquieryStatus != Convert.ToString((char)InquieryStatus.Cancel))
+                                                                        {
+                                                                            if (item.IndExportInquiryDetail.Count() > 0)
+                                                                            {
+                                                                                <a class="dropdown-item" href="#" id="view" onclick="ExportInquieryReview('@Url.Action("Create", "IndExportInquiryReview", new { id = item.Id, Area = "Indent" })')"><i class="la la-street-view"></i> Complete</a>
+                                                                            }
+                                                                            <a class="dropdown-item" href="@Url.Action("Delete", "IndExportInquiry", new { id = item.Id, Area = "Indent" })"><i class="la la-trash"></i> Drop</a>
+                                                                        }
                                                                     </div>
                                                                 </span>
                                                             </td>
@@ -163,19 +181,27 @@
 
 <div class="modal fade" id="ExportInquieryReviewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
+<div class="modal fade" id="ExportInquieryContractModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
 <script src="~/Content/VigorJs/CommonJS/DeilsInDepartment.js"></script>
 <script src="~/Content/VigorJs/IndExportInquiry/_CreateOrUpdate.js"></script>
 <script>
 
+   
     ValidNewInquery();
     function ValidNewInquery() {
-
         var DeptID = $("#Dept").val();
         var ComdID = $("#ComdID").val();
-        if (DeptID != '' && ComdID != '') { $("#NewInquiery").removeClass('disabled'); }
-        else { $("#NewInquiery").addClass('disabled');;}
+        if (DeptID != '' || ComdID != '') {
+            $("#NewInquiery").removeClass('disabled');
+            $("#btnPrint").removeClass('disabled');
+        } else {
+            $("#NewInquiery").addClass('disabled');
+            $("#btnPrint").addClass('disabled');
+        }
     }
     $(document).ready(function () {
+
 
         $('#NewInquiery').click(function () {
 
@@ -200,4 +226,13 @@
             ValidNewInquery();
         });
     });
+
+    $(document).ready(function () {
+        var departmentID = @depID;
+        var commodityID = @comID;
+        if (commodityID > 0 && departmentID > 0) {
+            GetDealsInDepartment(commodityID, 3);
+        }
+    })
+
 </script>

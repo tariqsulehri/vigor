@@ -92,7 +92,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="m-portlet">
-                    @using (Html.BeginForm("Create", "Employee", FormMethod.Post))
+                    @using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
@@ -149,7 +149,7 @@
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-attachment"></i></span>
                                                     <span class="m-list-search__result-item-text">Efile</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Detail", "EmpHistory")')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeHistoryModal('@Url.Action("Details", "EmpHistory", new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-calendar-with-a-clock-time-tools"></i></span>
                                                     <span class="m-list-search__result-item-text">History</span>
                                                 </a>
@@ -164,23 +164,23 @@
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-user"></i></span>
                                                     <span class="m-list-search__result-item-text">Profile</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenIntimationModal('@Url.Action("Index", "EmpIntimation",new{EmplId=Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenIntimationModal('@Url.Action("Index", "EmpIntimation", new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-symbol"></i></span>
                                                     <span class="m-list-search__result-item-text">Intimations</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenCriticalIncidentModal('@Url.Action("Create", "EmpCriticalIncident",new{EmplId=Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeCINCRModal('@Url.Action("Index", "EmpCriticalIncident", new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-danger"></i></span>
                                                     <span class="m-list-search__result-item-text">Critical Incident</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenNonConfirmityModal('@Url.Action("Index", "EmpNonConfirmity",new{EmplId=Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeNCRModal('@Url.Action("Index", "EmpNonConfirmity", new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-exclamation-square"></i></span>
                                                     <span class="m-list-search__result-item-text">Non Confirmity</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpLoanAdvApplication",new{EmplId=Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeLAdvApplicationModal('@Url.Action("Index", "EmpLoanAdvApplication",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-piggy-bank"></i></span>
                                                     <span class="m-list-search__result-item-text">Loan/Advance</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpLoanAdvRec",new{EmplId=Model.Id})')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpLoanAdvRec")')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-coins"></i></span>
                                                     <span class="m-list-search__result-item-text">Loan/Adv. Received</span>
                                                 </a>
@@ -191,22 +191,23 @@
                                     <div class="collapse register-box" id="s_data">
                                         <div class="m-list-search">
                                             <div class="m-list-search__results">
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpIncrement")')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpIncrement",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-add"></i></span>
                                                     <span class="m-list-search__result-item-text">Increment</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpResign")')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenRevisionModal('@Url.Action("Create", "EmpRevision",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-refresh"></i></span>
                                                     <span class="m-list-search__result-item-text">Revision</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpTransfer")')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenTransferModal('@Url.Action("Create", "EmpTransfer",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-network"></i></span>
                                                     <span class="m-list-search__result-item-text">Transfer</span>
                                                 </a>
-                                                <a href="#" class="m-list-search__result-item" onclick="OpenEmployeeEfileModal('@Url.Action("Create", "EmpPromotion")')">
+                                                <a href="#" class="m-list-search__result-item" onclick="OpenPromotionModal('@Url.Action("Create", "EmpPromotion",new {EmplId = Model.Id})')">
                                                     <span class="m-list-search__result-item-icon"><i class="flaticon-presentation"></i></span>
                                                     <span class="m-list-search__result-item-text">Promotions</span>
                                                 </a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +286,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label class="">Joining:</label>
-                                                    @Html.TextBoxFor(a => a.JoiningDate, new { @class = "form-control", @id = "joiningdate", @type = "date" })
+                                                    @Html.TextBoxFor(a => a.JoiningDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @id = "joiningdate", @type = "date" })
                                                     @Html.ValidationMessageFor(model => model.JoiningDate, "", new { @class = "text-danger" })
                                                 </div>
                                                 <div class="col-lg-6">
@@ -362,7 +363,7 @@
                                                     <div class="form-group row">
                                                         <div class="col-lg-6">
                                                             <label class="">Date Of Birth:</label>
-                                                            @Html.TextBoxFor(a => a.dob, new { @type = "date", @class = "form-control", @placeholder = "Date of Birth" })
+                                                            @Html.TextBoxFor(a => a.dob, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control", @placeholder = "Date of Birth" })
                                                             @Html.ValidationMessageFor(a => a.dob, "", new { @class = "text-danger" })
                                                         </div>
 
@@ -382,7 +383,7 @@
 
                                                         <div class="col-lg-6">
                                                             <label class="">Expiry:</label>
-                                                            @Html.TextBoxFor(a => a.NICExpiry, new { @type = "date", @class = "form-control", @placeholder = "Enter CNIC Expiry" })
+                                                            @Html.TextBoxFor(a => a.NICExpiry, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control", @placeholder = "Enter CNIC Expiry" })
                                                             @Html.ValidationMessageFor(a => a.NICExpiry, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -409,7 +410,7 @@
 
                                                         <div class="col-lg-6">
                                                             <label class="">Passport Expiry:</label>
-                                                            @Html.TextBoxFor(a => a.PassportExpiry, new { @type = "date", @class = "form-control", @placeholder = "Enter Expiry Date" })
+                                                            @Html.TextBoxFor(a => a.PassportExpiry, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control", @placeholder = "Enter Expiry Date" })
                                                             @Html.ValidationMessageFor(a => a.PassportExpiry, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
@@ -699,7 +700,7 @@
                                                     <div class="form-group row">
                                                         <div class="col-lg-6">
                                                             <label>Basic Salary:</label>
-                                                            @Html.TextBoxFor(a => a.CurrentBasicSalary, new { @class = "form-control", @type = "text", @placeholder = "Basic Salary", @id = "BasicSalary" })
+                                                            @Html.TextBoxFor(a => a.CurrentBasicSalary, new { @class = "form-control", @type = "text", @placeholder = "Basic Salary", @id = "BasicSalary", @disabled = "true" })
                                                             @Html.ValidationMessageFor(a => a.CurrentBasicSalary, "", new { @class = "text-danger" })
                                                         </div>
                                                         <div class="col-lg-6">
@@ -743,7 +744,7 @@
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label>Member Since:</label>
-                                                            @Html.TextBoxFor(a => a.EOBIMemberSince, new { @class = "form-control", @type = "date" })
+                                                            @Html.TextBoxFor(a => a.EOBIMemberSince, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label>E.O.B.I Card No:</label>
@@ -775,7 +776,7 @@
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label>Conducted On:</label>
-                                                            @Html.TextBoxFor(a => a.OrientationConductedOn, new { @class = "form-control", @type = "date" })
+                                                            @Html.TextBoxFor(a => a.OrientationConductedOn, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label>Conducted By:</label>
@@ -837,17 +838,31 @@
 </div>
 <div class="modal fade" id="EmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
-<div class="modal fade" id="NonConfirmityModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="EmployeeCINCRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 <div class="modal fade" id="IntimationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
-<div class="modal fade" id="IntimationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="LAdvApplicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="EmployeeNCRModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="IncreamentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
+<div class="modal fade" id="EmployeeHistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 
+<script src="~/Content/VigorJs/HR/Revision/Revision.js"></script>
+<script src="~/Content/VigorJs/HR/Transfer/Transfor.js"></script>
+<script src="~/Content/VigorJs/HR/History/CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/Promotion/Promotion.js"></script>
+<script src="~/Content/VigorJs/HR/Increment/CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/Non_Confirmity/CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/LoanAdvanceApplication/CreateOrUpdate.js"></script>
+<script src="~/Content/VigorJs/HR/CINCR/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/HR/Intimation/CreateOrUpdate.js"></script>
 <script src="~/Content/VigorJs/Employee/_CreateOrUpdate.js"></script>
-<script src="~/Content/VigorJs/HR/Critical Incident/CreateOrUpdate.js"></script>
-<script src="~/Content/VigorJs/HR/NonConfirmity/CreateOrUpdate.js"></script>
+
+
 <script>
     $(document).ready(function () {
         $(".history").click(function () {
@@ -862,5 +877,52 @@
         $(".separation").click(function () {
             $("#sep_data").toggle();
         });
+    });
+    ValidNewInquery();
+    function ValidNewInquery() {
+
+        var DeptID = $("#Dept").val();
+        var ComdID = $("#ComdID").val();
+        if (DeptID != '' && ComdID != '') {
+            $("#NewInquiery").removeClass('disabled');
+            $("#btnPrint").removeClass('disabled');
+        } else {
+            $("#NewInquiery").addClass('disabled');
+            $("#btnPrint").addClass('disabled');
+        }
+    }
+    $(document).ready(function () {
+
+        $('#NewInquiery').click(function () {
+
+            var url = '@Url.Action("Create", "Inquiry", new { Area = "Indent", DepartmentID = "_dptID", CommodityTypeId="_comdID" })';
+            if ($("#Dept").val() != '') { url = url.replace('_dptID', $("#Dept").val()); } else { url = url.replace('_dptID', ""); }
+            if ($("#ComdID").val() != '') { url = url.replace('_comdID', $("#ComdID").val()); } else { url = url.replace('_comdID', ""); }
+            url = url.replace(/\amp;/g, '');
+            location.href = url;
+        });
+        $('#btnPrint').click(function () {
+            var DepartmentID=   $("#Dept").val();
+            var CommadityID = $("#ComdID").val();
+            var DepartmentName = $("#Dept").text();
+            var url = '/Indent/Inquiry/Report?Department=' + DepartmentID + '&commodity=' + CommadityID + '&DepartmentName=' + DepartmentName+''
+            $.ajax({
+                type: "Get",
+                url: url,
+                success: function (data) {
+                    $('#ReviewModal').html(data);
+                    $('#ReviewModal').modal('show');
+                }
+            });
+
+
+        });
+        $('#clear').click(function() {
+            $("#Dept").val('');
+            $("#ComdID").val('');
+            $("#CustID").val('');
+            ValidNewInquery();
+        })
+
     });
 </script>

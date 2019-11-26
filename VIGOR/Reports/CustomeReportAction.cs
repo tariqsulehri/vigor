@@ -2,10 +2,13 @@
 using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ERP.Common;
 
 namespace VIGOR.Reports
 {
@@ -63,18 +66,13 @@ namespace VIGOR.Reports
             ReportDocument cryrpt = new ReportDocument();
             TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
             Tables CrTables;
-            String ServerName = @"sql6007.site4now.net";
-            String Database = "DB_A291AD_VigourDevelopment";
-            String UserID = "DB_A291AD_VigourDevelopment_admin";
-            String Password = "222Cgarden";
-            //String ServerName = @"sql6007.site4now.net";
-            //String Database = "DB_A291AD_VigourLive";
-            //String UserID = "DB_A291AD_VigourLive_admin";
-            //String Password = "222Cgarden";
-            //String ServerName = @".";
-            //String Database = "VI";
-            //String UserID = "W";
-            //String Password = "12345678";
+
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(ConfigSettings.ConnectionString);
+            String ServerName = builder.DataSource;
+            String Database = builder.InitialCatalog;
+            String UserID = builder.UserID;
+            String Password = builder.Password;
+
             crconnectioninfo.ServerName = ServerName;
             crconnectioninfo.DatabaseName = Database;
             crconnectioninfo.UserID = UserID;

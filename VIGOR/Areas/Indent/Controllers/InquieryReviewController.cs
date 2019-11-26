@@ -39,9 +39,9 @@ namespace VIGOR.Areas.Indent.Controllers
             model.CreatedOn = inq.InquiryDate;
             model.InquiryId = inq.Id;
             model.InquiryKey = inq.InquiryKey;
-            model.SellerId = inq.CustomerId;
+            model.BuyerId = inq.CustomerId;
             model.InquiryId = inq.Id;
-            ViewBag.BuyerId = new SelectList(from v in finParty.GetAllParties()
+            ViewBag.SellerId = new SelectList(from v in finParty.GetAllParties()
                                              join offerVender in inq.IndDomesticInquiryOffers on v.Id equals offerVender.CustomerId
                                              select new
                                              {
@@ -110,9 +110,10 @@ namespace VIGOR.Areas.Indent.Controllers
                 IndDomesticInquiry IndDomesticInquiry = new IndDomesticInquiry();
                 if (model.InquiryId > 0)
                 {
+                   
                     IndDomesticInquiry.Id = model.InquiryId;
-                    IndDomesticInquiry.InquiryStatus = "P";
-                    IndDomesticInquiry.IsClosed = Convert.ToString((char) InquieryStatus.Close);
+                    IndDomesticInquiry.InquiryStatus = Convert.ToString((char)InquieryStatus.InProcess);
+                    IndDomesticInquiry.IsClosed = "N";
                     _indDomesticInquiryRepository.UpdateInquieryStatus(IndDomesticInquiry);
                 }
                 foreach (var question in lstIndInquiryReviewQuestions)

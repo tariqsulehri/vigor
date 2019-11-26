@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+@*<style>
+        .highlight_row {
+            background-color: #ff6a00;
+        }
+    </style>*@
+
+@if (ViewBag.Attendance != null)
+{
+
+    foreach (var item in ViewBag.Attendance)
+    {
+        <tr role="row" class="table-td" id="history-data">
+            <td>@item.HrEmployee.FirstName</td>
+            <td>@item.Designation</td>
+            <td>@item.Day01</td>
+            <td>@item.Day02</td>
+            <td>@item.Day03</td>
+            <td>@item.Day04</td>
+            <td>@item.Day05</td>
+            <td>@item.Day06</td>
+            <td>@item.Day07</td>
+            <td>@item.Day08</td>
+            <td>@item.Day09</td>
+            <td>@item.Day10</td>
+            <td>@item.Day11</td>
+            <td>@item.Day12</td>
+            <td>@item.Day13</td>
+            <td>@item.Day14</td>
+            <td>@item.Day15</td>
+            <td>@item.Day16</td>
+            <td>@item.Day17</td>
+            <td>@item.Day18</td>
+            <td>@item.Day19</td>
+            <td>@item.Day20</td>
+            <td>@item.Day21</td>
+            <td>@item.Day22</td>
+            <td>@item.Day23</td>
+            <td>@item.Day24</td>
+            <td>@item.Day25</td>
+            <td>@item.Day26</td>
+            <td>@item.Day27</td>
+            <td>@item.Day28</td>
+            <td>@item.Day29</td>
+            <td>@item.Day30</td>
+            <td>@item.Day31</td>
+            <td>MD</td>
+            <td>WD</td>
+            <td>PR</td>
+            <td>AB</td>
+            <td>VT</td>
+            <td>LV</td>
+        </tr>
+
+    }
+}
+
+
+
+<script>
+    $('td').click(function () {
+        var colIndex = $(this).parent().children().index($(this));
+        var rowIndex = $(this).parent().parent().children().index($(this).parent());
+        //alert('Row: ' + rowIndex + ', Column: ' + colIndex);
+    });
+    $('tr').focus(function () {
+        //Check to see if background color is set or if it's set to white.
+        if (this.style.background == "" || this.style.background == "white") {
+            $(this).css('background', '#ff6a00');
+        }
+        else {
+            $(this).css('background', 'white');
+        }
+    });
+</script>

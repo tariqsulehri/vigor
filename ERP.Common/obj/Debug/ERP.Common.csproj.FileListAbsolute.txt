@@ -140,6 +140,17 @@ E:\VigourImpex 29\Vigour 9 Oct\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompil
 E:\VigourImpex 29\Vigour 9 Oct\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
 E:\VigourImpex 29\Vigour 9 Oct\ERP.Common\obj\Debug\ERP.Common.dll
 E:\VigourImpex 29\Vigour 9 Oct\ERP.Common\obj\Debug\ERP.Common.pdb
+E:\vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.dll.config
+E:\vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.dll
+E:\vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.pdb
+E:\vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.dll
+E:\vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.pdb
+E:\vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.dll.config
+E:\vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
+E:\vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
+E:\vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
+E:\vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.dll
+E:\vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.pdb
 E:\vigour\vigor\ERP.Common\bin\Debug\ERP.Common.dll.config
 E:\vigour\vigor\ERP.Common\bin\Debug\ERP.Common.dll
 E:\vigour\vigor\ERP.Common\bin\Debug\ERP.Common.pdb
@@ -151,14 +162,14 @@ E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.dll
 E:\vigour\vigor\ERP.Common\obj\Debug\ERP.Common.pdb
-E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.dll.config
-E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.dll
-E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.pdb
-E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.dll
-E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.pdb
-E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.dll.config
-E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
-E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
-E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
-E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.dll
-E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.pdb
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\bin\Debug\ERP.Common.dll.config
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\bin\Debug\ERP.Common.dll
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\bin\Debug\ERP.Common.pdb
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\bin\Debug\ERP.Core.dll
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\bin\Debug\ERP.Core.pdb
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\bin\Debug\ERP.Core.dll.config
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\obj\Debug\ERP.Common.dll
+E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\obj\Debug\ERP.Common.pdb

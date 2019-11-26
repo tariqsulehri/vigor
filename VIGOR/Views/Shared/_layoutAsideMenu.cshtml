@@ -149,6 +149,7 @@
                                 <h3 class="m-menu__heading m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Import/Export Sales</span></h3>
                                 <ul class="m-menu__inner">
                                     <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","IndExportInquiry",new { Area="Indent"})" class="m-menu__link "><span class="m-menu__link-text">Inquiry</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","IndentExport",new { Area="Indent"})" class="m-menu__link "><span class="m-menu__link-text">Inquiry Export</span></a></li>
                                     <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("CottonList","ImportExportSales",new { Area="Indent"})" class="m-menu__link "><span class="m-menu__link-text">Cotton</span></a></li>
                                     <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("YarnList","ImportExportSales",new { Area="Indent"})" class="m-menu__link "><span class="m-menu__link-text">Yarn</span></a></li>
                                     <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Fabric","ImportExportSales",new { Area="Indent"})" class="m-menu__link "><span class="m-menu__link-text">Fabric</span></a></li>
@@ -230,6 +231,41 @@
                             </li>
                             <li class="m-menu__item">
 
+                            </li>
+                            <li class="m-menu__item">
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" m-menu-submenu-toggle="click" m-menu-link-redirect="1" aria-haspopup="true">
+                <a href="javascript:;" class="m-menu__link m-menu__toggle" title="Human Resource Management">
+                    <i class="m-menu__link-icon flaticon-line-graph"></i><span class="m-menu__link-text">HR</span><i class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+                <div class="m-menu__submenu m-menu submenu--fixed m-menu__submenu--left" style="width:1000px">
+                    <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    <div class="m-menu__subnav">
+                        <ul class="m-menu__content">
+                            <li class="m-menu__item">
+                                <h3 class="m-menu__heading m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Tasks</span></h3>
+                                <ul class="m-menu__inner">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","Employee",new { Area="HR"})" class=" m-menu__link"><span class=" m-menu__link-text">Employee</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","AttendanceSheet",new { Area="HR"})" class=" m-menu__link"><span class=" m-menu__link-text">Attendence Sheet</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","SalarySheet",new { Area="HR"})" class=" m-menu__link"><span class="m-menu__link-text ">Sallary Sheet</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","LeaveVisitApproval",new { Area="HR"})" class="m-menu__link "><span class="m-menu__link-text ">Leave Visit Appr.</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index","LoanAdvApproval",new { Area="HR"})" class="m-menu__link "><span class="m-menu__link-text">Loan Adv. Appr.</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="m-menu__item">
+                                <h3 class="m-menu__heading m-menu__toggle"><i class="m-menu__link-icon flaticon-business"></i><span class="m-menu__link-text">Tasks</span></h3>
+                                <ul class="m-menu__inner">
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index", "EmpPosition", new {Area = "HR"})" class="m-menu__link "><span class="m-menu__link-text">Designation</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Create", "Degree", new {Area = "HR"})" class="m-menu__link "><span class="m-menu__link-text">Degree</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index", "Allowance", new {Area = "HR"})" class="m-menu__link "><span class="m-menu__link-text">Allowance</span></a></li>
+                                    <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="@Url.Action("Index", "EmpType", new {Area = "HR"})" class="m-menu__link "><span class="m-menu__link-text">Employee Type</span></a></li>
+                                </ul>
                             </li>
                             <li class="m-menu__item">
 

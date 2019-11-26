@@ -26,14 +26,14 @@ namespace VIGOR.ViewsModel
         public string PaymentTerms { get; set; }
         public string ComodityType { get; set; }
         public string UOR { get; set; }
-        public DateTime InquiryClosedDate { get; set; }
+        public System.DateTime InquiryClosedDate { get; set; }
         public System.DateTime CreatedOn { get; set; }
         public System.DateTime ModifiedOn { get; set; }
         public string Delivery { get; set; }
         public string InquiryStatus { get; set; }
         public string IsClosed { get; set; }
         public string Title { get; set; }
-        public int  DepartmentID { get; set; }
+        public int DepartmentID { get; set; }
         public int SellectId { get; set; }
         public string seller { get; set; }
         public string BuyerId { get; set; }

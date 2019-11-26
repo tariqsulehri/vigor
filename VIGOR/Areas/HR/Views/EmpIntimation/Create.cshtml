@@ -22,7 +22,7 @@
                 <div class="form-group row">
                     <div class="col-lg-3">
                         <label>Intimation NO:</label>
-                        @Html.TextBoxFor(a => a.LeaveRequestMasterID, new { @type = "text", @class = "form-control", @id = "LeaveRequestMasterID", @name = "LeaveRequestMasterID" })
+                        @Html.TextBoxFor(a => a.LeaveRequestMasterID, new { @type = "text", @class = "form-control", @id = "LeaveRequestMasterID", @name = "LeaveRequestMasterID",@readonly="readonly" })
                         @Html.ValidationMessageFor(a => a.LeaveRequestMasterID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-3">

@@ -21,6 +21,7 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_disp
     <Property Name="CommodityId" Type="int" Nullable="false" />
     <Property Name="DispQuantity" Type="decimal" Precision="38" Scale="2" />
     <Property Name="ReturnQuantity" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="PaymentQuantity" Type="decimal" Precision="38" Scale="2" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inquiry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -39,19 +40,19 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inqu
       <PropertyRef Name="UOR" />
       <PropertyRef Name="CreatedOn" />
       <PropertyRef Name="ModifiedOn" />
-      <PropertyRef Name="InquiryStatus" />
-      <PropertyRef Name="IsClosed" />
       <PropertyRef Name="Title" />
       <PropertyRef Name="DepartmentID" />
       <PropertyRef Name="SellectId" />
       <PropertyRef Name="seller" />
       <PropertyRef Name="CustomerAsBuyer" />
+      <PropertyRef Name="InquiryStatus" />
+      <PropertyRef Name="IsClosed" />
     </Key>
     <Property Name="InquiryId" Type="int" Nullable="false" />
     <Property Name="InquiryKey" Type="nvarchar" MaxLength="13" Nullable="false" />
     <Property Name="InquiryDate" Type="datetime" Nullable="false" />
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CommodityId" Type="int" Nullable="false" />
     <Property Name="Commodity" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -59,13 +60,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_domestic_inqu
     <Property Name="PaymentTerms" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="ComodityType" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UOR" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="InquiryClosedDate" Type="datetime" />
+    <Property Name="InquiryClosedDate" Type="datetime" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
     <Property Name="Delivery" Type="nvarchar" MaxLength="200" />
-    <Property Name="InquiryStatus" Type="nvarchar" MaxLength="3" Nullable="false" />
-    <Property Name="IsClosed" Type="nvarchar" MaxLength="3" Nullable="false" />
-    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InquiryStatus" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="IsClosed" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DepartmentID" Type="int" Nullable="false" />
     <Property Name="SellectId" Type="int" Nullable="false" />
     <Property Name="seller" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -247,6 +248,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_d
       <PropertyRef Name="indentClosed" />
       <PropertyRef Name="IsApproved" />
       <PropertyRef Name="IsSubmitForApproval" />
+      <PropertyRef Name="closedDate" />
+      <PropertyRef Name="IsScheduleGenerated" />
+      <PropertyRef Name="IsUpdated" />
+      <PropertyRef Name="isCancelled" />
+      <PropertyRef Name="isShipments" />
+      <PropertyRef Name="isInvoiced" />
+      <PropertyRef Name="IsSample" />
       <PropertyRef Name="InquiryStatus" />
       <PropertyRef Name="IsClosed" />
     </Key>
@@ -298,6 +306,13 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_d
     <Property Name="FinancialRemarks" Type="nvarchar" MaxLength="1500" />
     <Property Name="Specificatiions" Type="nvarchar" MaxLength="1500" />
     <Property Name="PriceTerms" Type="nvarchar" MaxLength="200" />
+    <Property Name="closedDate" Type="datetime" Nullable="false" />
+    <Property Name="IsScheduleGenerated" Type="bit" Nullable="false" />
+    <Property Name="IsUpdated" Type="bit" Nullable="false" />
+    <Property Name="isCancelled" Type="bit" Nullable="false" />
+    <Property Name="isShipments" Type="bit" Nullable="false" />
+    <Property Name="isInvoiced" Type="bit" Nullable="false" />
+    <Property Name="IsSample" Type="bit" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.view_IndDomestic_Inquiry_Offers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -587,7 +602,8 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
     [view_domestic_disp_return_Summary].[IndentId] AS [IndentId], 
     [view_domestic_disp_return_Summary].[CommodityId] AS [CommodityId], 
     [view_domestic_disp_return_Summary].[DispQuantity] AS [DispQuantity], 
-    [view_domestic_disp_return_Summary].[ReturnQuantity] AS [ReturnQuantity]
+    [view_domestic_disp_return_Summary].[ReturnQuantity] AS [ReturnQuantity], 
+    [view_domestic_disp_return_Summary].[PaymentQuantity] AS [PaymentQuantity]
     FROM [dbo].[view_domestic_disp_return_Summary] AS [view_domestic_disp_return_Summary]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="view_domestic_inquiry" EntityType="Self.view_domestic_inquiry" store:Type="Views" store:Schema="dbo">
@@ -746,7 +762,14 @@ warning 6002: The table/view 'DB_A291AD_VigourDevelopment.dbo.VW_COA' does not h
     [view_IndDomestic_detail].[QualityRemarks] AS [QualityRemarks], 
     [view_IndDomestic_detail].[FinancialRemarks] AS [FinancialRemarks], 
     [view_IndDomestic_detail].[Specificatiions] AS [Specificatiions], 
-    [view_IndDomestic_detail].[PriceTerms] AS [PriceTerms]
+    [view_IndDomestic_detail].[PriceTerms] AS [PriceTerms], 
+    [view_IndDomestic_detail].[closedDate] AS [closedDate], 
+    [view_IndDomestic_detail].[IsScheduleGenerated] AS [IsScheduleGenerated], 
+    [view_IndDomestic_detail].[IsUpdated] AS [IsUpdated], 
+    [view_IndDomestic_detail].[isCancelled] AS [isCancelled], 
+    [view_IndDomestic_detail].[isShipments] AS [isShipments], 
+    [view_IndDomestic_detail].[isInvoiced] AS [isInvoiced], 
+    [view_IndDomestic_detail].[IsSample] AS [IsSample]
     FROM [dbo].[view_IndDomestic_detail] AS [view_IndDomestic_detail]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="view_IndDomestic_Inquiry_Offers" EntityType="Self.view_IndDomestic_Inquiry_Offers" store:Type="Views" store:Schema="dbo">

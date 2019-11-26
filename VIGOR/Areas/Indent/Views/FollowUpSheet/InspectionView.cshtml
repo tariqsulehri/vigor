@@ -570,15 +570,46 @@
                                                     </thead>
 
                                                     <tbody>
-
+                                                    @if (Model.YarnInspectionAttachments.Count > 0)
+                                                    {
+                                                        Int32 j = 0;
+                                                        foreach (var item in Model.YarnInspectionAttachments)
+                                                        {
+                                                            <tr role="row" class="odd">
+                                                                <td class="sorting_1">
+                                                                    @Html.TextBox("det[" + j + "][FileDescription]", "", new {@class = "form-control", @Value = item.FileDescription})
+                                                                </td>
+                                                                <td class="sorting_1">
+                                                                    @Html.TextBox("files", "", new {@class = "form-control", id = "file", @type = "file"})
+                                                                </td>
+                                                                <td>
+                                                                    @if (!string.IsNullOrEmpty(item.FileName))
+                                                                    {
+                                                                        <a href="~/File/@item.">Download</a>}
+                                                                </td>
+                                                            </tr>
+                                                            j++;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
                                                         <tr role="row" class="odd">
+                                                            <td class="sorting_1">
+                                                                @Html.TextBox("det[0][FileDescription]", "", new {@class = "form-control"})
+                                                            </td>
+                                                            <td class="sorting_1">
+                                                                @Html.TextBox("files", "", new {@class = "form-control", id = "file", @type = "file"})
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                        @*<tr role="row" class="odd">
                                                             <td class="sorting_1">
                                                                 @Html.TextBox("det[0][FileDescription]", "", new { @class = "form-control" })
                                                             </td>
                                                             <td class="sorting_1">
                                                                 @Html.TextBox("files", "", new { @class = "form-control", id = "file", @type = "file" })
                                                             </td>
-                                                        </tr>
+                                                        </tr>*@
 
                                                     </tbody>
 

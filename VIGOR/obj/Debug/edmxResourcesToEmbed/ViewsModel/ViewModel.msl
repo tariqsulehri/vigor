@@ -193,6 +193,7 @@
     <EntitySetMapping Name="view_domestic_disp_return_Summary">
       <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_domestic_disp_return_Summary">
         <MappingFragment StoreEntitySet="view_domestic_disp_return_Summary">
+          <ScalarProperty Name="PaymentQuantity" ColumnName="PaymentQuantity" />
           <ScalarProperty Name="ReturnQuantity" ColumnName="ReturnQuantity" />
           <ScalarProperty Name="DispQuantity" ColumnName="DispQuantity" />
           <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
@@ -354,6 +355,13 @@
     <EntitySetMapping Name="view_IndDomestic_detail">
       <EntityTypeMapping TypeName="DB_A291AD_VigourDevelopmentModel.view_IndDomestic_detail">
         <MappingFragment StoreEntitySet="view_IndDomestic_detail">
+          <ScalarProperty Name="IsSample" ColumnName="IsSample" />
+          <ScalarProperty Name="isInvoiced" ColumnName="isInvoiced" />
+          <ScalarProperty Name="isShipments" ColumnName="isShipments" />
+          <ScalarProperty Name="isCancelled" ColumnName="isCancelled" />
+          <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+          <ScalarProperty Name="IsScheduleGenerated" ColumnName="IsScheduleGenerated" />
+          <ScalarProperty Name="closedDate" ColumnName="closedDate" />
           <ScalarProperty Name="PriceTerms" ColumnName="PriceTerms" />
           <ScalarProperty Name="Specificatiions" ColumnName="Specificatiions" />
           <ScalarProperty Name="FinancialRemarks" ColumnName="FinancialRemarks" />
