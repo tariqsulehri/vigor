@@ -34,6 +34,33 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             db.SaveChanges();
         }
 
+        public void Add(IndDomestic indDomestic, ICollection<IndentAgent> indentAgent, string indentType)
+        {
+            db.IndDomestic.Add(indDomestic);
+            db.SaveChanges();
+            var indId = GetIndIdByKey(indDomestic.IndentKey);
+
+            foreach (var agent in indentAgent)
+            {
+                agent.IndentId = indId;
+                db.IndentAgents.Add(agent);
+            }
+            db.SaveChanges();
+
+            //IndentInfo indentInfo = new IndentInfo
+            //{
+            //    IndentId = indDomestic.Id,
+            //    SalesContractNo = indDomestic.IndentKey,
+            //    SellerContractNo = indDomestic.SuppContract,
+            //    PurchaseOrderNo = indDomestic.PONumber,
+            //    CompanyID = indDomestic.CompanyId
+            //};
+
+            //db.IndentInfos.Add(indentInfo);
+            //db.SaveChanges();
+
+        }
+
         public void Edit(IndDomestic indDomestic)
         {
             IndDomestic existingRecord = db.IndDomestic.Find(indDomestic.Id);

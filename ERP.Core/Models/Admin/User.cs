@@ -69,20 +69,20 @@ namespace ERP.Core.Models.Admin
         public virtual ICollection<UserModuleDetails> UserModuleDetails { get; set; }
         public virtual ICollection<AdminUserDealsInDepartment> AdminUserDealsInDepartments { get; set; }
 
-        public int CreatedBy { get; set; }
+        public int CreatedBy { get; set; } 
 
         [Required(ErrorMessage = "Field is required....")]
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.Now; 
         public int ModifiedBy { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
-        public DateTime ModifiedOn { get; set; }
+        public DateTime ModifiedOn { get; set; } = DateTime.Now;
 
     }
 }

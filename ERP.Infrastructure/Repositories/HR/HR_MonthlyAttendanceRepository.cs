@@ -24,6 +24,11 @@ namespace ERP.Infrastructure.Repositories.HR
             _db.SaveChanges();
         }
 
+        //public void MaxAttenDanceId()
+        //{
+        //    var a = _db.HR_MonthlyAttendance.Max(x => x.EmployeeAttendanceId.Substring(8, 4)).SingleOrDefault();
+        //}
+
         public void Edit(HR_MonthlyAttendance HR_MonthlyAttendance)
         {
             try

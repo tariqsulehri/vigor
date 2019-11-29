@@ -368,6 +368,10 @@
     <Compile Include="Migrations\201911261513393_DecimalPointsForCommChange.Designer.cs">
       <DependentUpon>201911261513393_DecimalPointsForCommChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911281551292_DefaultdataUsers.cs" />
+    <Compile Include="Migrations\201911281551292_DefaultdataUsers.Designer.cs">
+      <DependentUpon>201911281551292_DefaultdataUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -763,6 +767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911261513393_DecimalPointsForCommChange.resx">
       <DependentUpon>201911261513393_DecimalPointsForCommChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911281551292_DefaultdataUsers.resx">
+      <DependentUpon>201911281551292_DefaultdataUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
