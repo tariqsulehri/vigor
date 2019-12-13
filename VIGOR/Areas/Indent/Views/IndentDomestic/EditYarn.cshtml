@@ -53,7 +53,6 @@
             @using (Html.BeginForm("EditYarn", "IndentDomestic", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
                 @Html.HiddenFor(a => a.Id)
                 @Html.HiddenFor(a => a.InquiryKey)
                 @Html.HiddenFor(a => a.InquiryId)
@@ -126,21 +125,21 @@
                                 </a>
                             </li>
                             @*<li class="m-portlet__nav-item">
-                                    <a href="javascript:" class="btn m-btn m-btn--gradient-from-brand m-btn--gradient-to-info disabled" Sec-menuId="@SecurityConstants.CPVbtnUnpost">
-                                        <span>
-                                            <i class="fa fa-shipping-fast"></i>
-                                            <span>Shipment</span>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="m-portlet__nav-item">
-                                    <a href="javascript:" class="btn m-btn m-btn--gradient-from-metal m-btn--gradient-to-accent disabled" Sec-menuId="@SecurityConstants.CPVbtnPost">
-                                        <span>
-                                            <i class="fa fa-stamp"></i>
-                                            <span>Approved</span>
-                                        </span>
-                                    </a>
-                                </li>*@
+            <a href="javascript:" class="btn m-btn m-btn--gradient-from-brand m-btn--gradient-to-info disabled" Sec-menuId="@SecurityConstants.CPVbtnUnpost">
+                <span>
+                    <i class="fa fa-shipping-fast"></i>
+                    <span>Shipment</span>
+                </span>
+            </a>
+        </li>
+        <li class="m-portlet__nav-item">
+            <a href="javascript:" class="btn m-btn m-btn--gradient-from-metal m-btn--gradient-to-accent disabled" Sec-menuId="@SecurityConstants.CPVbtnPost">
+                <span>
+                    <i class="fa fa-stamp"></i>
+                    <span>Approved</span>
+                </span>
+            </a>
+        </li>*@
                             <li class="m-portlet__nav-item">
                                 <a href="javascript:" class="btn m-btn m-btn--gradient-from-accent m-btn--gradient-to-success disabled" Sec-menuId="@SecurityConstants.CPVbtnPost">
                                     <span>
@@ -156,6 +155,9 @@
                                         <span>Exit</span>
                                     </span>
                                 </a>
+                            </li>
+                            <li class="m-portlet__nav-item">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             </li>
                         </ul>
                     </div>
@@ -433,9 +435,7 @@
                                         <div class="col-sm-12">
                                             <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="CommesionDetaiTable" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
                                                 <thead style="background-color: #28469c; color: #ffffff">
-
                                                     <tr>
-
                                                         <th width="">Comission Paid To</th>
                                                         <th width="">Comission Paid From</th>
                                                         <th width="80">Rate</th>
@@ -444,7 +444,6 @@
                                                         <th></th>
                                                     </tr>
                                                 </thead>
-
                                                 <tbody>
                                                     @if (Model.IndCommission.Count > 0)
                                                     {
@@ -457,14 +456,10 @@
                                                                 </td>
                                                                 <td>
                                                                     @Html.DropDownList("det[" + j + "][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidTo), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
-
                                                                 </td>
-
                                                                 <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control comRate", @Value = item.CommissionRate, type = "decimal", onchange = "calculateComission(this.name)" })</td>
-
-                                                                <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                                <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
                                                                 <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control CalculatedCommission", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
-
                                                             </tr>
                                                         }
                                                     }
@@ -478,7 +473,7 @@
                                                                 @Html.DropDownList("det[0][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
                                                             </td>
                                                             <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate", type = "decimal", onchange = "calculateComission(this.name)" })</td>
-                                                            <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                            <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
                                                             <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control CalculatedCommission", @readonly = "readonly" })</td>
                                                         </tr>
                                                     }
@@ -623,6 +618,7 @@
 <script>
     $(document).ready(function () {
         BindCommetionAgent();
+        calculateComission("det[0][CommodityId]");
     });
     Valid();
     function Valid() {
@@ -718,6 +714,5 @@
     //        sellerID.value = sellerIndex;
     //        buyerID.value = buyerIndex;
     //}
-
 
 </script>

@@ -53,7 +53,6 @@
                 @using (Html.BeginForm("Create", "IndentDomestic", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
                     @Html.HiddenFor(a => a.Id)
                     @Html.HiddenFor(a => a.InquiryKey)
                     @Html.HiddenFor(a => a.IndentKey)
@@ -117,6 +116,9 @@
                                             <span>Exit</span>
                                         </span>
                                     </a>
+                                </li>
+                                <li class="m-portlet__nav-item">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 </li>
                             </ul>
                         </div>
@@ -410,7 +412,7 @@
                                                                     </td>
                                                                     <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control comRate", @Value = item.CommissionRate, type = "decimal", onchange = "calculateComission(this.name)" })</td>
 
-                                                                    <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                                    <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
                                                                     <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control  CalculatedCommission", @Value = item.CalculatedCommissionValue, @readonly = "readonly" })</td>
                                                                 </tr>
                                                             }
@@ -425,7 +427,7 @@
                                                                     @Html.DropDownList("det[0][CustomerIdCommPaidTo]", new SelectList("", "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
                                                                 </td>
                                                                 <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate", type = "decimal", onchange = "calculateComission(this.name)" })</td>
-                                                                <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                                <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
                                                                 <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control  CalculatedCommission", @readonly = "readonly" })</td>
                                                             </tr>
                                                         }

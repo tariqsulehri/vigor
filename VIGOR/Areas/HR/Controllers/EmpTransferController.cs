@@ -84,9 +84,7 @@ namespace VIGOR.Areas.HR.Controllers
                 {
                     return View(model);
                 }
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                
             }
             catch
             {

@@ -165,9 +165,13 @@ E:\VigourImpex 29\vigor1120Latest\vigor\ERP.Common\obj\Debug\ERP.Common.pdb
 E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.dll.config
 E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.dll
 E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Common.pdb
+E:\Vigour\Vigour\ERP.Common\bin\Debug\EntityFramework.dll
+E:\Vigour\Vigour\ERP.Common\bin\Debug\EntityFramework.SqlServer.dll
 E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.dll
 E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.pdb
 E:\Vigour\Vigour\ERP.Common\bin\Debug\ERP.Core.dll.config
+E:\Vigour\Vigour\ERP.Common\bin\Debug\EntityFramework.xml
+E:\Vigour\Vigour\ERP.Common\bin\Debug\EntityFramework.SqlServer.xml
 E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csprojAssemblyReference.cache
 E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csproj.CoreCompileInputs.cache
 E:\Vigour\Vigour\ERP.Common\obj\Debug\ERP.Common.csproj.CopyComplete

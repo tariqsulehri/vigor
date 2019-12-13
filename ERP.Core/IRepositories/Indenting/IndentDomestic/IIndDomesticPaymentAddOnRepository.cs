@@ -10,7 +10,7 @@ namespace ERP.Core.IRepositories.Indenting.IndentDomestic
     public interface IIndDomesticPaymentAddOnRepository
     {
         void Add(IndDomesticPaymentAddOn indDomesticPaymentAddOn);
-        void Edit(IndDomesticPaymentAddOn indDomesticPaymentAddOn);
+        void Edit(List<IndDomesticPaymentAddOn> indDomesticPaymentAddOn, string LocalDispatchId);
         bool Remove(IndDomesticPaymentAddOn indDomesticPaymentAddOn);
         IndDomesticPaymentAddOn FindById(int id);
         IEnumerable<IndDomesticPaymentAddOn> GetAllIndDomesticPaymentAddOns();

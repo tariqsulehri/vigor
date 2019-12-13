@@ -41,9 +41,7 @@
                 @Html.HiddenFor(a => a.TypeOfTransaction)
 
                 <div class="m-portlet__body">
-
                     <div class="m-portlet__body">
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group row">
@@ -66,7 +64,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Commodity:</label>
-                                        @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId, "", new { @class = "form-control ", @id = "CommDrop", onchange = "QuantityChanged()" })
+                                        @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId, new { @class = "form-control ", @id = "CommDrop", onchange = "QuantityChanged()" })
                                         @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
 
                                     </div>
@@ -77,7 +75,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Amount:</label>
-                                        @Html.TextBoxFor(a => a.GrossAmount, new { @class = "form-control", disabled = "disabled", @id = "Amount", @type = "text", onchange = "AmountChanged()" })
+                                        @Html.TextBoxFor(a => a.GrossAmount, new { @class = "form-control", @readonly = "readonly", @id = "Amount", @type = "text", onchange = "AmountChanged()" })
                                         @Html.ValidationMessageFor(model => model.GrossAmount, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-lg-6">
@@ -88,7 +86,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -182,7 +179,5 @@
 <script src="~/Content/VigorJs/VouchersTable/CustomGrid.js"></script>
 <script src="~/Content/VigorJs/Vouchers.js"></script>
 <script src="~/Content/VigorJs/Dispatch/_CreateOrUpdate.js"></script>
-
-
 <script src="~/Scripts/grid.js"></script>
 <script src="~/Scripts/GL/VoucherDetails.js"></script>

@@ -24,10 +24,11 @@ namespace ERP.Core.Models.Indenting
         [MaxLength(5)]
         public string Symbol { get; set; }
 
-        public ICollection<ExchangeRates> ExchangeRates { get; set; }
-        public ICollection<IndCommissionInvoice> IndCommissionInvoice { get; set; }
+        public virtual ICollection<ExchangeRates> ExchangeRates { get; set; }
+        public virtual ICollection<IndCommissionInvoice> IndCommissionInvoice { get; set; }
         //public ICollection<IndDomesticInquiry> IndDomesticInquiry { get; set; }
-        public ICollection<IndExportInquiry> IndExportInquiry { get; set; }
+        public virtual ICollection<IndExportInquiry> IndExportInquiry { get; set; }
+        public virtual ICollection<IndExportLCDetail> ExportLCDetails { get; set; }
 
 
         public int CreatedBy { get; set; }

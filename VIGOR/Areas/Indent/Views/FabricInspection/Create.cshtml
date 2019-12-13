@@ -37,7 +37,6 @@
     @using (Html.BeginForm("Create", "FabricInspection", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
         @Html.HiddenFor(a => a.Id)
         <div class="m-portlet">
             <div class="m-portlet__head">
@@ -51,6 +50,9 @@
                 <div class="m-portlet__head-tools">
                     <ul class="m-portlet__nav">
                         <li class="m-portlet__nav-item">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </li>
+                        <li class="m-portlet__nav-item">
                             <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
                                 <span>
                                     <i class="fa fa-save"></i>
@@ -59,7 +61,7 @@
                             </button>
                         </li>
                         <li class="m-portlet__nav-item">
-                            <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                            <a href="@Url.Action("Index","FabricInspection",new { Area="Indent"})" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
                                 <span style="color: #ffffff">
                                     <i class="flaticon-cancel"></i>
                                     <span>Cancel</span>
@@ -75,14 +77,15 @@
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <label>Serial No:</label>
-                                @Html.TextBoxFor(a => a.InspRepoSr, new { @class = "form-control " })
+                                @Html.TextBoxFor(a => a.InspRepoSr, new { @class = "form-control ", @disabled = "disabled" })
+                                @Html.HiddenFor(a => a.InspRepoSr)
                                 @Html.ValidationMessageFor(model => model.InspRepoSr, "", new { @class = "text-danger" })
 
                             </div>
                             <div class="col-lg-6">
-                                <label>Register No:</label>
-                                @Html.TextBoxFor(a => a.InspRepoNo, new { @class = "form-control " })
-                                @Html.ValidationMessageFor(model => model.InspRepoNo, "", new { @class = "text-danger" })
+                                @*<label>Register No:</label>
+        @Html.TextBoxFor(a => a.InspRepoNo, new { @class = "form-control " })
+        @Html.ValidationMessageFor(model => model.InspRepoNo, "", new { @class = "text-danger" })*@
                             </div>
                             <div class="col-lg-6">
                                 <label>Date:</label>
@@ -103,13 +106,11 @@
                                 <label>Loom Type:</label>
                                 @Html.DropDownListFor(a => a.LoomTypeId, new SelectList(new FabricInspLoomTypeRepository().GetAllFabricInspLoomType(), "Id", "Description"), new { @class = "form-control " })
                                 @Html.ValidationMessageFor(model => model.LoomTypeId, "", new { @class = "text-danger" })
-
                             </div>
                             <div class="col-lg-12">
                                 <label>Inspection:</label>
                                 @Html.DropDownListFor(a => a.FabInspTypeId, new SelectList(new FabricInspTypeRepository().GetAllFabricInspTypes(), "Id", "Description"), new { @class = "form-control " })
                                 @Html.ValidationMessageFor(model => model.FabInspTypeId, "", new { @class = "text-danger" })
-
                             </div>
                             <div class="col-lg-6">
                                 <label>Rolls Inspected:</label>
@@ -430,7 +431,6 @@
                                                         <label class="m-checkbox m-checkbox--state-primary">
                                                             @Html.CheckBoxFor(a => a.ShadeVarivation)
                                                             <label>Shade</label>
-                                                            @*<input type="checkbox"> Shade*@
                                                             <span></span>
                                                         </label>
                                                     </div>
@@ -557,7 +557,6 @@
                                                     <tr>
                                                         <td width="">Total Ends:</td>
                                                         <td>@Html.TextBoxFor(a => a.TotalEnds, new { @class = "form-control ", type = "number" })</td>
-
                                                     </tr>
                                                     <tr>
                                                         <td width="">Reed Counts:</td>
@@ -613,6 +612,7 @@
                                     <div class="form-group row">
                                         <label>Wrapping Direction:</label>
                                         @Html.TextAreaFor(a => a.WrapDirection, new { @class = "form-control m-input" })
+                                        @Html.ValidationMessageFor(model => model.WrapDirection, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>

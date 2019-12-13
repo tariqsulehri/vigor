@@ -13,7 +13,10 @@ namespace ERP.Core.Models.Indenting.InspExport
         [Key]
         [StringLength(8)]
         public string InspectionSerialNoID { get; set; }
-
+        [StringLength(8)]
+        [ForeignKey("FabricInspReportExport")]
+        public string InspectionSerialNo { get; set; }
+        public virtual FabricInspReportExport FabricInspReportExport { get; set; }
         [StringLength(25)]
         public string InspectionTypePerformed { get; set; }
 

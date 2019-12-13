@@ -34,12 +34,13 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                 {
                     try
                     {
-
-                       // db.IndCommissionInvoice.Attach(indCommissionInvoice);
-                        db.Entry(indCommissionInvoice).State = System.Data.Entity.EntityState.Modified;
+                        db.Entry(existingRecord).CurrentValues.SetValues(indCommissionInvoice);
                         db.SaveChanges();
+                        // db.IndCommissionInvoice.Attach(indCommissionInvoice);
+                        //db.Entry(indCommissionInvoice).State = System.Data.Entity.EntityState.Modified;
+                        //db.SaveChanges();
 
-                        var cmd1 = ("DELETE FROM IndCommissionInvoiceDetails WHERE CommissionInvoiceKey = " + indCommissionInvoice.CommissionInvoiceKey);
+                        var cmd1 = ("DELETE FROM IndCommissionInvoiceDetails WHERE CommissionInvoiceKey = '" + indCommissionInvoice.CommissionInvoiceKey + "'");
                         db.Database.ExecuteSqlCommand(cmd1);
                         db.SaveChanges();
 
@@ -55,6 +56,11 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                                 Rate = vDetail.Rate,
                                 Total = vDetail.Total,
                                 CompanyId = vDetail.CompanyId,
+                                IndentId = vDetail.IndentId,
+                                IndentKey = vDetail.IndentKey,
+                                Quantity = vDetail.Quantity,
+                                SalesContractDetailID_RefKey = vDetail.SalesContractDetailID_RefKey,
+                                
 
                             };
 

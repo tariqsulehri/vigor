@@ -9,11 +9,11 @@ namespace ERP.Core.IRepositories.Indenting.Inspection
 {
     public interface IYarnInspectionRepository
     {
-        void Add(YarnInspection yarnInspection);
-        void Edit(YarnInspection yarnInspection);
+        YarnInspection Add(YarnInspection yarnInspection);
+        YarnInspection Edit(YarnInspection yarnInspection);
         bool Remove(YarnInspection yarnInspection);
         YarnInspection FindById(int id);
-       // bool IsDuplicate(YarnInspection yarnInspection);
+        // bool IsDuplicate(YarnInspection yarnInspection);
         IEnumerable<YarnInspection> GetAllYarnInspections();
     }
 }

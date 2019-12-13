@@ -11,6 +11,13 @@ namespace ERP.Core.Models.Indenting.Inspection
 {
     public class KnittedFabricInspection
     {
+        public KnittedFabricInspection()
+        {
+            this.KnittedFabricInspGrey = new HashSet<KnittedFabricInspGrey>();
+            this.KnittedFabricInspDyed = new HashSet<KnittedFabricInspDyed>();
+            this.KnittedFabricInspBleached = new HashSet<KnittedFabricInspBleached>();
+            this.KnittedFabricInspectionAttachment = new HashSet<KnittedFabricInspectionAttachment>();
+        }
         [Key]
         [StringLength(9)]
         public string InspectionID { get; set; }
@@ -25,7 +32,7 @@ namespace ERP.Core.Models.Indenting.Inspection
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(10)]
         public string IndentKey { get; set; }
-        
+
 
         [ForeignKey("IndDomesticDispatchSchedule")]
         public int ShipmentScheduleId { get; set; }
@@ -69,10 +76,15 @@ namespace ERP.Core.Models.Indenting.Inspection
         [StringLength(1)]
         public string ContainBleached { get; set; }
 
-        public int CompyanyID { get; set;}
+        public int CompyanyID { get; set; }
 
         [Required]
         [StringLength(3)]
         public string CompanyKey { get; set; }
+
+        public virtual ICollection<KnittedFabricInspGrey> KnittedFabricInspGrey { get; set; }
+        public virtual ICollection<KnittedFabricInspDyed> KnittedFabricInspDyed { get; set; }
+        public virtual ICollection<KnittedFabricInspBleached> KnittedFabricInspBleached { get; set; }
+        public virtual ICollection<KnittedFabricInspectionAttachment> KnittedFabricInspectionAttachment { get; set; }
     }
 }

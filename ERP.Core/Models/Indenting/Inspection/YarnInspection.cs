@@ -127,8 +127,8 @@ namespace ERP.Core.Models.Indenting.Inspection
         [MaxLength(15)]
         public string CottonColour { get; set; }
         public decimal CottonTrash { get; set; }
-        public char ResultInputType { get; set; }
-
+        [StringLength(1)]
+        public string ResultInputType { get; set; }
         public decimal RingActualCount { get; set; }
         public decimal RingCv { get; set; }
         public decimal RingStr { get; set; }

@@ -13,6 +13,7 @@ namespace ERP.Core.IRepositories.Indenting.IndentExport
         void Edit(FNLCommissionBill FNLCommissionBill);
         bool Remove(FNLCommissionBill FNLCommissionBill);
         FNLCommissionBill FindById(int id);
+
         bool IsDuplicate(FNLCommissionBill FNLCommissionBill);
         IEnumerable<FNLCommissionBill> GetAllFNLCommissionBills();
 

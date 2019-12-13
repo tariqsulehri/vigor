@@ -102,17 +102,20 @@
                                     <div class="form-group row">
                                         <div class="col-lg-6">
                                             <label>Date:</label>
-                                            @Html.TextBoxFor(a => a.InquiryDate, new { @class = "form-control ", type = "Date", Value = Model.InquiryDate.ToString("yyyy-MM-dd") })
+                                            @Html.TextBoxFor(a => a.InquiryDate, new { @class = "form-control ", type = "Date", Value = Model.InquiryDate.ToString("yyyy-MM-dd"), disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.InquiryDate)
                                             @Html.ValidationMessageFor(model => model.InquiryDate, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-6">
                                             <label>Commodity:</label>
-                                            @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control " })
+                                            @Html.DropDownListFor(a => a.CommodityTypeId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control ", disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.CommodityTypeId)
                                             @Html.ValidationMessageFor(model => model.CommodityTypeId, "", new { @class = "text-danger" })
                                         </div>
                                         <div class="col-lg-12">
                                             <label>Department:</label>
-                                            @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control " })
+                                            @Html.DropDownListFor(a => a.DepartmentID, new SelectList(new HrDepartmentRepository().GetAllDepartment(), "Id", "title"), "", new { @class = "form-control ", disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.DepartmentID)
                                             @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
 
                                         </div>
@@ -170,7 +173,8 @@
                                     <div class="form-group row">
                                         <div class="col-lg-6">
                                             <label>Inquiry NO:</label>
-                                            @Html.TextBoxFor(a => a.InquiryKey, new { @class = "form-control" })
+                                            @Html.TextBoxFor(a => a.InquiryKey, new { @class = "form-control", disabled = "disabled" })
+                                            @Html.HiddenFor(a => a.InquiryKey)
                                             @Html.ValidationMessageFor(model => model.InquiryKey, "", new { @class = "text-danger" })
 
                                         </div>

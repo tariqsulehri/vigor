@@ -142,9 +142,11 @@ namespace ERP.Infrastructure
         public virtual DbSet<IndExportShipmentScheduleMaster> IndExportShipmentScheduleMaster { get; set; }
         public virtual DbSet<IndExportShipmentScheduleDetail> IndExportShipmentScheduleDetail { get; set;}
 
+        public virtual DbSet<FNLAccount> FNLAccounts { get; set; }
         public virtual DbSet<FNLCommissionBill> FNLCommissionBills { get; set; }
         public virtual DbSet<FNL_CommissionPaymentDetail> FNL_CommissionPaymentDetails { get; set; }
-        
+        public virtual DbSet<IndExportLCDetail> IndExportLCDetails { get; set; }
+
         #endregion
 
 

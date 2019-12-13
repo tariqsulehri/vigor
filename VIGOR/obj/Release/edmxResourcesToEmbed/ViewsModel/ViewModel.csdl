@@ -251,7 +251,7 @@
     <Property Name="InquiryKey" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="true" />
     <Property Name="InquiryDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="Department" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CommodityId" Type="Int32" Nullable="false" />
     <Property Name="Commodity" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
@@ -259,13 +259,13 @@
     <Property Name="PaymentTerms" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="ComodityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" />
+    <Property Name="InquiryClosedDate" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Delivery" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-    <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
-    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InquiryStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="IsClosed" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DepartmentID" Type="Int32" Nullable="false" />
     <Property Name="SellectId" Type="Int32" Nullable="false" />
     <Property Name="seller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -281,6 +281,7 @@
     <Property Name="CommodityId" Type="Int32" Nullable="false" />
     <Property Name="DispQuantity" Type="Decimal" Precision="38" Scale="2" />
     <Property Name="ReturnQuantity" Type="Decimal" Precision="38" Scale="2" />
+    <Property Name="PaymentQuantity" Type="Decimal" Precision="38" Scale="2" />
   </EntityType>
   <EntityType Name="view_IndDomestic_Inquiry_Offers">
     <Key>
@@ -560,6 +561,13 @@
       <PropertyRef Name="indentClosed" />
       <PropertyRef Name="IsApproved" />
       <PropertyRef Name="IsSubmitForApproval" />
+      <PropertyRef Name="closedDate" />
+      <PropertyRef Name="IsScheduleGenerated" />
+      <PropertyRef Name="IsUpdated" />
+      <PropertyRef Name="isCancelled" />
+      <PropertyRef Name="isShipments" />
+      <PropertyRef Name="isInvoiced" />
+      <PropertyRef Name="IsSample" />
     </Key>
     <Property Name="indentId" Type="Int32" Nullable="false" />
     <Property Name="LocalContractNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -609,5 +617,12 @@
     <Property Name="FinancialRemarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="Specificatiions" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="PriceTerms" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="closedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsScheduleGenerated" Type="Boolean" Nullable="false" />
+    <Property Name="IsUpdated" Type="Boolean" Nullable="false" />
+    <Property Name="isCancelled" Type="Boolean" Nullable="false" />
+    <Property Name="isShipments" Type="Boolean" Nullable="false" />
+    <Property Name="isInvoiced" Type="Boolean" Nullable="false" />
+    <Property Name="IsSample" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

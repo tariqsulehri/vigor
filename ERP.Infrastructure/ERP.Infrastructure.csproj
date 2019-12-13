@@ -372,6 +372,38 @@
     <Compile Include="Migrations\201911281551292_DefaultdataUsers.Designer.cs">
       <DependentUpon>201911281551292_DefaultdataUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912041535402_PaymentAddOnRelationChanged.cs" />
+    <Compile Include="Migrations\201912041535402_PaymentAddOnRelationChanged.Designer.cs">
+      <DependentUpon>201912041535402_PaymentAddOnRelationChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051642521_fabInspExport.cs" />
+    <Compile Include="Migrations\201912051642521_fabInspExport.Designer.cs">
+      <DependentUpon>201912051642521_fabInspExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061108527_FabExport_detail_merge.cs" />
+    <Compile Include="Migrations\201912061108527_FabExport_detail_merge.Designer.cs">
+      <DependentUpon>201912061108527_FabExport_detail_merge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061533042_FNLAccountTable.cs" />
+    <Compile Include="Migrations\201912061533042_FNLAccountTable.Designer.cs">
+      <DependentUpon>201912061533042_FNLAccountTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912101544349_YarnInspResultTypeInput.cs" />
+    <Compile Include="Migrations\201912101544349_YarnInspResultTypeInput.Designer.cs">
+      <DependentUpon>201912101544349_YarnInspResultTypeInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912111453126_UpdatedRelationsForKinttedFabric.cs" />
+    <Compile Include="Migrations\201912111453126_UpdatedRelationsForKinttedFabric.Designer.cs">
+      <DependentUpon>201912111453126_UpdatedRelationsForKinttedFabric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912111612409_FNLACCOUNTRelations.cs" />
+    <Compile Include="Migrations\201912111612409_FNLACCOUNTRelations.Designer.cs">
+      <DependentUpon>201912111612409_FNLACCOUNTRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912111638571_LCTable.cs" />
+    <Compile Include="Migrations\201912111638571_LCTable.Designer.cs">
+      <DependentUpon>201912111638571_LCTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -467,6 +499,7 @@
     <Compile Include="Repositories\Indenting\IndentDemestic\IndDomesticRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentDemestic\IndentRevisionLogRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentDemestic\IndInquiryReviewQuestionRepository.cs" />
+    <Compile Include="Repositories\Indenting\IndentExport\FNLAccountRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\FNLCommissionBillRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryOfferRepository.cs" />
     <Compile Include="Repositories\Indenting\IndentExport\IndExportInquiryRepository.cs" />
@@ -526,6 +559,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Repositories\Indenting\IndentDemestic\ScheduleDomesticSaleFabrics-A.xlt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\VMFinLedger.sql">
@@ -770,6 +804,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911281551292_DefaultdataUsers.resx">
       <DependentUpon>201911281551292_DefaultdataUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912041535402_PaymentAddOnRelationChanged.resx">
+      <DependentUpon>201912041535402_PaymentAddOnRelationChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051642521_fabInspExport.resx">
+      <DependentUpon>201912051642521_fabInspExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061108527_FabExport_detail_merge.resx">
+      <DependentUpon>201912061108527_FabExport_detail_merge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061533042_FNLAccountTable.resx">
+      <DependentUpon>201912061533042_FNLAccountTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912101544349_YarnInspResultTypeInput.resx">
+      <DependentUpon>201912101544349_YarnInspResultTypeInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912111453126_UpdatedRelationsForKinttedFabric.resx">
+      <DependentUpon>201912111453126_UpdatedRelationsForKinttedFabric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912111612409_FNLACCOUNTRelations.resx">
+      <DependentUpon>201912111612409_FNLACCOUNTRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912111638571_LCTable.resx">
+      <DependentUpon>201912111638571_LCTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

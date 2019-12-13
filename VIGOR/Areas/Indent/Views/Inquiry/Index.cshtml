@@ -90,7 +90,6 @@
                                         <div class="col-lg-2">
                                             <label>Status:</label>
                                             @Html.DropDownList("InquiryStatus", Enum.GetValues(typeof(ERP.Common.InquieryStatus)).Cast<ERP.Common.InquieryStatus>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control" })
-
                                             @*@Html.DropDownList("InquiryStatus", new SelectList(Enumeration.GetAll<ERP.Common.InquieryStatus>(), "Key", "Value"), new { @class = "form-control" })*@
                                         </div>
 

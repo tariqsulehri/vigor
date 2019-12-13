@@ -21,18 +21,18 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 
         public void Edit(KnittedFabricInspDyed KnittedFabricInspDyed)
         {
-            try
-            {
-                var existingRecord = db.KnittedFabricInspDyed.Find(KnittedFabricInspDyed.InspectionCode);
-                db.Entry(existingRecord).CurrentValues.SetValues(KnittedFabricInspDyed);
-                db.SaveChanges();
+            //try
+            //{
+            //    var existingRecord = db.KnittedFabricInspDyed.Find(KnittedFabricInspDyed.InspectionCode);
+            //    db.Entry(existingRecord).CurrentValues.SetValues(KnittedFabricInspDyed);
+            //    db.SaveChanges();
 
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.Message);  
-                throw ex;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    //Console.WriteLine(ex.Message);  
+            //    throw ex;
+            //}
         }
 
         public KnittedFabricInspDyed FindById(string id)
@@ -59,22 +59,24 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 
         public bool Remove(KnittedFabricInspDyed KnittedFabricInspDyed)
         {
-            var existingRecord = db.KnittedFabricInspDyed.Find(KnittedFabricInspDyed.InspectionCode);
 
-            if (existingRecord != null)
-            {
-                db.KnittedFabricInspDyed.Remove(existingRecord);
-            }
+            //var existingRecord = db.KnittedFabricInspDyed.Find(KnittedFabricInspDyed.InspectionCode);
 
-            if (db.SaveChanges() == 1)
-            {
-                return true;
+            //if (existingRecord != null)
+            //{
+            //    db.KnittedFabricInspDyed.Remove(existingRecord);
+            //}
 
-            }
-            else
-            {
-                return false;
-            };
+            //if (db.SaveChanges() == 1)
+            //{
+            //    return true;
+
+            //}
+            //else
+            //{
+            //    return false;
+            //};
+            return true;
         }
     }
 }

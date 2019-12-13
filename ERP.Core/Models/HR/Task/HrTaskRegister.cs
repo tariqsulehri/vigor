@@ -51,9 +51,8 @@ namespace ERP.Core.Models.HR.Task
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime CompletionDate { get; set; }
-
-
-        public ICollection<HrTaskRegister> HrTaskRegisters { get; set; }
+        
+        //public ICollection<HrTaskRegister> HrTaskRegisters { get; set; }
 
         public int CreatedBy { get; set; }
 

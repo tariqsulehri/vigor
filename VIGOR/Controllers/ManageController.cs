@@ -8,9 +8,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using VIGOR.Models;
 using VIGOR.App_Start;
-using VIGOR.Controllers;
-using VIGOR.Models;
-
 namespace VIGOR.Controllers
 {
     [Authorize]

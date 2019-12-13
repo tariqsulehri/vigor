@@ -4,7 +4,10 @@
     } catch (e1) {} 
     try {
         CommSelectionChanged();
-    } catch (e2) {} 
+    } catch (e2) {}
+    try {
+        QuantityChanged();
+    } catch (e3) { } 
     try {
         DispatchTypeChanged();
     } catch (e) {} 
@@ -28,7 +31,6 @@ function DispatchTypeChanged() {
     }
 }
 function CommSelectionChanged() {
-    debugger;
     var dropdown = document.getElementById('drop');
     var cartItems = [];
 
@@ -59,7 +61,7 @@ function CommSelectionChanged() {
 
 }
 function QuantityChanged() {
-
+    debugger;
     var dropdown = document.getElementById('CommDrop');
     var cartItems = [];
     $("#m_table_1 tbody tr").each(function () {
@@ -71,10 +73,10 @@ function QuantityChanged() {
     });
 
 
-    var UOS = cartItems[dropdown.selectedIndex - 1].UoSID;
+    var UOS = cartItems[dropdown.selectedIndex].UoSID;
 
     var quantity = document.getElementById('Quantity');
-    var rate = cartItems[dropdown.selectedIndex - 1].UnitName;
+    var rate = cartItems[dropdown.selectedIndex].UnitName;
     var amount = document.getElementById('Amount');
     var netAmount = document.getElementById('netAmount');
     var tax = document.getElementById('tax');
@@ -143,5 +145,5 @@ function CalculateYarnPayment() {
     });
     document.getElementById('netAmount').value = netTotal;
     taxAmount.value = netTotal * tax / 100;
-    document.getElementById('totalAmount').value = netTotal - taxAmount.value;
+    document.getElementById('totalAmount').value = Number(netTotal) + Number(taxAmount.value);
 }

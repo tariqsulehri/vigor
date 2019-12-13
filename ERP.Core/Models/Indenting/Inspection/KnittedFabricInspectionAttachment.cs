@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,14 @@ namespace ERP.Core.Models.Indenting.Inspection
 {
     public class KnittedFabricInspectionAttachment
     {
-        [Key]
-        [StringLength(11)]
-        public string InspectionCode { get; set; }
+        public int id { get; set; }
+        //[Key]
+        //[StringLength(11)]
+        //public string InspectionCode { get; set; }
+
+        [ForeignKey("KnittedFabricInspection")]
+        public string InspectionID { get; set; }
+        public virtual KnittedFabricInspection KnittedFabricInspection { get; set; }
 
         [StringLength(150)]
         public string FileName { get; set; }

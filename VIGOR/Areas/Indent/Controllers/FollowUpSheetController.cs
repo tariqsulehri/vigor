@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Web;E:\Vigour\Vigour\VIGOR\Areas\Indent\Controllers\FollowUpSheetController.cs
 using System.Web.Mvc;
 using ERP.Core.Models.Admin;
 using ERP.Infrastructure.Repositories.Indenting.IndentDemestic;
@@ -50,6 +50,7 @@ namespace VIGOR.Areas.Indent.Controllers
                 return View();
             }
             dbContext = new Entities();
+
             if (IndentStatus.Trim().Equals("Y"))
             {
                 ViewBag.Contracts = dbContext.view_IndDomestic_detail.ToList()
@@ -68,7 +69,9 @@ namespace VIGOR.Areas.Indent.Controllers
                     .Where(a => a.CommodityId.Equals(CommodityTypeId) || CommodityTypeId.Equals(0))
                     .Where(a => a.LocalContractNo.Trim().Equals(IndentKey) || IndentKey.Equals(string.Empty))
                     .Where(a => a.SellectId.Equals(CustomerIDasSeller) || CustomerIDasSeller.Equals(0))
-                    .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0));
+                    .Where(a => a.BuyerId.Equals(CustomerIDasBuyer) || CustomerIDasBuyer.Equals(0))
+                    .Where(a => a.IndentStatus);
+
             }
             else if(IndentStatus.Trim().Equals("C"))
             {
@@ -268,8 +271,11 @@ namespace VIGOR.Areas.Indent.Controllers
         {
             int? IndId = Convert.ToInt32(TempData["Id"]);
             string reportType = TempData["rptType"].ToString();
+
             ReportDocument reportDocument = new ReportDocument();
+
             string reportPath = string.Empty;
+
             if (!string.IsNullOrEmpty(reportType))
             {
                 if (reportType.Equals("BlankDSS"))

@@ -147,7 +147,6 @@ namespace VIGOR.Areas.General.Controllers.Settings
                 return Json(query, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex) { throw ex; }
-            return Json(JsonRequestBehavior.AllowGet);
         }
     }
 }

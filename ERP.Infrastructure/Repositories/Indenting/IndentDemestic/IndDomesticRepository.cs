@@ -33,34 +33,54 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             db.IndDomestic.Add(indDomestic);
             db.SaveChanges();
         }
-
-        public void Add(IndDomestic indDomestic, ICollection<IndentAgent> indentAgent, string indentType)
+        public string CloseContact(int indentId)
         {
-            db.IndDomestic.Add(indDomestic);
-            db.SaveChanges();
-            var indId = GetIndIdByKey(indDomestic.IndentKey);
-
-            foreach (var agent in indentAgent)
+            decimal qtyOrder = GetIndentQuantityById(indentId);// (indentId);
+            decimal qtyDispatch = 0;
+            decimal qtyReturn = 0;
+            decimal qtyPayment = 0;
+            decimal saleTaxQty = 0;
+            if (qtyOrder > 0)
             {
-                agent.IndentId = indId;
-                db.IndentAgents.Add(agent);
+                List<IndDomesticDispatchSchedule> dispatches = db.IndDomesticDispatchSchedules.Where(x => x.IndentId == indentId).OrderBy(x => x.Id).ToList();
+                foreach (var disp in dispatches)
+                {
+                    if (disp.TypeOfTransaction == "D")
+                    {
+                        qtyDispatch = qtyDispatch + disp.Quantity;
+                        saleTaxQty = (disp.IsReceivedStinv ? saleTaxQty + disp.Quantity : saleTaxQty + 0);
+                    }
+                    if (disp.TypeOfTransaction == "R")
+                    {
+                        qtyReturn = qtyReturn + disp.Quantity;
+                    }
+                    if (disp.TypeOfTransaction == "P")
+                    {
+                        qtyPayment = qtyPayment + disp.Quantity;
+                    }
+                }
             }
-            db.SaveChanges();
 
-            //IndentInfo indentInfo = new IndentInfo
-            //{
-            //    IndentId = indDomestic.Id,
-            //    SalesContractNo = indDomestic.IndentKey,
-            //    SellerContractNo = indDomestic.SuppContract,
-            //    PurchaseOrderNo = indDomestic.PONumber,
-            //    CompanyID = indDomestic.CompanyId
-            //};
-
-            //db.IndentInfos.Add(indentInfo);
-            //db.SaveChanges();
-
+            decimal ActualQuantityDispatched = qtyDispatch - qtyReturn;
+            if (qtyDispatch != saleTaxQty)
+                return "s"; //sales tax invoices missing
+            else if (ActualQuantityDispatched != qtyPayment)
+            {
+                return "p"; //payment not received for all dispatches
+            }
+            else if (qtyDispatch == 0)
+            {
+                return "c";//cancel contract if no dispatches
+            }
+            else if (qtyDispatch > 0 && qtyDispatch < qtyOrder)
+            {
+                return "d";//partial cancel contract if all quantity is not dipatched
+            }
+            else
+            {
+                return "a";//close contract
+            }
         }
-
         public void Edit(IndDomestic indDomestic)
         {
             IndDomestic existingRecord = db.IndDomestic.Find(indDomestic.Id);
@@ -186,6 +206,12 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             IndDomestic ind = db.IndDomestic.Find(id);
             return ind;
         }
+        public decimal GetIndentQuantityById(int indentId)
+        {
+            decimal qty;
+            qty = db.IndDomesticDetail.Where(x => x.IndentId == indentId).Select(x => x.Quantity).SingleOrDefault();
+            return qty;
+        }
         public decimal GetIndentQuantityById(int id, int commodityId)
         {
             decimal qty;
@@ -260,6 +286,33 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
         }
 
+        public void Add(IndDomestic indDomestic, ICollection<IndentAgent> indentAgent, string indentType)
+        {
+            db.IndDomestic.Add(indDomestic);
+            db.SaveChanges();
+            var indId = GetIndIdByKey(indDomestic.IndentKey);
+
+            foreach (var agent in indentAgent)
+            {
+                agent.IndentId = indId;
+                db.IndentAgents.Add(agent);
+            }
+            db.SaveChanges();
+
+            //IndentInfo indentInfo = new IndentInfo
+            //{
+            //    IndentId = indDomestic.Id,
+            //    SalesContractNo = indDomestic.IndentKey,
+            //    SellerContractNo = indDomestic.SuppContract,
+            //    PurchaseOrderNo = indDomestic.PONumber,
+            //    CompanyID = indDomestic.CompanyId
+            //};
+
+            //db.IndentInfos.Add(indentInfo);
+            //db.SaveChanges();
+
+        }
+
 
         public IEnumerable<IndentAgent> GetAgentsByIndentId(int indentId)
         {
@@ -276,7 +329,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                 {
                     try
                     {
-
                         var cmd1 = ("DELETE FROM IndentAgents WHERE IndentId = '" + indDomestic.Id + "'");
                         db.Database.ExecuteSqlCommand(cmd1);
 
@@ -284,7 +336,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                         {
                             db.IndentAgents.Add(agent);
                         }
-
                         db.SaveChanges();
 
                         var cmd2 = ("DELETE FROM IndentInfoes WHERE IndentId = '" + indDomestic.Id + "'");
@@ -317,8 +368,8 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                             IndCommission indComm = new IndCommission()
                             {
                                 SaleContractCommID = commDetail.SaleContractCommID,
-                                IndentId = commDetail.IndentId,
-                                IndentKey = commDetail.IndentKey,
+                                IndentId = indDomestic.Id,
+                                IndentKey = indDomestic.IndentKey,
                                 CustomerIdCommPaidTo = commDetail.CustomerIdCommPaidTo,
                                 CustomerIdCommPaidFrom = commDetail.CustomerIdCommPaidFrom,
                                 CommissionRate = commDetail.CommissionRate,

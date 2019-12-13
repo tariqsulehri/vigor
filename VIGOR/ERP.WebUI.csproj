@@ -59,9 +59,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\old\Vigour30\VIGOR\bin\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\vigour\vigour 25\VIGOR\bin\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\old\Vigour30\VIGOR\bin\EntityFramework.dll</HintPath>
@@ -782,12 +785,15 @@
     <Content Include="Content\VigorJs\Group\_CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\Allowance\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\Allowance\Index.js" />
+    <Content Include="Content\VigorJs\HR\AttendenceSheet\AttendenceSheet.js" />
     <Content Include="Content\VigorJs\HR\CINCR\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\CINCR\Index.js" />
     <Content Include="Content\VigorJs\HR\Degree\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\Degree\Index.js" />
     <Content Include="Content\VigorJs\HR\EmpType\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\EmpType\Index.js" />
+    <Content Include="Content\VigorJs\HR\Gazzetted\CreateOrUpdate.js" />
+    <Content Include="Content\VigorJs\HR\Gazzetted\Index.js" />
     <Content Include="Content\VigorJs\HR\History\CreateOrUpdate.js" />
     <Content Include="Content\VigorJs\HR\History\Index.js" />
     <Content Include="Content\VigorJs\HR\Increment\CreateOrUpdate.js" />
@@ -1761,7 +1767,6 @@
     <Content Include="Areas\Indent\Views\IndDomesticDispatchSchedule\Create.cshtml" />
     <Content Include="Areas\Indent\Views\IndDomesticDispatchSchedule\Dispatch.cshtml" />
     <Content Include="Areas\Indent\Views\IndDomesticDispatchSchedule\Index.cshtml" />
-    <Content Include="Areas\Indent\Views\IndDomestic\Create.cshtml" />
     <Content Include="Areas\Indent\Views\Dispatch\Details.cshtml" />
     <Content Include="Areas\Indent\Views\Dispatch\_CreateOrUpdate.cshtml" />
     <Content Include="Areas\Indent\Views\IndDomesticDispatchPayment\_CreateUpdatePayment.cshtml" />
@@ -2005,6 +2010,7 @@
     <Content Include="Areas\HR\Views\EmpLoanAdvApplication\Details.cshtml" />
     <Content Include="Areas\HR\Views\EmpLoanAdvRec\LoanAdvApproval\Index.cshtml" />
     <Content Include="Areas\HR\Views\Allowance\Add.cshtml" />
+    <Content Include="Areas\HR\Views\GazzettedDay\Edit.cshtml" />
     <None Include="DataSets\CONTROLBALANCE.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2177,7 +2183,6 @@
     <Compile Include="Areas\Indent\Controllers\IndentDomestic\AboutDispatchController.cs" />
     <Compile Include="Areas\Indent\Controllers\IndentDomestic\AboutSaleController.cs" />
     <Compile Include="Areas\Indent\Controllers\IndentDomestic\DomesticCommInvController.cs" />
-    <Compile Include="Areas\Indent\Controllers\IndentDomestic\IndDomesticController.cs" />
     <Compile Include="Areas\Indent\Controllers\IndentDomestic\IndDomesticDispatchPaymentController.cs" />
     <Compile Include="Areas\Indent\Controllers\IndentDomestic\SupplierPerformanceController.cs" />
     <Compile Include="Areas\Indent\Controllers\IndentDomestic\YarnInspectionReportController.cs" />

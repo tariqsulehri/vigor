@@ -110,13 +110,14 @@ namespace ERP.Core.Models.Party
         public virtual ICollection<CustomerBrand> CustomerBrands { get; set; }
         public virtual ICollection<CustomerContactPerson> CustomerContactPerson { get; set; }
         public virtual ICollection<CustomerUnit> CustomerUnits { get; set; }
+        public virtual ICollection<FNLAccount> FNLAccounts { get; set;}
 
         public ICollection<IndDomesticInquiry> IndDomesticInquiries { get; set; }
         public ICollection<IndExportInquiry> IndExportInquiry { get; set; }
         public ICollection<IndDomestic> IndDomestic { get; set; }
 
         //public ICollection<IndDomesticDetail> IndDomesticDetail { get; set; }
-//        public ICollection<FabricInspReportLocal> FabricInspReportLocal { get; set; }
+  //    public ICollection<FabricInspReportLocal> FabricInspReportLocal { get; set; }
         public ICollection<IndCommissionInvoiceDetail> IndCommissionInvoiceDetail { get; set; }
 //        public virtual ICollection<YarnInspection> YarnInspections { get; set; }
         public virtual ICollection<FabricSample> FabricSample { get; set; }

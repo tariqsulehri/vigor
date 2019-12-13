@@ -1,0 +1,68 @@
+﻿@model ERP.Core.Models.HR.HR_GazzettedDays
+@{
+    Layout = null;
+}
+<div class="modal-dialog modal-dialog-centered" role="dialog">
+    <div class="modal-content ">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Gazzetted Day</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @using (Html.BeginForm("Edit", "GazzettedDay", FormMethod.Post, new { id = "GazzettedDayForm" }))
+        {
+            @Html.HiddenFor(a => a.GazzettedDateId)
+            @Html.HiddenFor(a => a.companyID)
+            @Html.HiddenFor(a => a.CompanyKey)
+            @Html.HiddenFor(a => a.TranYear)
+            @Html.HiddenFor(a => a.CreatedBy)
+            @Html.HiddenFor(a => a.CreatedOn)
+
+            <div class="modal-body">
+                <div class="form-group row">
+                    <div class="col-lg-6">
+                        <label>Date From:</label>
+                        @Html.TextBoxFor(a => a.GazzettedDateFrom, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(a => a.GazzettedDateFrom, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Date To:</label>
+                        @Html.TextBoxFor(a => a.GazzettedDateTo, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(a => a.GazzettedDateTo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-12">
+                        <label>Description:</label>
+                        @Html.TextAreaFor(a => a.Description, new { @class = "form-control", @type = "text", @col = "20", @rows = "2" })
+                        @Html.ValidationMessageFor(a => a.Description, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-4" style="padding-top:20px;">
+                        <div class="m-checkbox-list">
+                            <label class="m-checkbox m-checkbox--primary">
+                                @Html.CheckBoxFor(a => a.IsActive, new { @class = "form-control", @type = "checkbox" })
+                                Is Active
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="SubmitGazzettedDayForm()">
+                    <span>
+                        <i class="fa fa-save"></i>
+                        <span>Save</span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                    <span>
+                        <i class="flaticon-cancel"></i>
+                        <span>Cancel</span>
+                    </span>
+                </button>
+            </div>
+        }
+    </div>
+
+</div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using ERP.Core.IRepositories.Indenting.Inspection;
+using ERP.Core.Models.Admin;
 using ERP.Core.Models.Indenting.Inspection;
 using ERP.Core.Models.Indenting.InspExport;
 
@@ -57,7 +58,15 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
             return db.KnittedFabricInspections.ToList();
         }
 
-
+        public string GetSerialNo()
+        {
+            string serial = "";
+            int maxNo = db.KnittedFabricInspections.Count();
+            maxNo += 1;
+            serial = LoggedinUser.Company.Id.ToString().PadLeft(3, '0') + DateTime.Now.ToString("yy") +
+                     maxNo.ToString().PadLeft(4, '0');
+            return serial;
+        }
         public bool Remove(KnittedFabricInspection KnittedFabricInspection)
         {
             var existingRecord = db.KnittedFabricInspections.Find(KnittedFabricInspection.InspectionID);

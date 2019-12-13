@@ -22,18 +22,19 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 
         public void Edit(KnittedFabricInspectionAttachment KnittedFabricInspectionAttachment)
         {
-            try
-            {
-                var existingRecord = db.KnittedFabricInspectionAttachment.Find(KnittedFabricInspectionAttachment.InspectionCode);
-                db.Entry(existingRecord).CurrentValues.SetValues(KnittedFabricInspectionAttachment);
-                db.SaveChanges();
+            //try
+            //{
+            //    var existingRecord = db.KnittedFabricInspectionAttachment.Find(KnittedFabricInspectionAttachment.InspectionCode);
+            //    db.Entry(existingRecord).CurrentValues.SetValues(KnittedFabricInspectionAttachment);
+            //    db.SaveChanges();
 
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine(ex.Message);  
-                throw ex;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    //Console.WriteLine(ex.Message);  
+            //    throw ex;
+            //}
+            
         }
 
         public KnittedFabricInspectionAttachment FindById(string id)
@@ -60,22 +61,23 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 
         public bool Remove(KnittedFabricInspectionAttachment KnittedFabricInspectionAttachment)
         {
-            var existingRecord = db.KnittedFabricInspectionAttachment.Find(KnittedFabricInspectionAttachment.InspectionCode);
+            //var existingRecord = db.KnittedFabricInspectionAttachment.Find(KnittedFabricInspectionAttachment.InspectionCode);
 
-            if (existingRecord != null)
-            {
-                db.KnittedFabricInspectionAttachment.Remove(existingRecord);
-            }
+            //if (existingRecord != null)
+            //{
+            //    db.KnittedFabricInspectionAttachment.Remove(existingRecord);
+            //}
 
-            if (db.SaveChanges() == 1)
-            {
-                return true;
+            //if (db.SaveChanges() == 1)
+            //{
+            //    return true;
 
-            }
-            else
-            {
-                return false;
-            };
+            //}
+            //else
+            //{
+            //    return false;
+            //};
+            return true;
         }
     }
 }

@@ -43,16 +43,24 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                     Where(x => x.IndentId == indentId && x.CommodityId == productId).
                     OrderBy(x => x.Id).
                     ToList();
+                    decimal excutedQuantity = 0;
+                    decimal excutedValue = 0;
                 foreach (var disp in dispatches)
                 {
                     if (disp.TypeOfTransaction == "D")
                     {
                         qty = qty - disp.Quantity;
+                        excutedQuantity += disp.Quantity;
                     }
 
-                    if (disp.TypeOfTransaction == "R")
+                    else if (disp.TypeOfTransaction == "R")
                     {
                         qty = qty + disp.Quantity;
+                        excutedQuantity -= disp.Quantity;
+                    }
+                    else if(disp.TypeOfTransaction == "P")
+                    {
+                        excutedValue += disp.ReceivableAfterTaxes;
                     }
 
                     disp.Balance = qty;
@@ -61,9 +69,17 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
                     db.Entry(existingRecord).CurrentValues.SetValues(disp);
                     db.SaveChanges();
 
+                    
                 }
+                var existingIndDomestic = db.IndDomestic.Find(indentId);
+                existingIndDomestic.ExecutedTotalValue = excutedQuantity;
+                foreach (var indDomesticDetail in existingIndDomestic.IndDomesticDetails)
+                {
+                        indDomesticDetail.ExecutedQuantity = excutedQuantity;
+                        indDomesticDetail.ExecutedValue = excutedValue;
+                }
+                indDomesticRepository.Edit(existingIndDomestic);
             }
-
         }
         public void Edit(IndDomesticDispatchSchedule indDomesticDispatchSchedule)
         {

@@ -70,6 +70,7 @@ namespace VIGOR.Areas.General.Controllers.Settings
             }
             catch (Exception s)
             {
+                
                 return View(model);
             }
         }

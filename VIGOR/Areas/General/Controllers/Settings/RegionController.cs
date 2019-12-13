@@ -93,7 +93,7 @@ namespace VIGOR.Areas.General.Controllers.Settings
         // GET: Region/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return null;
             }

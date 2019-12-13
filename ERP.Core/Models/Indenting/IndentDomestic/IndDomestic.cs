@@ -197,6 +197,7 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public virtual ICollection<KnittedFabricInspection> KnittedFabricInspections { get; set; }
         public virtual ICollection<IndentInfo> IndentInfos { get; set; }
         public virtual ICollection<IndExportShipmentScheduleMaster> IndExportShipmentScheduleMaster { get; set; }
+        public virtual ICollection<IndExportLCDetail> ExportLCDetails { get; set; }
 
         //============================================
         public bool IsSubmitForApproval { get; set; }

@@ -66,7 +66,46 @@ namespace ERP.Infrastructure.Repositories.HR
             }
             return false;
         }
+        public bool UpdatLeaveRequest(HR_LeaveRequest HR_LeaveRequests)
+        {
+            if (HR_LeaveRequests.IsApproved == true)
+            {
+                var days = (HR_LeaveRequests.LeaveRequestedTo - HR_LeaveRequests.LeaveRequiredFrom).TotalDays + 1;
 
+                HR_EmployeeLeaveBalance empLeaves = _db.HR_EmployeeLeaveBalance.Where(x => x.EmployeeId == HR_LeaveRequests.EmployeeId).SingleOrDefault();
+                if (empLeaves != null)
+                {
+                    empLeaves.LeavesInBalance = empLeaves.LeavesInBalance - Convert.ToInt32(days);
+                    empLeaves.LeavesConsumed = empLeaves.LeavesConsumed + Convert.ToInt32(days);
+                }
+
+                var existingRecord = _db.HR_EmployeeLeaveBalance.Where(x => x.EmployeeId == HR_LeaveRequests.EmployeeId).SingleOrDefault();
+
+                _db.Entry(existingRecord).CurrentValues.SetValues(empLeaves);
+                _db.SaveChanges();
+            }
+
+
+            HR_LeaveRequest empLeavesRequest = _db.HR_LeaveRequests.Where(x => x.LeaveRequestMasterID == HR_LeaveRequests.LeaveRequestMasterID).SingleOrDefault();
+            var existingRecrod1 = _db.HR_LeaveRequests.Where(x => x.LeaveRequestMasterID == HR_LeaveRequests.LeaveRequestMasterID).SingleOrDefault();
+            if (HR_LeaveRequests.IsApproved == true)
+            {
+                empLeavesRequest.IsPending = false;
+                empLeavesRequest.ApprovedOn = DateTime.Now;
+                empLeavesRequest.IsActive = false;
+            }
+            else
+            {
+                empLeavesRequest.IsPending = false;
+                empLeavesRequest.IsActive = false;
+            }
+
+
+            _db.Entry(existingRecrod1).CurrentValues.SetValues(empLeavesRequest);
+            _db.SaveChanges();
+            //------------------------------
+            return true;
+        }
         public bool Remove(string id)
         {
             var existingRecord = _db.HR_EmployeeLeaveBalance.Find(id);

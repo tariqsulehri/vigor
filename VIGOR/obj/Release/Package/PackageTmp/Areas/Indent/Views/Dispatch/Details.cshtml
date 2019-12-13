@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div class=" m-demo__preview--btn">
-                    @if (Model.isCancelled || Model.isClosed || !(Model.IndentStatus))
+                    @if (Model.isCancelled || Model.isClosed || !(Model.IndentStatus) || !Model.IsApproved)
                     {
 
                         <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only disabled">
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class=" m-demo__preview--btn">
-                    @if (Model.isCancelled || Model.isClosed || !(Model.IndentStatus))
+                    @if (Model.isCancelled || Model.isClosed || !(Model.IndentStatus) || !Model.IsApproved)
                     {
                         <a href="#" class="btn btn-info m-btn m-btn--icon m-btn--icon-only disabled">
                             <i class="flaticon-plus"></i>

@@ -28,14 +28,14 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
         public int domPaymentAddOnListId { get; set; }
         public virtual IndDomesticPaymentsAddOnList IndDomesticPaymentsAddOnList { get; set; }
         
-        [Required(ErrorMessage = "Field is required....")]
-        [ForeignKey("IndDomesticDispatchSchedule")]
-        public int LocalDispatchNo { get; set; }
+        //[Required(ErrorMessage = "Field is required....")]
+        //[ForeignKey("IndDomesticDispatchSchedule")]
+        //public int LocalDispatchNo { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(13)]
         public string LocalDispatchKey { get; set; }
-        public virtual IndDomesticDispatchSchedule IndDomesticDispatchSchedule { get; set;}
+        //public virtual IndDomesticDispatchSchedule IndDomesticDispatchSchedule { get; set;}
 
         [Required(ErrorMessage = "Field is required....")]
         public decimal Quantity { get; set;}

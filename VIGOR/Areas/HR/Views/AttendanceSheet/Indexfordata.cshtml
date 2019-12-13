@@ -3,9 +3,9 @@
     Layout = null;
 }
 @*<style>
-        .highlight_row {
-            background-color: #ff6a00;
-        }
+    .row tbody tr.highlight td {
+        background-color: #ff6a00;
+    }
     </style>*@
 
 @if (ViewBag.Attendance != null)
@@ -64,15 +64,27 @@
     $('td').click(function () {
         var colIndex = $(this).parent().children().index($(this));
         var rowIndex = $(this).parent().parent().children().index($(this).parent());
-        //alert('Row: ' + rowIndex + ', Column: ' + colIndex);
+        alert('Row: ' + rowIndex + ', Column: ' + colIndex);
     });
-    $('tr').focus(function () {
-        //Check to see if background color is set or if it's set to white.
-        if (this.style.background == "" || this.style.background == "white") {
-            $(this).css('background', '#ff6a00');
-        }
-        else {
-            $(this).css('background', 'white');
-        }
+    //$('.loaddata tr').click(function () {
+    //    debugger;
+    //    $('.loaddata tr').on('click', 'tbody tr', function (event) {
+    //        $(this).addClass('highlight').siblings().removeClass('highlight');
+    //    });
+    //});
+    $(".loaddata tr").click(function () {
+        var selected = $(this).hasClass("highlight");
+        $(".loaddata tr").removeClass("highlight");
+        if (!selected)
+            $(this).addClass("highlight");
     });
+    //$('tr').click(function () {
+    //    //Check to see if background color is set or if it's set to white.
+    //    if (this.style.background == "" || this.style.background == "white") {
+    //        $(this).css('background', '#ff6a00');
+    //    }
+    //    else {
+    //        $(this).css('background', 'white');
+    //    }
+    //});
 </script>

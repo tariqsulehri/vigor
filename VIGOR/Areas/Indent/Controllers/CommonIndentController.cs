@@ -41,7 +41,6 @@ namespace VIGOR.Areas.Indent.Controllers
                 return Json(query, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex) { throw ex; }
-            return Json(JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetProductByCommodity(int comodityID)
@@ -60,7 +59,6 @@ namespace VIGOR.Areas.Indent.Controllers
                 return Json(query, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex) { throw ex; }
-            return Json(JsonRequestBehavior.AllowGet);
         }
     }
 }

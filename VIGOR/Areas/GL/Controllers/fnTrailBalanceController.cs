@@ -37,7 +37,6 @@ namespace VIGOR.Areas.GL.Controllers
             string criteria = string.Empty;
             criteria = " For the Period : " + frDateTime.Value.ToString("dd/MM/yyyy") + "  To : " + toDateTime.Value.ToString("dd/MM/yyyy");
             ViewBag.Criteria = criteria;
-            decimal count = 0;
             using (var context = new ErpDbContext())
             {
                 try

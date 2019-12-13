@@ -15,19 +15,20 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
             db = new ErpDbContext();
         }
 
-        public void Add(YarnInspection yarnInspection)
+        public YarnInspection Add(YarnInspection yarnInspection)
         {
             db.YarnInspection.Add(yarnInspection);
             db.SaveChanges();
+            return yarnInspection;
         }
-
-        public void Edit(YarnInspection yarnInspection)
+        public YarnInspection Edit(YarnInspection yarnInspection)
         {
             try
             {
                 var existingRecord = db.YarnInspection.Find(yarnInspection.Id);
                 db.Entry(existingRecord).CurrentValues.SetValues(yarnInspection);
                 db.SaveChanges();
+                return yarnInspection;
 
             }
             catch (Exception ex)
@@ -38,7 +39,35 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 
 
         }
+        public void EditAttachments(YarnInspectionAttachments yarnInspectionAttachments)    
+        {
+            try
+            {
+                YarnInspectionAttachments existingRecord = db.YarnInspectionAttachments.Find(yarnInspectionAttachments.Id);
 
+                if (existingRecord != null)
+                {
+                    existingRecord.isActive = yarnInspectionAttachments.isActive;
+                    existingRecord.Id = yarnInspectionAttachments.Id;
+                    existingRecord.FileName = yarnInspectionAttachments.FileName;
+                    existingRecord.CreatedBy = yarnInspectionAttachments.CreatedBy;
+                    existingRecord.CreatedOn = yarnInspectionAttachments.CreatedOn;
+                    existingRecord.DeleteBy = yarnInspectionAttachments.DeleteBy;
+                    existingRecord.DeleteOn = yarnInspectionAttachments.DeleteOn;
+                    existingRecord.FileDescription = yarnInspectionAttachments.FileDescription;
+                    existingRecord.InspectionSerialID = yarnInspectionAttachments.InspectionSerialID;
+                    existingRecord.YarnInspectionId = yarnInspectionAttachments.YarnInspectionId;
+                    db.Entry(existingRecord).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                //db.Entry(existingRecord).CurrentValues.SetValues(yarnInspectionAttachments);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.Message);  
+                throw ex;
+            }
+        }
         public YarnInspection FindById(int id)
         {
             YarnInspection rc = db.YarnInspection.Find(id);

@@ -112,7 +112,7 @@ namespace VIGOR.Areas.Indent.Controllers
                         indentInspection.IndentId = model.IndentId;// model.SalesContractDetailID
                         indentInspection.InspSrno = model.InspectionSerialID;
                         indentInspection.LocalDispatchKey = model.IndentDomestic.IndentKey;
-                        indentInspection.DispatchId = 27;
+                        indentInspection.DispatchId = 38;
                     }
                     try
                     {
@@ -133,6 +133,7 @@ namespace VIGOR.Areas.Indent.Controllers
             modeInspection.RegisterNo = modeInspection.InspectionSerialID;
             modeInspection.InspectionDate = DateTime.Now;
             modeInspection.InspectionForMarket = 'L';
+            ViewBag.Commodity = "";
             return View(modeInspection);
         }
 
@@ -140,11 +141,19 @@ namespace VIGOR.Areas.Indent.Controllers
         [HttpPost]
         public ActionResult Create(YarnInspection modeInspection, IEnumerable<HttpPostedFileBase> files)
         {
+            ViewBag.Commodity = Request.Form["Commodity"];
             try
             {
                 ModelState.Remove("IndentKey");
                 modeInspection.InspectionSerialID = _inspectionRepository.GetInspectionSerialID('L');
                 modeInspection.RegisterNo = modeInspection.InspectionSerialID;
+
+                if (!(modeInspection.IndentId > 0))
+                {
+                    ModelState.AddModelError("", "Please Select Indent");
+                    return View(modeInspection);
+                }
+
                 if (ModelState.IsValid)
                 {
                     modeInspection.IndentKey = _indDomesticRepository.FindById(modeInspection.IndentId).IndentKey;

@@ -1,4 +1,5 @@
-﻿@using ERP.Core.Enums
+﻿@using CrystalDecisions.Shared.Json
+@using ERP.Core.Enums
 @model ERP.Core.Models.Indenting.IndentDomestic.IndDomesticDispatchSchedule
 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -23,7 +24,6 @@
                                 <div class="col-md-12">
                                     <label>Type:</label>
                                     @Html.DropDownListFor(a => a.TypeOfTransaction, Enum.GetValues(typeof(ERP.Common.DispatchType)).Cast<ERP.Common.DispatchType>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control",@id= "DispatchTypeDrop", onchange = "DispatchTypeChanged()"  })
-
                                     @Html.ValidationMessageFor(model => model.TypeOfTransaction, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -109,38 +109,38 @@
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <div class="col-lg-12">
-
                                     <h6>Salestax Information</h6>
                                 </div>
                                 <div class="col-lg-4" style="padding-top:15px;">
                                     <div class="m-checkbox-list">
-                                            @if (Model.Id > 0)
-                                            {
-                                                <label class="m-checkbox">
-                                                    @Html.CheckBoxFor(a => a.IsReceivedStinv)Salestax Invoice
-                                                    Received
-                                                    <span></span>
-                                                </label>
-                                            }
-                                            else
-                                            {
-                                                <label class="m-checkbox">
-                                                    @Html.CheckBoxFor(a => a.IsReceivedStinv,new{@class="form-control",@readonly= "readonly" })Salestax Invoice
-                                                    Received
-                                                    <span></span>
-                                                </label>
-                                            }
+                                        @if (Model.Id > 0)
+                                        {
+                                            <label class="m-checkbox" id="isRecInv">
+                                                @Html.CheckBoxFor(a => a.IsReceivedStinv)Salestax Invoice
+                                                Received
+                                                <span></span>
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label class="m-checkbox" id="isRecInv">
+                                                @Html.CheckBoxFor(a => a.IsReceivedStinv, new { @class = "form-control", disabled = "disabled" })Salestax Invoice
+                                                Received
+                                                <span></span>
+                                            </label>
+                                            @Html.HiddenFor(a => a.IsReceivedStinv)
+                                        }
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <label>Dated:</label>
-                                    @Html.TextBoxFor(a => a.SalestaxInvoiceDate, null, Model.Id > 0 ? (object)new { @class = "form-control ", required = "required", type = "date", Value = Model.SalestaxInvoiceDate } : new { @class = "form-control ", @disabled = "disabled" })
+                                    @Html.TextBoxFor(a => a.SalestaxInvoiceDate, Model.Id > 0 ? (object)new { @class = "form-control ",@id="isRecInvDate", required = "required", type = "date", Value = (Model.SalestaxInvoiceDate != null ? Model.SalestaxInvoiceDate.Value.ToString("yyyy-MM-dd"): "") } : new { @class = "form-control ", @id = "isRecInvDate", disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.SalestaxInvoiceDate, "", new { @class = "text-danger" })
 
                                 </div>
                                 <div class="col-lg-3">
                                     <label>Invoice No:</label>
-                                    @Html.TextBoxFor(a => a.SalestaxInvoiceNo,  Model.Id > 0 ? (object)new { @class = "form-control ", required = "required" } : new { @class = "form-control ", @disabled = "disabled" })
+                                    @Html.TextBoxFor(a => a.SalestaxInvoiceNo,  Model.Id > 0 ? (object)new { @class = "form-control ", @id = "isRecInvNo", required = "required" } : new { @class = "form-control ", @id = "isRecInvNo", disabled = "disabled" })
                                     @Html.ValidationMessageFor(model => model.SalestaxInvoiceNo, "", new { @class = "text-danger" })
 
                                 </div>

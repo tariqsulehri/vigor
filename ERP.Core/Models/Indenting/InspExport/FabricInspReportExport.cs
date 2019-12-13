@@ -113,29 +113,21 @@ namespace ERP.Core.Models.Indenting.InspExport
 
         public int? rollsAvailable { get; set; }
 
-        [StringLength(1)]
-        public string HeadBands { get; set; }
+        public bool HeadBands { get; set; }
 
-        [StringLength(1)]
-        public string ShadeVariation { get; set; }
+        public bool ShadeVariation { get; set; }
 
-        [StringLength(1)]
-        public string Stamped { get; set; }
+        public bool Stamped { get; set; }
 
-        [StringLength(1)]
-        public string ReedMarks { get; set; }
+        public bool ReedMarks { get; set; }
 
-        [StringLength(1)]
-        public string RubbingMarks { get; set; }
+        public bool RubbingMarks { get; set; }
 
-        [StringLength(1)]
-        public string PolyYarn { get; set; }
+        public bool PolyYarn { get; set; }
 
-        [StringLength(1)]
-        public string Contamination { get; set; }
+        public bool Contamination { get; set; }
 
-        [StringLength(1)]
-        public string other { get; set; }
+        public bool other { get; set; }
 
         public DateTime? firstinline { get; set; }
 
@@ -162,11 +154,9 @@ namespace ERP.Core.Models.Indenting.InspExport
         [Column(TypeName = "numeric")]
         public decimal? Cockled { get; set; }
 
-        [StringLength(1)]
-        public string BuyerSampleStatus { get; set; }
+        public bool BuyerSampleStatus { get; set; }
 
-        [StringLength(1)]
-        public string BuyerSampleDesign { get; set; }
+        public bool BuyerSampleDesign { get; set; }
 
         [StringLength(10)]
         public string SelvedgeWeave { get; set; }
@@ -201,28 +191,29 @@ namespace ERP.Core.Models.Indenting.InspExport
         [Column(TypeName = "numeric")]
         public decimal? PickInsertion { get; set; }
 
-        [StringLength(1)]
-        public string PackingList { get; set; }
+        public bool PackingList { get; set; }
 
-        [StringLength(1)]
-        public string Marking { get; set; }
+        public bool Marking { get; set; }
 
-        [StringLength(1)]
-        public string FaceMarking { get; set; }
+        public bool FaceMarking { get; set; }
 
-        [StringLength(1)]
-        public string PackingCondition { get; set; }
+        public bool PackingCondition { get; set; }
 
         [StringLength(50)]
         public string WrappingDirection { get; set; }
 
-        [StringLength(1)]
-        public string ShipmentSample { get; set; }
+        public bool ShipmentSample { get; set; }
 
         [StringLength(50)]
         public string CamDirection { get; set; }
 
         [Column(TypeName = "numeric")]
         public decimal? NumberofLooms { get; set; }
+
+        public virtual ICollection<FabricInspReportExport4PointDetails> FabricInspReportExport4PointDetails { get; set;}
+        public virtual ICollection<FabricInspReportExport4PointResults> FabricInspReportExport4PointResults { get; set;}
+        
+
     }
+
 }

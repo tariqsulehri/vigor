@@ -25,23 +25,22 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
             db.SaveChanges();
         }
 
-        public void Edit(IndDomesticPaymentAddOn indDomesticPaymentAddOn)
+        public void Edit(List<IndDomesticPaymentAddOn> addOn, string LocalDispatchId)
         {
-            var result = db.IndDomesticPaymentAddOn.SingleOrDefault(b => b.Id == indDomesticPaymentAddOn.Id);
-            if (result != null)
+            var cmd2 = ("DELETE FROM IndDomesticPaymentAddOns WHERE LocalDispatchKey = '" + LocalDispatchId + "'");
+            db.SaveChanges();
+            try
             {
-                try
+                foreach (var ao in addOn)
                 {
-                    //db.IndDomesticPaymentAddOn.Attach(indDomesticPaymentAddOn);
-                    db.Entry(indDomesticPaymentAddOn).State = EntityState.Modified;
+                    db.IndDomesticPaymentAddOn.Add(ao);
                     db.SaveChanges();
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
             }
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public IndDomesticAddOnTemplate FindAddOnTemplateById(int id)
@@ -86,8 +85,6 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentDemestic
 
         }
 
-
-        
 
         public bool Remove(IndDomesticPaymentAddOn indDomesticPaymentAddOn)
         {

@@ -151,6 +151,7 @@
     <Compile Include="IRepositories\Indenting\IndentDomestic\IIndDomesticRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentDomestic\IIndentRevisionLogRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentDomestic\IIndInquiryReviewQuestionRepository.cs" />
+    <Compile Include="IRepositories\Indenting\IndentExport\IFNLAccountRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IFNLCommissionBillRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryOfferRepository.cs" />
     <Compile Include="IRepositories\Indenting\IndentExport\IIndExportInquiryRepository.cs" />
@@ -271,7 +272,9 @@
     <Compile Include="Models\HR\ViewModels\HR_CINCR_VM.cs" />
     <Compile Include="Models\HR\ViewModels\HR_EmployeeViewModel.cs" />
     <Compile Include="Models\HR\ViewModels\HR_LeaveRequestVM.cs" />
+    <Compile Include="Models\HR\ViewModels\LeaveApprove_VM.cs" />
     <Compile Include="Models\HR\ViewModels\LoanAdvanceApp_VM.cs" />
+    <Compile Include="Models\HR\ViewModels\MonthAttendance_VM.cs" />
     <Compile Include="Models\Indenting\CommodityType.cs" />
     <Compile Include="Models\Indenting\cpa\Cpa.cs" />
     <Compile Include="Models\Indenting\cpa\CPAAttachments_2BDeleted.cs" />
@@ -295,6 +298,7 @@
     <Compile Include="Models\Indenting\IndentDomestic\EFilingSystem.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\EmailContractApproval.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\FabricSample.cs" />
+    <Compile Include="Models\Indenting\IndentDomestic\FNLAccount.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\FNLCommissionBill.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\FNL_CommissionPaymentDetail.cs" />
     <Compile Include="Models\Indenting\IndentDomestic\IndCommissionInvoiceDetail.cs" />
@@ -311,6 +315,7 @@
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiryDetail.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiryOffer.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportInquiryReview.cs" />
+    <Compile Include="Models\Indenting\IndentExport\IndExportLCDetail.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportShipmentScheduleDetail.cs" />
     <Compile Include="Models\Indenting\IndentExport\IndExportShipmentScheduleMaster.cs" />
     <Compile Include="Models\Indenting\Inspection\FabInspReportLocalSum.cs" />

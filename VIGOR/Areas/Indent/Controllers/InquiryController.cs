@@ -173,8 +173,8 @@ namespace VIGOR.Areas.Indent.Controllers
         // GET: Indent/Inquiry/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            if (id == 0)
+            { return null; }
             var inq = _indDomesticInquiryRepository.FindById(id);
             inq.ProductId = inq.IndDomesticInquiryDetails.Where(a => a.InquiryId == inq.Id).FirstOrDefault().ProductId;
             inq.Quantity = inq.IndDomesticInquiryDetails.Where(a => a.InquiryId == inq.Id).FirstOrDefault().Quantity;
@@ -245,8 +245,10 @@ namespace VIGOR.Areas.Indent.Controllers
         // GET: Indent/Inquiry/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
-            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            if (id == 0)
+            {
+                return null;
+            }
             IndDomesticInquiry model = new IndDomesticInquiry();
             var _domesticInquiry = _indDomesticInquiryRepository.FindById(id);
             if (_domesticInquiry != null && _domesticInquiry.InquiryStatus != Convert.ToString((char)InquieryStatus.Cancel))

@@ -348,7 +348,7 @@
 
                                                             <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control", @Value = item.CommissionRate })</td>
 
-                                                            <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                            <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
                                                             <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control", @Value = item.CalculatedCommissionValue })</td>
 
                                                         </tr>
@@ -370,7 +370,7 @@
 
                                                         <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate" })</td>
 
-                                                        <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                        <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
 
 
                                                         <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control" })</td>

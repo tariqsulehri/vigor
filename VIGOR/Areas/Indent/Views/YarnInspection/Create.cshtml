@@ -39,7 +39,6 @@
             @using (Html.BeginForm("Create", "YarnInspection", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
                 if (ViewBag.Title != "Create")
                 {
                     @Html.HiddenFor(a => a.IndentKey)
@@ -60,6 +59,9 @@
                         <div class="m-portlet__head-tools">
                             <ul class="m-portlet__nav">
                                 <li class="m-portlet__nav-item">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                </li>
+                                <li class="m-portlet__nav-item">
                                     <button class="btn btn-success m-btn m-btn--custom m-btn--icon m-btn--air">
                                         <span>
                                             <i class="fa fa-save"></i>
@@ -69,7 +71,7 @@
 
                                 </li>
                                 <li class="m-portlet__nav-item">
-                                    <a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
+                                    <a href="@Url.Action("Index","YarnInspection",new { Area="Indent"})" class="btn btn-warning m-btn m-btn--custom m-btn--icon m-btn--air">
                                         <span style="color: #ffffff">
                                             <i class="flaticon-cancel"></i>
                                             <span>Cancel</span>
@@ -86,7 +88,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>Serial No:</label>
-                                        @Html.TextBoxFor(a => a.InspectionSerialID, new { @class = "form-control ",@readonly= "readonly" })
+                                        @Html.TextBoxFor(a => a.InspectionSerialID, new { @class = "form-control ", @readonly = "readonly" })
                                         @Html.ValidationMessageFor(model => model.InspectionSerialID, "", new { @class = "text-danger" })
 
                                     </div>
@@ -115,16 +117,18 @@
                                         @Html.TextBoxFor(a => a.MillUnit, new { @class = "form-control " })
                                         @Html.ValidationMessageFor(model => model.MillUnit, "", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <br />
+                                        <label>Select Indent:</label>
                                         <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--air" onclick="OpenLookUpContractsModal('@Url.Action("LookUpContracts", "IndentDomestic")')">
                                             <span>
                                                 <i class="la la-plus"></i>
                                             </span>
                                         </a>
                                     </div>
-                                    <div class="col-lg-8">
-                                        <label>Select Indent:</label>
+                                    <div class="col-lg-6">
+                                        <br />
+                                        <br />
                                         @Html.HiddenFor(a => a.IndentId, new { id = "IndentId" })
                                         @Html.TextBoxFor(a => a.IndentKey, new { @class = "form-control", id = "IndentKey", @readonly = "readonly" })
                                         @Html.ValidationMessageFor(model => model.IndentId, "", new { @class = "text-danger" })
@@ -146,21 +150,21 @@
                                     <div class="col-lg-12">
                                         <label>Commodity:</label>
                                         @Html.HiddenFor(a => a.CommodityId, new { id = "CommodityId" })
-                                        @Html.TextBox("Commodity","" ,new { @class="form-control", id = "Commodity", @readonly = "readonly" })
+                                        @Html.TextBox("Commodity", "", new { @class = "form-control",Value= ViewBag.Commodity, id = "Commodity", @readonly = "readonly" })
                                         @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
 
-                                        </div>
-                                    <div class="col-lg-12">
-                                        <label>Select Indent:</label>
-                                        @*@Html.DropDownListFor(a => a.IndentId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control " })
-                                            @Html.ValidationMessageFor(model => model.IndentId, "", new { @class = "text-danger" })*@
                                     </div>
+                                    @*<div class="col-lg-12">
+            <label>Select Indent:</label>
+            @Html.DropDownListFor(a => a.IndentId, new SelectList(new CommodityTypeRepository().GetAllCommodityType(), "Id", "Description"), "", new { @class = "form-control " })
+            @Html.ValidationMessageFor(model => model.IndentId, "", new { @class = "text-danger" })
+        </div>
                                     <div class="col-lg-12">
                                         <label>Commodity:</label>
-                                        @*@Html.DropDownListFor(a => a.CommodityId, new SelectList(new ProductRepository().GetAllProduct(), "Id", "Description"), "", new { @class = "form-control", disabled = "disabled" })
-                                            @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })*@
-
-                                    </div>
+                                        @Html.DropDownListFor(a => a.CommodityId, new SelectList(new ProductRepository().GetAllProduct(), "Id", "Description"), "", new { @class = "form-control", id = "CommodityId" })
+                                        @Html.HiddenFor(a => a.CommodityId, new { id = "CommodityId" })
+                                        @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
+                                    </div>*@
                                     <div class="col-lg-12">
                                         <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer" readonly>
                                             <div class="row">
@@ -609,13 +613,15 @@
                                                             <tr role="row" class="odd">
                                                                 <td class="sorting_1">
                                                                     @Html.DropDownListFor(a => a.QcInspectorID, new SelectList(new QcInspectorRepository().GetAllQcInspector(), "Id", "FullName"), "", new { @class = "form-control " })
+                                                                    @Html.ValidationMessageFor(model => model.QcInspectorID, "", new { @class = "text-danger" })
                                                                     @*<select class="form-control " data-val="true" data-val-number="The field CityCode must be a number." id="CityCode" name="CityCode">
                                                                             <option value="1"></option>
                                                                         </select>*@
                                                                 </td>
                                                                 <td class="sorting_1">
                                                                     @Html.DropDownListFor(a => a.YarnInsPectionGradeId, new SelectList(new YarnInspectionGradeRepository().GetAllYarnInspectionGrades(), "Id", "Description"), "", new { @class = "form-control " })
-                                                                    
+                                                                    @Html.ValidationMessageFor(model => model.YarnInsPectionGradeId, "", new { @class = "text-danger" })
+
                                                                 </td>
                                                             </tr>
 
@@ -639,16 +645,41 @@
                                                         </thead>
 
                                                         <tbody>
+                                                            @if (Model.YarnInspectionAttachments.Count > 0)
+                                                            {
+                                                                Int32 j = 0;
+                                                                foreach (var item in Model.YarnInspectionAttachments)
+                                                                {
 
-                                                            <tr role="row" class="odd">
-                                                                <td class="sorting_1">
-                                                                    @Html.TextBox("det[0][FileDescription]", "", new { @class = "form-control" })
-                                                                </td>
-                                                                <td class="sorting_1">
-                                                                    @Html.TextBox("files", "", new { @class = "form-control", id = "file", @type = "file" })
-                                                                </td>
-                                                            </tr>
+                                                                    <tr role="row" class="odd">
+                                                                        <td class="sorting_1">
+                                                                            @Html.TextBox("det[" + j + "][FileDescription]", item.FileDescription, new { @class = "form-control" })
+                                                                        </td>
+                                                                        <td class="sorting_1">
+                                                                            @Html.TextBox("files", "", new { @class = "form-control", id = "file", @type = "file" })
+                                                                            @if (!string.IsNullOrEmpty(item.FileName))
+                                                                            {
+                                                                                <a href="~/File/@item.FileName" target="_blank">Download</a>}
 
+                                                                        </td>
+                                                                    </tr>
+                                                                    j++;
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                <tr role="row" class="odd">
+                                                                    <td class="sorting_1">
+                                                                        @Html.TextBox("det[0][FileDescription]", "", new { @class = "form-control" })
+                                                                    </td>
+                                                                    <td class="sorting_1">
+                                                                        @*@if (!string.IsNullOrEmpty(item.FileAttached))
+                                                                            {
+                                                                                <a href="~/File/@item.FileAttached" target="_blank">Download</a>}*@
+                                                                        @Html.TextBox("files", "", new { @class = "form-control", id = "file", @type = "file" })
+                                                                    </td>
+                                                                </tr>
+                                                            }
                                                         </tbody>
 
                                                     </table>

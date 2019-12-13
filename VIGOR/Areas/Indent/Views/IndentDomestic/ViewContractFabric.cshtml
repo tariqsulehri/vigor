@@ -305,7 +305,7 @@
                             <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline " id="detailTable" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
                                             <thead style="background-color: #28469c; color: #ffffff">
                                                 <tr>
 
@@ -389,6 +389,7 @@
                                             </tbody>
 
                                         </table>
+                                        <input name="TotalDetail" type="number" value="0" id="TotalDetail" hidden />
                                     </div>
                                 </div>
 
@@ -398,73 +399,71 @@
                             <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="m_table_1" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
-                                            <thead style="background-color: #28469c; color: #ffffff">
+                                            <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline detailGrid" id="CommesionDetaiTable" role="grid" aria-describedby="kt_table_1_info" style="width: 992px;">
+                                                <thead style="background-color: #28469c; color: #ffffff">
+                                                    <tr>
+                                                        <th width="">Comission Paid To</th>
+                                                        <th width="">Comission Paid From</th>
+                                                        <th width="80">Rate</th>
+                                                        <th width="60">%/QTY</th>
+                                                        <th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>
 
-                                                <tr>
+                                                    </tr>
+                                                </thead>
 
-                                                    <th width="">Comission Paid To</th>
-                                                    <th width="">Comission Paid From</th>
-                                                    <th width="80">Rate</th>
-                                                    <th width="60">%/QTY</th>
-                                                    <th width="80" col="CalculatedCommissionValue" summary="sum">Comission</th>
+                                                <tbody>
+                                                    @if (Model.IndCommission.Count > 0)
+                                                    {
+                                                        Int32 j = 0;
+                                                        foreach (var item in Model.IndCommission)
+                                                        {
+                                                            <tr role="row" class="odd">
 
-                                                </tr>
-                                            </thead>
 
-                                            <tbody>
-                                                @if (Model.IndCommission.Count > 0)
-                                                {
-                                                    Int32 j = 0;
-                                                    foreach (var item in Model.IndCommission)
+                                                                <td>
+                                                                    @Html.DropDownList("det[" + j + "][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidFrom), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent1" })
+
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DropDownList("det[" + j + "][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidTo), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
+
+                                                                </td>
+
+                                                                <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control", @Value = item.CommissionRate })</td>
+
+                                                                <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+                                                                <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control", @Value = item.CalculatedCommissionValue })</td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                    else
                                                     {
                                                         <tr role="row" class="odd">
 
 
                                                             <td>
-                                                                @Html.DropDownList("det[" + j + "][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidFrom), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent1" })
+                                                                @Html.DropDownList("det[0][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent1" })
 
                                                             </td>
                                                             <td>
-                                                                @Html.DropDownList("det[" + j + "][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title", item.CustomerIdCommPaidTo), "", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
+                                                                @Html.DropDownList("det[0][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
 
                                                             </td>
 
-                                                            <td>   @Html.TextBox("det[" + j + "][CommissionRate]", null, new { @class = "form-control", @Value = item.CommissionRate })</td>
+                                                            <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate" })</td>
 
-                                                            <td>   @Html.DropDownList("det[" + j + "][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value", @item.CommissionType), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
-                                                            <td>   @Html.TextBox("det[" + j + "][CalculatedCommissionValue]", null, new { @class = "form-control", @Value = item.CalculatedCommissionValue })</td>
+                                                            <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.CommissionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
+
+
+                                                            <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control" })</td>
 
                                                         </tr>
                                                     }
-                                                }
-                                                else
-                                                {
-                                                    <tr role="row" class="odd">
+                                                </tbody>
 
-
-                                                        <td>
-                                                            @Html.DropDownList("det[0][CustomerIdCommPaidFrom]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent1" })
-
-                                                        </td>
-                                                        <td>
-                                                            @Html.DropDownList("det[0][CustomerIdCommPaidTo]", new SelectList(new FinPartyRepository().GetAllParties().Where(a => a.Id > 1), "Id", "Title"), "Select", new { @class = "form-control CommPaidAgent", @id = "CommPaidAgent" })
-
-                                                        </td>
-
-                                                        <td>   @Html.TextBox("det[0][CommissionRate]", null, new { @class = "form-control comRate" })</td>
-
-                                                        <td>   @Html.DropDownList("det[0][CommissionType]", new SelectList(Enumeration.GetAll<ERP.Common.comessionType>(), "Key", "Value"), new { @class = "form-control", onchange = "calculateComission(this.name)" })</td>
-
-
-                                                        <td>   @Html.TextBox("det[0][CalculatedCommissionValue]", null, new { @class = "form-control" })</td>
-
-                                                    </tr>
-                                                }
-                                            </tbody>
-
-                                        </table>
-                                    </div>
+                                            </table>
+</div>
                                 </div>
 
                             </div>
@@ -608,6 +607,7 @@
     $(document).ready(function () {
         $('input,select,textarea').attr('disabled', true);
         BindCommetionAgent();
+        calculateComission("det[0][CommodityId]");
     });
     Valid();
     function Valid() {

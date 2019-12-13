@@ -23,6 +23,16 @@ namespace ERP.Infrastructure.Repositories.HR
             _db.SaveChanges();
         }
 
+        public string timingExists(HR_AttendanceTimings HR_AttendanceTimings)
+        {
+
+            HR_AttendanceTimings existingRecord = _db.HR_AttendanceTimings.Where(s => s.EmployeeAttendanceID == HR_AttendanceTimings.EmployeeAttendanceID && s.AttendanceDate == HR_AttendanceTimings.AttendanceDate).FirstOrDefault();
+
+            if (existingRecord == null) { return "No"; }
+            else { return "Yes"; }
+
+
+        }
         public void Edit(HR_AttendanceTimings HR_AttendanceTimings)
         {
             try

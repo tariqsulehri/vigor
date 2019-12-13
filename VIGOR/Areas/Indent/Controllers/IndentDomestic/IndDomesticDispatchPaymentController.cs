@@ -205,10 +205,11 @@ namespace VIGOR.Areas.Indent.Controllers.IndentDomestic
                         {
 
                             _indDomesticPaymentAddOn.AddOnType = Request.Form["det[" + index + "][AddOnTemplate]"];
+                            _indDomesticPaymentAddOn.domPaymentAddOnListId = Convert.ToInt32(_indDomesticPaymentAddOn.AddOnType);
                             _indDomesticPaymentAddOn.Amount = Convert.ToInt32(Request.Form["det[" + index + "][AddOnAmmount]"]);
                             _indDomesticPaymentAddOn.LocalDispatchKey = model.LocalDispatchNo;
                             _indDomesticPaymentAddOn.ProductId = model.CommodityId;
-                            _indDomesticPaymentAddOn.LocalDispatchNo = model.IndentId;
+                            //_indDomesticPaymentAddOn.LocalDispatchNo = model.IndentId;
                             _indDomesticPaymentAddOn.AddOnEffect = "-";
                             _indDomesticPaymentAddOn.DomesticPaymentAddonCalculatedOn = "01";
                             _indDomesticPaymentAddOn.Quantity = model.Quantity;
@@ -264,7 +265,7 @@ namespace VIGOR.Areas.Indent.Controllers.IndentDomestic
                             _indDomesticPaymentAddOn.AddOnEffect = Request.Form["det[" + index + "][AddOnEffect]"];
                             _indDomesticPaymentAddOn.LocalDispatchKey = model.LocalDispatchNo;
                             _indDomesticPaymentAddOn.ProductId = model.CommodityId;
-                            _indDomesticPaymentAddOn.LocalDispatchNo = model.IndentId;
+                            //_indDomesticPaymentAddOn.LocalDispatchNo = model.IndentId;
                             _indDomesticPaymentAddOn.DomesticPaymentAddonCalculatedOn = "-";
                             _indDomesticPaymentAddOn.Quantity = model.Quantity;
                             _indDomesticPaymentAddOn.NetReceviable = model.NetReceviable;
@@ -309,51 +310,159 @@ namespace VIGOR.Areas.Indent.Controllers.IndentDomestic
 
             ViewBag.CommodityType = indent.CommodityTypeId;
             ViewBag.IndentKey = indent.IndentKey;
-            if (indent.CommodityTypeId > 1)
+            //if (indent.CommodityTypeId > 1)
+            //{
+            List<IndDomesticAddOnTemplate> addOnTemplatesList=new List<IndDomesticAddOnTemplate>();
+            var indDomesticPaymentAddOnsList = _indDomesticPaymentAddOnRepository.GetAllIndDomesticPaymentAddOns().Where(a => a.TransactionNo == model.LocalDispatchNo).ToList();
+            foreach (var addOn in indDomesticPaymentAddOnsList)
             {
-                var indDomesticPaymentAddOnsList = _indDomesticPaymentAddOnRepository.GetAllIndDomesticPaymentAddOns().Where(a => a.TransactionNo == model.LocalDispatchNo).ToList();
-                var indDomAddOnTemplates = _indDomesticPaymentAddOnRepository.GetAllIndIndDomesticAddOnTemplates().ToList();
-
-                foreach (var templates in indDomAddOnTemplates)
+                var zed = new IndDomesticAddOnTemplate
                 {
-                    foreach (var addOn in indDomesticPaymentAddOnsList)
-                    {
-                        templates.AddOnEffect = addOn.AddOnEffect;
-                        templates.AddOnId = Convert.ToInt32(addOn.AddOnType);
-                        templates.Amount = addOn.Amount;
-                        templates.AddOnType = addOn.AddOnType == "1" ? "P" : "F";
-                        indDomesticPaymentAddOnsList.Remove(addOn);
-                        break;
-                    }
-                }
-                ViewBag.IndDomesticPaymentsAddOnLists = indDomAddOnTemplates;
+                    AddOnEffect = addOn.AddOnEffect=="1"?"+":"-",
+                    AddOnId = Convert.ToInt32(addOn.AddOnType),
+                    Amount = addOn.Amount,
+                    AddOnType = addOn.AddOnType == "1" ? "P" : "F"
+                };
+
+                addOnTemplatesList.Add(zed);
             }
+                //var indDomAddOnTemplates = _indDomesticPaymentAddOnRepository.GetAllIndIndDomesticAddOnTemplates().ToList();
+                //foreach (var templates in indDomAddOnTemplates)
+                //{
+                //    foreach (var addOn in indDomesticPaymentAddOnsList)
+                //    {
+                //        templates.AddOnEffect = addOn.AddOnEffect;
+                //        templates.AddOnId = Convert.ToInt32(addOn.AddOnType);
+                //        templates.Amount = addOn.Amount;
+                //        templates.AddOnType = addOn.AddOnType == "1" ? "P" : "F";
+                //        indDomesticPaymentAddOnsList.Remove(addOn);
+                //        break;
+                //    }
+                //}
+                //ViewBag.IndDomesticPaymentsAddOnLists = indDomAddOnTemplates;
+                ViewBag.IndDomesticPaymentsAddOnLists = addOnTemplatesList;
+            //}
 
             return View(model);
         }
 
         // POST: Indent/IndDomesticDispatchPayment/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(IndDomesticDispatchSchedule model, string IndentKey)
         {
+          
             try
             {
-                // TODO: Add update logic here
+                #region RemoveValidations
+                ModelState.Remove("DelayShipmentReason");
+                ModelState.Remove("SalesContractDetail");
+                ModelState.Remove("LocalDispatchNo");
+                ModelState.Remove("isFirstDispatch");
+                ModelState.Remove("IsReceivedStinv");
+                ModelState.Remove("IsComplaint");
+                ModelState.Remove("SalestaxInvoiceNo");
+                ModelState.Remove("VehicleNo");
+                ModelState.Remove("BiltyNo");
+                ModelState.Remove("IsDelayed");
+                ModelState.Remove("DelayShipmentReasonDescription");
+                #endregion
 
-                return RedirectToAction("Index");
+                int CommodityType = Convert.ToInt16(Request.Form["CommodityType"]);
+                ViewBag.CommodityType = CommodityType;
+                if (ModelState.IsValid)
+                {
+                    model.IsDelayed = "N";
+                    if (model.IsDelayed == "N")
+                    {
+                        model.DelayShipmentReason = "_";
+                        model.DelayShipmentReasonDescription = "_";
+                    }
+                    var domesticIndent = _indDomestic.FindById(model.IndentId);
+                    model.Balance = model.Quantity * (domesticIndent.IndDomesticDetails
+                                        .Where(a => a.IndentId == model.IndentId && a.CommodityId == model.CommodityId)
+                                        .FirstOrDefault().Rate);
+
+                    model.CompanyId = LoggedinUser.Company.Id;
+                  
+                    model.SalesContractDetail = model.LocalDispatchNo;
+                    model.CreatedOn = DateTime.Now;
+                    model.ModifiedOn = DateTime.Now;
+                    model.SalestaxInvoiceDate = DateTime.Now;
+                    model.ContractedDeliveryDate = DateTime.Now;
+                    model.TransDate = DateTime.Now;
+                    model.IsReceivedStinv = false;
+                    model.SalestaxInvoiceNo = "1";
+                    model.IsComplaint = "N";
+                    model.isFirstDispatch = "1";
+                    model.VehicleNo = "00";
+                    model.BiltyNo = "00";
+                    model.GoodsFarwarderID = 1;
+
+
+                    var addOn = new List<IndDomesticPaymentAddOn>();
+                    if (CommodityType > 1)
+                    {
+                        addOn = GetAddOnYarn(model);
+                    }
+                    else
+                    {
+                        addOn = GetAddOn(model);
+
+                    }
+
+                    _indDomesticPaymentAddOnRepository.Edit(addOn,model.LocalDispatchNo);
+
+
+                    _indDomesticDispatchScheduleRepository.Edit(model);
+                    return null;
+                }
+                else
+                {
+                    var indent = _indDomestic.FindById(model.IndentId);
+                    ViewBag.IndentKey = IndentKey;
+                    ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
+                        Prodect => Prodect.Id,
+                        IndentDetail => IndentDetail.CommodityId,
+                        (Prodect, IndentDetail) => new
+                        {
+                            Id = Prodect.Id,
+                            Description = Prodect.Description
+                        }), "Id", "Description",model.CommodityId);
+                    if (indent.CommodityTypeId > 1)
+                    {
+                        var IndDomAddOnTemplates = _indDomesticPaymentAddOnRepository.GetAllIndIndDomesticAddOnTemplates();
+                        ViewBag.IndDomesticPaymentsAddOnLists = IndDomAddOnTemplates;
+                    }
+                    return View(model);
+                }
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                var indent = _indDomestic.FindById(model.IndentId);
+                ViewBag.CommodityId = new SelectList(ProductRepository.GetAllProduct().Join(indent.IndDomesticDetails,
+                    Prodect => Prodect.Id,
+                    IndentDetail => IndentDetail.CommodityId,
+                    (Prodect, IndentDetail) => new
+                    {
+                        Id = Prodect.Id,
+                        Description = Prodect.Description
+                    }), "Id", "Description");
+                ViewBag.IndentKey = indent.IndentKey;
+                if (indent.CommodityTypeId > 1)
+                {
+                    var IndDomAddOnTemplates = _indDomesticPaymentAddOnRepository.GetAllIndIndDomesticAddOnTemplates();
+                    ViewBag.IndDomesticPaymentsAddOnLists = IndDomAddOnTemplates;
+                }
+                return View(model);
             }
         }
 
         // GET: Indent/IndDomesticDispatchPayment/Delete/5
         public ActionResult Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return null;
             }
             IndDomesticDispatchSchedule model = new IndDomesticDispatchSchedule();
             model.Id = id;

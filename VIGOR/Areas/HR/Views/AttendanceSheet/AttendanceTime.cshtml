@@ -1,4 +1,4 @@
-﻿@model ERP.Core.Models.HR.HR_MonthlyAttendance
+﻿@model ERP.Core.Models.HR.HR_AttendanceTimings
 @{
     Layout = null;
 }
@@ -10,24 +10,23 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        @using (Html.BeginForm("AttendanceTime", "AttendanceSheet", FormMethod.Post))
+        @using (Html.BeginForm())
         {
+@Html.HiddenFor(a=>a.EmployeeId)
             <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-lg-6">
                         <label>For the Month:</label>
-                        @Html.TextBoxFor(a => a.Forthemonth, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.Forthemonth, "", new { @class = "text-danger" })
+                     <input type="number" class="form-control" readonly="readonly" id="ForTheMonth" value="@Model.AttendanceMonth" name="ForTheMonth" />
                     </div>
                     <div class="col-lg-6">
                         <label>For the Year:</label>
-                        @Html.TextBoxFor(a => a.Fortheyear, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.Fortheyear, "", new { @class = "text-danger" })
+                        <input type="number" class="form-control" readonly="readonly" id="ForTheYear" value="@Model.AttendanceYear" name="ForTheYear" />
                     </div>
                     <div class="col-lg-6">
                         <label>ID:</label>
-                        @Html.TextBoxFor(a => a.EmployeeAttendanceId, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.EmployeeAttendanceId, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(a => a.EmployeeAttendanceID, new { @type = "text", @class = "form-control", @name = "LoanAdvanceID", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.EmployeeAttendanceID, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label>Name:</label>
@@ -46,8 +45,8 @@
                     </div>
                     <div class="col-lg-6">
                         <label>Dated:</label>
-                        @Html.TextBoxFor(a => a.ValidDateStart, new { @type = "date", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.ValidDateStart, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(a => a.AttendanceDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.AttendanceDate, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-12">
                         <table class="table">
@@ -57,10 +56,10 @@
                                     <th colspan="2">Time Out</th>
                                 </tr>
                                 <tr>
-                                    <td><input type="number" class="form-control" /></td>
-                                    <td><input type="number" class="form-control" /></td>
-                                    <td><input type="number" class="form-control" /></td>
-                                    <td><input type="number" class="form-control" /></td>
+                                    <td><input type="time" class="form-control" name="TimeIn" id="TimeIn" @Model.Checkin/></td>
+                                    @*<td><input type="number" class="form-control" /></td>*@
+                                    <td><input type="time" class="form-control"  name="TimeOut" id="TimeOut" @Model.CheckOut /></td>
+                                    @*<td><input type="number" class="form-control" /></td>*@
                                 </tr>
                             </tbody>
                         </table>
@@ -69,7 +68,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" onclick="">
+                <button type="button" class="btn btn-success" onclick="SubmitChangeTime()">
                     <span>
                         <i class="fa fa-save"></i>
                         <span>Save</span>

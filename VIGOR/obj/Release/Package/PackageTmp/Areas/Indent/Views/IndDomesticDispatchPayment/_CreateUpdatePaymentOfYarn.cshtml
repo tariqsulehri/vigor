@@ -39,13 +39,11 @@
 
                 @Html.HiddenFor(a => a.Id)
                 @Html.HiddenFor(a => a.TypeOfTransaction)
+                @Html.HiddenFor(a => a.LocalDispatchNo)
                 @Html.Hidden("CommodityType")
 
-
                 <div class="m-portlet__body">
-
                     <div class="m-portlet__body">
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group row">
@@ -58,7 +56,6 @@
                                         <label>Contract No:</label>
                                         <input name="IndentKey" type="text" readonly="readonly" class="form-control" value="@ViewBag.IndentKey" />
                                         @Html.HiddenFor(a => a.IndentId)
-
                                         @* @Html.TextBoxFor(a => a.IndentDomestic.IndentKey, new { @class = "form-control", disabled = "disabled" })*@
                                     </div>
                                     <div class="col-lg-3">
@@ -68,7 +65,7 @@
                                     </div>
                                     <div class="col-lg-3">
                                         <label>Commodity:</label>
-                                        @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId, "", new { @class = "form-control ", @id = "CommDrop", onchange = "QuantityChanged()" })
+                                        @Html.DropDownListFor(a => a.CommodityId, (SelectList)ViewBag.CommodityId,  new { @class = "form-control ", @id = "CommDrop", onchange = "QuantityChanged()" })
                                         @Html.ValidationMessageFor(model => model.CommodityId, "", new { @class = "text-danger" })
 
                                     </div>
@@ -90,7 +87,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">

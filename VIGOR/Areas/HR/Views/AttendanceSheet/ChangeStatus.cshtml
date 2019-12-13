@@ -10,12 +10,13 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        @using (Html.BeginForm("ChangeStatus", "AttendanceSheet", FormMethod.Post))
+        @using (Html.BeginForm("ChangeStatus", "AttendanceSheet", FormMethod.Post, new { id = "ChangeStatusForm" }))
         {
             <div class="modal-body">
                 <div class="form-group row">
                     <div class="col-lg-6">
                         <label>For the Month:</label>
+                        @Html.HiddenFor(model => model.DayNumber)
                         @Html.TextBoxFor(a => a.Forthemonth, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
                         @Html.ValidationMessageFor(a => a.Forthemonth, "", new { @class = "text-danger" })
                     </div>
@@ -31,38 +32,33 @@
                     </div>
                     <div class="col-lg-6">
                         <label>Name:</label>
-                        @Html.TextBoxFor(a => a.HrEmployee.FirstName, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.HrEmployee.FirstName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(a => a.EmployeeFirstName, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.EmployeeFirstName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label>Department:</label>
-                        @Html.TextBoxFor(a => a.HrEmployee.HrDepartment.Title, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.HrEmployee.HrDepartment.Title, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(a => a.EmployeeDepartmentName, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.EmployeeDepartmentName, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label>Designation:</label>
-                        @Html.TextBoxFor(a => a.HrEmployee.HrDesignation.Description, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(a => a.HrEmployee.HrDesignation.Description, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(a => a.EmployeeDesignation, new { @type = "text", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(a => a.EmployeeDesignation, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label>Dated:</label>
-                        @Html.TextBoxFor(a => a.ValidDateStart, new { @type = "date", @class = "form-control", @id = "LoanAdvanceID", @name = "LoanAdvanceID", @readonly = "readonly" })
+                        @Html.TextBoxFor(a => a.ValidDateStart,  "{0:d MMM yyyy}" ,new {  @class = "form-control", @readonly = "readonly" })
                         @Html.ValidationMessageFor(a => a.ValidDateStart, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-lg-6">
                         <label>Status:</label>
-                        @Html.DropDownListFor(a =>a.status,
-                        new List<SelectListItem>
-                        {
-                          new SelectListItem() {Text = "AB", Value="AB"},
-                          new SelectListItem() {Text = "PR", Value="PR"}
-                        }, "-- Select Status --", new { @type = "text", @class = "form-control", @placeholder = "--Select Status--" })
+                        @Html.DropDownList("status", null, htmlAttributes: new { @class = "form-control", @required = "Required" })
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" onclick="">
+                <button type="button" class="btn btn-success" onclick="SubmitChangeStatusForm()">
                     <span>
                         <i class="fa fa-save"></i>
                         <span>Save</span>

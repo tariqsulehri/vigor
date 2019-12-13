@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,13 @@ namespace ERP.Core.Models.Indenting.InspExport
 {
     public class FabricInspReportExport4PointDetails
     {
-        [Key]
-        [StringLength(8)]
-        public string InspectionSerialNo { get; set; }
+        public int id { get; set;}
 
+        [StringLength(8)]
+        [ForeignKey("FabricInspReportExport")]
+        public string InspectionSerialNo { get; set; }
+        public virtual FabricInspReportExport FabricInspReportExport { get; set;}
+        
         [StringLength(4)]
         public string SrNo { get; set; }
         public int? RollNo { get; set; }

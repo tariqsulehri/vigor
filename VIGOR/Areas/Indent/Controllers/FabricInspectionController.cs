@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ERP.Core.IRepositories.Indenting.IndentDomestic;
 using ERP.Core.Models.Admin;
-using ERP.Core.Models.Indenting.IndentDomestic;
 using ERP.Core.Models.Indenting.Inspection;
 using ERP.Infrastructure.Repositories.Indenting.IndentDemestic;
 using ERP.Infrastructure.Repositories.Indenting.Inspection;
-using ERP.Infrastructure.Repositories.Parties;
 
 namespace VIGOR.Areas.Indent.Controllers
 {
@@ -18,12 +15,14 @@ namespace VIGOR.Areas.Indent.Controllers
         private FabricInspReportLocalRepository _fabricInspReportLocalRepository;
         private IIndDomesticRepository _indDomesticRepository;
         private IndDomesticDispatchScheduleRepository _indDomesticDispatchScheduleRepository;
+        private IndentInspectionRepository _indentInspectionRepository;
 
         public FabricInspectionController()
         {
             _fabricInspReportLocalRepository = new FabricInspReportLocalRepository();
             _indDomesticRepository = new IndDomesticRepository();
             _indDomesticDispatchScheduleRepository=new IndDomesticDispatchScheduleRepository();
+            _indentInspectionRepository = new IndentInspectionRepository();
         }
         // GET: Indent/FabricInspection
         public ActionResult Index()
@@ -33,7 +32,8 @@ namespace VIGOR.Areas.Indent.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(DateTime? fromDate, DateTime? toDate, Int32? inspectionType, string indenttNo)
+        public ActionResult Index(Int32? sellerId,Int32? buyerId,string reportNo, DateTime? fromDate, DateTime? toDate,
+            Int32? inspectionType,Int32? reportStandard, string indenttNo)
         {
             ViewBag.FabricInspection = _fabricInspReportLocalRepository.GetAllFabricInspReportLocal()
                 .Where(a => a.FabInspTypeId.Equals(inspectionType) || inspectionType.Equals(0) || inspectionType.Equals(null))
@@ -43,6 +43,70 @@ namespace VIGOR.Areas.Indent.Controllers
             ViewBag.Todate = toDate;
             return View();
         }
+        //[HttpGet]
+        //public ActionResult Attachment(int Id)
+        //{
+        //    var inspection = _fabricInspReportLocalRepository.FindById(Id);
+        //    var indInsp = _indentInspectionRepository.GetAllIndInspection()
+        //        .Where(a => a.IndentId == inspection.IndentId).ToList();
+        //    var indDomestics = _indDomesticRepository.GetAllIndDomectic().Where(a => a.CustomerIDasSeller == inspection. && a.CommodityTypeId == inspection.CommodityId).ToList();
+
+        //    foreach (var item in indDomestics)
+        //    {
+        //        foreach (var indentInspection in indInsp)
+        //        {
+        //            if (item.Id == indentInspection.IndentId)
+        //            {
+        //                item.IsAllow = true;
+        //            }
+        //        }
+        //    }
+
+        //    ViewBag.indDomestics = indDomestics;
+
+        //    return View(inspection);
+        //}
+        //[HttpPost]
+        //public ActionResult Attachment(YarnInspection model)
+        //{
+        //    model = _inspectionRepository.FindById(model.Id);
+
+        //    IndentInspection indentInspection;
+        //    var indentInspectionKeysList = new List<string>();
+        //    foreach (var k in Request.Form.Keys)
+        //    {
+        //        if (k.ToString().Contains("isAllow"))
+        //            indentInspectionKeysList.Add(k.ToString());
+        //    }
+        //    foreach (var Key in indentInspectionKeysList)
+        //    {
+        //        var index = "0";
+        //        index = Key.Replace("][isAllow]", "");
+        //        index = index.Replace("det[", "");
+        //        if (Request.Form.AllKeys.Any(k => k == "det[" + index + "][isAllow]"))
+        //        {
+        //            indentInspection = new IndentInspection();
+        //            if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][isAllow]"]))
+        //            {
+        //                indentInspection.IndentKey = (Request.Form["det[" + index + "][Contract]"]);
+        //                indentInspection.SalesContractDetail = (Request.Form["det[" + index + "][DetailId]"]);
+        //                indentInspection.CommodityTypeId = model.CommodityId;
+        //                indentInspection.IndentId = model.IndentId;// model.SalesContractDetailID
+        //                indentInspection.InspSrno = model.InspectionSerialID;
+        //                indentInspection.LocalDispatchKey = model.IndentDomestic.IndentKey;
+        //                indentInspection.DispatchId = 27;
+        //            }
+        //            try
+        //            {
+        //                _indentInspectionRepository.Add(indentInspection);
+        //            }
+        //            catch (Exception e)
+        //            {
+        //            }
+        //        }
+        //    }
+        //    return null;
+        //}
         public JsonResult GetDispatches(int id)
         {
             var data = _indDomesticDispatchScheduleRepository.GetAllIndDomesticDispatchSchedule().Where(a=>a.IndentId==id && a.TypeOfTransaction=="D").ToList();
@@ -64,6 +128,7 @@ namespace VIGOR.Areas.Indent.Controllers
         public ActionResult Create()
         {
             FabricInspReportLocal modeLocal = new FabricInspReportLocal();
+            modeLocal.InspRepoSr = _fabricInspReportLocalRepository.GetFabInspSerialID();
             return View(modeLocal);
         }
 
@@ -76,27 +141,28 @@ namespace VIGOR.Areas.Indent.Controllers
             {
                 modeLocal.Camdirection = "test";
                 modeLocal.InspCalculationBasedOn = "a";
-                modeLocal.ForMarket = "b";
+                modeLocal.ForMarket = "L";
                 modeLocal.FabInspStandardId = 1;
-                modeLocal.InspStatusId = 1;
-                modeLocal.CompanyId = 5;
+                modeLocal.CompanyId = LoggedinUser.Company.Id;
+                modeLocal.CompanyKey = LoggedinUser.Company.Id.ToString().PadLeft(3,'0');
                 modeLocal = GetRollsRessults(modeLocal);
                 ModelState.Remove("IndentKey");
                 ModelState.Remove("ForMarket");
                 ModelState.Remove("InspCalculationBasedOn");
                 ModelState.Remove("Camdirection");
-
+                if (!(modeLocal.IndentId > 0))
+                {
+                    ModelState.AddModelError("", "Please Select Indent");
+                    return View(modeLocal);
+                }
                 if (ModelState.IsValid)
                 {
                     modeLocal.IndentKey = _indDomesticRepository.FindById(modeLocal.IndentId).IndentKey;
-
                     modeLocal.CreatedOn = DateTime.Now;
                     modeLocal.ModifiedOn = DateTime.Now;
                     modeLocal.firstLine = DateTime.Now;
                     modeLocal.secondLine = DateTime.Now;
                     _fabricInspReportLocalRepository.Add(modeLocal);
-                    
-
                     return RedirectToAction("Index");
                 }
                 else
@@ -158,7 +224,15 @@ namespace VIGOR.Areas.Indent.Controllers
                         fabricInspReportLocalDetail.ReedMarkBrokenEndsWrap4 = Convert.ToInt32(Request.Form["det[" + index + "][TwOn4]"]);
                         fabricInspReportLocalDetail.TotalPointsPerRoll = Convert.ToInt32(Request.Form["det[" + index + "][TPointRoll]"]);
                         fabricInspReportLocalDetail.Points100SqYards = Convert.ToInt32(Request.Form["det[" + index + "][PointsSqy]"]);
-                        fabricInspReportLocalDetail.FabricGrade = Convert.ToChar(Request.Form["det[" + index + "][FabricGrade]"]);
+                        if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][FabricGrade]"]))
+                        {
+                            fabricInspReportLocalDetail.FabricGrade = Convert.ToChar(Request.Form["det[" + index + "][FabricGrade]"]);
+                        }
+                        else
+                        {
+                            fabricInspReportLocalDetail.FabricGrade = '-';
+                        }
+
                         fabricInspReportLocalDetail.ActualWidth = Convert.ToInt32(Request.Form["det[" + index + "][ActualWidth]"]);
                         fabricInspReportLocalDetail.Ends = Convert.ToInt32(Request.Form["det[" + index + "][Ends]"]);
                         fabricInspReportLocalDetail.Pick = Convert.ToInt32(Request.Form["det[" + index + "][Pick]"]);
@@ -177,22 +251,41 @@ namespace VIGOR.Areas.Indent.Controllers
         // GET: Indent/FabricInspection/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var zed = _fabricInspReportLocalRepository.FindById(id);
+            return View(_fabricInspReportLocalRepository.FindById(id));
         }
 
         // POST: Indent/FabricInspection/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(FabricInspReportLocal modeLocal)
         {
+            _indDomesticRepository = new IndDomesticRepository();
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                modeLocal = GetRollsRessults(modeLocal);
+                ModelState.Remove("IndentKey");
+                ModelState.Remove("ForMarket");
+                ModelState.Remove("InspCalculationBasedOn");
+                ModelState.Remove("Camdirection");
+                if (!(modeLocal.IndentId > 0))
+                {
+                    ModelState.AddModelError("","Please Select Indent");
+                    return View(modeLocal);
+                }
+                if (ModelState.IsValid)
+                {
+                    modeLocal.ModifiedOn = DateTime.Now;
+                    _fabricInspReportLocalRepository.Add(modeLocal);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(modeLocal);
+                }
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                return View(modeLocal);
             }
         }
 

@@ -48,12 +48,22 @@ namespace ERP.Common
         Cancel = 'D',
         UnApproved = 'U'
     }
-    public enum comessionType : int
+    public enum LeaveStatus
+    {
+        Casual_Leave = 'C',
+        Medical_Leave = 'M',
+        Visit_Leave = 'V'
+    }
+    public enum ShipmentSchedule
+    {
+        Auto = 'A',
+        Manual = 'M'
+    }
+    public enum CommissionType : int
     {
         P = 1,
         Q = 0
     }
-
     public enum DispatchType
     {
         Dispatch = 'D',

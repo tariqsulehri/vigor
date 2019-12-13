@@ -1,4 +1,5 @@
-﻿@model ERP.Core.Models.Indenting.UnitOfSale
+﻿@using ERP.Core.Enums
+@model ERP.Core.Models.Indenting.UnitOfSale
 <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -20,59 +21,82 @@
                 }
                 <div class="form-group m-form__group">
                     <label for="exampleInputEmail1">Unit of Sale :</label>
-
                     @Html.TextBoxFor(a => a.Description, new { @class = "form-control m-input", })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group m-form__group">
-                    <label for="exampleInputEmail1">UOM #:</label>
-                    @Html.DropDownListFor(a => a.UomID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndUnitOfMeasureRepository().GetAllIndUnitOfMeasure(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
-                    @Html.ValidationMessageFor(model => model.UomID, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">UOM #:</label>
+                                @Html.DropDownListFor(a => a.UomID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndUnitOfMeasureRepository().GetAllIndUnitOfMeasure(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
+                                @Html.ValidationMessageFor(model => model.UomID, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">UOR :</label>
+                                @Html.DropDownListFor(a => a.UorID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfRateRepository().GetAllUnitOfRates(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
+                                @Html.ValidationMessageFor(model => model.UorID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group m-form__group">
-                    <label for="exampleInputEmail1">UOR :</label>
-                    @Html.DropDownListFor(a => a.UorID, new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfRateRepository().GetAllUnitOfRates(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
-                    @Html.ValidationMessageFor(model => model.UorID, "", new { @class = "text-danger" })
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Stuffing :</label>
+                                @Html.DropDownListFor(a => a.StuffingUnit, new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfRateRepository().GetAllUnitOfRates(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
+                                @Html.ValidationMessageFor(model => model.StuffingUnit, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Factors :</label>
+                                @Html.TextBoxFor(a => a.Factor, new { @class = "form-control m-input", @placeholder = "", @type = "Number" })
+                                @Html.ValidationMessageFor(model => model.Factor, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group m-form__group">
-                    <label for="exampleInputEmail1">Stuffing :</label>
-                    @Html.DropDownListFor(a => a.StuffingUnit, new SelectList(new ERP.Infrastructure.Repositories.Indenting.UnitOfRateRepository().GetAllUnitOfRates(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
-                    @Html.ValidationMessageFor(model => model.StuffingUnit, "", new { @class = "text-danger" })
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Standard UOM :</label>
+                                @Html.DropDownListFor(a => a.StandardUOM, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndUnitOfMeasureRepository().GetAllIndUnitOfMeasure(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
+                                @Html.ValidationMessageFor(model => model.StandardUOM, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">UOM Factors :</label>
+                                @Html.TextBoxFor(a => a.StandardUOMFactor, new { @class = "form-control m-input", @placeholder = "", @type = "Number" })
+                                @Html.ValidationMessageFor(model => model.StandardUOMFactor, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group m-form__group">
-                    <label for="exampleInputEmail1">Factors :</label>
-                    @Html.TextBoxFor(a => a.Factor, new { @class = "form-control m-input", @placeholder = "", @type = "Number" })
-                    @Html.ValidationMessageFor(model => model.Factor, "", new { @class = "text-danger" })
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Shipment Schedule :</label>
+                                @Html.DropDownListFor(a => a.ShipmentSchedule, Enum.GetValues(typeof(ERP.Common.ShipmentSchedule)).Cast<ERP.Common.ShipmentSchedule>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((char)x).ToString() }), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ShipmentSchedule, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Require Stuffing:</label>
+                                @Html.DropDownListFor(a => a.RequireStuffing, new SelectList(Enumeration.GetAll<ERP.Common.ActiveStatus>(), "Key", "Value"), new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.RequireStuffing, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group m-form__group">
-                    <label for="exampleInputEmail1">Standard UOM :</label>
-                    @Html.DropDownListFor(a => a.StandardUOM, new SelectList(new ERP.Infrastructure.Repositories.Indenting.IndUnitOfMeasureRepository().GetAllIndUnitOfMeasure(), "Id", "Description"), "", new { @class = "form-control m-input", @placeholder = "" })
-                    @Html.ValidationMessageFor(model => model.StandardUOM, "", new { @class = "text-danger" })
-
-                </div>
-                <div class="form-group m-form__group">
-                    <label for="exampleInputEmail1">UOM Factors :</label>
-                    @Html.TextBoxFor(a => a.StandardUOMFactor, new { @class = "form-control m-input", @placeholder = "", @type = "Number" })
-                    @Html.ValidationMessageFor(model => model.StandardUOMFactor, "", new { @class = "text-danger" })
-
-                </div>
-
-
                 <div class="form-group m-form__group">
                     <label for="exampleInputEmail1">Remarks :</label>
                     @Html.TextAreaFor(a => a.Remarks, new { @class = "form-control m-input", @placeholder = "" })
                     @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
-
                 </div>
             }
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success" onclick="SubmitUnitOfSaleForm()">
-
                 <span>
                     <i class="fa fa-save"></i>
                     <span>Save</span>

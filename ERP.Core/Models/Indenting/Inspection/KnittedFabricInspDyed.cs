@@ -10,9 +10,15 @@ namespace ERP.Core.Models.Indenting.Inspection
 {
     public class KnittedFabricInspDyed
     {
-        [Key]
-        [StringLength(9)]
-        public string InspectionCode { get; set; }
+        //[Key]
+        //[StringLength(9)]
+        //public string InspectionCode { get; set; }
+
+        public int id { get; set; }
+
+        [ForeignKey("KnittedFabricInspection")]
+        public string InspectionID { get; set; }
+        public virtual KnittedFabricInspection KnittedFabricInspection { get; set; }
 
         [StringLength(30)]
         public string ShadeColour { get; set; }

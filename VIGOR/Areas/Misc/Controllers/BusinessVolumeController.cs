@@ -79,6 +79,15 @@ namespace VIGOR.Areas.Misc.Controllers
         [HttpPost]
         public ActionResult Approved(EmailContractApproval model)
         {
+            if (model.emailComments && string.IsNullOrEmpty(model.ToEmail))
+            {
+                ModelState.AddModelError("","this customer does not have email address, please enter first");
+                return PartialView("_Approved", model);
+            }
+            else
+            {
+                ModelState.Remove("ToEmail");
+            }
             if (ModelState.IsValid)
             {
                 if (model.emailComments)

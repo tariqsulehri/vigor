@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ERP.Core.Models.Indenting.Inspection;
 using System.Data.Entity;
+using ERP.Core.Models.Admin;
 
 namespace ERP.Infrastructure.Repositories.Indenting.Inspection
 {
@@ -54,7 +55,13 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
         {
             throw new NotImplementedException();
         }
-
+        public string GetFabInspSerialID()
+        {
+            int maxno = db.FabricInspReportLocal.Count();
+            maxno = maxno + 1;
+            string SerialID =DateTime.Now.ToString("yy")+ maxno.ToString().PadLeft(6, '0');
+            return SerialID;
+        }
         public bool Remove(Core.Models.Indenting.Inspection.FabricInspReportLocal FabricInspReportLocal)
         {
             var existingRecord = db.FabricInspReportLocal.Find(FabricInspReportLocal.Id);

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using ERP.Core.Models.Indenting;
 using VIGOR.Reports;
 using ERP.Infrastructure.Repositories.Parties;
 
@@ -88,7 +89,14 @@ namespace VIGOR.Areas.Indent.Controllers
         public JsonResult LoadContract(int id)
         {
             var data = _indDomestic.FindById(id);
-
+            Product prod = new Product();
+            foreach (var s in data.IndDomesticDetails)
+            {
+                prod = s.Product;
+                break;
+            }
+            
+            
             data.CustomerSellerName = _party.FindById(data.CustomerIDasSeller).Title;
             data.CustomerBuyerName = _party.FindById(data.CustomerIDasBuyer).Title;
 
@@ -100,8 +108,8 @@ namespace VIGOR.Areas.Indent.Controllers
                 SellerName = data.CustomerSellerName,
                 BuyerId = data.CustomerIDasBuyer,
                 BuyerName = data.CustomerBuyerName,
-                CommodityId = data.CommodityTypeId,
-                CommodityName = data.CommodityType.Description
+                CommodityId = prod.Id,// data.CommodityTypeId,
+                CommodityName = prod.Description// data.CommodityType.Description
 
             }, JsonRequestBehavior.AllowGet);
         }
@@ -166,7 +174,7 @@ namespace VIGOR.Areas.Indent.Controllers
         public ActionResult Create(int id)
         {
 
-            if (id == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+            if (id == 0) { return null; }
             IndDomestic model = new IndDomestic();
             var inquiery = _indDomesticInquiryRepository.FindById(id);
             if (inquiery != null)
@@ -185,7 +193,7 @@ namespace VIGOR.Areas.Indent.Controllers
                 model.CustomerIDasBuyer = inquiery.CustomerId; //inquiery.IndDomesticInquiryReviews.FirstOrDefault().SellerId;
 
                 model.CustomerId = inquiery.CustomerId;
-                model.CustomerIDasSeller =Convert.ToInt32( inquiery.IndDomesticInquiryReviews.Where(a => a.InquiryId == inquiery.Id).FirstOrDefault().SellerId);
+                model.CustomerIDasSeller = Convert.ToInt32(inquiery.IndDomesticInquiryReviews.Where(a => a.InquiryId == inquiery.Id).FirstOrDefault().SellerId);
 
                 model.PaymenTermsId = inquiery.PaymenTermsId;
                 model.IndentDate = DateTime.Now;
@@ -221,6 +229,11 @@ namespace VIGOR.Areas.Indent.Controllers
                 if (ModelState.IsValid)
                 {
                     model = GetDomesticDetailDetail(model);
+                    if (model.IndCommission.Count() == 0)
+                    {
+                        ModelState.AddModelError("", "Please Enter Valid Data in Commission Detail");
+                        return View(model);
+                    }
                     model.CreatedOn = DateTime.Now;
                     model.ModifiedOn = DateTime.Now;
                     model.LastApprovedOn = DateTime.Now;
@@ -287,7 +300,7 @@ namespace VIGOR.Areas.Indent.Controllers
 
                 if (invoicedCount > 0)
                     domestic.isInvoiced = true;
-            ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
+                ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
                 return View(domestic);
             }
 
@@ -308,7 +321,7 @@ namespace VIGOR.Areas.Indent.Controllers
 
                 if (invoicedCount > 0)
                     domestic.isInvoiced = true;
-            ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
+                ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
                 return View(domestic);
             }
 
@@ -336,6 +349,13 @@ namespace VIGOR.Areas.Indent.Controllers
                 if (ModelState.IsValid)
                 {
                     model = GetDomesticDetailDetail(model);
+                    if (model.IndCommission.Count() == 0)
+                    {
+                        ViewBag.Agents = IndentAgent;
+
+                        ModelState.AddModelError("", "Please Enter Valid Data in Commission Detail");
+                        return View(model);
+                    }
                     model.ModifiedOn = DateTime.Now;
                     model.LastApprovedOn = DateTime.Now;
                     model.CustomerId = model.CustomerIDasSeller;
@@ -376,7 +396,9 @@ namespace VIGOR.Areas.Indent.Controllers
 
         public ActionResult Edit(int id)
         {
+
             var domestic = _indDomestic.FindById(id);
+
             if (domestic.CommodityTypeId.Equals(2))
             {
                 return RedirectToAction("EditYarn", new { id });
@@ -390,6 +412,7 @@ namespace VIGOR.Areas.Indent.Controllers
 
                 if (invoicedCount > 0)
                     domestic.isInvoiced = true;
+                ViewBag.Agents = _indDomestic.GetAgentsByIndentId(domestic.Id);
                 return View(domestic);
             }
 
@@ -404,7 +427,13 @@ namespace VIGOR.Areas.Indent.Controllers
                 if (ModelState.IsValid)
                 {
                     model = GetDomesticDetailDetail(model);
+                    if (model.IndCommission.Count() == 0)
+                    {
+                        ViewBag.Agents = IndentAgent;
 
+                        ModelState.AddModelError("", "Please Enter Valid Data in Commission Detail");
+                        return View(model);
+                    }
                     model.ModifiedOn = DateTime.Now;
                     model.LastApprovedOn = DateTime.Now;
                     model.CustomerId = model.CustomerIDasSeller;
@@ -414,6 +443,7 @@ namespace VIGOR.Areas.Indent.Controllers
                 }
                 else
                 {
+                    ViewBag.Agents = IndentAgent;
                     model = GetDomesticDetailDetail(model);
                     return View(model);
                 }
@@ -672,8 +702,12 @@ namespace VIGOR.Areas.Indent.Controllers
                         commission.ModifiedBy = 1;
                         commission.CompanyId = 5;
                         commission.IndentId = model.Id;
-                        commission.Remarks = "asda";
-                        model.IndCommission.Add(commission);
+                        commission.Remarks = "-";
+                        if (!string.IsNullOrEmpty(commission.CustomerIdCommPaidFrom.ToString()) && !string.IsNullOrEmpty(commission.CustomerIdCommPaidFrom.ToString()) &&
+                           commission.CustomerIdCommPaidFrom > 0 && commission.CustomerIdCommPaidTo > 0)
+                        {
+                            model.IndCommission.Add(commission);
+                        }
                     }
 
                 }
@@ -687,14 +721,14 @@ namespace VIGOR.Areas.Indent.Controllers
                 if (Request.Form.AllKeys.Any(k => k == "det[" + index + "][agent]"))
                 {
                     commInvoiceAgent = new CommInvoiceAgentComm();
-                    indAgent=new IndentAgent();
+                    indAgent = new IndentAgent();
                     if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][agent]"]))
                     {
                         if (!string.IsNullOrEmpty(Request.Form["det[" + index + "][agent]"]))
                         {
                             indAgent.IndentId = model.Id;
-                            indAgent.SalesContractNo= model.IndentKey;
-                            indAgent.CustomerIDasAgentID =Convert.ToInt32(Request.Form["det[" + index + "][agent]"]);
+                            indAgent.SalesContractNo = model.IndentKey;
+                            indAgent.CustomerIDasAgentID = Convert.ToInt32(Request.Form["det[" + index + "][agent]"]);
 
                             #region CommInvoiceAgentCommCodeCommented
 

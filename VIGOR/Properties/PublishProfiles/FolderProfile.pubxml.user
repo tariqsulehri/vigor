@@ -591,196 +591,199 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/HR/Views/Allowance/Add.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Allowance/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Allowance/CreateOrUpdate.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Allowance/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Allowance/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/AttendanceSheet/AttendanceTime.cshtml">
-      <publishTime>11/21/2019 20:04:48</publishTime>
+      <publishTime>11/30/2019 15:32:59</publishTime>
     </File>
     <File Include="Areas/HR/Views/AttendanceSheet/ChangeStatus.cshtml">
-      <publishTime>11/21/2019 20:04:48</publishTime>
+      <publishTime>11/30/2019 15:32:59</publishTime>
     </File>
     <File Include="Areas/HR/Views/AttendanceSheet/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/30/2019 15:32:59</publishTime>
     </File>
     <File Include="Areas/HR/Views/AttendanceSheet/Indexfordata.cshtml">
-      <publishTime>11/21/2019 20:04:48</publishTime>
+      <publishTime>11/30/2019 15:32:59</publishTime>
     </File>
     <File Include="Areas/HR/Views/AttendanceSheet/ShortLeave.cshtml">
-      <publishTime>11/21/2019 20:04:48</publishTime>
+      <publishTime>11/30/2019 15:32:59</publishTime>
     </File>
     <File Include="Areas/HR/Views/AttendanceSheet/TimeInOutUpdate.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/30/2019 15:32:59</publishTime>
     </File>
     <File Include="Areas/HR/Views/Degree/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Degree/CreateOrUpdate.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Degree/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Degree/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Department/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Department/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Department/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Department/PrintDepartment.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Department/_CreateOrUpdate.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpCriticalIncident/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpCriticalIncident/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpCriticalIncident/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpEfile/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpHistory/Details.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpIncrement/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpIntimation/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpIntimation/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpIntimation/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvApplication/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvApplication/DetailApprove.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvApplication/Details.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvApplication/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvApplication/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvRec/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpLoanAdvRec/LoanAdvApproval/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Employee/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Employee/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Employee/Index.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Employee/PrintEmployee.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/Employee/_CreateOrUpdate.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpNonConfirmity/Create.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpNonConfirmity/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpNonConfirmity/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpPosition/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpPosition/CreateOrUpdate.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpPosition/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpPosition/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpPromotion/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpResign/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpRevision/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpTransfer/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpType/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpType/Edit.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/EmpType/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/GazzettedDay/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/30/2019 15:35:06</publishTime>
+    </File>
+    <File Include="Areas/HR/Views/GazzettedDay/Edit.cshtml">
+      <publishTime>11/30/2019 15:35:06</publishTime>
     </File>
     <File Include="Areas/HR/Views/GazzettedDay/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/30/2019 15:35:06</publishTime>
     </File>
     <File Include="Areas/HR/Views/LeaveVisitApproval/Create.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/LeaveVisitApproval/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/LoanAdvApproval/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/SalarySheet/Index.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/Shared/_Layout.cshtml">
-      <publishTime>11/25/2019 22:16:22</publishTime>
+      <publishTime>11/25/2019 22:16:24</publishTime>
     </File>
     <File Include="Areas/HR/Views/web.config">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/HR/Views/_ViewStart.cshtml">
-      <publishTime>11/25/2019 22:16:21</publishTime>
+      <publishTime>11/25/2019 22:16:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/AboutDispatch/Index.cshtml">
       <publishTime>11/05/2019 20:52:20</publishTime>
@@ -840,7 +843,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/01/2019 14:47:29</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Dispatch/Details.cshtml">
-      <publishTime>11/21/2019 17:59:56</publishTime>
+      <publishTime>11/26/2019 17:43:16</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Dispatch/Edit.cshtml">
       <publishTime>11/05/2019 20:52:20</publishTime>
@@ -849,7 +852,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Dispatch/_CreateOrUpdate.cshtml">
-      <publishTime>11/25/2019 20:26:54</publishTime>
+      <publishTime>11/29/2019 15:46:50</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Dispatch/_CreateUpdatePayment.cshtml">
       <publishTime>06/01/2019 15:35:57</publishTime>
@@ -885,7 +888,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/Indent/Views/ExpInspFabric/Create.cshtml">
-      <publishTime>11/23/2019 16:21:58</publishTime>
+      <publishTime>11/23/2019 16:22:00</publishTime>
     </File>
     <File Include="Areas/Indent/Views/ExpInspFabric/Index.cshtml">
       <publishTime>11/18/2019 17:48:48</publishTime>
@@ -909,13 +912,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2019 21:24:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FabricInspection/Create.cshtml">
-      <publishTime>11/05/2019 20:52:20</publishTime>
+      <publishTime>11/28/2019 16:10:14</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FabricInspection/Edit.cshtml">
-      <publishTime>11/05/2019 21:03:52</publishTime>
+      <publishTime>11/29/2019 16:43:09</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FabricInspection/Index.cshtml">
-      <publishTime>11/05/2019 20:52:20</publishTime>
+      <publishTime>11/29/2019 16:27:09</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FabricInspLoomType/Create.cshtml">
       <publishTime>11/05/2019 20:52:20</publishTime>
@@ -987,7 +990,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/Efile.cshtml">
-      <publishTime>11/05/2019 20:52:20</publishTime>
+      <publishTime>11/27/2019 12:52:16</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/FabricSample.cshtml">
       <publishTime>11/05/2019 20:52:20</publishTime>
@@ -999,7 +1002,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/Index.cshtml">
-      <publishTime>11/25/2019 20:33:20</publishTime>
+      <publishTime>11/26/2019 19:35:10</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/Inspection.cshtml">
       <publishTime>11/05/2019 20:52:20</publishTime>
@@ -1008,7 +1011,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/InspectionView.cshtml">
-      <publishTime>11/05/2019 20:52:20</publishTime>
+      <publishTime>11/26/2019 20:26:50</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/PrintDSS.cshtml">
       <publishTime>11/05/2019 20:52:20</publishTime>
@@ -1020,7 +1023,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:20</publishTime>
     </File>
     <File Include="Areas/Indent/Views/FollowUpSheet/ViewIndent.cshtml">
-      <publishTime>11/22/2019 11:43:39</publishTime>
+      <publishTime>11/26/2019 17:33:06</publishTime>
     </File>
     <File Include="Areas/Indent/Views/GarmentsExport/Create.cshtml">
       <publishTime>11/15/2019 21:24:38</publishTime>
@@ -1143,19 +1146,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndDomesticDispatchPayment/Create.cshtml">
-      <publishTime>11/25/2019 18:36:33</publishTime>
+      <publishTime>11/25/2019 18:36:34</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndDomesticDispatchPayment/Edit.cshtml">
-      <publishTime>11/21/2019 18:09:12</publishTime>
+      <publishTime>11/21/2019 18:09:14</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndDomesticDispatchPayment/_CreateUpdatePayment - Copy.cshtml">
       <publishTime>08/05/2019 18:17:34</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndDomesticDispatchPayment/_CreateUpdatePayment.cshtml">
-      <publishTime>11/25/2019 21:04:09</publishTime>
+      <publishTime>11/30/2019 14:29:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndDomesticDispatchPayment/_CreateUpdatePaymentOfYarn.cshtml">
-      <publishTime>11/23/2019 14:37:35</publishTime>
+      <publishTime>11/30/2019 14:31:06</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndDomesticDispatchSchedule/Create.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -1179,13 +1182,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/Create.cshtml">
-      <publishTime>11/21/2019 16:37:23</publishTime>
+      <publishTime>11/27/2019 17:38:28</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/Edit.cshtml">
-      <publishTime>11/20/2019 12:37:36</publishTime>
+      <publishTime>11/28/2019 20:36:05</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/EditYarn.cshtml">
-      <publishTime>11/20/2019 12:37:24</publishTime>
+      <publishTime>11/28/2019 20:20:56</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/Index.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -1200,25 +1203,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/ViewContractFabric.cshtml">
-      <publishTime>11/25/2019 18:17:19</publishTime>
+      <publishTime>11/27/2019 18:49:57</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/ViewContractYarn.cshtml">
-      <publishTime>11/21/2019 15:50:29</publishTime>
+      <publishTime>11/27/2019 18:50:37</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentDomestic/_ReportType.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentExport/Create.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentExport/EditContractYarn.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentExport/Index.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentExport/ViewContractExport.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndentSize/Create.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -1245,31 +1248,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiry/AddAttachments.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiry/Create.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiry/Edit.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiry/GetFinPartiesList.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiry/Index.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiry/ReviewInquiry.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiryReview/Create.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiryReview/ExportInquieryReview.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndExportInquiryReview/ExportInquiryContract.cshtml">
-      <publishTime>11/25/2019 21:34:36</publishTime>
+      <publishTime>11/25/2019 21:34:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/IndGeneralDescriptions/Create.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -1359,10 +1362,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/06/2019 18:52:58</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Inquiry/Edit.cshtml">
-      <publishTime>11/21/2019 13:02:44</publishTime>
+      <publishTime>11/26/2019 16:32:10</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Inquiry/Index.cshtml">
-      <publishTime>11/05/2019 20:52:22</publishTime>
+      <publishTime>11/29/2019 18:14:34</publishTime>
     </File>
     <File Include="Areas/Indent/Views/Inquiry/InquirySheet.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -1461,13 +1464,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Areas/Indent/Views/YarnInspection/Create.cshtml">
-      <publishTime>11/15/2019 16:56:10</publishTime>
+      <publishTime>11/28/2019 16:11:38</publishTime>
     </File>
     <File Include="Areas/Indent/Views/YarnInspection/Edit.cshtml">
-      <publishTime>11/13/2019 13:17:56</publishTime>
+      <publishTime>11/28/2019 15:00:27</publishTime>
     </File>
     <File Include="Areas/Indent/Views/YarnInspection/Index.cshtml">
-      <publishTime>11/05/2019 20:52:22</publishTime>
+      <publishTime>11/28/2019 17:46:04</publishTime>
     </File>
     <File Include="Areas/Indent/Views/YarnInspectionGrade/Create.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -3393,31 +3396,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/24/2017 01:15:20</publishTime>
     </File>
     <File Include="bin/ERP.Common.dll">
-      <publishTime>11/25/2019 22:21:23</publishTime>
+      <publishTime>11/30/2019 15:44:15</publishTime>
     </File>
     <File Include="bin/ERP.Common.dll.config">
       <publishTime>11/05/2019 20:52:14</publishTime>
     </File>
     <File Include="bin/ERP.Common.pdb">
-      <publishTime>11/25/2019 22:21:23</publishTime>
+      <publishTime>11/30/2019 15:44:15</publishTime>
     </File>
     <File Include="bin/ERP.Core.dll">
-      <publishTime>11/25/2019 22:21:22</publishTime>
+      <publishTime>11/30/2019 15:44:15</publishTime>
     </File>
     <File Include="bin/ERP.Core.dll.config">
       <publishTime>11/18/2019 18:32:48</publishTime>
     </File>
     <File Include="bin/ERP.Core.pdb">
-      <publishTime>11/25/2019 22:21:22</publishTime>
+      <publishTime>11/30/2019 15:44:15</publishTime>
     </File>
     <File Include="bin/ERP.Infrastructure.dll">
-      <publishTime>11/25/2019 22:21:27</publishTime>
+      <publishTime>11/30/2019 15:44:22</publishTime>
     </File>
     <File Include="bin/ERP.Infrastructure.dll.config">
       <publishTime>11/18/2019 18:32:36</publishTime>
     </File>
     <File Include="bin/ERP.Infrastructure.pdb">
-      <publishTime>11/25/2019 22:21:27</publishTime>
+      <publishTime>11/30/2019 15:44:22</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/25/2018 00:47:38</publishTime>
@@ -3459,7 +3462,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/25/2012 23:48:56</publishTime>
     </File>
     <File Include="bin/Migrations/VMFinLedger.sql">
-      <publishTime>11/25/2019 21:11:25</publishTime>
+      <publishTime>11/25/2019 21:11:26</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>02/18/2018 21:44:54</publishTime>
@@ -3540,10 +3543,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2018 01:04:24</publishTime>
     </File>
     <File Include="bin/VIGOR.dll">
-      <publishTime>11/25/2019 22:21:36</publishTime>
+      <publishTime>11/30/2019 15:44:34</publishTime>
     </File>
     <File Include="bin/VIGOR.pdb">
-      <publishTime>11/25/2019 22:21:36</publishTime>
+      <publishTime>11/30/2019 15:44:34</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/11/2013 05:28:38</publishTime>
@@ -3654,7 +3657,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/Dispatch/_CreateOrUpdate.js">
-      <publishTime>11/25/2019 15:24:46</publishTime>
+      <publishTime>11/28/2019 19:34:56</publishTime>
     </File>
     <File Include="Content/VigorJs/DomesticCommInv/_CreateOrUpdate.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -3663,10 +3666,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/Employee/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/Employee/_CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:21</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/ExchangeRates/Index.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -3678,7 +3681,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/14/2019 18:19:22</publishTime>
     </File>
     <File Include="Content/VigorJs/FabricInspection/_CreateOrUpdate.js">
-      <publishTime>11/05/2019 20:52:22</publishTime>
+      <publishTime>11/29/2019 16:27:22</publishTime>
     </File>
     <File Include="Content/VigorJs/FabricInspLoomType/Index.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -3732,88 +3735,97 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Allowance/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Allowance/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
+    </File>
+    <File Include="Content/VigorJs/HR/AttendenceSheet/AttendenceSheet.js">
+      <publishTime>11/30/2019 15:34:15</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/CINCR/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/CINCR/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Degree/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Degree/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/EmpType/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/EmpType/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
+    </File>
+    <File Include="Content/VigorJs/HR/Gazzetted/CreateOrUpdate.js">
+      <publishTime>11/30/2019 15:35:32</publishTime>
+    </File>
+    <File Include="Content/VigorJs/HR/Gazzetted/Index.js">
+      <publishTime>11/30/2019 15:35:32</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/History/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/History/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Increment/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Intimation/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Intimation/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/LoanAdvanceApplication/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/LoanAdvanceApplication/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/LoanApprovals/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/LoanApprovals/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Non_Confirmity/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Non_Confirmity/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Position/CreateOrUpdate.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Position/Index.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Promotion/Promotion.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Revision/Revision.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/HR/Transfer/Transfor.js">
-      <publishTime>11/25/2019 22:17:20</publishTime>
+      <publishTime>11/25/2019 22:17:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndColour/IndColour.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndDomestic/IndDomestic.js">
-      <publishTime>11/25/2019 17:55:08</publishTime>
+      <publishTime>11/28/2019 20:24:50</publishTime>
     </File>
     <File Include="Content/VigorJs/IndDomesticDispatchSchedule/Index.js">
-      <publishTime>11/21/2019 18:03:48</publishTime>
+      <publishTime>11/21/2019 18:03:50</publishTime>
     </File>
     <File Include="Content/VigorJs/IndDomesticDispatchSchedule/_CreateOrUpdate.js">
-      <publishTime>11/22/2019 18:03:23</publishTime>
+      <publishTime>11/22/2019 18:03:24</publishTime>
     </File>
     <File Include="Content/VigorJs/IndentDesign/IndentDesign.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -3822,7 +3834,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndentExport/IndentExport.js">
-      <publishTime>11/22/2019 21:06:20</publishTime>
+      <publishTime>11/22/2019 21:06:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndentSize/IndentSize.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -3831,13 +3843,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndExportInquiry/_CreateOrUpdate.js">
-      <publishTime>11/22/2019 21:06:20</publishTime>
+      <publishTime>11/22/2019 21:06:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndGeneralDescriptions/Index.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Content/VigorJs/IndGeneralDescriptions/_CreateOrUpdate.js">
-      <publishTime>11/21/2019 16:37:23</publishTime>
+      <publishTime>11/21/2019 16:37:24</publishTime>
     </File>
     <File Include="Content/VigorJs/IndLeadTime/Index.js">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -5865,7 +5877,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="Views/Shared/_layoutAsideMenu.cshtml">
-      <publishTime>11/25/2019 22:19:12</publishTime>
+      <publishTime>11/30/2019 15:39:54</publishTime>
     </File>
     <File Include="Views/Shared/_layoutFooter.cshtml">
       <publishTime>11/05/2019 20:52:22</publishTime>
@@ -5886,10 +5898,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/05/2019 20:52:22</publishTime>
     </File>
     <File Include="ViewsModel/ViewModel.edmx.diagram">
-      <publishTime>11/05/2019 20:52:22</publishTime>
+      <publishTime>11/26/2019 19:52:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/25/2019 22:21:41</publishTime>
+      <publishTime>11/30/2019 15:44:41</publishTime>
     </File>
   </ItemGroup>
 </Project>
