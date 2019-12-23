@@ -107,8 +107,10 @@
     <Compile Include="IRepositories\HrIRepository\IHR_SalaryDetailRepository.cs" />
     <Compile Include="IRepositories\HrIRepository\IHR_SalaryMasterRepository.cs" />
     <Compile Include="IRepositories\HrIRepository\IHR_ShortLeavesRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\TaskRepository\IGeneralTaskRepository.cs" />
     <Compile Include="IRepositories\HrIRepository\TaskRepository\IHrTaskProgressRepository.cs" />
     <Compile Include="IRepositories\HrIRepository\TaskRepository\IHrTaskRegisterRepository.cs" />
+    <Compile Include="IRepositories\HrIRepository\TaskRepository\IMinutesOfMeetingRepository.cs" />
     <Compile Include="IRepositories\Indenting\cpa\ICPAAttachments_2BDeletedRepository.cs" />
     <Compile Include="IRepositories\Indenting\cpa\ICpaFclRepository.cs" />
     <Compile Include="IRepositories\Indenting\cpa\ICPAFindingNatureRepository.cs" />
@@ -266,8 +268,15 @@
     <Compile Include="Models\HR\HR_SalaryDetail.cs" />
     <Compile Include="Models\HR\HR_SalaryMaster.cs" />
     <Compile Include="Models\HR\HR_ShortLeaves.cs" />
+    <Compile Include="Models\HR\Task\GeneralTask.cs" />
     <Compile Include="Models\HR\Task\HrTaskProgress.cs" />
     <Compile Include="Models\HR\Task\HrTaskRegister.cs" />
+    <Compile Include="Models\HR\Task\ManualActionLog.cs" />
+    <Compile Include="Models\HR\Task\MeetingLogType.cs" />
+    <Compile Include="Models\HR\Task\MinutesOfMeeting.cs" />
+    <Compile Include="Models\HR\Task\MinutesOfMeetingAttachments2bDeleted.cs" />
+    <Compile Include="Models\HR\Task\MinutesOfMeetingOfficial.cs" />
+    <Compile Include="Models\HR\Task\TaskAttachments_2BDeleted.cs" />
     <Compile Include="Models\HR\ViewModels\CINCRViewModel.cs" />
     <Compile Include="Models\HR\ViewModels\HR_CINCR_VM.cs" />
     <Compile Include="Models\HR\ViewModels\HR_EmployeeViewModel.cs" />

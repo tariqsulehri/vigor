@@ -404,6 +404,22 @@
     <Compile Include="Migrations\201912111638571_LCTable.Designer.cs">
       <DependentUpon>201912111638571_LCTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912161327367_HR_Task_TablesFurther.cs" />
+    <Compile Include="Migrations\201912161327367_HR_Task_TablesFurther.Designer.cs">
+      <DependentUpon>201912161327367_HR_Task_TablesFurther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912171539536_fabLocalInspReqRemove.cs" />
+    <Compile Include="Migrations\201912171539536_fabLocalInspReqRemove.Designer.cs">
+      <DependentUpon>201912171539536_fabLocalInspReqRemove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912190912398_FNLAccountFinPartylation.cs" />
+    <Compile Include="Migrations\201912190912398_FNLAccountFinPartylation.Designer.cs">
+      <DependentUpon>201912190912398_FNLAccountFinPartylation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912191117321_FNLAccountFNLAccountIdLength10.cs" />
+    <Compile Include="Migrations\201912191117321_FNLAccountFNLAccountIdLength10.Designer.cs">
+      <DependentUpon>201912191117321_FNLAccountFNLAccountIdLength10.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Admin\AdminModuleDetailsRepository.cs" />
@@ -461,6 +477,7 @@
     <Compile Include="Repositories\HR\HR_SalaryDetailRepository.cs" />
     <Compile Include="Repositories\HR\HR_SalaryMasterRepository.cs" />
     <Compile Include="Repositories\HR\HR_ShortLeavesRepository.cs" />
+    <Compile Include="Repositories\HR\Task\GeneralTaskRepository.cs" />
     <Compile Include="Repositories\HR\Task\HrTaskProgressRepository.cs" />
     <Compile Include="Repositories\HR\Task\HrTaskRegisterRepository.cs" />
     <Compile Include="Repositories\Indenting\CommodityTypeRepository.cs" />
@@ -828,6 +845,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912111638571_LCTable.resx">
       <DependentUpon>201912111638571_LCTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912161327367_HR_Task_TablesFurther.resx">
+      <DependentUpon>201912161327367_HR_Task_TablesFurther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171539536_fabLocalInspReqRemove.resx">
+      <DependentUpon>201912171539536_fabLocalInspReqRemove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190912398_FNLAccountFinPartylation.resx">
+      <DependentUpon>201912190912398_FNLAccountFinPartylation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912191117321_FNLAccountFNLAccountIdLength10.resx">
+      <DependentUpon>201912191117321_FNLAccountFNLAccountIdLength10.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

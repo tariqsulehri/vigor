@@ -39,6 +39,8 @@ namespace ERP.Core.Models.HR.Task
         public int DeptId { get; set; }
         public virtual HrDepartment HrDepartment { get; set; }
 
+        public ICollection<TaskAttachments_2BDeleted> TaskAttachments_2BDeleted { get; set;}
+
 
         //[Required(ErrorMessage = "Field is required....")]
         [MaxLength(2)]

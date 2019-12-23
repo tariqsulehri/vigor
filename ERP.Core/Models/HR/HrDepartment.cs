@@ -90,7 +90,8 @@ namespace ERP.Core.Models.HR
         public virtual ICollection<HrTaskRegister> HrTaskRegister { get; set; }
         public virtual ICollection<AdminUserDealsInDepartment> AdminUserDealsInDepartments { get; set; }
         public virtual ICollection<HR_SalaryMaster> HR_SalaryMaster { get; set; }
-
+        public virtual ICollection<GeneralTask> GeneralTask { get; set; }
+        public virtual ICollection<MinutesOfMeeting> MinutesOfMeeting { get; set;}
 
         //================================================================
         public int CreatedBy { get; set; }

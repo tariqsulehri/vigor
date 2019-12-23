@@ -41,7 +41,8 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentExport
 
         public FNLAccount FindById(int id)
         {
-            var rev = db.FNLAccounts.Find(id);
+            string accountId = id.ToString("D10");
+            var rev = db.FNLAccounts.Find(accountId);
             return rev;
         }
 

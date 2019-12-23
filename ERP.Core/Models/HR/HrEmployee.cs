@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ERP.Core.Models.Common;
+using ERP.Core.Models.HR.Task;
 
 namespace ERP.Core.Models.HR
 {
@@ -288,8 +289,8 @@ namespace ERP.Core.Models.HR
         public virtual ICollection<HR_Photo> HR_Photo { get; set;}
         public virtual ICollection<HR_SalaryMaster> HR_SalaryMaster { get; set; }
         public virtual ICollection<HR_ShortLeaves> HR_ShortLeaves { get; set; }
-
-
+        public virtual ICollection<GeneralTask> GeneralTask { get; set; }
+        public virtual ICollection<MinutesOfMeeting> MinutesOfMeeting { get; set; }
         public int CreatedBy { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]

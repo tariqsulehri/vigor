@@ -276,10 +276,13 @@ namespace ERP.Infrastructure
         public DbSet<HrDepartment> HrDepartments { get; set; }
         public DbSet<HrTaskRegister> HrTaskRegister { get; set; }
         public DbSet<HrTaskProgress> HrTaskProgress { get; set; }
-
-
+        public DbSet<GeneralTask> GeneralTasks { get; set; }
+        public DbSet<MinutesOfMeeting> MinutesOfMeetings { get; set; }
+        public DbSet<MinutesOfMeetingOfficial> MinutesOfMeetingOfficials { get; set; }
+        public DbSet<TaskAttachments_2BDeleted> TaskAttachments_2BDeleted { get; set; }
+        public DbSet<ManualActionLog> ManualActionLogs { get; set; }
+         
         #endregion
-
-
+        
     }
 }

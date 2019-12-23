@@ -14,12 +14,14 @@ namespace ERP.Core.Models.Indenting.IndentDomestic
 {
     public class IndDomesticDispatchSchedule
     {
+
         public int Id {get; set;}
 
         [Required(ErrorMessage = "Field is required....")]
         [MaxLength(13)]
         public string LocalDispatchNo { get; set; }
-
+        [NotMapped]
+        public Boolean isInspected;
         public int srno { get; set; }
 
         [Required(ErrorMessage = "Field is required....")]

@@ -23,7 +23,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
             db.FabricInspReportLocal.Add(fabricInspReportLocal);
             db.SaveChanges();
         }
-
+        
         public void Edit(Core.Models.Indenting.Inspection.FabricInspReportLocal fabricInspReportLocal)
         {
             try
@@ -81,6 +81,19 @@ namespace ERP.Infrastructure.Repositories.Indenting.Inspection
                 return false;
             };
         }
-    }
 
+        public void AddIndInsp(List<IndentInspection> indentInspectionList)
+        {
+            foreach (var indentInspection in indentInspectionList)
+            {
+                db.IndentInspections.Add(indentInspection);
+            }
+            db.SaveChanges();
+        }
+
+        public List<IndentInspection> GeIndentInspectionsByInspSrNo(string SrNo)
+        {
+            return db.IndentInspections.Where(a => a.InspSrno == SrNo).ToList();
+        }
+    }
 }

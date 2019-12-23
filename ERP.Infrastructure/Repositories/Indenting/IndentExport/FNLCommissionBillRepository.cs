@@ -37,7 +37,7 @@ namespace ERP.Infrastructure.Repositories.Indenting.IndentExport
                         db.Entry(existingRecord).CurrentValues.SetValues(FNLCommissionBill);
                         db.SaveChanges();
 
-                        var cmd = ("DELETE FROM FNLCommissionBills WHERE FNLCommissionBillKey = '" + FNLCommissionBill.FNLCommissionBillKey + "'");
+                        var cmd = ("DELETE FROM FNL_CommissionPaymentDetail WHERE FNLCommissionBillKey = '" + FNLCommissionBill.FNLCommissionBillKey + "'");
                         db.Database.ExecuteSqlCommand(cmd);
                         db.SaveChanges();
                     

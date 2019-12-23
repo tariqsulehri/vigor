@@ -26,6 +26,7 @@ namespace ERP.Core.Models.Party
             this.CustomerSocials = new HashSet<CustomerSocial>();
             this.CustomerContactPerson = new HashSet<CustomerContactPerson>();
             this.CustomerUnits = new HashSet<CustomerUnit>();
+            this.FNLAccounts = new HashSet<FNLAccount>();
 
         }
 

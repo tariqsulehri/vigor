@@ -104,7 +104,6 @@ namespace ERP.Core.Models.Indenting.Inspection
         public int ab_gsm { get; set; }
 
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(1000)]
         public string Remarks { get; set; }
 
@@ -150,31 +149,25 @@ namespace ERP.Core.Models.Indenting.Inspection
         public bool BuyerSampleDesign { get; set; }
 
 
-        [Required(ErrorMessage = "This is Required field....")]
-        [MaxLength(10)]
+        [MaxLength(20)]
         public string SelvedgeWeaves { get; set; }
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(20)]
         public string SelvedgeIdentify { get; set; }
 
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(20)]
         public string SelvedgeBindingWidth { get; set; }
 
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(20)]
         public string SelvedgeSize { get; set; }
 
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(50)]
         public string YarnSupplyWrap { get; set; }
 
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(50)]
         public string YarnSupplyWeft { get; set; }
 
@@ -194,7 +187,6 @@ namespace ERP.Core.Models.Indenting.Inspection
 
         public bool PackingConditions { get; set; }
 
-        [Required(ErrorMessage = "This is Required field....")]
         [MaxLength(50)]
         public string WrapDirection { get; set; }
 

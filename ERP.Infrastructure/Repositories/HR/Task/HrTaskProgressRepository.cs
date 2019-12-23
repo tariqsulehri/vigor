@@ -24,20 +24,18 @@ namespace ERP.Infrastructure.Repositories.HR.Task
 
         public void Edit(HrTaskProgress hrTaskProgress)
         {
-            var result = db.HrTaskProgress.SingleOrDefault(b => b.Id == hrTaskProgress.Id);
-            if (result != null)
-            {
-                try
-                {
-                   // db.HrTaskProgress.Attach(hrTaskProgress);
-                    db.Entry(hrTaskProgress).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
+            //try
+            //{
+            //    var existingRecord = db. .Find(hrTaskProgress.id);
+            //    db.Entry(existingRecord).CurrentValues.SetValues(HR_CINCR);
+            //    db.SaveChanges();
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    //Console.WriteLine(ex.Message);  
+            //    throw ex;
+            //}
 
         }
 
